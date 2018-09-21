@@ -3,12 +3,12 @@
 
 He is passionate about building & refining digital products that improve people's lives and work.
 
-twitter: @justinpocta
+twitter @justinpocta
 
-email: howdy@justinpocta.com
+email howdy@justinpocta.com
 
-linkedin: http://linkedin.com/in/justinpocta
+linkedin http://linkedin.com/in/justinpocta
 
-instagram: http://instagram.com/juxtinp
+instagram http://instagram.com/juxtinp
 
-dribble: https://dribbble.com/justinpocta
+dribble https://dribbble.com/justinpocta
