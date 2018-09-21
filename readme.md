@@ -8,5 +8,5 @@ twitter: @justinpocta
 email: howdy@justinpocta.com
 
 linkedin: http://linkedin.com/in/justinpocta
-
+instagram: http://instagram.com/juxtinp
 dribble: https://dribbble.com/justinpocta
