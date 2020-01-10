@@ -9,6 +9,6 @@ email howdy@justinpocta.com
 
 linkedin http://linkedin.com/in/justinpocta
 
-instagram http://instagram.com/juxtinp
+photos https://vsco.co/justinpocta/
 
 dribble https://dribbble.com/justinpocta
