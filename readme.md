@@ -1,5 +1,5 @@
 
-### Justin Pocta is Product Designer for Smartling in New York City
+### Justin Pocta is Product Designer
 
 He is passionate about building & refining digital products that improve people's lives and work.
 
