@@ -9,6 +9,8 @@
 
 <a href="http://linkedin.com/in/justinpocta" style="display:block; width:100%; font-size:1.5em; padding-bottom:0.1em; border-bottom:1px solid #eaecef; background-color:#9D8600; padding-left:10px; color:#fff; margin-bottom:-16px;">LinkedIn</a>
 
+<br>
+
 🧠 [UX Zettelkasten](https://zettelkasten.justinpocta.com)
 
 📝 [Microblog](../notes)
