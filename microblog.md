@@ -10,6 +10,10 @@ content-type: eg
 
 # microblog
 
+- **202208191131** I sort of lost track with this after merging my Github Pages. Whoops! Anyway, I am starting to think about reworking my portfolio, maybe pull it off Figma even though I like the simplicity of designing it that way, it can feel a bit submerged and more like a Powerpoint than a flexible, modern website portfolio. With this website framework now in place, maybe I can pull that together more easily and built out some templates!
+
+- **202208151134** I finally finished Station Eleven! Maybe I'll finally check out the show. Next up, my wife just bought me Upgrade by Blake Crouch. After finishing Dark Matter and Recursion last year or so, I decided to just call myself a fan and keep a tab on his books. Never knew I was a "Sci-Fi Thriller" person, but I welcome it.
+
 - **202208032329** I'm launching my Github Pages account to my domain. I've been shipping people off to my Figma portfolio but know it's a bit rough having people redirect as soon as they arrive on my domain. This at least will give people some context and I'll just keep pushing refinements as I decide what I want to do with this site.
 
  - **202208032327** In exciting consumer news, I bought a 30oz mug for drinking water and I'm very happy with my purchase for staying hydrated all day. That's it. That's the tweet.
