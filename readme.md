@@ -26,4 +26,4 @@ content-type: eg
 
 📌 [Dropmark - Inspiration Boards](https://justinpocta.dropmark.com)
 
-📸 [Instagram](https://instagram/juxtinp/) • [VSCO](https://vsco.co/justinpocta/)
+📸 [Instagram](https://instagram.com/juxtinp/) • [VSCO](https://vsco.co/justinpocta/)
