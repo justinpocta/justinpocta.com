@@ -10,6 +10,8 @@ content-type: eg
 
 # microblog
 
+- **202304171705** Happy new year! :p I'm back, as I've lost my job and as I was taking a look to start revamping my portfolio, I noticed the forgotten state of my sad little microblog.
+
 - **202208191131** I sort of lost track with this after merging my Github Pages. Whoops! Anyway, I am starting to think about reworking my portfolio, maybe pull it off Figma even though I like the simplicity of designing it that way, it can feel a bit submerged and more like a Powerpoint than a flexible, modern website portfolio. With this website framework now in place, maybe I can pull that together more easily and built out some templates!
 
 - **202208151134** I finally finished Station Eleven! Maybe I'll finally check out the show. Next up, my wife just bought me Upgrade by Blake Crouch. After finishing Dark Matter and Recursion last year or so, I decided to just call myself a fan and keep a tab on his books. Never knew I was a "Sci-Fi Thriller" person, but I welcome it.
