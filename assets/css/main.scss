@@ -158,7 +158,7 @@ span.project-subheader {
 .feature__wrapper {border-bottom: 0px !important;}
 
 @media only screen and (max-width: 768px) {
-    div.initial-content  {
-        padding: 0.5em 1em 
+    .initial-content  {
+        padding: 0.5em 1em !important;
     }
 }
