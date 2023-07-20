@@ -1,8 +1,7 @@
 ---
 layout: default
 name: microblog
-toc: true
-toc_sticky: true
+toc: false
 title: null
 permalink: /microblog/
 content-type: eg
@@ -13,6 +12,8 @@ content-type: eg
 # [justinpocta.com](https://justinpocta.com) / microblog
 
 ## 2023
+
+- **202307201655** It's still a bit messy, but I finally got my portfolio online again! 👋🤓
 
 - **202307131633** I finally let my subscription run out on a well known cms website tool in order to force myself to finally rebuild my portfolio site using [Github Pages](http://pages.github.com) to give me a minimal option which doesn't cost exorbitant monthly subscription fees for some pretty basic stuff. Then I plan to explore some Portfolio build out using the latest Figma features released during the [Config 2023](http://config.figma.com) conference—variables, themes, advanced prototyping, and more fluid layout tools like autowrap! <3 I've been waiting on this since really getting into Figma in 2018…I mean, honestly, since cranking out websites using Photoshop in the early 2000's if we're gonna be honest.
 
@@ -43,7 +44,4 @@ content-type: eg
 - **202207270600** Thinking about how to leave social, but still, like, exist. Flickr Pro could be a way to dodge ads and still post and all that sort of fun. I miss the old internet. Great. I'm that old now, I guess. Hard to break free. I've been with Instagram since very early into its creation before it became such a thing. I've been reducing my usage, have had it off of my homescreen for quite some time now. Still not totally sure, but maybe setting up camp outside of these apps will help me to begin to make a new space to belong and think and write and share. We'll see.
 
 
----
-
-
-👈 [back to my site](/)
+***
