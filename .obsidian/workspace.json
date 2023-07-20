@@ -1,0 +1,272 @@
+{
+  "main": {
+    "id": "da78b6ff01e966da",
+    "type": "split",
+    "children": [
+      {
+        "id": "9eb1d41bd55c331e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7057da01d80d56d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "index.md",
+                "mode": "source",
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "260da45933b756c8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "opengov.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "71424b14e13e3324",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "smartling-workflows.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "3fa2ce7430c2a50d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "smartling-transcreation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e0853dfa88a08525",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "smartling-jobs.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c7b44891e699463b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "switch-in-my-bag.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2880d1fee4496651",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "zipments.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0a65db0cdcc34837",
+    "type": "split",
+    "children": [
+      {
+        "id": "411a096a7ba46de8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "011b1b7e7128f01c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e69b91eaf3903c1a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "48311f7e229ed2c3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "4470ad745dfa7aa3",
+    "type": "split",
+    "children": [
+      {
+        "id": "55f0a622fac6bf6a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b08dcb157f3a777d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d65eda670e365bbe",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "beb16d6b79f167a5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "9366cbcce1143592",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "index.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "a7057da01d80d56d",
+  "lastOpenFiles": [
+    "untitled folder",
+    "opengov.md",
+    "index.md",
+    "smartling-workflows.md",
+    "smartling-transcreation.md",
+    "smartling-jobs.md",
+    "_site/assets/img/Smartling-Jobs-Progress+Overhaul.png",
+    "assets/img/Smartling-Jobs-Progress+Overhaul.png",
+    "_site/assets/img/Smartling-Jobs-Progress+Overhaul",
+    "assets/img/Smartling-Jobs-Progress+Overhaul",
+    "switch-in-my-bag.md",
+    "_site/assets/img/Smartling-Jobs-Image.jpeg+2.png",
+    "assets/img/Smartling-Jobs-Image.jpeg+2.png",
+    "zipments.md",
+    "assets/img/Switch-InMyBag-180940745.png.sb-2f1aef5e-VHOYMU",
+    "assets/img/Smartling-Workflows-Image.jpeg.sb-2f1aef5e-6F85RR",
+    "assets/img/Smartling-Workflows-Image.jpeg",
+    "assets/img/Smartling-Workflows-Image.jpeg.sb-2f1aef5e-K3jWt3",
+    "homeward.md",
+    "info.md",
+    "assets/fonts/New Folder With Items/IBM-Plex-Sans-KR/fonts/split/woff2/hinted/IBMPlexSansKR-Thin-79.woff2",
+    "assets/fonts/New Folder With Items/IBM-Plex-Sans-KR/fonts/split/woff2/hinted/license.txt",
+    "assets/fonts/New Folder With Items/IBM-Plex-Sans-KR/fonts/split/woff2/hinted/IBMPlexSansKR-Thin.css",
+    "assets/fonts/New Folder With Items/IBM-Plex-Sans-KR/fonts/split/woff2/hinted/IBMPlexSansKR-Thin-92.woff2",
+    "assets/fonts/New Folder With Items/IBM-Plex-Sans-KR/fonts/split/woff2/hinted/IBMPlexSansKR-Thin-91.woff2",
+    "node_modules/@ibm/plex/README.md",
+    "_site/homeward.md",
+    "_site/Untitled.md",
+    "microblog.md",
+    "_site/assets/img/x Smartling-Jobs-Image.jpeg+2.png",
+    "assets/img/x Smartling-Jobs-Image.jpeg+2.png",
+    "_site/assets/img/x OpenGov-Wayfinding-InfoArch-Budget-export.png",
+    "_site/assets/img/x OpenGov-Wayfinding-InfoArch-Budget-export-400.png",
+    "_site/assets/img/x OpenGov-Wayfinding-InfoArch-Budget-App5.png",
+    "_site/info.md",
+    "readme.md",
+    "Z readme.md",
+    "vendor/bundle/ruby/3.0.0/gems/mini_portile2-2.8.4/SECURITY.md",
+    "vendor/bundle/ruby/3.0.0/gems/mini_portile2-2.8.4/README.md",
+    "vendor/bundle/ruby/3.0.0/gems/mini_portile2-2.8.4/CHANGELOG.md",
+    "Ruby - Local Setup.md",
+    "_site/Ruby - Local Setup.md",
+    "_site/Info.md",
+    "_data/navigation.yml.md",
+    "_site/navigation.yml.md",
+    "vendor/bundle/ruby/3.0.0/gems/minimal-mistakes-jekyll-4.24.0/README.md"
+  ]
+}

@@ -1,0 +1,159 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+// $font-prefix: './assets/fonts/IBM-Plex-Sans/fonts';
+// @import '../css/ibm-plex.scss';
+@import '../css/ibm-plex.css';
+@import '../css/ibm-plex.min.css';
+
+.initial-content {
+    max-width: 800px !important;
+    margin-top: 40px !important;
+    margin: auto;
+}
+
+// added to allow me to shift images since i'm not sure if it is in my theme yet
+.align-right, a img.align-right {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    padding-left: 20px !important;
+    float:right
+}
+
+.align-left, a img.align-left {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 20px !important;
+    display: block;
+    float:left
+}
+
+// do you see this
+.fifty-left, img.fifty-left {
+    max-width: 50% !important;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 20px !important;
+    display: block;
+    float:left;
+}
+
+.fifty-right, img.fifty-Right {
+    max-width: 50% !important;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    padding-left: 20px !important;
+    padding-right: 20px; // wanting to add buffer between TOC and images
+    float:right
+}
+
+.third-left, img.third-left {
+    max-width: 35% !important;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 20px !important;
+    display: block;
+    float:left;
+}
+
+.third-right, img.third-Right {
+    max-width: 35% !important;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    padding-left: 20px !important;
+    padding-right: 20px; // wanting to add buffer between TOC and images
+    float:right
+}
+
+.quarter-left, img.quarter-left {
+    max-width: 25% !important;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 20px !important;
+    display: block;
+    float:left;
+}
+
+.quarter-right, img.quarter-Right {
+    max-width: 25% !important;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    padding-left: 20px !important;
+    padding-right: 20px; // wanting to add buffer between TOC and images
+    float:right
+}
+
+  ul li {
+    // display: list-item !important;
+ }
+ 
+ .toc .active a {
+    background-color: #CBDBDF !important;
+ }
+
+ .notice--info {
+    background-color: #CBDBDF !important;
+ }
+
+ img {
+    border-radius: 8px !important;
+ }
+ 
+ .img-border, img.img-border, figure img {
+    border: 1px solid #CBDBDF;
+}
+
+img.mfp-img {
+    border: 0px !important;
+}
+
+.image-popup img {
+    border-radius: 8px;
+    border: 2px solid #CBDBDF !important;
+}
+
+.image-popup:hover img {
+    border: 2px solid #437D8B !important;
+    opacity: .90;
+}
+
+
+i, em, blockquote, figure, figcaption {
+    font-family: IBM Plex Sans, Merriweather, serif;
+    font-style: italic;
+    // font-size: 0.75em;
+}
+
+// hide the Table of Contents header
+ //  .toc header {
+//     display: none;
+//  }
+
+H1 {
+    font-family: IBM Plex Sans, Merriweather, serif;
+    font-weight: 400;
+    line-height: 2.4rem;
+}
+
+span.project-subheader {
+    text-transform: uppercase;
+    color:#aeaeae;
+    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: 300;
+    
+}
+
+#h1st {
+    margin-top: -30px;
+}
+
+.feature__wrapper {border-bottom: 0px !important;}
+

@@ -1,6 +1,8 @@
 ---
-layout: post
+layout: default
 name: microblog
+toc: true
+toc_sticky: true
 title: null
 permalink: /microblog/
 content-type: eg
@@ -10,7 +12,15 @@ content-type: eg
 
 # [justinpocta.com](https://justinpocta.com) / microblog
 
+## 2023
+
+- **202307131633** I finally let my subscription run out on a well known cms website tool in order to force myself to finally rebuild my portfolio site using [Github Pages](http://pages.github.com) to give me a minimal option which doesn't cost exorbitant monthly subscription fees for some pretty basic stuff. Then I plan to explore some Portfolio build out using the latest Figma features released during the [Config 2023](http://config.figma.com) conference—variables, themes, advanced prototyping, and more fluid layout tools like autowrap! <3 I've been waiting on this since really getting into Figma in 2018…I mean, honestly, since cranking out websites using Photoshop in the early 2000's if we're gonna be honest.
+
+- **202307121159** I finally caved and decided to give Instagram's Threads a look, although I am looking forward to their connection to the "Fediverse"/Mastodon and ActivityPub. I've been trying to fight these machines, but figured since I'm still out of work I should try to be visible and keep my eyes open. I also just have one of those nihilistic online privacy moods these days, I guess. :p At least it isn't Twitter!
+
 - **202304171705** Happy new year! :p I'm back, as I've lost my job and as I was taking a look to start revamping my portfolio, I noticed the forgotten state of my sad little microblog.
+
+## 2022
 
 - **202208191131** I sort of lost track with this after merging my Github Pages. Whoops! Anyway, I am starting to think about reworking my portfolio, maybe pull it off Figma even though I like the simplicity of designing it that way, it can feel a bit submerged and more like a Powerpoint than a flexible, modern website portfolio. With this website framework now in place, maybe I can pull that together more easily and built out some templates!
 

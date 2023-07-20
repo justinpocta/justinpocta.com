@@ -10,8 +10,34 @@ a {color:rgb(185, 158, 1); font-family: Baskerville,serif;}
     border-bottom: none !important;
 }
 
-h1:first-of-type {
-    display: none !important;
-    border-bottom: none !important;
-  }
+// h1:first-of-type {
+//     display: none !important;
+//     border-bottom: none !important;
+//   }
   
+
+.initial-content {
+    max-width: 80% !important;
+    margin-top: 40px !important;
+}
+
+// added to allow me to shift images since i'm not sure if it is in my theme yet
+// .align-right, a img.align-right {
+//     margin-bottom: 1rem;
+//     margin-left: 1rem;
+//     padding-left: 20px !important;
+//     float:right
+// }
+
+// .align-left, a img.align-left {
+//     margin-right: 1rem;
+//     margin-bottom: 1rem;
+//     padding-right: 20px !important;
+//     display: block;
+//     float:left
+// }
+
+// // do you see this
+// .fifty, img.fifty {
+//     max-width: 50% !important;
+// }

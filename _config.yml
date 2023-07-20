@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-email: howdy@justinpocta.com
+email: justinpocta@gmail.com
 # description: >- # this means to ignore newlines until "baseurl:"
 # Write an awesome description for your new site here. You can edit this
 #  line in _config.yml. It will appear in your document head meta (for
@@ -31,14 +31,18 @@ github_username:  justinpocta
 # exclude: [vendor]
 # this was a recommendation to get around issues with invalid date when launching jekyll server https://github.com/jekyll/jekyll/issues/5267
 
-name: Product Designer - Justin Pocta
-title: Product Designer - Justin Pocta
+name: UX Portfolio of Justin Pocta
+title: UX Portfolio of Justin Pocta
 github:
- resume_url: https://github.com/justinpocta/howdy/raw/master/2022-Pocta-Resume.pdf
+ resume_url: https://github.com/justinpocta/justinpocta.com/raw/master/2023-Pocta-Resume.pdf
 
 # Build settings
 # theme: minima
-# plugins:
+# theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes@4.24.0" 
+
+plugins:
+- jekyll-include-cache
 # - jekyll-feed
 
 # Exclude from processing.
@@ -60,3 +64,37 @@ github:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+
+
+
+
+
+
+
+# masthead_title           : " " # overrides the website title displayed in the masthead, use " " for no title
+# breadcrumbs              : true # true, false (default)
+
+
+# # Conversion
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+# # Markdown Processing
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# # Sass/SCSS
+# sass:
+#   sass_dir: _sass
+#   style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
