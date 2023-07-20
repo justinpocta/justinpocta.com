@@ -6,7 +6,7 @@ toc: true
 toc_sticky: true
 toc_label: "Project Index"
 toc_icon: "tasks"
-logo: opengov-logo.png
+logo: OpenGov-Logo.png
 galleryWayfindingBeforeAfter:
   - url: /assets/img/OpenGov-Wayfinding-Comparison-01-Before.png
     image_path: /assets/img/OpenGov-Wayfinding-Comparison-01-Before.png
@@ -96,7 +96,7 @@ galleryIA:
 # Balancing the Budget App 
 {: .no_toc id="h1st"}
 
-![img](../assets/img/opengov-logo.png)
+![img](../assets/img/OpenGov-Logo.png)
  {: .third-right}
 
 I took on the opportunity to join OpenGov as Sr. Product Designer for the Budgeting and Planning team in May 2021 on a UX team of 12 who were managing 4 apps across the platform.
