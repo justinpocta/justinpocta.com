@@ -10,8 +10,8 @@ galleryProjects:
     excerpt: "Research, UX, UI"
   - zurl: /smartling-jobs
     image_path: /assets/img/Project-Smartling-Jobs.jpg
-    alt: "Jobs 2.0"
-    title: "Jobs 2.0"
+    alt: "Jobs Redesign"
+    title: "Jobs Redesign"
     excerpt: "Research, UX, UI"
   - zurl: /smartling-transcreation
     image_path: /assets/img/Project-Smartling-Transcreation.png
