@@ -3,7 +3,7 @@ Name: UX Portfolio of Justin Pocta"
 Title: UX Portfolio of Justin Pocta
 layout: front
 galleryProjects:
-  - zurl: /opengov/
+  - zurl: /opengov
     image_path: /assets/img/Project-OpenGov.png
     alt: "OpenGov"
     title: "OpenGov"
