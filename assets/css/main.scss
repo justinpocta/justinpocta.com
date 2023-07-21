@@ -103,7 +103,8 @@ search: false
  }
 
  img {
-    border-radius: 8px !important;
+    border-radius: 8px;
+    overflow: hidden;
  }
  
  .img-border, img.img-border, figure img {
@@ -173,3 +174,12 @@ span.project-subheader {
 .greedy-nav a:hover {
     color:#9C7A00 !important;
 }
+
+.notice--primary {
+    display: table-cell; /* this helped to dodge the issue of the notice not wrapping when i had image on right */
+}
+
+.notice--primary a {
+    color: #1f1e1e;
+}
+

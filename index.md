@@ -35,7 +35,10 @@ galleryProjects:
     excerpt: "Research, UX, UI"
 ---
 <br>
+
+<img src="../assets/img/profile-pic.jpg" style="overflow:hidden; border-radius:500px; height:200px; width:200px; float: left; margin-right:20px;">
 # [Justin Pocta](info.md) is a product designer passionate about building & refining digital products to improve people’s lives and work.
-<br>
+<br><br>
+
 <center><span class="project-subheader" style="display:block;padding-bottom:20px">Select Projects</span></center>
 {% include feature_row id="galleryProjects" caption="" %}
