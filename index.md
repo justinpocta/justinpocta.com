@@ -42,3 +42,4 @@ galleryProjects:
 
 <center><span class="project-subheader" style="display:block;padding-bottom:20px">Select Projects</span></center>
 {% include feature_row id="galleryProjects" caption="" %}
+ 
