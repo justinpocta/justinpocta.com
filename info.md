@@ -16,13 +16,13 @@ I love working with teams that value asking questions. _Why are we creating a gi
 
 As teams grow and merge and transform, how we work together often needs to change. I lean toward communication and flexibility, but find flows helpful to understand common needs expectations.
 
-![](../assets/img/info-UX-Process.png)
+![](../assets/img/Info-UX-Process.png)
 
-![](../assets/img/info-UX-Strategy.png)
+![](../assets/img/Info-UX-Strategy.png)
 
 Strategy as a means of recognizing the **past** and **present** as you identify the best plan for the **future**, adjusting the sails as winds and unexpected events occur along the way and maybe even need to reroute courses to something more suitable or better.
 
-![](../assets/img/info-UX-Strategic-Research.png)
+![](../assets/img/Info-UX-Strategic-Research.png)
 
 ---
 
