@@ -7,7 +7,7 @@ One of my major passions is applying my design skills toward the refinement and 
 
 I love working with teams that value asking questions. _Why are we creating a given project? What is the objective and our goal? How could we achieve it differently, better, smarter, faster? What if we tried it another way?_
 
-- [Send me an email](mailto:howdy@justinpocta.com?subject=Hello) if you'd like to chat
+- [Send me an email](mailto:howdy@justinpocta.com?subject=Hello) if you'd like to chat about full time opportunities for remote-based, mid-senior product designer roles
 - Check out [my resumé](http://www.justinpocta.com/2023-Pocta-Resume.pdf)
 
 ---
