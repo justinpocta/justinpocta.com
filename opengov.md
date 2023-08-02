@@ -122,9 +122,6 @@ Based on feedback from users, navigational issues were a clear struggle for user
 
 A comparison of the varying levels of the app emphasized inconsistency, IA details missing at times, and lack of clarity about where you will be taken upon clicking a back arrow or other button, such as “Done”.
 
-Site Map of Budget Structure with emphasis on Budgets containing Proposals which contain Worksheets
-A simplified view of the app structure showing a Budget containing a Proposal which contains a Worksheet.
-
 ## Research & Design Process 
 
 {% include gallery id="galleryIA" caption="A simplified view of the app structure showing a **Budget** containing a **Proposal** which contains a **Worksheet**." %}{:.fifty-right}
