@@ -265,4 +265,3 @@ Thanks for reading!
 ---
 
 **[Next Project →](smartling-jobs.md)**
-{: .notice}

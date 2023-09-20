@@ -172,4 +172,3 @@ Where we landed was thanks to the help of Product, Engineering and UX collaborat
 ---
 
 **[←Previous Project](smartling-transcreation.md)** | **[Next Project →](zipments.md)**
-{: .notice}

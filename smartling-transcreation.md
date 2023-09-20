@@ -135,4 +135,3 @@ Transcreation Demo to present the new tool to our customers as well as those int
 ---
 
 **[←Previous Project](smartling-jobs.md)** | **[Next Project →](smartling-workflows.md)**
-{: .notice}

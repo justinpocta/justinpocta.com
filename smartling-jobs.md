@@ -156,4 +156,3 @@ Future phases are planned to catch up the code to the UX vision where we intend 
 ---
 
 **[←Previous Project](opengov.md)** | **[Next Project →](smartling-transcreation.md)**
-{: .notice}
