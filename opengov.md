@@ -262,4 +262,7 @@ Thanks for reading!
 - Loom for sharing updates async
 - Zoom and Figma for User Interviews and Usability Tests
 
+---
 
+**[Next Project →](smartling-jobs.md)**
+{: .notice}

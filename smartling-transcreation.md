@@ -132,5 +132,7 @@ Transcreation Demo to present the new tool to our customers as well as those int
 - Anton Shanyuk (FE Engineer)
 - Keith Legin (Engineer Lead)
 
-**Related Work:** [Workflows 2.0](smartling-workflows.md), [Jobs](smartling-jobs.md)
+---
+
+**[←Previous Project](smartling-jobs.md)** | **[Next Project →](smartling-workflows.md)**
 {: .notice}

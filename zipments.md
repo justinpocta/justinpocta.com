@@ -123,4 +123,6 @@ With our development team working from Michigan and the other half of us in New 
 - Elliot Nelson (Web/Rails Developer)
 - Travis Brack (iOS Developer)
 
+---
 
+**[←Previous Project](https://justinpocta.com/smartling-workflows)** 

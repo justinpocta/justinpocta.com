@@ -153,5 +153,7 @@ Future phases are planned to catch up the code to the UX vision where we intend 
 <span class="project-subheader">Development</span>
 - Jeremy Shankle, Dmitry Masley, Oleksandr Tymchenko, Pavlo Myrotiuk, Valerii Linetskyi, Sergey Chichulin, Yurii Beiko, Xiaoyun Yang, Rich Tam, and our summer intern Dominic DeMarco alongside multiple BE teams to get all the pieces converged and working smoothly.
 
-**Related Work:** [Workflows 2.0](smartling-workflows.md), [Transcreation](smartling-transcreation.md)
+---
+
+**[←Previous Project](opengov.md)** | **[Next Project →](smartling-transcreation.md)**
 {: .notice}

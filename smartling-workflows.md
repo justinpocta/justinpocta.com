@@ -169,6 +169,7 @@ Where we landed was thanks to the help of Product, Engineering and UX collaborat
 - Ben Loy (BE)
 - Dmitry Bochorishvili (BE)
 
+---
 
-Related Work: [Jobs](smartling-jobs.md), [Transcreation](smartling-transcreation.md)
+**[←Previous Project](smartling-transcreation.md)** | **[Next Project →](zipments.md)**
 {: .notice}
