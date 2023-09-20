@@ -23,11 +23,6 @@ galleryProjects:
     alt: "Workflows"
     title: "Workflows"
     excerpt: "Research, UX, UI"
-  - zurl: /switch-in-my-bag
-    image_path: /assets/img/Project-Switch-InMyBag.jpeg
-    alt: "In My Bag"
-    title: "In My Bag"
-    excerpt: "UX, Prototyping"
   - zurl: /zipments
     image_path: /assets/img/Project-Zipments.jpeg
     alt: "Zipments"
