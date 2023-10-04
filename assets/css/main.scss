@@ -13,9 +13,33 @@ search: false
 @import '../css/ibm-plex.css';
 @import '../css/ibm-plex.min.css';
 
+
+body.layout--front .initial-content {
+    max-width: auto !important;
+}
+#intro-div {
+    margin: 0 auto;
+    max-width: 1080px;
+    display: block;
+}
+body.layout--front figure {
+    margin: 0 !important;
+    // justify-content: unset !important;
+    // margin-block-start: unset !important;
+    // margin-block-end: unset !important;
+    // margin-inline-start: unset !important;
+    // margin-inline-end: unset !important;
+    // -webkit-box-pack: unset !important;
+}
+
+
+
+body.layout--default .initial-content {
+    max-width: 1080px !important;
+}
+
 .initial-content {
-    max-width: 800px !important;
-    margin-top: 40px !important;
+    margin-top: 20px !important;
     margin: auto;
 }
 
@@ -111,6 +135,12 @@ search: false
     border: 1px solid #CBDBDF;
 }
 
+figure img:hover {
+    border: 1px solid #454545;
+    opacity: .8; /* 1px solid #CBDBDF */
+}
+
+
 img.mfp-img {
     border: 0px !important;
 }
@@ -157,13 +187,16 @@ span.project-subheader {
 }
 
 .feature__wrapper {border-bottom: 0px !important;}
+.feature__item {
+    margin-left:0 !important;
+}
 
 @media only screen and (max-width: 768px) {
     .initial-content  {
         padding: 0.5em 1em !important;
     }
     .feature__item {
-        margin-bottom: .5em !important;
+        margin-bottom: 0 !important; /* .5em */
     }
 }
 

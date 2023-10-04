@@ -1,0 +1,94 @@
+<style>
+  .container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* margin: -0.5em -1em !important; nope - not working! */
+  }
+  .video-container p {
+    position: relative;
+    bottom: -16px;
+    left: 16px;
+    margin-top: 0;
+    z-index: 1000;
+  }
+  .video-container {
+    width: 50%;
+    min-height: 200px;
+    /* padding: 10px;   */
+    box-sizing: border-box;
+    /* padding-bottom: 1.3em; */
+    /* width:100%; */
+      /* max-width: 1200px; */
+    /* height:auto; */
+      /* min-height:500px */
+    /* float:left; */
+    /* border:0 !important;
+    display:inline-block; */
+    /* overflow:hidden; */
+    display: table; /* trying to get text to stop appearing in container above. weird one. */
+  }
+  a.video-container:link {
+    color:rgba(255,255,255,1.0);
+    text-decoration: none !important;
+  }
+  a.video-container:visited,
+  a.video-container:hover {
+    color:rgba(255,255,255,.75);
+    /* border: 0 !important;
+    stroke: 0 !important;
+    text-decoration: 0 !important; */
+    text-decoration: none !important;
+  }
+  video {
+    width:100%;
+    /* height:100%; */
+    object-fit: none; /* contain or cover are nice but not as big */
+  }
+  @media (max-width: 768px) {
+    .video-container {
+      width: 100%;
+    }
+    .video-container p {
+      padding-bottom: 1.3em;
+    }
+    /* below messes up the useful padding in the above intro. maybe just reverse it for intro gallery. */
+    /*.initial-content {
+      padding: 0 !important;
+    }
+    } */
+</style>
+
+<div class="container">
+  <a href="smartling-jobs.html" style="background-color:#321261; " class="video-container">
+    <video id="my_video1" width="800" height="500" nocontrols autoplay loop poster="/assets/img/UX-VID-SM_JOBS.png">
+      <source src="/assets/img/UX-VID-SM_JOBS.mov">
+    Your browser does not support the video tag.
+    </video>
+    <p>Job Tracking</p>
+    </a>
+    <a href="opengov.html" style="background-color:#E8EFF5;" class="video-container">
+        <video id="my_video4" width="800" height="500" nocontrols autoplay loop poster="/assets/img/UX-VID-OG.png">
+          <source src="/assets/img/UX-VID-OG.mov">
+        Your browser does not support the video tag.
+      </video>
+      <p style="color:#321261">Wayfinding</p>
+    </a>      
+  <!-- </div>
+  <div class="container"> -->
+    <a href="smartling-workflows.html" style="background-color:#592CB0;" class="video-container">
+      <video id="my_video2" width="800" height="500" nocontrols autoplay loop poster="/assets/img/UX-VID-SM_WF.png">
+        <source src="/assets/img/UX-VID-SM_WF.mov">
+      Your browser does not support the video tag.
+    </video>
+    <p>Dynamic Workflows</p>  
+  </a>      
+    <a href="smartling-transcreation.html" style="background-color:#E17463;" class="video-container">
+      <video id="my_video3" width="800" height="500" nocontrols autoplay loop poster="/assets/img/UX-VID-SM_TC.png">
+        <source src="/assets/img/UX-VID-SM_TC.mov">
+      Your browser does not support the video tag.
+      </video>
+      <p>Transcreation</p>
+    </a>
+    </div>
+

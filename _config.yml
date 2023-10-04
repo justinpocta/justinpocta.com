@@ -31,8 +31,8 @@ github_username:  justinpocta
 # exclude: [vendor]
 # this was a recommendation to get around issues with invalid date when launching jekyll server https://github.com/jekyll/jekyll/issues/5267
 
-name: UX Portfolio of Justin Pocta
-title: UX Portfolio of Justin Pocta
+name: Justin Pocta, Product Designer.
+title: Justin Pocta, Product Designer.
 github:
  resume_url: https://github.com/justinpocta/justinpocta.com/raw/master/2023-Pocta-Resume.pdf
 

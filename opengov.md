@@ -2,7 +2,7 @@
 title: OpenGov
 layout: default
 breadcrumbs: true  
-toc: true
+toc: false
 toc_sticky: true
 toc_label: "Project Index"
 toc_icon: "tasks"
@@ -264,4 +264,4 @@ Thanks for reading!
 
 ---
 
-**[Next Project →](smartling-jobs.md)**
+**[←Previous Project](smartling-workflows.md)** - **[Info →](info.md)**

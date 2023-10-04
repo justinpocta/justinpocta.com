@@ -1,8 +1,8 @@
 ---
 title: Transcreation
 layout: default
-toc: true
-toc_sticky: true
+toc: false
+toc_sticky: false
 toc_label: "Project Index"
 toc_icon: "tasks"
 galleryIterations:

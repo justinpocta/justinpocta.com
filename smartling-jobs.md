@@ -1,7 +1,7 @@
 ---
 title: Jobs Dashboard
 layout: default
-toc: true
+toc: false
 toc_sticky: true
 toc_label: "Project Index"
 toc_icon: "tasks"
@@ -155,4 +155,4 @@ Future phases are planned to catch up the code to the UX vision where we intend 
 
 ---
 
-**[←Previous Project](opengov.md)** - **[Next Project →](smartling-transcreation.md)**
+**[Next Project →](smartling-transcreation.md)**

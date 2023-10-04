@@ -1,7 +1,7 @@
 ---
 title: Workflows 2.0
 layout: default
-toc: true
+toc: false
 toc_sticky: true
 toc_label: "Project Index"
 toc_icon: "tasks"
@@ -171,4 +171,4 @@ Where we landed was thanks to the help of Product, Engineering and UX collaborat
 
 ---
 
-**[←Previous Project](smartling-transcreation.md)** - **[Next Project →](zipments.md)**
+**[←Previous Project](smartling-transcreation.md)** - **[Next Project →](opengov.md)**

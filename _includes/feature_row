@@ -21,29 +21,31 @@
 
 
             {% if f.image_path %}
-            <a href="{{ f.zurl | relative_url }}" class="imagXe-popup" style="display: block; position: relative; border-radius: 8px; overflow: hidden; text-decoration: none; max-height: 300px; color:#fff;">
-            <div class="archive__item-teaserX" style="display:block; background-color: #9C7A00; background-image: url({{ f.image_path | relative_url }}); background-opacity:.5; background-blend-mode: multiply; background-size: cover; background-repeat: no-repeat; background-position: center; max-width: initial !important; position: relative; border-radius:8px">
+            <a href="{{ f.zurl | relative_url }}" class="imagXe-popup" style="display: block; position: relative; border-radius: 0px; overflow: hidden; text-decoration: none; height: 600px; color:#fff;">
+            <div class="archive__item-teaserX" style="height: 600px; display:block; background-color: #{{ f.bgcol }}; backgXround-color: #9C7A00; background-image: url({{ f.image_path | relative_url }}); backgroundX-opacity:.5; background-blend-modeX: multiply; background-size: auto auto; background-repeat: no-repeat; background-position: center; max-width: iniXtial !important; position: relative; border-radius:0px">
 
-                            <div style="position: relative; overflow: hidden; -webkit-mask-image: -webkit-radial-gradient(white, black); padding-bottom: 2rem; text-align:center;">
-                                    {% if f.title %}
-                                    <h2 class="archive__item-titleX" style="color:#fff;text-shadow: #000 1px 0 10px;">{{ f.title }}</h2>
-                                    {% endif %}
-                                    {% if f.excerpt %}
-                                    <div class="archive__item-excerpt" style="margin-bottom: -0.5em; margin-top: -1.25em; color:#fff; font-family: Merriweather, serif; font-style: italic;">
-                                      {{ f.excerpt | markdownify }}
-                                    </div>
+                            <div style="position: relative; overflow: hidden; -webkit-mask-imageX: -webkit-radial-gradient(white, black); padding-topX: 2rem; text-align:center; vertical-alignX: bottom; marginX-left:.1em;">
+                              {% if f.title %}
+                              <h2 class="archive__item-titleX" style="color:#fff;text-shXadow: #000 1px 0 10px;margin-top:530px;">{{ f.title }}</h2>
+                              {% endif %}
+                              {% if f.excerpt %}
+                              <!-- <div class="archive__item-excerpt" style="margin-bottom: -0.5em; margin-top: -1.25em; color:#fff; font-family: Merriweather, serif; font-style: italic;">
+                                {{ f.excerpt | markdownify }}
+                              </div> -->  
                             </div>
                             
                     {% if f.image_caption %}
                     <span class="archive__item-captionX">{{ f.image_caption | markdownify | remove: "<p>" | remove: "</p>" }}</span>
                     {% endif %}
-                </div> </a>
+                </div> 
+          
+              </a>
         {% endif %}
 
         <div class="archive__item-bodyX">
 
           {% endif %}
-            <br>
+            <!-- <br> -->
           <!-- {% if f.url %}
             <p><a href="{{ f.url | relative_url }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
           {% endif %} -->
