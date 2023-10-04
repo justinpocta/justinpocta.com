@@ -1,4 +1,4 @@
-# Info
+# Hello!
 
 ![Justin Pocta](../assets/img/Info-Justin-Pocta.jpg)
 {: .fifty-right}
@@ -11,10 +11,6 @@ I love working with teams that value asking questions. _Why are we creating a gi
 {: .no_toc .notice--primary style="display:table-cell; background-color: #CDDDE7 !important;"}
 
 ---
-
-## **A LITTLE MORE ABOUT MYSELF**
-
-I've bounced back and forth between NYC and Dallas. Alongside design, I am presently nerding out about building a [UX Zettelkasten](http://zk.justinpocta.com/), obsessing over cities and [urbanism](http://urbanist.justinpocta.com/), [biking with my GoPro](https://www.youtube.com/playlist?list=PLecJQW4DoGw2qD7qdsbRGzwz53QF9IBM7), [reviewing tech on YouTube](https://www.youtube.com/playlist?list=PLecJQW4DoGw2Xt7280WJyVpt9D-FtrbGH), and dabbling with watercolor.
 
 **My Current Reads**
 

@@ -43,7 +43,7 @@ galleryProjects:
 
 <!-- <img src="../assets/img/profile-pic.jpg" style="overflow:hidden; border-radius:500px; height:200px; width:200px; float: left; margin-right:20px;"><br> -->
 <br>
-<center><h1>Empathy, collaboration, iteration, delight. <a href="info.html">Rinse & Repeat</a>.</h1></center>
+<center><h1>Empathy, collaboration, iteration, delight. <br><a href="info.html">Rinse & Repeat</a>.</h1></center>
 <br>
 
 <span class="project-subheader" style="display:block;padding-bottom:20px;text-align:center;width:100%;">My Projects</span>
