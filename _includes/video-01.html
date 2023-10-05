@@ -72,6 +72,9 @@
     object-fit: none; /* contain or cover are nice but not as big */
   }
   @media (max-width: 768px) {
+    video.video-workflows { /* this one is maybe just not as wide */
+      object-fit: cover !important;
+    }
     .video-container {
       width: 100%;
     }
@@ -125,7 +128,7 @@
   <!-- </div>
   <div class="container"> -->
     <a href="smartling-workflows.html" style="background-color:#592CB0;" class="video-container">
-      <video id="my_video2" width="800" height="500" nocontrols autoplay loop poster="/assets/img/UX-VID-SM_WF.png">
+      <video id="my_video2" class="video-workflows" width="800" height="500" nocontrols autoplay loop poster="/assets/img/UX-VID-SM_WF.png">
         <source src="/assets/img/UX-VID-SM_WF.mov">
       Your browser does not support the video tag.
     </video>
