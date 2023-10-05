@@ -226,3 +226,25 @@ span.project-subheader {
     color: #1f1e1e;
 }
 
+.project-title-container {
+    padding-left:16px;
+}
+.project-title-logo {
+    float:left !important;
+    width:36px;
+    height:36px;
+    display:block;
+}
+.project-title-name {
+    float:left !important; 
+    height:50px; 
+    display:block;
+    line-height:1.3em;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .project-title-name {
+        font-size: 1.3em !important;
+    }
+}
