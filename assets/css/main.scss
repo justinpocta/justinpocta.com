@@ -247,4 +247,21 @@ span.project-subheader {
     .project-title-name {
         font-size: 1.3em !important;
     }
+    .social-icons {
+        text-align: center;
+    }
+    .social-icons li {
+        font-size: 1.5em !important;
+        text-align: center;
+    }
+    .page__footer {
+        margin-top: .5em;
+    }
+}
+
+/* mastodon proof backlink */ 
+.it-me-mastodon {
+    visibility: hidden; 
+    display:block; 
+    width: 0px !important;
 }
