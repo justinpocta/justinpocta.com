@@ -198,6 +198,10 @@ span.project-subheader {
     .feature__item {
         margin-bottom: 0 !important; /* .5em */
     }
+
+    #h1st { /* mobile does NOT look good on desktop's approach with -30px. eventually need to get these to EMs. */
+        margin-top: -20px;
+    }
 }
 
 .greedy-nav a {
