@@ -97,7 +97,7 @@ In earlier stages, before building the Keynote video, I helped the team see how 
 
 With our development team working from Michigan and the other half of us in New York, we wanted to help convey the ideas and general app flow. So after getting through some of our initial ideation, I had a call with our developers to confirm collaborate on final details and figure out how to fit it to our launch timeframe.
 
-<iframe src="https://player.vimeo.com/video/57176669?wmode=opaque&api=1" width="360" height="640" frameborder="0" title="Zipments - Initial app testing" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+<iframe src="https://player.vimeo.com/video/57176669?wmode=opaque&api=1" class="youtube-handler" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 

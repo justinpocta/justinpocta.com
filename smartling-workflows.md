@@ -138,10 +138,10 @@ Where we landed was thanks to the help of Product, Engineering and UX collaborat
 ## The Final Results
 
 ### Creating Decision Steps in the Workflow
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VXmLof4c0Nw?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/VXmLof4c0Nw?controls=0" title="YouTube video player" class="youtube-handler" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Managing Rules for Decision Steps
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sB9zdrpP3j8?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/sB9zdrpP3j8?controls=0" title="YouTube video player"  class="youtube-handler" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 
