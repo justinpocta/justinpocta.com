@@ -16,5 +16,5 @@ I love working with teams that value asking questions. _Why are we creating a gi
 
 - [UX Strategy by Jamie Levy](https://jaimelevy.com/ux-strategy-book/)
 - [Figure It Out by Stephen P. Anderson](https://rosenfeldmedia.com/books/figure-it-out/)
-- [Babel by R. F. Kuang](https://www.harpercollins.com/products/babel-r-f-kuang)
+- French Exit by Patrick deWitt
 
