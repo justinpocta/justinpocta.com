@@ -1,5 +1,5 @@
 ---
-layout: project
+layout: posts
 ---
 
 <div style="">
