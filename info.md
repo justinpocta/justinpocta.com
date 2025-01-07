@@ -3,7 +3,7 @@
 ![Justin Pocta](../assets/img/Info-Justin-Pocta.jpg)
 {: .fifty-right}
 
-## I'm a Sr. Product Designer @ [Highlight](https://www.letshighlight.com).
+*I'm a Sr. Product Designer @ [Highlight](https://www.letshighlight.com)*
 
 One of my major passions is applying my design skills toward the refinement and clarity of a digital project's experience. My obsession with constantly learning more has led me, project-by-project, to being increasingly human-centered in my process and what I see as necessary for an app or website to be truly _successful_. Helping useful tools become more enjoyable and easier to understand is what I strive to do.
 
