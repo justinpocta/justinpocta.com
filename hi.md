@@ -1,6 +1,6 @@
 ---
 layout: default
-name: connect
+name: Let's Connect
 toc: false
 title: null
 permalink: /hi/
@@ -23,8 +23,6 @@ li {
     max-width: 800px; /* Adjust width as needed */
 }
 </style>
-
-# Let's Connect!
 
 - Email [howdy@justinpocta.com](mailto:howdy@justinpocta.com?subject=hi!)
 - Bluesky [@justinpocta.com](https://bsky.app/profile/justinpocta.com)
