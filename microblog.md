@@ -11,7 +11,17 @@ content-type: eg
 
 # [justinpocta.com](https://justinpocta.com) / microblog
 
-## 2023
+## 2025
+
+- **20250108** Obviously been a busy year! Maybe I should write up some log of all the major events. We'll see if I get around to writing more or not in general knowing how easy it can be to forget. I *am* always inspired by folks who have a personal site going. In the meantime, focused on staying cozy, getting back into pour overs, and optimizing my setups for notes and productivity using [Obsidian](https://obsidian.md) and [Todoist](https://todoist.com) and [GoodNotes](https://goodnotes.com), all of which had some really wonderful updates the past year if you hadn't been watching them!
+
+## 2024
+
+- **20240123** Lease signed, returning to NYC!
+
+- **20240102** Started new role at Highlight, a startup focused on providing product research insights in the form of digital tests and IHUTs (In-Home User Testing)
+
+- ## 2023
 
 - **202307201655** It's still a bit messy, but I finally got my portfolio online again! 👋🤓
 
