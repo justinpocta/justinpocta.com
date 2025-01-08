@@ -32,5 +32,5 @@ li {
 - Vsco [justinpocta](https://vsco.co/justinpocta)
 - Strava [justinpocta](https://www.strava.com/athletes/justinpocta)
 - Microblog [/microblog](http://justinpocta.com/microblog/)
-- Dropmark [justinpocta](https://justinpocta.dropmark.com)
+- Dropmark [texnology84](https://texnology84.dropmark.com)
 
