@@ -1,3 +1,10 @@
+---
+layout: default
+toc: false
+content-type: eg
+permalink: /hi/
+---
+
 <style>  
 ul {
     margin-left: 0;
@@ -15,7 +22,7 @@ li {
 }
 </style>
 
-# Connect with me!
+# Let's Connect!
 
 - Email [howdy@justinpocta.com](mailto:howdy@justinpocta.com?subject=hi!)
 - Bluesky [@justinpocta.com](https://bsky.app/profile/justinpocta.com)
