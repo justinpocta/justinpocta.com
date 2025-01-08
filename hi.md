@@ -1,8 +1,8 @@
 ---
 layout: default
-name: Let's Connect
+name: Connect
 toc: false
-title: null
+title: Connect with me
 permalink: /hi/
 content-type: eg
 ---
