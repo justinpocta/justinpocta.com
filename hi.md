@@ -1,8 +1,10 @@
 ---
 layout: default
+name: connect
 toc: false
-content-type: eg
+title: null
 permalink: /hi/
+content-type: eg
 ---
 
 <style>  
@@ -30,4 +32,5 @@ li {
 - Vsco [justinpocta](https://vsco.co/justinpocta)
 - Strava [justinpocta](https://www.strava.com/athletes/justinpocta)
 - Microblog [/microblog](http://justinpocta.com/microblog/)
+- Dropmark [justinpocta](https://justinpocta.dropmark.com)
 
