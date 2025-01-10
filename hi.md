@@ -26,7 +26,7 @@ li {
 
 # [justinpocta.com](https://justinpocta.com) / hi
 
-As I _finally_ give up on Instagram after having left Twitter, Facebook, Spotify years ago, I figured a little landing page could be fun to make. It definitely is the hardest app for me to leave since being on it before Facebook acquired it and generally loving all the photos, art, visuals. Too many reasons I'm leaving at this point, but should've just left around the time the algorithm started hiding people I actually FOLLOWED for ads and rando TikToks. See ya!
+As I _finally_ give up on Instagram after having left Twitter, Facebook, Spotify years ago, I figured a little landing page could be fun to make. It definitely is the hardest app for me to leave since being on it before Facebook acquired it and generally loving all the photos, art, visuals. Too many reasons I'm leaving at this point, but should've just left around the time the algorithm started hiding people I actually FOLLOWED for ads and rando TikToks took over my main feed. _See ya!_
 
 - **Email** [howdy@justinpocta.com](mailto:howdy@justinpocta.com?subject=hi!)
 - **Bluesky** [@justinpocta.com](https://bsky.app/profile/justinpocta.com)
