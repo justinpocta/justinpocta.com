@@ -26,11 +26,14 @@ li {
 
 # [justinpocta.com](https://justinpocta.com) / hi
 
-- Email [howdy@justinpocta.com](mailto:howdy@justinpocta.com?subject=hi!)
-- Bluesky [@justinpocta.com](https://bsky.app/profile/justinpocta.com)
-- Mastodon [@justinpocta@mastodon.social](https://mastodon.social/@justinpocta)
-- Vsco [justinpocta](https://vsco.co/justinpocta)
-- Strava [justinpocta](https://www.strava.com/athletes/justinpocta)
-- Microblog [/microblog](http://justinpocta.com/microblog/)
-- Dropmark [texnology84](https://texnology84.dropmark.com)
+As I _finally_ give up on Instagram after having left Twitter, Facebook, Spotify years ago, I figured a little landing page could be fun to make. It definitely is the hardest app for me to leave since being on it before Facebook acquired it and generally loving all the photos, art, visuals. Too many reasons I'm leaving at this point, but should've just left around the time the algorithm started hiding people I actually FOLLOWED for ads and rando TikToks. See ya!
 
+- **Email** [howdy@justinpocta.com](mailto:howdy@justinpocta.com?subject=hi!)
+- **Bluesky** [@justinpocta.com](https://bsky.app/profile/justinpocta.com)
+- **Mastodon** [@justinpocta@mastodon.social](https://mastodon.social/@justinpocta) ([Threads _can_ follow](https://help.instagram.com/169559812696339))
+- **Vsco** [justinpocta](https://vsco.co/justinpocta)
+- **Strava** [justinpocta](https://www.strava.com/athletes/justinpocta)
+- **Dropmark** (Pinterest-like app) [texnology84](https://texnology84.dropmark.com)
+- **Microblog** [/microblog](http://justinpocta.com/microblog/)
+- **Phone** (DM/email me for it)
+- **IRL** Brooklyn, NY
