@@ -35,6 +35,6 @@ As I _finally_ give up on Instagram after having left Twitter, Facebook, Spotify
 - **Strava** [justinpocta](https://www.strava.com/athletes/justinpocta)
 - **Dropmark** [texnology84](https://texnology84.dropmark.com) (Pinterest-like app)
 - **Microblog** [/microblog](http://justinpocta.com/microblog/)
-- ✱*YouTube** [Texnology84](https://www.youtube.com/@texnology84) (tech & biking!)
+- **YouTube** [Texnology84](https://www.youtube.com/@texnology84) (tech & biking!)
 - **Phone** (DM/email me for it)
 - **IRL** Brooklyn, NY
