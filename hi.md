@@ -33,7 +33,8 @@ As I _finally_ give up on Instagram after having left Twitter, Facebook, Spotify
 - **Mastodon** [@justinpocta@mastodon.social](https://mastodon.social/@justinpocta) ([Threads _can_ follow](https://help.instagram.com/169559812696339))
 - **Vsco** [justinpocta](https://vsco.co/justinpocta)
 - **Strava** [justinpocta](https://www.strava.com/athletes/justinpocta)
-- **Dropmark** (Pinterest-like app) [texnology84](https://texnology84.dropmark.com)
+- **Dropmark** [texnology84](https://texnology84.dropmark.com) (Pinterest-like app)
 - **Microblog** [/microblog](http://justinpocta.com/microblog/)
+- ✱*YouTube** [Texnology84](https://www.youtube.com/@texnology84) (tech & biking!)
 - **Phone** (DM/email me for it)
 - **IRL** Brooklyn, NY
