@@ -31,11 +31,12 @@ As I _finally_ give up on Instagram after having left Twitter, Facebook, Spotify
 - **Email** [howdy@justinpocta.com](mailto:howdy@justinpocta.com?subject=hi!)
 - **Bluesky** [@justinpocta.com](https://bsky.app/profile/justinpocta.com)
 - **Mastodon** [@justinpocta@mastodon.social](https://mastodon.social/@justinpocta) ([Threads _can_ follow](https://help.instagram.com/169559812696339))
-- **Pixelfed** [@justinpocta](https://pixelfed.social/justinpocta) (Decentralized Instagram)
+- **Flickr** [@justinpocta](https://flickr.com/justinpocta)
 - **Vsco** [justinpocta](https://vsco.co/justinpocta)
 - **Strava** [justinpocta](https://www.strava.com/athletes/justinpocta)
 - **Dropmark** [texnology84](https://texnology84.dropmark.com) (Pinterest-like app)
 - **Microblog** [/microblog](http://justinpocta.com/microblog/)
 - **YouTube** [Texnology84](https://www.youtube.com/@texnology84) (tech & biking!)
+- ~~**Pixelfed** [@justinpocta](https://pixelfed.social/justinpocta)~~ (Decentralized Instagram, may be too sluggish)
 - **Phone** (DM/email me for it)
 - **IRL** Brooklyn, NY
