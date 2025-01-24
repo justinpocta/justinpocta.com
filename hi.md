@@ -26,17 +26,18 @@ li {
 
 # [justinpocta.com](https://justinpocta.com) / hi
 
-As I _finally_ give up on Instagram after having left Twitter, Facebook, Spotify years ago, I figured a little landing page could be fun to make, especially as I don't fully know what apps will stick & this gives me a place to launch from. Instagram definitely is the hardest app for me to leave since being on it before Facebook acquired it  (I found a photo early as 2010 😳) and generally loving all the photos, art, visuals. Too many reasons I'm leaving at this point, but should've just left around the time the algorithm started hiding people I actually follow for ads and rando TikToks took over my main feed. _See you around!_
+As I _finally_ give up on Instagram after having left Twitter, Facebook, Spotify years ago, I figured a little landing page could be fun to make, especially as I don't fully know what apps will stick & this gives me a place to launch from. Instagram definitely is the hardest app for me to leave since being on it before Facebook acquired it  (I found a photo early as 2010 😳) and generally loving all the photos, art, visuals. Too many reasons I'm leaving at this point, but should've just left around the time the algorithm started hiding people I actually follow for ads and rando TikToks took over my main feed. I'll be exploring photo apps the most I'm sure, so it'll be messy! _See you around!_
 
 - **Email** [howdy@justinpocta.com](mailto:howdy@justinpocta.com?subject=hi!)
 - **Bluesky** [@justinpocta.com](https://bsky.app/profile/justinpocta.com)
 - **Mastodon** [@justinpocta@mastodon.social](https://mastodon.social/@justinpocta) ([Threads _can_ follow](https://help.instagram.com/169559812696339))
-- **Flickr** [@justinpocta](https://flickr.com/justinpocta)
-- **Vsco** [justinpocta](https://vsco.co/justinpocta)
+- **Pixey.org** [@justinpocta](https://pixey.org/justinpocta) Photos (Decentralized Instagram, personal account)
+- **Pixelfed** [@justinpocta](https://pixelfed.social/justinpocta) Photos (Decentralized Instagram, design account)
+- **Flickr** [@justinpocta](https://flickr.com/justinpocta) Photos
+- **Vsco** [justinpocta](https://vsco.co/justinpocta) Photos
 - **Strava** [justinpocta](https://www.strava.com/athletes/justinpocta)
 - **Dropmark** [texnology84](https://texnology84.dropmark.com) (Pinterest-like app)
 - **Microblog** [/microblog](http://justinpocta.com/microblog/)
 - **YouTube** [Texnology84](https://www.youtube.com/@texnology84) (tech & biking!)
-- ~~**Pixelfed** [@justinpocta](https://pixelfed.social/justinpocta)~~ (Decentralized Instagram, may be too sluggish)
 - **Phone** (DM/email me for it)
 - **IRL** Brooklyn, NY
