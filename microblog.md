@@ -13,6 +13,7 @@ content-type: eg
 
 ## 2025
 
+- **0250110** As I finally give up on Instagram after having left Twitter, Facebook, Spotify years ago, I figured a [little landing page](http://hi.justinpocta.com) could be fun to make, especially as I don’t fully know what apps will stick & this gives me a place to launch from. Instagram definitely is the hardest app for me to leave since being on it before Facebook acquired it (I found a photo early as 2010 😳) and generally loving all the photos, art, visuals there. Too many reasons I’m leaving at this point, but should’ve just left around the time the algorithm started hiding people I actually follow for ads and rando TikToks wannabe videos took over my main feed. I’ll be exploring photo apps the most I’m sure, so it’ll be messy! See you around!
 - **20250108** Obviously been a busy year! Maybe I should write up some log of all the major events. We'll see if I get around to writing more or not in general knowing how easy it can be to forget. I *am* always inspired by folks who have a personal site going. In the meantime, focused on staying cozy, getting back into pour overs, and optimizing my setups for notes and productivity using [Obsidian](https://obsidian.md) and [Todoist](https://todoist.com) and [GoodNotes](https://goodnotes.com), all of which had some really wonderful updates the past year if you hadn't been watching them!
 
 ## 2024
