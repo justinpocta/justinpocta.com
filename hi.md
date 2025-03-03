@@ -27,8 +27,9 @@ li {
 # [justinpocta.com](https://justinpocta.com) / hi
 
 - **Email** [howdy@justinpocta.com](mailto:howdy@justinpocta.com?subject=hi!)
-- **Bluesky** [@justinpocta.com](https://bsky.app/profile/justinpocta.com) / **Mastodon** [@justinpocta@mastodon.social](https://mastodon.social/@justinpocta) ([Threads _can_ follow via beta feature](https://help.instagram.com/169559812696339))
-- **Flickr** [@justinpocta](https://flickr.com/justinpocta) Photos
+- **Bluesky** [@justinpocta.com](https://bsky.app/profile/justinpocta.com) like Twitter 
+- **Mastodon** [@justinpocta@mastodon.social](https://mastodon.social/@justinpocta) ([can connect with Threads w/ beta feature](https://help.instagram.com/169559812696339))
+- **Flickr** [@justinpocta](https://flickr.com/justinpocta) My photo sharing app of choice
 - **Microblog** [/microblog](http://justinpocta.com/microblog/) Hoping to be more consistent, lol
 - **Strava** [justinpocta](https://www.strava.com/athletes/justinpocta) Healthy Justin
 - **Dropmark** [texnology84](https://texnology84.dropmark.com) Pinterest-like app
