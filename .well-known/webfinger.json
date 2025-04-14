@@ -1,0 +1,13 @@
+{
+  "subject": "acct:justin@fediverse.justinpocta.com",
+  "aliases": [
+    "https://mastodon.social/@justinpocta"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://mastodon.social/users/justinpocta"
+    }
+  ]
+}
