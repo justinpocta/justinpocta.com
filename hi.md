@@ -32,7 +32,7 @@ li {
 - **Flickr** [@justinpocta](https://flickr.com/justinpocta) My photo sharing app of choice
 - **Microblog** [/microblog](http://justinpocta.com/microblog/) Hoping to be more consistent, lol
 - **Strava** [justinpocta](https://www.strava.com/athletes/justinpocta) Healthy Justin
-- **Dropmark** [texnology84](https://texnology84.dropmark.com) Pinterest-like app
+- **Dropmark** [justinpocta](https://justinpocta.dropmark.com) Pinterest-like/Moodboard tool
 - **YouTube** [Texnology84](https://www.youtube.com/@texnology84) Tech & biking!
 - **Phone** (DM/email me for it)
 - **IRL** Brooklyn, NY
