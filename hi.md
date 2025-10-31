@@ -26,5 +26,7 @@ li {
 
 # [justinpocta.com](https://justinpocta.com) / hi
 
+- **Location** Brooklyn, NY
 - **Email** [howdy@justinpocta.com](mailto:howdy@justinpocta.com?subject=hi!)
-- **IRL** Brooklyn, NY
+- **Photos** [photos.justinpocta.com](http://photos.justinpocta.com) Flickr, My photo sharing app of choice rn
+
