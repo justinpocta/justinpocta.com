@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation Preview</title>
+<style>
+  body { margin: 0; font-family: sans-serif; background: #1a1a1a; }
+
+  .container { width: 100%; display: flex; flex-wrap: wrap; }
+  .video-container { width: 50%; min-height: 200px; box-sizing: border-box; display: table; }
+  .video-container p { position: relative; bottom: -16px; left: 16px; margin-top: 0; z-index: 1000; }
+  a.video-container:link { color: rgba(255,255,255,1.0); text-decoration: none !important; }
+  a.video-container:visited, a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !important; }
+
+  .css-anim {
+    width: 100%; min-height: 200px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .video-container { width: 100%; }
+    .video-container p { padding-bottom: 1.3em; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .css-anim * { animation: none !important; }
+  }
+
+  /* OG */
+  .anim-og { width: 100%; height: 36px; display: flex; align-items: center; justify-content: center; }
+  .og-row { display: flex; align-items: center; opacity: 0; animation: og-row 6s ease-in-out infinite; }
+  .og-dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
+  .og-dot-1 { background: #2563EB; }
+  .og-dot-2 { background: #93C5FD; }
+  .og-dot-3 { background: #BFDBFE; }
+  .og-arrow { color: #64748B; font-size: 13px; line-height: 1; flex-shrink: 0; margin-left: 10px; }
+  .og-add { display: flex; align-items: center; gap: 10px; overflow: hidden; max-width: 0; flex-shrink: 0; }
+  .og-add-2 { animation: og-add2 6s linear infinite; }
+  .og-add-3 { animation: og-add3 6s linear infinite; }
+  @keyframes og-row { 0%, 8% { opacity: 0; } 16% { opacity: 1; } 76% { opacity: 1; } 86%, 100% { opacity: 0; } }
+  @keyframes og-add2 { 0%, 28% { max-width: 0; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); } 32%, 85% { max-width: 60px; } 86%, 100% { max-width: 0; } }
+  @keyframes og-add3 { 0%, 48% { max-width: 0; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); } 52%, 85% { max-width: 60px; } 86%, 100% { max-width: 0; } }
+
+  /* JOBS */
+  .anim-jobs { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
+  .jobs-card {
+    background: #DCDCDC; border-radius: 8px; padding: 8px 14px; width: 150px;
+    position: relative; animation: jobs-float 2.5s ease-in-out infinite;
+  }
+  .jobs-card::after {
+    content: ''; position: absolute; bottom: -9px; left: 50%; transform: translateX(-50%);
+    border: 9px solid transparent; border-top-color: #DCDCDC; border-bottom: 0;
+  }
+  .jobs-row { display: flex; align-items: center; gap: 6px; margin: 5px 0; }
+  .jobs-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .jobs-bars { display: flex; gap: 3px; align-items: center; flex-wrap: wrap; }
+  .jobs-bar { height: 6px; background: #BEBEBE; border-radius: 2px; }
+  .jobs-pills { display: flex; gap: 6px; align-items: center; }
+  .jobs-pill { height: 14px; border-radius: 7px; }
+  @keyframes jobs-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+
+  /* WF */
+  .wf-conn { stroke: #E07060; stroke-width: 2; fill: none; stroke-dasharray: 30; animation: wf-conn 6s linear infinite; }
+  @keyframes wf-conn { 0%, 8% { stroke-dashoffset: 30; opacity: 1; } 20%, 72% { stroke-dashoffset: 0; opacity: 1; } 83%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+  .wf-branch { fill: #E07060; opacity: 0; animation: wf-branch-appear 6s ease-in-out infinite; }
+  @keyframes wf-branch-appear { 0%, 20% { opacity: 0; } 28%, 72% { opacity: 1; } 83%, 100% { opacity: 0; } }
+  .wf-top { stroke: #E07060; stroke-width: 2; fill: none; stroke-dasharray: 148; animation: wf-top-draw 6s linear infinite; }
+  @keyframes wf-top-draw { 0%, 27% { stroke-dashoffset: 148; opacity: 1; } 65%, 72% { stroke-dashoffset: 0; opacity: 1; } 83%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+  .wf-td1 { fill: #E07060; opacity: 0; animation: wf-d1 6s ease-in-out infinite; }
+  .wf-td2 { fill: #E07060; opacity: 0; animation: wf-d2 6s ease-in-out infinite; }
+  .wf-td3 { fill: #E07060; opacity: 0; animation: wf-d3 6s ease-in-out infinite; }
+  .wf-check { opacity: 0; animation: wf-chk 6s ease-in-out infinite; }
+  @keyframes wf-d1 { 0%, 35% { opacity: 0; } 42%, 72% { opacity: 1; } 83%, 100% { opacity: 0; } }
+  @keyframes wf-d2 { 0%, 46% { opacity: 0; } 53%, 72% { opacity: 1; } 83%, 100% { opacity: 0; } }
+  @keyframes wf-d3 { 0%, 57% { opacity: 0; } 64%, 72% { opacity: 1; } 83%, 100% { opacity: 0; } }
+  @keyframes wf-chk { 0%, 65% { opacity: 0; } 70%, 72% { opacity: 1; } 83%, 100% { opacity: 0; } }
+
+  /* TC */
+  .anim-tc { display: flex; align-items: center; gap: 16px; }
+  .tc-source { width: 54px; height: 54px; background: #4A8FE7; border-radius: 4px; flex-shrink: 0; }
+  .tc-arrow { color: white; font-size: 15px; line-height: 1; user-select: none; flex-shrink: 0; }
+  .tc-target { width: 54px; height: 54px; background: #9B5CC7; flex-shrink: 0; animation: tc-morph 3.5s ease-in-out infinite; }
+  @keyframes tc-morph { 0%, 100% { border-radius: 50%; } 45%, 55% { border-radius: 0; } }
+
+  .project-title-container { display: flex; align-items: center; gap: 8px; padding: 8px 0; }
+  .project-title-name { font-size: 14px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a href="#" style="background-color:#E8EFF5;" class="video-container">
+    <div class="css-anim">
+      <div class="anim-og">
+        <div class="og-row">
+          <div class="og-dot og-dot-1"></div>
+          <div class="og-add og-add-2">
+            <span class="og-arrow">→</span>
+            <div class="og-dot og-dot-2"></div>
+          </div>
+          <div class="og-add og-add-3">
+            <span class="og-arrow">→</span>
+            <div class="og-dot og-dot-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p><div class="project-title-container"><div class="project-title-name" style="color:#0a2f75;">Wayfinding</div></div></p>
+  </a>
+
+  <a href="#" style="background-color:#321261;" class="video-container">
+    <div class="css-anim">
+      <div class="anim-jobs">
+        <div class="jobs-card">
+          <div class="jobs-row">
+            <div class="jobs-dot" style="background:#F59E0B;"></div>
+            <div class="jobs-bars"><div class="jobs-bar" style="width:38px;"></div><div class="jobs-bar" style="width:52px;"></div><div class="jobs-bar" style="width:26px;"></div></div>
+          </div>
+          <div class="jobs-row">
+            <div class="jobs-dot" style="background:#EF4444;"></div>
+            <div class="jobs-bars"><div class="jobs-bar" style="width:22px;"></div><div class="jobs-bar" style="width:36px;"></div><div class="jobs-bar" style="width:42px;"></div><div class="jobs-bar" style="width:16px;"></div></div>
+          </div>
+          <div class="jobs-row">
+            <div class="jobs-dot" style="background:#8B5CF6;"></div>
+            <div class="jobs-bars"><div class="jobs-bar" style="width:28px;"></div><div class="jobs-bar" style="width:44px;"></div><div class="jobs-bar" style="width:30px;"></div></div>
+          </div>
+          <div class="jobs-row">
+            <div class="jobs-dot" style="background:#3B82F6;"></div>
+            <div class="jobs-bars"><div class="jobs-bar" style="width:34px;"></div><div class="jobs-bar" style="width:24px;"></div><div class="jobs-bar" style="width:36px;"></div></div>
+          </div>
+        </div>
+        <div class="jobs-pills">
+          <div class="jobs-pill" style="width:60px; background:#F59E0B;"></div>
+          <div class="jobs-pill" style="width:16px; background:#EF4444;"></div>
+          <div class="jobs-pill" style="width:60px; background:#8B5CF6;"></div>
+          <div class="jobs-pill" style="width:16px; background:#3B82F6;"></div>
+        </div>
+      </div>
+    </div>
+    <p><div class="project-title-container"><div class="project-title-name" style="color:white;">Jobs</div></div></p>
+  </a>
+
+  <a href="#" style="background-color:#592CB0;" class="video-container">
+    <div class="css-anim">
+      <svg viewBox="0 0 240 140" width="190" height="111" aria-hidden="true">
+        <circle cx="22" cy="70" r="11" fill="white"/>
+        <line x1="33" y1="70" x2="63" y2="70" stroke="white" stroke-width="2"/>
+        <polygon points="70,63 77,70 70,77 63,70" fill="white"/>
+        <path d="M70,70 L70,42 L186,42" fill="none" stroke="white" stroke-width="2"/>
+        <path d="M70,70 L70,98 L186,98" fill="none" stroke="white" stroke-width="2"/>
+        <polygon points="100,35 107,42 100,49 93,42"  fill="white"/>
+        <polygon points="143,35 150,42 143,49 136,42" fill="white"/>
+        <polygon points="186,35 193,42 186,49 179,42" fill="white"/>
+        <polygon points="100,91 107,98 100,105 93,98"  fill="white"/>
+        <polygon points="143,91 150,98 143,105 136,98" fill="white"/>
+        <polygon points="186,91 193,98 186,105 179,98" fill="white"/>
+        <circle cx="22" cy="70" r="11" fill="#E07060"/>
+        <line x1="33" y1="70" x2="63" y2="70" class="wf-conn"/>
+        <polygon points="70,63 77,70 70,77 63,70" class="wf-branch"/>
+        <path d="M70,70 L70,42 L186,42" class="wf-top"/>
+        <polygon points="100,35 107,42 100,49 93,42"  class="wf-td1"/>
+        <polygon points="143,35 150,42 143,49 136,42" class="wf-td2"/>
+        <polygon points="186,35 193,42 186,49 179,42" class="wf-td3"/>
+        <polyline points="181,42 184,46 191,38" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="wf-check"/>
+      </svg>
+    </div>
+    <p><div class="project-title-container"><div class="project-title-name" style="color:white;">Workflows</div></div></p>
+  </a>
+
+  <a href="#" style="background-color:#E17463;" class="video-container">
+    <div class="css-anim">
+      <div class="anim-tc">
+        <div class="tc-source"></div>
+        <span class="tc-arrow">→</span>
+        <div class="tc-target"></div>
+      </div>
+    </div>
+    <p><div class="project-title-container"><div class="project-title-name" style="color:white;">Transcreation</div></div></p>
+  </a>
+
+</div>
+</body>
+</html>
