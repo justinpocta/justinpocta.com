@@ -2,8 +2,7 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 search: false
 ---
-
-@charset "utf-8";
+@charset "UTF-8";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
@@ -15,7 +14,16 @@ search: false
 
 
 body.layout--front .initial-content {
-    max-width: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+body.layout--front .container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 #intro-div {
     margin: 0 auto;
@@ -227,17 +235,18 @@ span.project-subheader {
 }
 
 .project-title-container {
-    padding-left:16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 .project-title-logo {
-    float:left !important;
     width:36px;
     height:36px;
-    display:block;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
 }
 .project-title-name {
-    float:left !important; 
-    height:50px; 
     display:block;
     line-height:1.35em;
 }
@@ -259,9 +268,144 @@ span.project-subheader {
     }
 }
 
-/* mastodon proof backlink */ 
+/* mastodon proof backlink */
 .it-me-mastodon {
-    visibility: hidden; 
-    display:block; 
+    visibility: hidden;
+    display:block;
     width: 0px !important;
+}
+
+/* ── Project tile grid animations ── */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.video-container {
+    width: 50%;
+    min-height: 300px;
+    max-height: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.tile-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 0 20px 20px;
+    z-index: 1000;
+}
+a.video-container:link  { color: rgba(255,255,255,1.0); text-decoration: none !important; }
+a.video-container:visited,
+a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !important; }
+
+.css-anim {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .video-container { width: 100%; min-height: 60vw; max-height: none; }
+    .video-container p { padding-bottom: 1.3em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .css-anim * { animation: none !important; }
+}
+
+/* OG — Wayfinding */
+.anim-og { width: 100%; height: 72px; display: flex; align-items: center; justify-content: center; }
+.og-row { display: flex; align-items: center; opacity: 0; animation: og-row 6s ease-in-out infinite; }
+.og-dot { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; }
+.og-dot-1 { background: #2563EB; }
+.og-dot-2 { background: #93C5FD; }
+.og-dot-3 { background: #BFDBFE; }
+.og-arrow { color: #64748B; font-size: 26px; line-height: 1; flex-shrink: 0; margin-left: 20px; }
+.og-add { display: flex; align-items: center; gap: 20px; overflow: hidden; max-width: 0; flex-shrink: 0; }
+.og-add-2 { animation: og-add2 6s linear infinite; }
+.og-add-3 { animation: og-add3 6s linear infinite; }
+
+@keyframes og-row {
+    0%, 8%    { opacity: 0; }
+    16%       { opacity: 1; }
+    76%       { opacity: 1; }
+    86%, 100% { opacity: 0; }
+}
+@keyframes og-add2 {
+    0%, 28%   { max-width: 0; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+    32%, 85%  { max-width: 120px; }
+    86%, 100% { max-width: 0; }
+}
+@keyframes og-add3 {
+    0%, 48%   { max-width: 0; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+    52%, 85%  { max-width: 120px; }
+    86%, 100% { max-width: 0; }
+}
+
+/* Jobs */
+.anim-jobs { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
+.jobs-card {
+    background: #DCDCDC; border-radius: 8px; padding: 8px 14px; width: 150px;
+    position: relative; animation: jobs-float 2.5s ease-in-out infinite;
+}
+.jobs-card::after {
+    content: ''; position: absolute; bottom: -9px; left: 50%; transform: translateX(-50%);
+    border: 9px solid transparent; border-top-color: #DCDCDC; border-bottom: 0;
+}
+.jobs-row { display: flex; align-items: center; gap: 6px; margin: 5px 0; }
+.jobs-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.jobs-bars { display: flex; gap: 3px; align-items: center; flex-wrap: wrap; }
+.jobs-bar { height: 6px; background: #BEBEBE; border-radius: 2px; }
+.jobs-pills { display: flex; gap: 6px; align-items: center; width: 150px; }
+.jobs-pill { height: 14px; border-radius: 7px; }
+@keyframes jobs-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+
+/* Workflows */
+.wf-conn { stroke: #E07060; stroke-width: 3.5; fill: none; stroke-dasharray: 30; animation: wf-conn 6s linear infinite; }
+@keyframes wf-conn {
+    0%, 8%    { stroke-dashoffset: 30; opacity: 1; }
+    20%, 72%  { stroke-dashoffset: 0;  opacity: 1; }
+    83%, 100% { stroke-dashoffset: 0;  opacity: 0; }
+}
+.wf-branch { fill: #E07060; opacity: 0; animation: wf-branch-appear 6s ease-in-out infinite; }
+@keyframes wf-branch-appear {
+    0%, 20%   { opacity: 0; }
+    28%, 72%  { opacity: 1; }
+    83%, 100% { opacity: 0; }
+}
+.wf-top { stroke: #E07060; stroke-width: 3.5; fill: none; stroke-dasharray: 148; animation: wf-top-draw 6s linear infinite; }
+@keyframes wf-top-draw {
+    0%, 27%   { stroke-dashoffset: 148; opacity: 1; }
+    65%, 72%  { stroke-dashoffset: 0;   opacity: 1; }
+    83%, 100% { stroke-dashoffset: 0;   opacity: 0; }
+}
+.wf-td1 { fill: #E07060; opacity: 0; animation: wf-d1 6s ease-in-out infinite; }
+.wf-td2 { fill: #E07060; opacity: 0; animation: wf-d2 6s ease-in-out infinite; }
+.wf-td3 { fill: #E07060; opacity: 0; animation: wf-d3 6s ease-in-out infinite; }
+.wf-check { opacity: 0; animation: wf-chk 6s ease-in-out infinite; }
+@keyframes wf-d1 { 0%, 35% { opacity: 0; } 42%, 72% { opacity: 1; } 83%, 100% { opacity: 0; } }
+@keyframes wf-d2 { 0%, 46% { opacity: 0; } 53%, 72% { opacity: 1; } 83%, 100% { opacity: 0; } }
+@keyframes wf-d3 { 0%, 57% { opacity: 0; } 64%, 72% { opacity: 1; } 83%, 100% { opacity: 0; } }
+@keyframes wf-chk { 0%, 65% { opacity: 0; } 70%, 72% { opacity: 1; } 83%, 100% { opacity: 0; } }
+
+/* Transcreation */
+.anim-tc { display: flex; align-items: center; gap: 20px; }
+.tc-source { width: 68px; height: 68px; background: #4A8FE7; border-radius: 4px; flex-shrink: 0; }
+.tc-arrow { color: white; font-size: 26px; line-height: 1; user-select: none; flex-shrink: 0; }
+.tc-target { width: 68px; height: 68px; background: #9B5CC7; flex-shrink: 0; animation: tc-morph 3.5s ease-in-out infinite; }
+@keyframes tc-morph {
+  0%        { border-radius: 4px; transform: rotate(0deg); }
+  35%       { border-radius: 50%; transform: rotate(45deg); }
+  55%       { border-radius: 50%; transform: rotate(70deg); }
+  75%, 100% { border-radius: 4px; transform: rotate(90deg); }
 }

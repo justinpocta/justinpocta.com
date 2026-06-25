@@ -12,6 +12,8 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 #
+encoding: utf-8
+
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
@@ -95,6 +97,8 @@ kramdown:
   enable_coderay: false
 
 # # Sass/SCSS
-# sass:
-#   sass_dir: _sass
-#   style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+sass:
+  sass_dir: _sass
+  style: expanded
+  load_paths:
+    - _sass
