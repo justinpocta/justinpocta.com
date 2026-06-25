@@ -9,7 +9,7 @@ One of my major passions is applying my design skills toward the refinement and 
 
 I love working with teams that value asking questions. _Why are we creating a given project? What is the objective and our goal? How could we achieve it differently, better, smarter, faster? What if we tried it another way?_ 
 
-<i class="fas fa-comments" style="float:left; font-size:60px; padding-right:16px;"></i> Wanna chat? Let's [**get in touch**](mailto:howdy@justinpocta.com?subject=Hello)! My work experience can be viewed from my [**Resumé**](2023-Pocta-Resume.pdf) or [**LinkedIn**](https://linkedin.com/in/justinpocta)  <!-- BDB188 -->
+<i class="fas fa-comments" style="float:left; font-size:60px; padding-right:16px;"></i> Wanna chat? Let's [**get in touch**](mailto:howdy@justinpocta.com?subject=Hello)! My work experience can be viewed from my [**Resumé**](2026-Justin-Pocta-Resume.pdf) or [**LinkedIn**](https://linkedin.com/in/justinpocta)  <!-- BDB188 -->
 {: .no_toc .notice--primary style="display:table-cell; background-color: #CDDDE7 !important;"}
 
 ---
