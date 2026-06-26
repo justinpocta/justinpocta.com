@@ -225,6 +225,25 @@ span.project-subheader {
 .greedy-nav a:hover {
     // color:#9C7A00 !important; not the vibe anymore
 }
+.site-title {
+    font-size: 1em !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em;
+}
+.masthead__menu-item a {
+    font-size: 0.8em !important;
+    font-weight: 400 !important;
+    color: #999 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: color 0.2s ease;
+}
+.masthead__menu-item a:hover {
+    color: #333 !important;
+}
+body.layout--default .masthead__menu-item a[href="/info"] {
+    display: none;
+}
 
 .notice--primary {
     display: table-cell; /* this helped to dodge the issue of the notice not wrapping when i had image on right */
@@ -273,6 +292,17 @@ span.project-subheader {
     visibility: hidden;
     display:block;
     width: 0px !important;
+}
+
+/* ── Intro word stagger ── */
+.word-pop {
+    display: inline-block;
+    opacity: 0;
+    animation: word-pop 0.5s ease-out forwards;
+}
+@keyframes word-pop {
+    0%   { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Project tile grid animations ── */

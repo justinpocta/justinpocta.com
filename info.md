@@ -1,6 +1,8 @@
 ---
 hide_footer: true
 ---
+<a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
+
 # Hello!
 
 ![Justin Pocta](../assets/img/Info-Justin-Pocta.jpg)
