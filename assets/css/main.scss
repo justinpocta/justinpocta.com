@@ -241,7 +241,13 @@ span.project-subheader {
 .masthead__menu-item a:hover {
     color: #333 !important;
 }
-body.layout--default .masthead__menu-item a[href="/info"] {
+.masthead__menu-item a[href="/info"]:hover {
+    color: #B8963A !important;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: #B8963A;
+}
+body.page--info .masthead__menu-item a[href="/info"] {
     display: none;
 }
 
@@ -430,31 +436,77 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
 
 /* OG — Wayfinding */
 .anim-og { width: 100%; height: 72px; display: flex; align-items: center; justify-content: center; }
-.og-row { display: flex; align-items: center; opacity: 0; animation: og-row 6s ease-in-out infinite; }
+.og-row { display: flex; align-items: center; }
+.og-cell { display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+.og-dot-cell { width: 38px; height: 38px; }
+.og-arrow-cell { height: 38px; width: 72px; }
+.og-dc-1 { width: 38px; }
+.og-dc-2 { max-width: 0; animation: og-dcell2 6s ease-in-out infinite; }
+.og-dc-3 { max-width: 0; animation: og-dcell3 6s ease-in-out infinite; }
+.og-ac-1 { max-width: 0; animation: og-acell1 6s ease-in-out infinite; }
+.og-ac-2 { max-width: 0; animation: og-acell2 6s ease-in-out infinite; }
 .og-dot { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; }
-.og-dot-1 { background: #2563EB; }
-.og-dot-2 { background: #93C5FD; }
-.og-dot-3 { background: #BFDBFE; }
-.og-arrow { color: #64748B; font-size: 26px; line-height: 1; flex-shrink: 0; margin-left: 20px; }
-.og-add { display: flex; align-items: center; gap: 20px; overflow: hidden; max-width: 0; flex-shrink: 0; }
-.og-add-2 { animation: og-add2 6s linear infinite; }
-.og-add-3 { animation: og-add3 6s linear infinite; }
+.og-dot-1 { background: #2563EB; animation: og-dot1 6s ease-in-out infinite; }
+.og-dot-2 { background: #93C5FD; animation: og-dot2 6s ease-in-out infinite; }
+.og-dot-3 { background: #BFDBFE; animation: og-dot3 6s ease-in-out infinite; }
+.og-arrow-inner { color: #64748B; font-size: 22px; line-height: 1; flex-shrink: 0; }
+.og-arrow-inner-1 { animation: og-arrow1 6s ease-in-out infinite; }
+.og-arrow-inner-2 { animation: og-arrow2 6s ease-in-out infinite; }
 
-@keyframes og-row {
-    0%, 8%    { opacity: 0; }
-    16%       { opacity: 1; }
-    76%       { opacity: 1; }
-    86%, 100% { opacity: 0; }
+@keyframes og-dot1 {
+    0%, 76%     { transform: scale(1); }
+    82%         { transform: scale(1.18); }
+    88%, 94%    { transform: scale(0); }
+    97%         { transform: scale(1.22); }
+    100%        { transform: scale(1); }
 }
-@keyframes og-add2 {
-    0%, 28%   { max-width: 0; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
-    32%, 85%  { max-width: 120px; }
-    86%, 100% { max-width: 0; }
+@keyframes og-arrow1 {
+    0%, 12%     { transform: scale(0); opacity: 0; }
+    15%         { transform: scale(1.22); opacity: 1; }
+    18%, 76%    { transform: scale(1); opacity: 1; }
+    82%         { transform: scale(1.18); opacity: 1; }
+    88%, 100%   { transform: scale(0); opacity: 0; }
 }
-@keyframes og-add3 {
-    0%, 48%   { max-width: 0; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
-    52%, 85%  { max-width: 120px; }
-    86%, 100% { max-width: 0; }
+@keyframes og-dot2 {
+    0%, 15%     { transform: scale(0); }
+    18%         { transform: scale(1.22); }
+    21%, 76%    { transform: scale(1); }
+    82%         { transform: scale(1.18); }
+    88%, 100%   { transform: scale(0); }
+}
+@keyframes og-arrow2 {
+    0%, 30%     { transform: scale(0); opacity: 0; }
+    33%         { transform: scale(1.22); opacity: 1; }
+    36%, 76%    { transform: scale(1); opacity: 1; }
+    82%         { transform: scale(1.18); opacity: 1; }
+    88%, 100%   { transform: scale(0); opacity: 0; }
+}
+@keyframes og-dot3 {
+    0%, 33%     { transform: scale(0); }
+    36%         { transform: scale(1.22); }
+    39%, 76%    { transform: scale(1); }
+    82%         { transform: scale(1.18); }
+    88%, 100%   { transform: scale(0); }
+}
+@keyframes og-acell1 {
+    0%, 10%     { max-width: 0; animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    19%, 87%    { max-width: 72px; animation-timing-function: cubic-bezier(0.4, 0, 1, 1); }
+    90%, 100%   { max-width: 0; }
+}
+@keyframes og-acell2 {
+    0%, 28%     { max-width: 0; animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    37%, 87%    { max-width: 72px; animation-timing-function: cubic-bezier(0.4, 0, 1, 1); }
+    90%, 100%   { max-width: 0; }
+}
+@keyframes og-dcell2 {
+    0%, 13%     { max-width: 0; animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    22%, 87%    { max-width: 38px; animation-timing-function: cubic-bezier(0.4, 0, 1, 1); }
+    90%, 100%   { max-width: 0; }
+}
+@keyframes og-dcell3 {
+    0%, 31%     { max-width: 0; animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    40%, 87%    { max-width: 38px; animation-timing-function: cubic-bezier(0.4, 0, 1, 1); }
+    90%, 100%   { max-width: 0; }
 }
 
 /* Jobs */

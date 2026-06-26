@@ -1,6 +1,6 @@
 ---
-Name: Justin Pocta, Product Designer.
-Title: Justin Pocta, Product Designer.
+Name: Justin Pocta
+Title: Justin Pocta
 layout: front
 hide_footer: true
 galleryProjects:
@@ -38,11 +38,11 @@ galleryProjects:
   <span class="word-pop" style="animation-delay:0.8s">iteration,</span>
   <span class="word-pop" style="animation-delay:1.2s">delight.</span>
   <br>
-  <span class="word-pop" style="animation-delay:1.8s"><a href="info.html">Rinse &amp; Repeat</a>.</span>
+  <span class="word-pop" style="animation-delay:1.8s"><a href="info.html" style="color:#B8963A;">Rinse &amp; Repeat</a>.</span>
 </h1>
 <br>
 
-<span class="project-subheader" style="display:block;padding-bottom:20px;text-align:center;width:100%;">My Projects</span>
+<span class="project-subheader" style="display:block;padding-bottom:20px;text-align:center;width:100%;">Product Design — Select Projects</span>
 {% include anim-01.html %}
 
 <div style="padding-bottom: 40px;"></div>
