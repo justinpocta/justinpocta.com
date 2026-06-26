@@ -5,15 +5,11 @@
     <div class="css-anim">
       <div class="anim-og">
         <div class="og-row">
-          <div class="og-dot og-dot-1"></div>
-          <div class="og-add og-add-2">
-            <span class="og-arrow">&#x2192;</span>
-            <div class="og-dot og-dot-2"></div>
-          </div>
-          <div class="og-add og-add-3">
-            <span class="og-arrow">&#x2192;</span>
-            <div class="og-dot og-dot-3"></div>
-          </div>
+          <div class="og-cell og-dot-cell og-dc-1"><div class="og-dot og-dot-1"></div></div>
+          <div class="og-cell og-arrow-cell og-ac-1"><span class="og-arrow-inner og-arrow-inner-1">&#x2192;</span></div>
+          <div class="og-cell og-dot-cell og-dc-2"><div class="og-dot og-dot-2"></div></div>
+          <div class="og-cell og-arrow-cell og-ac-2"><span class="og-arrow-inner og-arrow-inner-2">&#x2192;</span></div>
+          <div class="og-cell og-dot-cell og-dc-3"><div class="og-dot og-dot-3"></div></div>
         </div>
       </div>
     </div>
@@ -175,6 +171,7 @@
 
 <script>
   (function() {
+    if (!window.matchMedia('(hover: none)').matches) return;
     var tiles = document.querySelectorAll('.video-container');
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
@@ -183,7 +180,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.5 });
     tiles.forEach(function(tile) { observer.observe(tile); });
   })();
 </script>
