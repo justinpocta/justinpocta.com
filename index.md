@@ -31,6 +31,7 @@ galleryProjects:
 ---
 
 <!-- <img src="../assets/img/profile-pic.jpg" style="overflow:hidden; border-radius:500px; height:200px; width:200px; float: left; margin-right:20px;"><br> -->
+<div class="hero-intro">
 <br>
 <h1 style="text-align:center; text-wrap:balance;">
   <span class="word-pop" style="animation-delay:0.0s">Empathy,</span>
@@ -41,6 +42,7 @@ galleryProjects:
   <span class="word-pop" style="animation-delay:1.8s"><a href="info.html" style="color:#B8963A;">Rinse &amp; Repeat</a>.</span>
 </h1>
 <br>
+</div>
 
 <span class="project-subheader" style="display:block;padding-bottom:20px;text-align:center;width:100%;">Product Design — Select Projects</span>
 {% include anim-01.html %}
