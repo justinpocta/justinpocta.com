@@ -13,6 +13,38 @@ search: false
 @import '../css/ibm-plex.min.css';
 
 
+body.layout--front::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(184, 150, 58, 0.12), rgba(184, 150, 58, 0) 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+body.layout--front .masthead {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+}
+body.page--info::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(100, 116, 139, 0.12), rgba(100, 116, 139, 0) 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+body.page--info .masthead {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+}
 body.layout--front .initial-content {
     width: 100% !important;
     max-width: none !important;
@@ -232,6 +264,17 @@ span.project-subheader {
     font-size: 1em !important;
     font-weight: 700 !important;
     letter-spacing: -0.01em;
+    text-decoration: none !important;
+    background-image: linear-gradient(#B8963A, #B8963A);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    padding-bottom: 3px;
+    transition: background-size 0.35s ease, color 0.35s ease !important;
+}
+.site-title:hover {
+    color: #B8963A !important;
+    background-size: 100% 2px;
 }
 .masthead__menu-item a {
     font-size: 0.8em !important;
@@ -244,14 +287,30 @@ span.project-subheader {
 .masthead__menu-item a:hover {
     color: #333 !important;
 }
+.rinse-repeat-link {
+    text-decoration: none;
+    background-image: linear-gradient(#B8963A, #B8963A);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    padding-bottom: 3px;
+    transition: background-size 0.35s ease;
+}
+.rinse-repeat-link:hover {
+    background-size: 100% 2px;
+}
+.masthead__menu-item a[href="/info"] {
+    text-decoration: none !important;
+}
+.masthead__menu-item a[href="/info"]:before {
+    background: #B8963A !important;
+    height: 2px !important;
+    transform-origin: left !important;
+    transition: all 0.35s ease-in-out !important;
+}
 .masthead__menu-item a[href="/info"]:hover {
     color: #B8963A !important;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: #B8963A;
-}
-body.page--info .masthead__menu-item a[href="/info"] {
-    display: none;
+    text-decoration: none !important;
 }
 
 .notice--primary {

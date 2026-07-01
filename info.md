@@ -1,6 +1,6 @@
 ---
 hide_footer: true
-body_class: page--info
+classes: page--info
 ---
 <a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
 
@@ -9,7 +9,7 @@ body_class: page--info
 ![Justin Pocta](../assets/img/Info-Justin-Pocta.jpg)
 {: .fifty-right}
 
-*I'm a Sr. Product Designer @ <a href="https://www.letshighlight.com" style="color:#B8963A;">Highlight</a>*
+*I'm a Sr. Product Designer @ <a href="https://www.letshighlight.com" class="rinse-repeat-link" style="color:#B8963A;">Highlight</a>*
 
 One of my major passions is applying my design skills toward the refinement and clarity of a digital project's experience. My obsession with constantly learning more has led me, project-by-project, to being increasingly human-centered in my process and what I see as necessary for an app or website to be truly _successful_. Helping useful tools become more enjoyable and easier to understand is what I strive to do.
 
