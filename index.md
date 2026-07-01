@@ -39,7 +39,7 @@ galleryProjects:
   <span class="word-pop" style="animation-delay:0.8s">iteration,</span>
   <span class="word-pop" style="animation-delay:1.2s">delight.</span>
   <br>
-  <span class="word-pop" style="animation-delay:1.8s"><a href="info.html" style="color:#B8963A;">Rinse &amp; Repeat</a>.</span>
+  <span class="word-pop" style="animation-delay:1.8s"><a href="info.html" class="rinse-repeat-link" style="color:#B8963A; font-size:1.15em; font-weight:600;">Rinse &amp; Repeat</a>.</span>
 </h1>
 <br>
 </div>
