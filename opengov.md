@@ -1,5 +1,6 @@
 ---
 title: OpenGov
+hide_footer: true
 layout: default
 breadcrumbs: true  
 toc: false
@@ -266,4 +267,7 @@ Thanks for reading!
 
 ---
 
-**[←Previous Project](smartling-workflows.md)** - **[Info →](info.md)**
+<div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0 3em;">
+  <a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Home</a>
+  <a href="/smartling-jobs" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">Next →</a>
+</div>
