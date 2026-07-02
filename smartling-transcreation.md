@@ -1,5 +1,6 @@
 ---
 title: Transcreation
+hide_footer: true
 layout: default
 toc: false
 toc_sticky: false
@@ -136,4 +137,7 @@ Transcreation Demo to present the new tool to our customers as well as those int
 
 ---
 
-**[←Previous Project](smartling-jobs.md)** - **[Next Project →](smartling-workflows.md)**
+<div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0 3em;">
+  <a href="/smartling-workflows" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Previous</a>
+  <a href="/highlight" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">Next →</a>
+</div>

@@ -12,6 +12,19 @@ search: false
 @import '../css/ibm-plex.css';
 @import '../css/ibm-plex.min.css';
 
+.initial-content {
+    opacity: 0;
+    transition: opacity 0.35s ease-out;
+}
+body.page-loaded .initial-content {
+    opacity: 1;
+    transition-delay: 0.12s;
+}
+body.page-leaving .initial-content {
+    opacity: 0;
+    transition-delay: 0s;
+}
+
 
 body.layout--front::before {
     content: "";
@@ -23,11 +36,36 @@ body.layout--front::before {
     background: linear-gradient(to bottom, rgba(184, 150, 58, 0.12), rgba(184, 150, 58, 0) 60%);
     pointer-events: none;
     z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+body.layout--front.page-loaded::before {
+    opacity: 1;
+}
+body.layout--front.page-leaving::before {
+    opacity: 0;
 }
 body.layout--front .masthead {
     position: relative;
     z-index: 1;
     background-color: #fff;
+}
+.masthead {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-out;
+}
+body.page-loaded .masthead {
+    transform: translateY(0);
+}
+body.page-leaving .masthead {
+    transform: translateY(-100%);
+}
+body:not(.layout--front) .masthead__inner-wrap {
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+}
+body:not(.layout--front) .site-title {
+    font-size: 0.85em !important;
 }
 body.page--info::before {
     content: "";
@@ -39,6 +77,14 @@ body.page--info::before {
     background: linear-gradient(to bottom, rgba(100, 116, 139, 0.12), rgba(100, 116, 139, 0) 60%);
     pointer-events: none;
     z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+body.page--info.page-loaded::before {
+    opacity: 1;
+}
+body.page--info.page-leaving::before {
+    opacity: 0;
 }
 body.page--info .masthead {
     position: relative;
