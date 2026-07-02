@@ -22,7 +22,7 @@
     e.preventDefault();
     document.body.classList.remove('page-loaded');
     document.body.classList.add('page-leaving');
-    setTimeout(function() { window.location.href = url.href; }, 220);
+    setTimeout(function() { window.location.href = url.href; }, 200);
   });
 
   window.addEventListener('pageshow', function(e) {
