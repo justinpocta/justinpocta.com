@@ -12,6 +12,19 @@ search: false
 @import '../css/ibm-plex.css';
 @import '../css/ibm-plex.min.css';
 
+.page__content p, .initial-content p {
+    text-wrap: pretty;
+}
+
+body::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 20px;
+    background: #B8963A;
+    pointer-events: none;
+}
+
 .initial-content {
     opacity: 0;
     transition: opacity 0.35s ease-out;
@@ -22,7 +35,7 @@ body.page-loaded .initial-content {
 }
 body.page-leaving .initial-content {
     opacity: 0;
-    transition-delay: 0s;
+    transition: opacity 0.18s ease-in;
 }
 
 
@@ -44,6 +57,7 @@ body.layout--front.page-loaded::before {
 }
 body.layout--front.page-leaving::before {
     opacity: 0;
+    transition: opacity 0.18s ease-in;
 }
 body.layout--front .masthead {
     position: relative;
@@ -59,6 +73,7 @@ body.page-loaded .masthead {
 }
 body.page-leaving .masthead {
     transform: translateY(-100%);
+    transition: transform 0.18s ease-in;
 }
 body:not(.layout--front) .masthead__inner-wrap {
     padding-top: 0.6em;
@@ -74,7 +89,7 @@ body.page--info::before {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to bottom, rgba(100, 116, 139, 0.12), rgba(100, 116, 139, 0) 60%);
+    background: linear-gradient(to bottom, rgba(71, 85, 105, 0.24), rgba(71, 85, 105, 0) 60%);
     pointer-events: none;
     z-index: 0;
     opacity: 0;
@@ -85,6 +100,7 @@ body.page--info.page-loaded::before {
 }
 body.page--info.page-leaving::before {
     opacity: 0;
+    transition: opacity 0.18s ease-in;
 }
 body.page--info .masthead {
     position: relative;
@@ -440,7 +456,7 @@ span.project-subheader {
     width: 0px !important;
 }
 
-/* ── Intro word stagger ── */
+/* -- Intro word stagger -- */
 .word-pop {
     display: inline-block;
     opacity: 0;
@@ -450,8 +466,12 @@ span.project-subheader {
     0%   { opacity: 0; transform: translateY(12px); }
     100% { opacity: 1; transform: translateY(0); }
 }
+.fade-in-block {
+    opacity: 0;
+    animation: word-pop 0.5s ease-out forwards;
+}
 
-/* ── Project tile grid animations ── */
+/* -- Project tile grid animations -- */
 .container {
     width: 100%;
     max-width: 1280px;
@@ -549,7 +569,7 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
     .css-anim * { animation: none !important; }
 }
 
-/* OG — Wayfinding */
+/* OG -- Wayfinding */
 .anim-og { width: 100%; height: 72px; display: flex; align-items: center; justify-content: center; }
 .og-row { display: flex; align-items: center; }
 .og-cell { display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
