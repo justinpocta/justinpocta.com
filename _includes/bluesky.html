@@ -1,0 +1,186 @@
+<!--
+  Bluesky "Latest Post" widget
+  ----------------------------
+  Public, unauthenticated read -- no API key needed.
+-->
+
+<div id="bsky-widget" class="social-widget">
+  <p class="social-loading">Loading latest post&hellip;</p>
+</div>
+
+<style>
+  .social-widget {
+    max-width: 500px;
+    margin: 1.5rem 0;
+    font-family: inherit;
+  }
+  .social-post {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+  }
+  .social-post:hover { border-color: #999; }
+  .social-post-text { margin: 0 0 8px; line-height: 1.4; }
+  .social-post-meta { font-size: 0.85rem; color: #888; }
+  .social-loading { color: #888; font-size: 0.9rem; }
+  .bsky-card {
+    margin-bottom: 28px;
+  }
+  .bsky-card:last-child {
+    margin-bottom: 0;
+  }
+  .bsky-tail {
+    position: absolute;
+    bottom: -7px;
+    left: 28px;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    transform: rotate(45deg);
+  }
+  .bsky-bubble:hover .bsky-tail {
+    border-color: #999;
+  }
+  .bsky-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding-left: 4px;
+  }
+  .bsky-icon-svg {
+    flex: 0 0 auto;
+    display: block;
+  }
+  .bsky-handle {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .bsky-dot {
+    color: #999;
+  }
+  .bsky-date {
+    color: #888;
+    font-size: 0.9rem;
+  }
+  .social-media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 4px;
+    margin: 0 0 8px;
+  }
+  .social-media-item {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+  }
+  .social-media-item.social-media-video {
+    aspect-ratio: 16 / 9;
+  }
+  .social-media-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .social-media-badge {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+</style>
+
+<script>
+(function () {
+  var BSKY_HANDLE = "justinpnyc.bsky.social";
+  var POST_COUNT  = 1;
+
+  var url = "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed"
+    + "?actor=" + encodeURIComponent(BSKY_HANDLE)
+    + "&filter=posts_no_replies"
+    + "&limit=" + POST_COUNT;
+
+  function escapeHtml(str) {
+    return (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function renderMedia(embed) {
+    if (!embed) return "";
+
+    if (embed.$type === "app.bsky.embed.images#view" && embed.images && embed.images.length) {
+      var imgs = embed.images.map(function (img) {
+        return '<div class="social-media-item"><img class="social-media-thumb" src="' + img.thumb + '" alt="' + escapeHtml(img.alt) + '"></div>';
+      }).join("");
+      return '<div class="social-media-grid">' + imgs + '</div>';
+    }
+
+    if (embed.$type === "app.bsky.embed.video#view" && embed.thumbnail) {
+      return '<div class="social-media-grid"><div class="social-media-item social-media-video">' +
+        '<img class="social-media-thumb" src="' + embed.thumbnail + '" alt="Video thumbnail">' +
+        '<span class="social-media-badge">&#9654; Video</span>' +
+        '</div></div>';
+    }
+
+    return "";
+  }
+
+  function bskyIcon() {
+    return '<svg class="bsky-icon-svg" fill="none" viewBox="0 0 64 57" width="20" height="18" xmlns="http://www.w3.org/2000/svg">' +
+      '<path fill="#0F73FF" d="M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805ZM50.127 3.805C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745Z"/>' +
+      "</svg>";
+  }
+
+  function renderPost(item) {
+    var post = item.post;
+    var text = post.record.text || "";
+    var date = new Date(post.record.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    var postId = post.uri.split("/").pop();
+    var link = "https://bsky.app/profile/" + BSKY_HANDLE + "/post/" + postId;
+
+    return '<div class="bsky-card">' +
+      '<a class="social-post bsky-bubble" href="' + link + '" target="_blank" rel="noopener">' +
+        renderMedia(post.embed) +
+        '<p class="social-post-text">' + escapeHtml(text) + "</p>" +
+        '<span class="bsky-tail"></span>' +
+      "</a>" +
+      '<div class="bsky-footer">' +
+        bskyIcon() +
+        '<span class="bsky-handle">@' + escapeHtml(BSKY_HANDLE) + "</span>" +
+        '<span class="bsky-dot">&middot;</span>' +
+        '<span class="bsky-date">' + date + "</span>" +
+      "</div>" +
+    "</div>";
+  }
+
+  fetch(url)
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      var container = document.getElementById("bsky-widget");
+      var items = data.feed || [];
+
+      if (!items.length) {
+        container.innerHTML = "<p>No recent posts.</p>";
+        return;
+      }
+
+      container.innerHTML = items.map(renderPost).join("");
+    })
+    .catch(function () {
+      document.getElementById("bsky-widget").innerHTML = "<p>Couldn't load post.</p>";
+    });
+})();
+</script>
