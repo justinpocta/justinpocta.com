@@ -12,6 +12,9 @@ search: false
 @import '../css/ibm-plex.css';
 @import '../css/ibm-plex.min.css';
 
+body.layout--front {
+    transition: background-color 0.4s ease;
+}
 .page__content p, .initial-content p {
     text-wrap: pretty;
 }
@@ -23,6 +26,13 @@ body::after {
     height: 20px;
     background: #B8963A;
     pointer-events: none;
+}
+body.layout--front::after {
+    background: #3F4346;
+    transition: background-color 0.4s ease;
+}
+body.layout--front.bg-dark::after {
+    background: #F5F1E8;
 }
 
 .initial-content {
@@ -52,6 +62,9 @@ body.layout--front::before {
     opacity: 0;
     transition: opacity 0.5s ease-out;
 }
+body.layout--front.tile-hover::before {
+    opacity: 0 !important;
+}
 body.layout--front.page-loaded::before {
     opacity: 1;
 }
@@ -59,10 +72,9 @@ body.layout--front.page-leaving::before {
     opacity: 0;
     transition: opacity 0.18s ease-in;
 }
-body.layout--front .masthead {
+.masthead {
     position: relative;
     z-index: 1;
-    background-color: #fff;
 }
 .masthead {
     transform: translateY(-100%);
@@ -75,12 +87,12 @@ body.page-leaving .masthead {
     transform: translateY(-100%);
     transition: transform 0.18s ease-in;
 }
-body:not(.layout--front) .masthead__inner-wrap {
-    padding-top: 0.6em;
-    padding-bottom: 0.6em;
-}
-body:not(.layout--front) .site-title {
-    font-size: 0.85em !important;
+.masthead__inner-wrap {
+    max-width: 100% !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 body.page--info::before {
     content: "";
@@ -119,13 +131,19 @@ body.layout--front .container {
     max-width: 1280px;
     margin: 0 auto;
 }
+body.layout--front .container.scroll-test {
+    max-width: 100%;
+}
 #intro-div {
     margin: 0 auto;
     max-width: 1080px;
     display: block;
 }
+body.layout--front .initial-content {
+    margin-top: 0 !important;
+}
 .hero-intro {
-    padding-top: 3rem;
+    padding-top: 20px;
 }
 body.layout--front figure {
     margin: 0 !important;
@@ -181,6 +199,9 @@ body.layout--default .initial-content {
     padding-left: 20px !important;
     padding-right: 20px; // wanting to add buffer between TOC and images
     float:right
+}
+body.page--info img.fifty-right {
+    border-radius: 16px;
 }
 
 .third-left, img.third-left {
@@ -323,20 +344,41 @@ span.project-subheader {
     // color:#9C7A00 !important; not the vibe anymore
 }
 .site-title {
-    font-size: 1em !important;
-    font-weight: 700 !important;
-    letter-spacing: -0.01em;
+    display: inline-block;
+    position: relative;
+    font-size: 0;
+    width: 175px;
+    aspect-ratio: 176 / 90;
     text-decoration: none !important;
-    background-image: linear-gradient(#B8963A, #B8963A);
-    background-position: 0 100%;
+    transition: opacity 0.2s ease;
+}
+.site-title::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/img/signature.svg');
     background-repeat: no-repeat;
-    background-size: 0% 2px;
-    padding-bottom: 3px;
-    transition: background-size 0.35s ease, color 0.35s ease !important;
+    background-size: contain;
+    background-position: left center;
+    transition: filter 0.4s ease;
+}
+body.bg-dark .site-title::before {
+    filter: invert(1);
+}
+body.bg-dark .hero-intro h1 {
+    color: #fff;
+}
+body.bg-dark .masthead__menu-item a {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+body.bg-dark .masthead__menu-item a:hover {
+    color: #fff !important;
+}
+.hero-intro h1 {
+    transition: color 0.4s ease;
 }
 .site-title:hover {
-    color: #B8963A !important;
-    background-size: 100% 2px;
+    opacity: 0.65;
 }
 .masthead__menu-item a {
     font-size: 0.8em !important;
@@ -373,6 +415,32 @@ span.project-subheader {
 .masthead__menu-item a[href="/info"]:hover {
     color: #B8963A !important;
     text-decoration: none !important;
+}
+/* -- Front page: gold by default, muted on tile hover -- */
+body.layout--front .rinse-repeat-link {
+    color: #B8963A !important;
+    background-image: linear-gradient(#B8963A, #B8963A) !important;
+    transition: background-size 0.35s ease, color 0.4s ease, background-image 0.4s ease;
+}
+body.layout--front .masthead__menu-item a[href="/info"]:before {
+    background: #3F4346 !important;
+}
+body.layout--front .masthead__menu-item a[href="/info"]:hover {
+    color: #3F4346 !important;
+}
+body.layout--front.tile-hover:not(.bg-dark) .rinse-repeat-link {
+    color: rgba(30,30,30,0.55) !important;
+    background-image: linear-gradient(rgba(30,30,30,0.55), rgba(30,30,30,0.55)) !important;
+}
+body.layout--front.bg-dark .rinse-repeat-link {
+    color: rgba(245,241,232,0.72) !important;
+    background-image: linear-gradient(rgba(245,241,232,0.72), rgba(245,241,232,0.72)) !important;
+}
+body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:before {
+    background: #F5F1E8 !important;
+}
+body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
+    color: #F5F1E8 !important;
 }
 
 .notice--primary {
@@ -498,11 +566,50 @@ span.project-subheader {
     padding: 0 20px 20px 20px;
     z-index: 1000;
 }
+
+/* -- Quick test: large horizontal scroll-snap tiles -- */
+.container.scroll-test {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 24px;
+    padding: 0 24px 32px;
+    max-width: 100%;
+    border-radius: 0;
+    cursor: grab;
+    scrollbar-width: none;
+}
+.container.scroll-test::-webkit-scrollbar {
+    display: none;
+}
+.container.scroll-test.dragging {
+    cursor: grabbing;
+}
+.container.scroll-test .video-container {
+    flex: 0 0 auto;
+    width: 85vw;
+    max-width: 900px;
+    min-height: 56vh;
+    max-height: none;
+    scroll-snap-align: center;
+    border-radius: 12px;
+    will-change: transform;
+}
+.masthead,
+.masthead__inner-wrap,
+.greedy-nav {
+    background-color: transparent !important;
+    border-bottom: none !important;
+}
 a.video-container:link  { color: rgba(255,255,255,1.0); text-decoration: none !important; }
 a.video-container:visited,
 a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !important; }
 
-/* desktop: hover to color */
+/* desktop: greyscale until hover, animations always running */
 @media (hover: hover) {
     .video-container {
         filter: grayscale(100%);
@@ -511,28 +618,16 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
     .video-container:hover {
         filter: grayscale(0%);
     }
-    .video-container .css-anim * {
-        animation-play-state: paused;
-    }
-    .video-container:hover .css-anim * {
-        animation-play-state: running;
-    }
 }
 
-/* mobile: scroll to color */
+/* mobile: scroll into view reveals color, animations always running */
 @media (hover: none) {
     .video-container {
         filter: grayscale(100%);
         transition: filter 0.6s ease;
     }
-    .video-container .css-anim * {
-        animation-play-state: paused;
-    }
     .video-container.in-view {
         filter: grayscale(0%);
-    }
-    .video-container.in-view .css-anim * {
-        animation-play-state: running;
     }
     .video-container.in-view .tile-company,
     .video-container.in-view .project-title-name {
@@ -696,12 +791,13 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
     width: auto;
     transition: transform 0s;
 }
-.video-container:hover .hl-spin {
-    animation: hl-spin-once 1.6s ease-in-out forwards;
+.hl-spin {
+    animation: hl-spin-loop 4.6s linear infinite;
 }
-@keyframes hl-spin-once {
-    0%   { transform: rotate(0deg); }
-    75%  { transform: rotate(375deg); }
+@keyframes hl-spin-loop {
+    0%   { transform: rotate(0deg); animation-timing-function: ease-in-out; }
+    26%  { transform: rotate(375deg); animation-timing-function: ease-in-out; }
+    35%  { transform: rotate(360deg); }
     100% { transform: rotate(360deg); }
 }
 

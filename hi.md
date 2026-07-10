@@ -30,4 +30,10 @@ li {
 - **Email** [howdy@justinpocta.com](mailto:howdy@justinpocta.com?subject=hi!)
 - **Photos** [photos.justinpocta.com](http://photos.justinpocta.com)
 
+{% include flickr.html %}
+
+{% include bluesky.html %}
+
+{% include mastodon.html %}
+
   

@@ -3,6 +3,7 @@ Name: Justin Pocta
 Title: Justin Pocta
 layout: front
 hide_footer: true
+classes: transparent-nav-test
 galleryProjects:
   - url: /smartling-jobs
     image_path: /assets/img/UX-VID-SM_JOBS.mov
@@ -32,8 +33,7 @@ galleryProjects:
 
 <!-- <img src="../assets/img/profile-pic.jpg" style="overflow:hidden; border-radius:500px; height:200px; width:200px; float: left; margin-right:20px;"><br> -->
 <div class="hero-intro">
-<br>
-<h1 style="text-align:center; text-wrap:balance;">
+<h1 style="text-align:center; text-wrap:balance; margin: 0;">
   <span class="word-pop" style="animation-delay:0.0s">Empathy,</span>
   <span class="word-pop" style="animation-delay:0.4s">collaboration,</span>
   <span class="word-pop" style="animation-delay:0.8s">iteration,</span>
@@ -41,10 +41,10 @@ galleryProjects:
   <br>
   <span class="word-pop" style="animation-delay:1.8s"><a href="info.html" class="rinse-repeat-link" style="color:#B8963A; font-size:1.15em; font-weight:600;">Rinse &amp; Repeat</a>.</span>
 </h1>
-<br>
 </div>
 
-<span class="project-subheader" style="display:block;padding-bottom:20px;text-align:center;width:100%;">Product Design — Select Projects</span>
+<div style="padding-bottom: 60px;"></div>
+
 {% include anim-01.html %}
 
 <div style="padding-bottom: 40px;"></div>
