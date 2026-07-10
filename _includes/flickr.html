@@ -1,0 +1,131 @@
+<!--
+  Flickr Recent Photos Widget
+  ---------------------------
+  Uses Flickr's public JSONP endpoint -- no server/proxy needed, no API secret
+  required (that's only for signed/write calls, which this isn't).
+-->
+
+<div id="flickr-widget" class="flickr-widget">
+  <p class="flickr-loading">Loading photos&hellip;</p>
+</div>
+
+<style>
+  .flickr-widget {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    gap: 8px;
+    /* break out of the page's centered max-width container to span the full viewport */
+    width: 100vw;
+    margin: 1.5rem calc(50% - 50vw);
+    padding: 0 24px;
+    cursor: grab;
+    scrollbar-width: none;
+  }
+  .flickr-widget::-webkit-scrollbar {
+    display: none;
+  }
+  .flickr-widget.dragging {
+    cursor: grabbing;
+  }
+  .flickr-widget a {
+    display: block;
+    overflow: hidden;
+    border-radius: 6px;
+    aspect-ratio: 1 / 1;
+    flex: 0 0 auto;
+    width: 240px;
+    scroll-snap-align: center;
+  }
+  .flickr-widget img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+  }
+  .flickr-widget a:hover img {
+    transform: scale(1.05);
+  }
+  .flickr-loading {
+    color: #888;
+    font-size: 0.9rem;
+  }
+</style>
+
+<script>
+(function () {
+  var FLICKR_API_KEY = "10603b12c8391b253b19e8f4e01a42b8";
+  var FLICKR_USER_ID  = "59585990@N00";
+  var PHOTO_COUNT     = 12;
+
+  window.jsonFlickrApi = function (data) {
+    var container = document.getElementById("flickr-widget");
+    container.innerHTML = "";
+
+    if (data.stat !== "ok") {
+      container.innerHTML = "<p>Couldn't load photos right now.</p>";
+      return;
+    }
+
+    data.photos.photo.forEach(function (p) {
+      var thumbUrl = "https://live.staticflickr.com/" + p.server + "/" + p.id + "_" + p.secret + "_c.jpg";
+      var pageUrl  = "https://www.flickr.com/photos/" + FLICKR_USER_ID + "/" + p.id;
+
+      var link = document.createElement("a");
+      link.href = pageUrl;
+      link.target = "_blank";
+      link.rel = "noopener";
+
+      var img = document.createElement("img");
+      img.src = thumbUrl;
+      img.alt = p.title || "Flickr photo";
+      img.loading = "lazy";
+
+      link.appendChild(img);
+      container.appendChild(link);
+    });
+  };
+
+  var script = document.createElement("script");
+  script.src = "https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos"
+    + "&api_key=" + FLICKR_API_KEY
+    + "&user_id=" + FLICKR_USER_ID
+    + "&per_page=" + PHOTO_COUNT
+    + "&format=json"
+    + "&jsoncallback=jsonFlickrApi";
+  document.body.appendChild(script);
+
+  var row = document.getElementById("flickr-widget");
+  var isDown = false, startX, scrollLeft, moved;
+
+  row.addEventListener("mousedown", function (e) {
+    isDown = true;
+    moved = false;
+    row.classList.add("dragging");
+    startX = e.pageX - row.offsetLeft;
+    scrollLeft = row.scrollLeft;
+  });
+  window.addEventListener("mouseup", function () {
+    isDown = false;
+    row.classList.remove("dragging");
+  });
+  row.addEventListener("mousemove", function (e) {
+    if (!isDown) return;
+    e.preventDefault();
+    var x = e.pageX - row.offsetLeft;
+    var walk = x - startX;
+    if (Math.abs(walk) > 5) moved = true;
+    row.scrollLeft = scrollLeft - walk;
+  });
+  row.addEventListener("click", function (e) {
+    if (moved) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+})();
+</script>
