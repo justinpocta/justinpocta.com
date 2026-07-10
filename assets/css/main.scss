@@ -114,6 +114,11 @@ body.page--info.page-leaving::before {
     opacity: 0;
     transition: opacity 0.18s ease-in;
 }
+body.page--info .masthead {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+}
 body.layout--front .initial-content {
     width: 100% !important;
     max-width: none !important;
