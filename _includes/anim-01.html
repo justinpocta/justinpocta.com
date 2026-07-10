@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container scroll-test" id="tile-scroll-row">
 
   <!-- OG / Wayfinding -->
   <a href="/opengov" style="background-color:#E8EFF5;" class="video-container">
@@ -78,7 +78,7 @@
   </a>
 
   <!-- Workflows -->
-  <a href="/smartling-workflows" style="background-color:#592CB0;" class="video-container">
+  <a href="/smartling-workflows" style="background-color:#9F29B7;" class="video-container">
     <div class="css-anim">
       <svg viewBox="0 0 240 140" width="220" height="128" aria-hidden="true">
         <circle cx="22" cy="70" r="9" fill="white"/>
@@ -183,5 +183,121 @@
       });
     }, { threshold: 0.5 });
     tiles.forEach(function(tile) { observer.observe(tile); });
+  })();
+
+  (function() {
+    var row = document.getElementById('tile-scroll-row');
+    if (!row) return;
+    var isDown = false;
+    var startX, scrollLeft, moved;
+
+    row.addEventListener('mousedown', function(e) {
+      isDown = true;
+      moved = false;
+      row.classList.add('dragging');
+      startX = e.pageX - row.offsetLeft;
+      scrollLeft = row.scrollLeft;
+    });
+    window.addEventListener('mouseup', function() {
+      isDown = false;
+      row.classList.remove('dragging');
+    });
+    row.addEventListener('mousemove', function(e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - row.offsetLeft;
+      var walk = x - startX;
+      if (Math.abs(walk) > 5) moved = true;
+      row.scrollLeft = scrollLeft - walk;
+    });
+    row.addEventListener('click', function(e) {
+      if (moved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+  })();
+
+  (function() {
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    var tiles = document.querySelectorAll('.video-container');
+
+    // Shadow lives in body so no overflow container can clip it
+    var shadowEl = document.createElement('div');
+    shadowEl.style.cssText = 'position:fixed;pointer-events:none;border-radius:12px;z-index:9;opacity:0;transition:opacity 0.3s ease;box-shadow:0px 12px 65px rgba(0,0,0,0.32);';
+    document.body.appendChild(shadowEl);
+
+    var activeTile = null;
+
+    function syncShadow() {
+      if (!activeTile) return;
+      var r = activeTile.getBoundingClientRect();
+      shadowEl.style.left   = r.left   + 'px';
+      shadowEl.style.top    = r.top    + 'px';
+      shadowEl.style.width  = r.width  + 'px';
+      shadowEl.style.height = r.height + 'px';
+    }
+
+    var row = document.getElementById('tile-scroll-row');
+    if (row) row.addEventListener('scroll', syncShadow);
+
+    tiles.forEach(function(tile) {
+      tile.addEventListener('mouseenter', function() {
+        activeTile = tile;
+        tile.style.zIndex = '10';
+        syncShadow();
+        shadowEl.style.opacity = '1';
+      });
+      tile.addEventListener('mouseleave', function() {
+        activeTile = null;
+        tile.style.zIndex = '';
+        shadowEl.style.opacity = '0';
+      });
+    });
+  })();
+
+  (function() {
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    var tiles = document.querySelectorAll('.video-container');
+
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      var max = Math.max(r,g,b), min = Math.min(r,g,b);
+      var h, s, l = (max + min) / 2;
+      if (max === min) {
+        h = s = 0;
+      } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch(max) {
+          case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+          case g: h = ((b - r) / d + 2) / 6; break;
+          case b: h = ((r - g) / d + 4) / 6; break;
+        }
+      }
+      return [h * 360, s * 100, l * 100];
+    }
+
+    function tileHoverBg(rgbStr) {
+      var m = rgbStr.match(/\d+/g);
+      if (!m) return null;
+      var hsl = rgbToHsl(+m[0], +m[1], +m[2]);
+      var s = Math.min(hsl[1] * 0.55, 30);
+      return 'hsl(' + hsl[0].toFixed(0) + ',' + s.toFixed(0) + '%,78%)';
+    }
+
+    tiles.forEach(function(tile) {
+      tile.addEventListener('mouseenter', function() {
+        var bg = getComputedStyle(tile).backgroundColor;
+        var lightBg = tileHoverBg(bg);
+        document.body.style.backgroundColor = lightBg || bg;
+        document.body.classList.add('tile-hover');
+        document.body.classList.remove('bg-dark');
+      });
+      tile.addEventListener('mouseleave', function() {
+        document.body.style.backgroundColor = '';
+        document.body.classList.remove('tile-hover');
+      });
+    });
   })();
 </script>
