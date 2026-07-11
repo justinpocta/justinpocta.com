@@ -178,8 +178,8 @@
     <div class="tile-label">
       <div class="project-title-container">
         <div class="tile-text">
-          <div class="tile-company" style="color:rgba(0,0,0,0.45);">Info</div>
-          <div class="project-title-name" style="color:rgba(0,0,0,0.75);">Justin Pocta</div>
+          <div class="tile-company" style="color:rgba(255,255,255,0.65);">Info</div>
+          <div class="project-title-name" style="color:rgba(255,255,255,0.9);">Justin Pocta</div>
         </div>
       </div>
     </div>
@@ -361,7 +361,7 @@
           tile.removeAttribute('href');
         }
       });
-      if (window.matchMedia('(hover: hover)').matches) _applyTileBg(tiles[idx]);
+      _applyTileBg(tiles[idx]);
     }
 
     btnLeft.addEventListener('click', function() {

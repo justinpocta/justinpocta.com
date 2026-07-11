@@ -397,6 +397,7 @@ body.bg-dark .masthead__menu-item a:hover {
 }
 .rinse-repeat-link {
     text-decoration: none;
+    font-weight: 500;
     background-image: linear-gradient(#B8963A, #B8963A);
     background-position: 0 100%;
     background-repeat: no-repeat;
@@ -422,8 +423,8 @@ body.bg-dark .masthead__menu-item a:hover {
 }
 /* -- Front page: gold by default, muted on tile hover -- */
 body.layout--front .rinse-repeat-link {
-    color: white;
-    background-image: linear-gradient(white, white);
+    color: #000;
+    background-image: linear-gradient(#000, #000);
     transition: background-size 0.35s ease;
 }
 body.layout--front .masthead__menu-item a[href="/info"]:before {
