@@ -1,7 +1,11 @@
+<div class="tile-scroll-wrapper">
+<button class="tile-scroll-arrow tile-scroll-arrow--left" aria-label="Previous project">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
 <div class="container scroll-test" id="tile-scroll-row">
 
   <!-- OG / Wayfinding -->
-  <a href="/opengov" style="background-color:#E8EFF5;" class="video-container">
+  <a href="/opengov" style="background-color:#E8EFF5;" class="video-container is-active">
     <div class="css-anim">
       <div class="anim-og">
         <div class="og-row">
@@ -167,137 +171,209 @@
     </div>
   </a>
 
+  <!-- Info / About -->
+  <a href="/info" style="background-color:rgb(215,197,155);" class="video-container">
+    <img src="/assets/img/profile-paris-03.jpg" class="info-photo" alt="">
+    <div class="css-anim"></div>
+    <div class="tile-label">
+      <div class="project-title-container">
+        <div class="tile-text">
+          <div class="tile-company" style="color:rgba(0,0,0,0.45);">Info</div>
+          <div class="project-title-name" style="color:rgba(0,0,0,0.75);">Justin Pocta</div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+</div>
+<button class="tile-scroll-arrow tile-scroll-arrow--right" aria-label="Next project">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+</button>
 </div>
 
 <script>
+  // ── Shared color helpers (used by hover + arrow IIFEs) ────────────
+  function _rgbToHsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+    var max = Math.max(r,g,b), min = Math.min(r,g,b);
+    var h = 0, s = 0, l = (max + min) / 2;
+    if (max !== min) {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch(max) {
+        case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+        case g: h = ((b - r) / d + 2) / 6; break;
+        case b: h = ((r - g) / d + 4) / 6; break;
+      }
+    }
+    return [h * 360, s * 100, l * 100];
+  }
+
+  function _tileBodyBg(tile) {
+    var m = getComputedStyle(tile).backgroundColor.match(/\d+/g);
+    if (!m) return null;
+    var hsl = _rgbToHsl(+m[0], +m[1], +m[2]);
+    return 'hsl(' + hsl[0].toFixed(0) + ',' + Math.min(hsl[1] * 0.55, 30).toFixed(0) + '%,78%)';
+  }
+
+  function _applyTileBg(tile) {
+    var bg = _tileBodyBg(tile);
+    if (bg) {
+      document.body.style.backgroundColor = bg;
+      document.body.classList.add('tile-hover');
+      document.body.classList.remove('bg-dark');
+    }
+  }
+
+  function _applyActiveTileBg() {
+    var active = document.querySelector('.video-container.is-active');
+    if (active) _applyTileBg(active);
+  }
+
+  // ── IntersectionObserver for mobile greyscale reveal ─────────────
   (function() {
     if (!window.matchMedia('(hover: none)').matches) return;
     var tiles = document.querySelectorAll('.video-container');
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-        } else {
-          entry.target.classList.remove('in-view');
-        }
+        entry.target.classList.toggle('in-view', entry.isIntersecting);
       });
     }, { threshold: 0.5 });
     tiles.forEach(function(tile) { observer.observe(tile); });
   })();
 
+  // ── Drag-to-scroll ───────────────────────────────────────────────
   (function() {
     var row = document.getElementById('tile-scroll-row');
     if (!row) return;
-    var isDown = false;
-    var startX, scrollLeft, moved;
+    var isDown = false, startX, scrollLeft, moved;
 
     row.addEventListener('mousedown', function(e) {
-      isDown = true;
-      moved = false;
+      isDown = true; moved = false;
       row.classList.add('dragging');
       startX = e.pageX - row.offsetLeft;
       scrollLeft = row.scrollLeft;
     });
     window.addEventListener('mouseup', function() {
-      isDown = false;
-      row.classList.remove('dragging');
+      isDown = false; row.classList.remove('dragging');
     });
     row.addEventListener('mousemove', function(e) {
       if (!isDown) return;
       e.preventDefault();
-      var x = e.pageX - row.offsetLeft;
-      var walk = x - startX;
+      var walk = (e.pageX - row.offsetLeft) - startX;
       if (Math.abs(walk) > 5) moved = true;
       row.scrollLeft = scrollLeft - walk;
     });
     row.addEventListener('click', function(e) {
-      if (moved) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
+      if (moved) { e.preventDefault(); e.stopPropagation(); }
     }, true);
   })();
 
+  // ── Hover shadow ─────────────────────────────────────────────────
   (function() {
     if (!window.matchMedia('(hover: hover)').matches) return;
     var tiles = document.querySelectorAll('.video-container');
-
-    // Shadow lives in body so no overflow container can clip it
     var shadowEl = document.createElement('div');
+    shadowEl.className = 'tile-hover-shadow';
     shadowEl.style.cssText = 'position:fixed;pointer-events:none;border-radius:12px;z-index:9;opacity:0;transition:opacity 0.3s ease;box-shadow:0px 12px 65px rgba(0,0,0,0.32);';
     document.body.appendChild(shadowEl);
-
     var activeTile = null;
 
     function syncShadow() {
       if (!activeTile) return;
       var r = activeTile.getBoundingClientRect();
-      shadowEl.style.left   = r.left   + 'px';
-      shadowEl.style.top    = r.top    + 'px';
-      shadowEl.style.width  = r.width  + 'px';
-      shadowEl.style.height = r.height + 'px';
+      shadowEl.style.left = r.left + 'px'; shadowEl.style.top = r.top + 'px';
+      shadowEl.style.width = r.width + 'px'; shadowEl.style.height = r.height + 'px';
     }
-
     var row = document.getElementById('tile-scroll-row');
-    if (row) row.addEventListener('scroll', syncShadow);
+    if (row) row.addEventListener('scroll', function() {
+      activeTile = null;
+      shadowEl.style.opacity = '0';
+    });
 
     tiles.forEach(function(tile) {
       tile.addEventListener('mouseenter', function() {
-        activeTile = tile;
-        tile.style.zIndex = '10';
-        syncShadow();
-        shadowEl.style.opacity = '1';
+        activeTile = tile; tile.style.zIndex = '10';
+        syncShadow(); shadowEl.style.opacity = '1';
       });
       tile.addEventListener('mouseleave', function() {
-        activeTile = null;
-        tile.style.zIndex = '';
+        activeTile = null; tile.style.zIndex = '';
         shadowEl.style.opacity = '0';
       });
     });
   })();
 
+  // ── Background + link color on hover, reverts to active tile ─────
   (function() {
     if (!window.matchMedia('(hover: hover)').matches) return;
     var tiles = document.querySelectorAll('.video-container');
 
-    function rgbToHsl(r, g, b) {
-      r /= 255; g /= 255; b /= 255;
-      var max = Math.max(r,g,b), min = Math.min(r,g,b);
-      var h, s, l = (max + min) / 2;
-      if (max === min) {
-        h = s = 0;
-      } else {
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch(max) {
-          case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
-          case g: h = ((b - r) / d + 2) / 6; break;
-          case b: h = ((r - g) / d + 4) / 6; break;
-        }
-      }
-      return [h * 360, s * 100, l * 100];
-    }
-
-    function tileHoverBg(rgbStr) {
-      var m = rgbStr.match(/\d+/g);
-      if (!m) return null;
-      var hsl = rgbToHsl(+m[0], +m[1], +m[2]);
-      var s = Math.min(hsl[1] * 0.55, 30);
-      return 'hsl(' + hsl[0].toFixed(0) + ',' + s.toFixed(0) + '%,78%)';
-    }
-
     tiles.forEach(function(tile) {
-      tile.addEventListener('mouseenter', function() {
-        var bg = getComputedStyle(tile).backgroundColor;
-        var lightBg = tileHoverBg(bg);
-        document.body.style.backgroundColor = lightBg || bg;
-        document.body.classList.add('tile-hover');
-        document.body.classList.remove('bg-dark');
-      });
-      tile.addEventListener('mouseleave', function() {
-        document.body.style.backgroundColor = '';
-        document.body.classList.remove('tile-hover');
+      tile.addEventListener('mouseenter', function() { _applyTileBg(tile); });
+      tile.addEventListener('mouseleave', function(e) {
+        if (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.tile-scroll-arrow')) return;
+        _applyActiveTileBg();
       });
     });
+
+    document.querySelectorAll('.tile-scroll-arrow').forEach(function(btn) {
+      btn.addEventListener('mouseleave', function(e) {
+        if (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.video-container')) return;
+        _applyActiveTileBg();
+      });
+    });
+  })();
+
+  // ── Scroll arrows + active tile (href management, bg, arrows) ────
+  (function() {
+    var row = document.getElementById('tile-scroll-row');
+    if (!row) return;
+    var tiles = Array.from(document.querySelectorAll('.video-container'));
+    var btnLeft = document.querySelector('.tile-scroll-arrow--left');
+    var btnRight = document.querySelector('.tile-scroll-arrow--right');
+    if (!btnLeft || !btnRight || tiles.length === 0) return;
+
+    tiles.forEach(function(tile) {
+      var href = tile.getAttribute('href');
+      if (href) tile.dataset.href = href;
+    });
+
+    function getCurrentIndex() {
+      var center = row.scrollLeft + row.clientWidth / 2;
+      var closest = 0, minDist = Infinity;
+      tiles.forEach(function(tile, i) {
+        var dist = Math.abs((tile.offsetLeft + tile.offsetWidth / 2) - center);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      return closest;
+    }
+
+    function update() {
+      var idx = getCurrentIndex();
+      btnLeft.classList.toggle('is-disabled', idx === 0);
+      btnRight.classList.toggle('is-disabled', idx === tiles.length - 1);
+      tiles.forEach(function(tile, i) {
+        var active = i === idx;
+        tile.classList.toggle('is-active', active);
+        if (active) {
+          if (tile.dataset.href) tile.setAttribute('href', tile.dataset.href);
+        } else {
+          tile.removeAttribute('href');
+        }
+      });
+      if (window.matchMedia('(hover: hover)').matches) _applyTileBg(tiles[idx]);
+    }
+
+    btnLeft.addEventListener('click', function() {
+      var idx = getCurrentIndex();
+      if (idx > 0) tiles[idx - 1].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    });
+    btnRight.addEventListener('click', function() {
+      var idx = getCurrentIndex();
+      if (idx < tiles.length - 1) tiles[idx + 1].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    });
+
+    row.addEventListener('scroll', update);
+    update();
   })();
 </script>

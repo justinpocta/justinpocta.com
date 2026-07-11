@@ -4,7 +4,7 @@ classes: page--info
 ---
 <a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
 
-<img src="../assets/img/Info-Justin-Pocta.jpg" class="fifty-right word-pop" style="animation-delay:0.5s;" alt="Justin Pocta">
+<img src="../assets/img/profile-pic.jpg" class="fifty-right word-pop" style="animation-delay:0.5s;" alt="Justin Pocta">
 
 <div class="fade-in-block" style="animation-delay:0.45s;" markdown="1">
 
