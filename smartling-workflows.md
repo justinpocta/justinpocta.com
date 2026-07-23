@@ -75,6 +75,36 @@ galleryDecisionStepRules:
 
 From the beginning of my time at Smartling in late 2017, the team had a goal of refining the existing product, as well as going deeper by applying modern technologies such as powerful automations to allow our customers increase efficiency and reduce clicks. Our Workflows configuration was a prime feature to invest in this type of effect.
 
+<div class="case-meta">
+  <div class="case-meta__item">
+    <div class="case-meta__label">Role</div>
+    <div class="case-meta__value">UX Design &middot; Research</div>
+  </div>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Scope</div>
+    <div class="case-meta__value">
+      <span class="scope-tag">Discovery</span>
+      <span class="scope-tag">Research</span>
+      <span class="scope-tag">Design</span>
+      <span class="scope-tag">Launch</span>
+    </div>
+  </div>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Duration</div>
+    <div class="case-meta__value">Jan 2019&ndash;Apr 2019</div>
+  </div>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Team</div>
+    <div class="case-meta__value">
+      <span class="team-tooltip" data-tooltip="Justin Pocta">Design</span>
+      <span class="meta-sep">&middot;</span>
+      <span class="team-tooltip" data-tooltip="Franco Parico (PM)">Product</span>
+      <span class="meta-sep">&middot;</span>
+      <span class="team-tooltip" data-tooltip="Xiaoyun Yang (FE MVP) · Oleksandr Tymchenko (FE 1.0+) · Ben Loy (BE) · Dmitry Bochorishvili (BE)">Engineering</span>
+    </div>
+  </div>
+</div>
+
 ## The Initial, Linear Flow
 
 Due to localization teams maturing, customer’s departments expanding into multiple CMS integrations, and most importantly Machine Translation becoming a cheaper option for translating basic content, our simple workflow structure was no longer as effective for our customer’s needs.

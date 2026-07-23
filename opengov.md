@@ -106,6 +106,38 @@ I took on the opportunity to join OpenGov as Sr. Product Designer for the Budget
 
 During my time there, I supported the engineering and product teams launch work from other designers as I was onboarded, partnered with our UX Researcher and CSM team to interview customers, designed projects alongside Product Manager, and collaborated with the Engineering and QA team to review, refine, and help get projects out the door.
 
+<div class="case-meta">
+  <div class="case-meta__item">
+    <div class="case-meta__label">Role</div>
+    <div class="case-meta__value">UX Design &middot; Research</div>
+  </div>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Scope</div>
+    <div class="case-meta__value">
+      <span class="scope-tag">Discovery</span>
+      <span class="scope-tag">Research</span>
+      <span class="scope-tag">Design</span>
+      <span class="scope-tag">Launch</span>
+    </div>
+  </div>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Duration</div>
+    <div class="case-meta__value">2021 Q3&ndash;Q4</div>
+  </div>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Team</div>
+    <div class="case-meta__value">
+      <span class="team-tooltip" data-tooltip="Justin Pocta">Design</span>
+      <span class="meta-sep">&middot;</span>
+      <span class="team-tooltip" data-tooltip="Lalitha Balasubramhanya (Sr. Director PM) · Christine Liu (PM)">Product</span>
+      <span class="meta-sep">&middot;</span>
+      <span class="team-tooltip" data-tooltip="Kim Henry (Lead UX Researcher)">Research</span>
+      <span class="meta-sep">&middot;</span>
+      <span class="team-tooltip" data-tooltip="Dale (FE Lead) · Wei Huang (Sr. Engineering Manager)">Engineering</span>
+    </div>
+  </div>
+</div>
+
 ***
 # Project: Wayfinding Clarification
 ![](../assets/img/OpenGov-Project-Header-Wayfinding.png)
