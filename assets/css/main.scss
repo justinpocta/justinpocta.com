@@ -598,6 +598,11 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
     background: rgba(255,255,255,0.92);
     box-shadow: 0 4px 20px rgba(0,0,0,0.18);
 }
+.tile-scroll-arrow::before {
+    content: '';
+    position: absolute;
+    inset: -14px;
+}
 .container.scroll-test {
     position: relative;
     z-index: 1;
@@ -650,7 +655,7 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
     height: calc(56vh + 40px);
 }
 .container.scroll-test .video-container:not(.is-active) {
-    cursor: default;
+    cursor: pointer;
 }
 .masthead,
 .masthead__inner-wrap,
@@ -868,6 +873,157 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
     26%  { transform: rotate(375deg); animation-timing-function: ease-in-out; }
     35%  { transform: rotate(360deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Case Study Metadata Block */
+.case-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em 3em;
+    padding: 1.5em 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin: 0 0 2.5em;
+}
+.case-meta__item {
+    min-width: 110px;
+}
+.case-meta__label {
+    font-size: 0.7em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #aaa;
+    margin-bottom: 0.4em;
+}
+.case-meta__value {
+    font-size: 0.88em;
+    color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    align-items: center;
+    line-height: 1.4;
+}
+.scope-tag {
+    display: inline-block;
+    padding: 0.2em 0.65em;
+    border-radius: 2em;
+    font-size: 0.85em;
+    background: rgba(184,150,58,0.12);
+    color: #8a6e2a;
+    font-weight: 500;
+}
+.team-tooltip {
+    position: relative;
+    cursor: default;
+    border-bottom: 1px dashed rgba(184,150,58,0.7);
+    padding-bottom: 1px;
+}
+.team-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 0;
+    background: #1a1a1a;
+    color: #f0f0f0;
+    font-size: 0.8em;
+    padding: 0.45em 0.8em;
+    border-radius: 4px;
+    white-space: normal;
+    width: max-content;
+    max-width: 260px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 10;
+}
+.meta-sep {
+    color: #ccc;
+    font-size: 0.85em;
+}
+.team-tooltip:hover::after {
+    opacity: 1;
+}
+.tile-coming-soon {
+    display: inline-block;
+    font-size: 0.55em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    padding: 2px 7px;
+    margin-top: 0.4em;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+}
+.video-container:hover .tile-coming-soon,
+.video-container.in-view .tile-coming-soon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Title + Coming Soon on the same row */
+.tile-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
+}
+.video-container:hover .tile-title-row,
+.video-container.in-view .tile-title-row {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Children inside the row are static — the row itself animates */
+.video-container:hover .tile-title-row > .project-title-name,
+.video-container:hover .tile-title-row > .tile-coming-soon {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+.tile-title-row > .project-title-name,
+.tile-title-row > .tile-coming-soon {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    margin-top: 0;
+}
+
+/* Fixed prev/next arrows on project pages */
+.project-nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.82);
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    text-decoration: none !important;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.project-nav-arrow:hover {
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+    color: #111;
+}
+.project-nav-arrow--left  { left: 16px; }
+.project-nav-arrow--right { right: 16px; }
+@media (max-width: 768px) {
+    .project-nav-arrow { display: none; }
 }
 
 /* Transcreation */

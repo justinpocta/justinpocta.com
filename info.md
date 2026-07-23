@@ -26,6 +26,10 @@ I love working with teams that value asking questions. _Why are we creating a gi
 
 </div>
 
+<div class="fade-in-block" style="animation-delay:0.95s; border-left: 3px solid #D4B870; padding: 10px 18px; margin: 1.8em 0 1.8em; opacity: 0.75;">
+  <p style="margin: 0; font-size: 0.82em; font-style: italic; line-height: 1.6; color: inherit;">Pardon my portfolio's rough edges — I'm updating on a near-daily basis, adding and revising case studies, and exploring Claude Code for animation and other frontend enhancements. Enjoy the show.</p>
+</div>
+
 <div class="fade-in-block" style="animation-delay:1.05s; border: 2px solid #D4B870; border-radius: 6px; padding: 26px 32px 32px; margin: 1.5em 0 40px; text-align: center; box-sizing: border-box; overflow: hidden;">
   <p style="margin: 0 0 28px; font-weight: 400; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.1em; color: #999;">Get in Touch</p>
   <div style="display: flex; gap: 48px; justify-content: center;">
