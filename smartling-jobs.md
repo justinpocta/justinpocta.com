@@ -80,6 +80,36 @@ Smartling use revolves around daily requests for original content to be translat
 
 It is fast paced and involves sophisticated workflow processes, with large teams and varying user permission levels, project structures, toolsets. Tracking these job requests is a critical piece of the day to day.
 
+<div class="case-meta">
+  <div class="case-meta__item">
+    <div class="case-meta__label">Role</div>
+    <div class="case-meta__value">UX Design &middot; Research</div>
+  </div>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Scope</div>
+    <div class="case-meta__value">
+      <span class="scope-tag">Discovery</span>
+      <span class="scope-tag">Research</span>
+      <span class="scope-tag">Design</span>
+      <span class="scope-tag">Launch</span>
+    </div>
+  </div>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Duration</div>
+    <div class="case-meta__value">Jan 2020&ndash;Aug 2020</div>
+  </div>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Team</div>
+    <div class="case-meta__value">
+      <span class="team-tooltip" data-tooltip="Justin Pocta">Design</span>
+      <span class="meta-sep">&middot;</span>
+      <span class="team-tooltip" data-tooltip="Sophia Lazare (PM)">Product</span>
+      <span class="meta-sep">&middot;</span>
+      <span class="team-tooltip" data-tooltip="Jeremy Shankle · Dmitry Masley · Oleksandr Tymchenko · Pavlo Myrotiuk · Valerii Linetskyi · Sergey Chichulin · Yurii Beiko · Xiaoyun Yang · Rich Tam · Dominic DeMarco">Engineering</span>
+    </div>
+  </div>
+</div>
+
 ## Discovering Deep Roots
 
 We had an array of challenges build up over 10 years of the company existence. Due to the varied nature of permissions, needs, and wishes between customers and translators, as well as internal effects like pricing models and different APIs, to our surprise, a large number of versions of the “Jobs” page existed, handled by multiple teams with different features and only floating further and further away from one another.
