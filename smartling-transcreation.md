@@ -43,34 +43,34 @@ galleryIterations:
 ![Smartling](/assets/img/Smartling-Logo.png)
 {: .third-right}
 
-Over the course of 2019, the word “Transcreation” was being used more and more around the office. At the end of the year, it was finally pushed into high gear so we could begin to chip away at what we could offer our customers to give them access to a more creative form of translation _inside_ of our platform.
+Over the course of 2019, the word “Transcreation" was being used more and more around the office. At the end of the year, it was finally pushed into high gear so we could begin to chip away at what we could offer our customers to give them access to a more creative form of translation _inside_ of our platform.
 
-<div class=”case-meta”>
-  <div class=”case-meta__item”>
-    <div class=”case-meta__label”>Role</div>
-    <div class=”case-meta__value”>UX Design &middot; Research &middot; Handoff</div>
+<div class="case-meta">
+  <div class="case-meta__item">
+    <div class="case-meta__label">Role</div>
+    <div class="case-meta__value">UX Design &middot; Research &middot; Handoff</div>
   </div>
-  <div class=”case-meta__item”>
-    <div class=”case-meta__label”>Scope</div>
-    <div class=”case-meta__value”>
-      <span class=”scope-tag”>Discovery</span>
-      <span class=”scope-tag”>Research</span>
-      <span class=”scope-tag”>Design</span>
-      <span class=”scope-tag”>Handoff</span>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Scope</div>
+    <div class="case-meta__value">
+      <span class="scope-tag">Discovery</span>
+      <span class="scope-tag">Research</span>
+      <span class="scope-tag">Design</span>
+      <span class="scope-tag">Handoff</span>
     </div>
   </div>
-  <div class=”case-meta__item”>
-    <div class=”case-meta__label”>Duration</div>
-    <div class=”case-meta__value”>Jan 2020&ndash;Jul 2020</div>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Duration</div>
+    <div class="case-meta__value">Jan 2020&ndash;Jul 2020</div>
   </div>
-  <div class=”case-meta__item”>
-    <div class=”case-meta__label”>Team</div>
-    <div class=”case-meta__value”>
-      <span class=”team-tooltip” data-tooltip=”Justin Pocta · Frannie Laks”>Design</span>
-      <span class=”meta-sep”>&middot;</span>
-      <span class=”team-tooltip” data-tooltip=”Sophia Lazare (PM) · Tobias Kahn (PM)”>Product</span>
-      <span class=”meta-sep”>&middot;</span>
-      <span class=”team-tooltip” data-tooltip=”Anton Shanyuk (FE) · Keith Legin (Engineer Lead)”>Engineering</span>
+  <div class="case-meta__item">
+    <div class="case-meta__label">Team</div>
+    <div class="case-meta__value">
+      <span class="team-tooltip" data-tooltip="Justin Pocta · Frannie Laks">Design</span>
+      <span class="meta-sep">&middot;</span>
+      <span class="team-tooltip" data-tooltip="Sophia Lazare (PM) · Tobias Kahn (PM)">Product</span>
+      <span class="meta-sep">&middot;</span>
+      <span class="team-tooltip" data-tooltip="Anton Shanyuk (FE) · Keith Legin (Engineer Lead)">Engineering</span>
     </div>
   </div>
 </div>
@@ -127,7 +127,7 @@ After nailing down the primary elements and a structure that would allow for giv
 
 In March of 2020, I got the pleasure of hiring on the second designer to our product team. Frannie Laks jumped in and quickly onboarded during the beginning of the pandemic. Within a short time, I was able to handoff the foundations I had laid for Transcreation and met with her and the PM regularly to help identify existing UX patterns, potentially new component needs, to recognize places where we were overbuilding beyond the MVP scope, and any prior interview data that could help us in closing off the project to get it out the door. I also set up several one-on-one sessions to work through specific aspects about Figma and its prototyping capabilities as well as the component structure since the rush to market was intense and I knew moving from Sketch to Figma takes a fair amount of adjustment.
 
-> “I absolutely love working on creative projects with our customers, and Smartling’s new Transcreation Tool makes it substantially more efficient to produce quality results,” said Gabriela Ortiz, a professional Smartling translator in Argentina. “I no longer have to stare into the cells of a spreadsheet and circulate transcreations by email. Instead, I log into Smartling, write three options with back translations, and then communicate directly with the customer through the platform to ensure the work meets their expectations.”
+> “I absolutely love working on creative projects with our customers, and Smartling’s new Transcreation Tool makes it substantially more efficient to produce quality results," said Gabriela Ortiz, a professional Smartling translator in Argentina. “I no longer have to stare into the cells of a spreadsheet and circulate transcreations by email. Instead, I log into Smartling, write three options with back translations, and then communicate directly with the customer through the platform to ensure the work meets their expectations.”
 
 ![Transcreation Demo to present the new tool to our customers as well as those interested in localization](../assets/img/Smartling-Transcreation-TC+demo+Screen+Shot+2021-04-02+at+1.11.07+AM.png)
 [Vimeo](https://vimeo.com/492149005)
