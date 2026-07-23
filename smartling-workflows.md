@@ -176,34 +176,6 @@ Where we landed was thanks to the help of Product, Engineering and UX collaborat
 ### Managing Rules for Decision Steps
 <iframe src="https://www.youtube.com/embed/sB9zdrpP3j8?controls=0" title="YouTube video player"  class="youtube-handler" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
----
-
-# Project Notes
-
-## Details
-
-<span class="project-subheader">Website</span>
-- [http://smartling.com](http://smartling.com/)
-
-<span class="project-subheader">Timeline</span>
-- *Kickoff to Dev Handoff*
-- Jan 2019—Apr 2019
-
----
-## The Team
-
-<span class="project-subheader">Product/Design</span>
-- Franco Parico (PM)
-- Justin Pocta (UX/UI)
-
-<span class="project-subheader">Development</span>
-- Xiaoyun Yang (FE - MVP)
-- Oleksandr Tymchenko (FE - 1.0+)
-- Ben Loy (BE)
-- Dmitry Bochorishvili (BE)
-
----
-
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0 3em;">
   <a href="/smartling-jobs" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Previous</a>
   <a href="/smartling-transcreation" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">Next →</a>
