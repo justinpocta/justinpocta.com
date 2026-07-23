@@ -45,6 +45,36 @@ galleryIterations:
 
 Over the course of 2019, the word “Transcreation” was being used more and more around the office. At the end of the year, it was finally pushed into high gear so we could begin to chip away at what we could offer our customers to give them access to a more creative form of translation _inside_ of our platform.
 
+<div class=”case-meta”>
+  <div class=”case-meta__item”>
+    <div class=”case-meta__label”>Role</div>
+    <div class=”case-meta__value”>UX Design &middot; Research &middot; Handoff</div>
+  </div>
+  <div class=”case-meta__item”>
+    <div class=”case-meta__label”>Scope</div>
+    <div class=”case-meta__value”>
+      <span class=”scope-tag”>Discovery</span>
+      <span class=”scope-tag”>Research</span>
+      <span class=”scope-tag”>Design</span>
+      <span class=”scope-tag”>Handoff</span>
+    </div>
+  </div>
+  <div class=”case-meta__item”>
+    <div class=”case-meta__label”>Duration</div>
+    <div class=”case-meta__value”>Jan 2020&ndash;Jul 2020</div>
+  </div>
+  <div class=”case-meta__item”>
+    <div class=”case-meta__label”>Team</div>
+    <div class=”case-meta__value”>
+      <span class=”team-tooltip” data-tooltip=”Justin Pocta · Frannie Laks”>Design</span>
+      <span class=”meta-sep”>&middot;</span>
+      <span class=”team-tooltip” data-tooltip=”Sophia Lazare (PM) · Tobias Kahn (PM)”>Product</span>
+      <span class=”meta-sep”>&middot;</span>
+      <span class=”team-tooltip” data-tooltip=”Anton Shanyuk (FE) · Keith Legin (Engineer Lead)”>Engineering</span>
+    </div>
+  </div>
+</div>
+
 ## Discovering Processes
 
 Over recent years, the advancements of Machine Translation have given the localization industry more incentive and excitement over the ability to focus on high touch, creative projects very similar to many other fields that have been offloading mindless, repetitive work via automation and componentization.
