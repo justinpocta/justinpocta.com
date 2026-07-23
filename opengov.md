@@ -260,45 +260,6 @@ Explorations where I aimed to reduce the user journey by creating more guidance 
 
 Thanks for reading!
 
-***
-
-# Project Notes
-
-## Details
-
-<span class="project-subheader">Website</span>
-- [http://opengov.com](http://opengov.com)
-
-<span class="project-subheader">Timeline</span>
-- 2021 Q3-Q4
-
----
-
-## The Team
-
-<span class="project-subheader">Product/Design</span>
-- Richard Baker (VP of UX)
-- Justin Pocta (UX/UI)
-- Lalitha Balasubramhanya (Sr. Director of Product Management)
-- Christine Liu (Product Manager)
-- Kim Henry (Lead UX Researcher)
-
-<span class="project-subheader">Development</span>
-- Dale (FE Lead of App Frame)
-- Wei Huang (Sr. Engineering Manager)
-- Honestly, *most* of the engineering team helped fill in a lot of information and gave great guidance who weren’t necessarily on the projects I was designing. 
-
-<span class="project-subheader">Tools</span>
-- Pendo.io for Data Analytics/Dashboard of Reports, creating In-App Walk-thru Guides for users, and generating messages to collect Feedback and Survey Data
-- ProductBoard/Trello for Project Management + JIRA and Confluence
-- Google Slides for presentations
-- Figma for Design and Prototyping
-- Miro for Workshop Whiteboards
-- Loom for sharing updates async
-- Zoom and Figma for User Interviews and Usability Tests
-
----
-
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0 3em;">
   <a href="/highlight-recruiting" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Previous</a>
   <a href="/smartling-jobs" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">Next →</a>

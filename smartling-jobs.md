@@ -162,32 +162,6 @@ Future phases are planned to catch up the code to the UX vision where we intend 
 
 {% include gallery layout="" id="galleryFinal" caption="" %}
 
-***
-
-# Project Notes
-
-## Details
-
-<span class="project-subheader">WEBSITE</span>
-- [http://smartling.com](http://smartling.com/)
-
-<span class="project-subheader">Timeline</span>
-- *DISCOVERY TO DEV HANDOFF*
-- Jan 2020—August 2020
-
----
-
-## The Team
-
-<span class="project-subheader">Product/Design</span>
-- Sophia Lazare (PM)
-- Justin Pocta (UX/UI)
-
-<span class="project-subheader">Development</span>
-- Jeremy Shankle, Dmitry Masley, Oleksandr Tymchenko, Pavlo Myrotiuk, Valerii Linetskyi, Sergey Chichulin, Yurii Beiko, Xiaoyun Yang, Rich Tam, and our summer intern Dominic DeMarco alongside multiple BE teams to get all the pieces converged and working smoothly.
-
----
-
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0 3em;">
   <a href="/opengov" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Previous</a>
   <a href="/smartling-workflows" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">Next →</a>

@@ -140,33 +140,6 @@ Transcreation Demo to present the new tool to our customers as well as those int
 - Article: [Automating Transcreation](https://www.linkedin.com/pulse/automating-transcreation-joseph-kovalov/?trackingId=BSoligoMdVW7DjQ%2BobyuSg%3D%3D)
   
 
----
-
-# Project Notes
-
-## Details
-
-<span class="project-subheader">Website</span>
-- [http://smartling.com](http://smartling.com/)
-
-<span class="project-subheader">Timeline</span>
-- *DISCOVERY TO DEV HANDOFF*
-- Jan 2020—July 2020
-
----
-
-## The Team
-
-<span class="project-subheader">Product/Design</span>
-- Sophia Lazare (PM), Tobias Kahn (PM)
-- Justin Pocta (UX/UI), [Frannie Laks](http://frannielaks.com) (UX/UI)
-
-<span class="project-subheader">Development</span>
-- Anton Shanyuk (FE Engineer)
-- Keith Legin (Engineer Lead)
-
----
-
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0 3em;">
   <a href="/smartling-workflows" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Previous</a>
   <a href="/info" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">Next →</a>
