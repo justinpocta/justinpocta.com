@@ -89,58 +89,59 @@ galleryIA:
     alt: "DESCRIPTION"
 ---
 
-<a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
+<div class="project-intro-grid">
+<div class="project-intro-grid__content" markdown="1">
 
-# OpenGov Projects
-*Senior Product Designer, Budgeting - 2021-22*
-{: .notice}
-
-<span class="project-subheader">A collection of UX work at OpenGov</span>
-# Balancing the Budget App 
-{: .no_toc id="h1st"}
-
-![img](../assets/img/OpenGov-Logo.png)
- {: .third-right}
+<span class="project-subheader">OpenGov Projects</span>
+# Balancing the Budget App
 
 I took on the opportunity to join OpenGov as Sr. Product Designer for the Budgeting and Planning team in May 2021 on a UX team of 12 who were managing 4 apps across the platform.
 
 During my time there, I supported the engineering and product teams launch work from other designers as I was onboarded, partnered with our UX Researcher and CSM team to interview customers, designed projects alongside Product Manager, and collaborated with the Engineering and QA team to review, refine, and help get projects out the door.
 
-<div class="case-meta">
-  <div class="case-meta__item">
-    <div class="case-meta__label">Role</div>
-    <div class="case-meta__value">UX Design &middot; Research</div>
-  </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Scope</div>
-    <div class="case-meta__value">
-      <span class="scope-tag">Discovery</span>
-      <span class="scope-tag">Research</span>
-      <span class="scope-tag">Design</span>
-      <span class="scope-tag">Launch</span>
+</div>
+<aside class="project-intro-grid__sidebar">
+  <img src="../assets/img/OpenGov-Logo.png" alt="OpenGov" class="sidebar-logo">
+  <div class="sidebar-meta">
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">My Role</div>
+      <div class="sidebar-meta__value">Senior Product Designer, Budgeting App</div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Duration</div>
+      <div class="sidebar-meta__value">2021 Q3&ndash;Q4</div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Contributions</div>
+      <div class="sidebar-meta__value">
+        <span class="contrib-tag">Discovery</span>
+        <span class="contrib-tag">Research</span>
+        <span class="contrib-tag">Design</span>
+        <span class="contrib-tag">Launch</span>
+      </div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Teams</div>
+      <div class="sidebar-meta__value">
+        <span class="team-tag team-tooltip" data-tooltip="Justin Pocta">Design</span>
+        <span class="meta-sep">&middot;</span>
+        <span class="team-tag team-tooltip" data-tooltip="Lalitha Balasubramhanya (Sr. Director PM) · Christine Liu (PM)">Product</span>
+        <span class="meta-sep">&middot;</span>
+        <span class="team-tag team-tooltip" data-tooltip="Kim Henry (Lead UX Researcher)">Research</span>
+        <span class="meta-sep">&middot;</span>
+        <span class="team-tag team-tooltip" data-tooltip="Dale (FE Lead) · Wei Huang (Sr. Engineering Manager)">Engineering</span>
+      </div>
     </div>
   </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Duration</div>
-    <div class="case-meta__value">2021 Q3&ndash;Q4</div>
-  </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Team</div>
-    <div class="case-meta__value">
-      <span class="team-tooltip" data-tooltip="Justin Pocta">Design</span>
-      <span class="meta-sep">&middot;</span>
-      <span class="team-tooltip" data-tooltip="Lalitha Balasubramhanya (Sr. Director PM) · Christine Liu (PM)">Product</span>
-      <span class="meta-sep">&middot;</span>
-      <span class="team-tooltip" data-tooltip="Kim Henry (Lead UX Researcher)">Research</span>
-      <span class="meta-sep">&middot;</span>
-      <span class="team-tooltip" data-tooltip="Dale (FE Lead) · Wei Huang (Sr. Engineering Manager)">Engineering</span>
-    </div>
-  </div>
+</aside>
 </div>
 
+<div class="project-section" style="--section-color: 232,239,245;" markdown="1">
+
 ***
-# Project: Wayfinding Clarification
-![](../assets/img/OpenGov-Project-Header-Wayfinding.png)
+
+<p class="project-eyebrow">Project</p>
+<h1><span class="project-icon">🧭</span> Wayfinding Clarification</h1>
 
 ## Problem Statement & Kickoff
 **Goal:** Improve clarity of a user’s current location in the app and the app infrastructure overall
@@ -194,10 +195,14 @@ These concepts were really enjoyable to talk through with members of the team be
 
 {% include gallery layout="half" id="galleryWayfindingFuture" caption="Future Vision" %}
 
-***
-# Project: Budget Organization
+</div>
 
-![right-aligned-image](../assets/img/OpenGov-Project-Header-Budget-Organization.png){: .fifty}
+<div class="project-section" style="--section-color: 232,239,245;" markdown="1">
+
+***
+
+<p class="project-eyebrow">Project</p>
+<h1><span class="project-icon">📂</span> Budget Organization</h1>
 
 ## Project Goal & Kickoff
 The initial direction were told was to “simply add folders” to allow users to organize their budgets due to the Budgets list being a confusing and problematic part of the site. Upon partnering with the product manager, we gathered more data to validate this request, as something felt off about it based on what we saw across many customer accounts.
@@ -220,12 +225,16 @@ My goal was to keep the existing design to maintain a smaller scope of work, whi
 ## Results & Lessons
 Ran an in-app feedback survey to a targeted group of users. Received 88% positive feedback from the 9 replies. This also gave us additional feedback and requests that we could follow up on to continue enhancing this experience for our customers.
 
-Where we landed was not that different, but it added control and clarity. This is what we were hearing from users. 
+Where we landed was not that different, but it added control and clarity. This is what we were hearing from users.
+
+</div>
+
+<div class="project-section" style="--section-color: 232,239,245;" markdown="1">
 
 ***
-# Project: Improving Reports Customer Journey
 
-![](../assets/img/OpenGov-Project-Header-Budget-Reporting-Workshop.png)
+<p class="project-eyebrow">Project</p>
+<h1><span class="project-icon">📊</span> Improving Reports Customer Journey</h1>
 
 ## Project Goal & Kickoff
 Our team had identified a challenging user flow which I had heard many times myself from internal interviews with our customer-oriented subject matter experts. Creating and finding “Reports” was difficult. It was also owned by another team, so we needed to connect and collaborate on how things worked and what we could do.
@@ -260,10 +269,9 @@ Explorations where I aimed to reduce the user journey by creating more guidance 
 
 Thanks for reading!
 
-<div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0 3em;">
-  <a href="/highlight-recruiting" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Previous</a>
-  <a href="/smartling-jobs" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">Next →</a>
 </div>
 
-<a href="/highlight-recruiting" class="project-nav-arrow project-nav-arrow--left" aria-label="Previous project"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
-<a href="/smartling-jobs" class="project-nav-arrow project-nav-arrow--right" aria-label="Next project"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+<div class="project-footer-nav">
+  <a href="/highlight-recruiting">← Previous</a>
+  <a href="/smartling-jobs">Next →</a>
+</div>

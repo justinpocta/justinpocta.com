@@ -2,6 +2,7 @@
 title: Transcreation
 hide_footer: true
 layout: default
+classes: page--transcreation
 toc: false
 toc_sticky: false
 toc_label: "Project Index"
@@ -29,50 +30,47 @@ galleryIterations:
     title: ""
 
 ---
-<a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
+<div class="project-intro-grid">
+<div class="project-intro-grid__content" markdown="1">
 
-# Project: Transcreation Tool
-*Product Designer @ Smartling, 2017-21*
-{: .notice}
-
-<span class="project-subheader">CREATING TRANSCREATION</span>
+<span class="project-subheader">Creating Transcreation</span>
 # Building an innovative Transcreation tool from scratch
-{: id="h1st"}
 
+Over the course of 2019, the word “Transcreation” was being used more and more around the office. At the end of the year, it was finally pushed into high gear so we could begin to chip away at what we could offer our customers to give them access to a more creative form of translation _inside_ of our platform.
 
-![Smartling](/assets/img/Smartling-Logo.png)
-{: .third-right}
-
-Over the course of 2019, the word “Transcreation" was being used more and more around the office. At the end of the year, it was finally pushed into high gear so we could begin to chip away at what we could offer our customers to give them access to a more creative form of translation _inside_ of our platform.
-
-<div class="case-meta">
-  <div class="case-meta__item">
-    <div class="case-meta__label">Role</div>
-    <div class="case-meta__value">UX Design &middot; Research &middot; Handoff</div>
-  </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Scope</div>
-    <div class="case-meta__value">
-      <span class="scope-tag">Discovery</span>
-      <span class="scope-tag">Research</span>
-      <span class="scope-tag">Design</span>
-      <span class="scope-tag">Handoff</span>
+</div>
+<aside class="project-intro-grid__sidebar">
+  <img src="/assets/img/Smartling-Logo.png" alt="Smartling" class="sidebar-logo">
+  <div class="sidebar-meta">
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">My Role</div>
+      <div class="sidebar-meta__value">Product Designer, Smartling</div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Duration</div>
+      <div class="sidebar-meta__value">Jan 2020&ndash;Jul 2020</div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Contributions</div>
+      <div class="sidebar-meta__value">
+        <span class="contrib-tag">Discovery</span>
+        <span class="contrib-tag">Research</span>
+        <span class="contrib-tag">Design</span>
+        <span class="contrib-tag">Handoff</span>
+      </div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Teams</div>
+      <div class="sidebar-meta__value">
+        <span class="team-tag team-tooltip" data-tooltip="Justin Pocta · Frannie Laks">Design</span>
+        <span class="meta-sep">&middot;</span>
+        <span class="team-tag team-tooltip" data-tooltip="Sophia Lazare (PM) · Tobias Kahn (PM)">Product</span>
+        <span class="meta-sep">&middot;</span>
+        <span class="team-tag team-tooltip" data-tooltip="Anton Shanyuk (FE) · Keith Legin (Engineer Lead)">Engineering</span>
+      </div>
     </div>
   </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Duration</div>
-    <div class="case-meta__value">Jan 2020&ndash;Jul 2020</div>
-  </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Team</div>
-    <div class="case-meta__value">
-      <span class="team-tooltip" data-tooltip="Justin Pocta · Frannie Laks">Design</span>
-      <span class="meta-sep">&middot;</span>
-      <span class="team-tooltip" data-tooltip="Sophia Lazare (PM) · Tobias Kahn (PM)">Product</span>
-      <span class="meta-sep">&middot;</span>
-      <span class="team-tooltip" data-tooltip="Anton Shanyuk (FE) · Keith Legin (Engineer Lead)">Engineering</span>
-    </div>
-  </div>
+</aside>
 </div>
 
 ## Discovering Processes
@@ -117,17 +115,20 @@ As with a lot of our work, we often run into some technical challenges. Being ab
 
 During early investigation of other Transcreation tools and spreadsheet usage, we considered some of the oddities like repeating content unnecessarily and reducing the focus space of the transcreation and descriptive explanation themselves. Getting into the flow of writing and letting the linguist move quickly through brainstorming processes was not something they would want blocked, nor would they want to work without the clarity of visual context.
 
+<div class="project-section" markdown="1">
+
 ## **Design Iterations & Prototype**
 
 After nailing down the primary elements and a structure that would allow for giving the most space to the most valuable elements, we know we needed to focus on the interaction flow. We ran general test with a small group of linguists, having them walk us through what they expected might happen and identifying any language, iconography, or flows which were confusing or less discoverable.
 
 {% include gallery layout="half" id="galleryIterations" caption="" %}
+</div>
 
 ## UX Handoff
 
 In March of 2020, I got the pleasure of hiring on the second designer to our product team. Frannie Laks jumped in and quickly onboarded during the beginning of the pandemic. Within a short time, I was able to handoff the foundations I had laid for Transcreation and met with her and the PM regularly to help identify existing UX patterns, potentially new component needs, to recognize places where we were overbuilding beyond the MVP scope, and any prior interview data that could help us in closing off the project to get it out the door. I also set up several one-on-one sessions to work through specific aspects about Figma and its prototyping capabilities as well as the component structure since the rush to market was intense and I knew moving from Sketch to Figma takes a fair amount of adjustment.
 
-> “I absolutely love working on creative projects with our customers, and Smartling’s new Transcreation Tool makes it substantially more efficient to produce quality results," said Gabriela Ortiz, a professional Smartling translator in Argentina. “I no longer have to stare into the cells of a spreadsheet and circulate transcreations by email. Instead, I log into Smartling, write three options with back translations, and then communicate directly with the customer through the platform to ensure the work meets their expectations.”
+> “I absolutely love working on creative projects with our customers, and Smartling’s new Transcreation Tool makes it substantially more efficient to produce quality results,” said Gabriela Ortiz, a professional Smartling translator in Argentina. “I no longer have to stare into the cells of a spreadsheet and circulate transcreations by email. Instead, I log into Smartling, write three options with back translations, and then communicate directly with the customer through the platform to ensure the work meets their expectations.”
 
 ![Transcreation Demo to present the new tool to our customers as well as those interested in localization](../assets/img/Smartling-Transcreation-TC+demo+Screen+Shot+2021-04-02+at+1.11.07+AM.png)
 [Vimeo](https://vimeo.com/492149005)
@@ -140,10 +141,7 @@ Transcreation Demo to present the new tool to our customers as well as those int
 - Article: [Automating Transcreation](https://www.linkedin.com/pulse/automating-transcreation-joseph-kovalov/?trackingId=BSoligoMdVW7DjQ%2BobyuSg%3D%3D)
   
 
-<div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0 3em;">
-  <a href="/smartling-workflows" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Previous</a>
-  <a href="/info" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">Next →</a>
+<div class="project-footer-nav">
+  <a href="/smartling-workflows">← Previous</a>
+  <a href="/info">Next →</a>
 </div>
-
-<a href="/smartling-workflows" class="project-nav-arrow project-nav-arrow--left" aria-label="Previous project"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
-<a href="/info" class="project-nav-arrow project-nav-arrow--right" aria-label="Next project"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>

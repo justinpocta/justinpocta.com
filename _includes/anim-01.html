@@ -5,7 +5,7 @@
 <div class="container scroll-test" id="tile-scroll-row">
 
   <!-- Highlight / Recruiting -->
-  <a href="/highlight-recruiting" class="video-container is-active" style="background-color:#003D2F;">
+  <a href="/highlight-recruiting" class="hero-tile is-active" style="background-color:#003D2F;">
     <div class="css-anim">
       <svg id="rec-grid" viewBox="0 0 280 280" width="280" height="280" style="max-width:100%; overflow:hidden;"></svg>
     </div>
@@ -23,7 +23,7 @@
   </a>
 
   <!-- OG / Wayfinding -->
-  <a href="/opengov" style="background-color:#E8EFF5;" class="video-container">
+  <a href="/opengov" style="background-color:#E8EFF5;" class="hero-tile">
     <div class="css-anim">
       <div class="anim-og">
         <div class="og-row">
@@ -51,7 +51,7 @@
   </a>
 
   <!-- Jobs -->
-  <a href="/smartling-jobs" style="background-color:#321261;" class="video-container">
+  <a href="/smartling-jobs" style="background-color:#321261;" class="hero-tile">
     <div class="css-anim">
       <div class="anim-jobs">
         <div class="jobs-card">
@@ -100,7 +100,7 @@
   </a>
 
   <!-- Workflows -->
-  <a href="/smartling-workflows" style="background-color:#9F29B7;" class="video-container">
+  <a href="/smartling-workflows" style="background-color:#9F29B7;" class="hero-tile">
     <div class="css-anim">
       <svg viewBox="0 0 240 140" width="220" height="128" aria-hidden="true">
         <circle cx="22" cy="70" r="9" fill="white"/>
@@ -144,7 +144,7 @@
   </a>
 
   <!-- Transcreation -->
-  <a href="/smartling-transcreation" style="background-color:#E17463;" class="video-container">
+  <a href="/smartling-transcreation" style="background-color:#E17463;" class="hero-tile">
     <div class="css-anim">
       <div class="anim-tc">
         <div class="tc-source"></div>
@@ -172,7 +172,7 @@
   </a>
 
   <!-- Highlight / Community App -->
-  <div class="video-container" style="background-color:#0F0F0F;">
+  <div class="hero-tile" style="background-color:#0F0F0F;">
     <div class="css-anim">
       <img src="/assets/img/highlight-logo.svg" class="hl-spin" alt="Highlight logo">
     </div>
@@ -193,7 +193,7 @@
   </div>
 
   <!-- Info / About -->
-  <a href="/info" style="background-color:rgb(215,197,155);" class="video-container">
+  <a href="/info" style="background-color:rgb(215,197,155);" class="hero-tile">
     <img src="/assets/img/profile-paris-03.jpg" class="info-photo" alt="">
     <div class="css-anim"></div>
     <div class="tile-label">
@@ -247,14 +247,14 @@
   }
 
   function _applyActiveTileBg() {
-    var active = document.querySelector('.video-container.is-active');
+    var active = document.querySelector('.hero-tile.is-active');
     if (active) _applyTileBg(active);
   }
 
   // ── IntersectionObserver for mobile greyscale reveal ─────────────
   (function() {
     if (!window.matchMedia('(hover: none)').matches) return;
-    var tiles = document.querySelectorAll('.video-container');
+    var tiles = document.querySelectorAll('.hero-tile');
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         entry.target.classList.toggle('in-view', entry.isIntersecting);
@@ -269,20 +269,46 @@
     if (!row) return;
     var isDown = false, startX, scrollLeft, moved;
 
+    row.addEventListener('mouseenter', function() {
+      if (window._setCursorLock) window._setCursorLock('grab');
+    });
+    row.addEventListener('mouseleave', function() {
+      if (!isDown && window._setCursorLock) window._setCursorLock(null);
+    });
     row.addEventListener('mousedown', function(e) {
       isDown = true; moved = false;
       row.classList.add('dragging');
-      startX = e.pageX - row.offsetLeft;
+      row.style.scrollSnapType = 'none';
+      startX = e.pageX;
       scrollLeft = row.scrollLeft;
+      e.preventDefault();
     });
     window.addEventListener('mouseup', function() {
-      isDown = false; row.classList.remove('dragging');
-    });
-    row.addEventListener('mousemove', function(e) {
       if (!isDown) return;
-      e.preventDefault();
-      var walk = (e.pageX - row.offsetLeft) - startX;
-      if (Math.abs(walk) > 5) moved = true;
+      isDown = false;
+      row.classList.remove('dragging');
+      if (window._setCursorLock) window._setCursorLock(null);
+      if (moved) {
+        var tiles = Array.from(row.querySelectorAll('.hero-tile'));
+        var center = row.scrollLeft + row.clientWidth / 2;
+        var nearest = null, minDist = Infinity;
+        tiles.forEach(function(tile) {
+          var dist = Math.abs((tile.offsetLeft + tile.offsetWidth / 2) - center);
+          if (dist < minDist) { minDist = dist; nearest = tile; }
+        });
+        if (nearest) nearest.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        setTimeout(function() { row.style.scrollSnapType = ''; }, 600);
+      } else {
+        row.style.scrollSnapType = '';
+      }
+    });
+    document.addEventListener('mousemove', function(e) {
+      if (!isDown) return;
+      var walk = e.pageX - startX;
+      if (Math.abs(walk) > 5) {
+        moved = true;
+        if (window._setCursorLock) window._setCursorLock('grabbing');
+      }
       row.scrollLeft = scrollLeft - walk;
     });
     row.addEventListener('click', function(e) {
@@ -293,33 +319,49 @@
   // ── Hover shadow ─────────────────────────────────────────────────
   (function() {
     if (!window.matchMedia('(hover: hover)').matches) return;
-    var tiles = document.querySelectorAll('.video-container');
+    var tiles = document.querySelectorAll('.hero-tile');
     var shadowEl = document.createElement('div');
     shadowEl.className = 'tile-hover-shadow';
-    shadowEl.style.cssText = 'position:fixed;pointer-events:none;border-radius:12px;z-index:9;opacity:0;transition:opacity 0.3s ease;box-shadow:0px 12px 65px rgba(0,0,0,0.32);';
+    shadowEl.style.cssText = 'position:fixed;pointer-events:none;border-radius:12px;z-index:9;opacity:0;transition:opacity 0.25s ease;box-shadow:0px 12px 65px rgba(0,0,0,0.32);';
     document.body.appendChild(shadowEl);
     var activeTile = null;
+    var rafId = null;
 
-    function syncShadow() {
+    function syncLoop() {
       if (!activeTile) return;
       var r = activeTile.getBoundingClientRect();
-      shadowEl.style.left = r.left + 'px'; shadowEl.style.top = r.top + 'px';
-      shadowEl.style.width = r.width + 'px'; shadowEl.style.height = r.height + 'px';
+      shadowEl.style.left   = r.left   + 'px';
+      shadowEl.style.top    = r.top    + 'px';
+      shadowEl.style.width  = r.width  + 'px';
+      shadowEl.style.height = r.height + 'px';
+      rafId = requestAnimationFrame(syncLoop);
     }
+
+    function stopSync() {
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    }
+
     var row = document.getElementById('tile-scroll-row');
     if (row) row.addEventListener('scroll', function() {
       activeTile = null;
+      stopSync();
       shadowEl.style.opacity = '0';
     });
 
     tiles.forEach(function(tile) {
       tile.addEventListener('mouseenter', function() {
-        activeTile = tile; tile.style.zIndex = '10';
-        syncShadow(); shadowEl.style.opacity = '1';
+        if (tile.classList.contains('is-active')) return;
+        activeTile = tile;
+        tile.style.zIndex = '10';
+        shadowEl.style.opacity = '1';
+        stopSync();
+        rafId = requestAnimationFrame(syncLoop);
       });
       tile.addEventListener('mouseleave', function() {
-        activeTile = null; tile.style.zIndex = '';
+        activeTile = null;
+        tile.style.zIndex = '';
         shadowEl.style.opacity = '0';
+        stopSync();
       });
     });
   })();
@@ -327,10 +369,12 @@
   // ── Background + link color on hover, reverts to active tile ─────
   (function() {
     if (!window.matchMedia('(hover: hover)').matches) return;
-    var tiles = document.querySelectorAll('.video-container');
+    var tiles = document.querySelectorAll('.hero-tile');
 
     tiles.forEach(function(tile) {
-      tile.addEventListener('mouseenter', function() { _applyTileBg(tile); });
+      tile.addEventListener('mouseenter', function() {
+        if (!tile.classList.contains('is-active')) _applyTileBg(tile);
+      });
       tile.addEventListener('mouseleave', function(e) {
         if (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.tile-scroll-arrow')) return;
         _applyActiveTileBg();
@@ -339,7 +383,7 @@
 
     document.querySelectorAll('.tile-scroll-arrow').forEach(function(btn) {
       btn.addEventListener('mouseleave', function(e) {
-        if (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.video-container')) return;
+        if (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.hero-tile')) return;
         _applyActiveTileBg();
       });
     });
@@ -349,7 +393,7 @@
   (function() {
     var row = document.getElementById('tile-scroll-row');
     if (!row) return;
-    var tiles = Array.from(document.querySelectorAll('.video-container'));
+    var tiles = Array.from(document.querySelectorAll('.hero-tile'));
     var btnLeft = document.querySelector('.tile-scroll-arrow--left');
     var btnRight = document.querySelector('.tile-scroll-arrow--right');
     if (!btnLeft || !btnRight || tiles.length === 0) return;
@@ -376,10 +420,21 @@
       tiles.forEach(function(tile, i) {
         var active = i === idx;
         tile.classList.toggle('is-active', active);
-        if (tile.dataset.href) tile.setAttribute('href', tile.dataset.href);
+        if (tile.dataset.href) {
+          if (active) tile.setAttribute('href', tile.dataset.href);
+          else tile.removeAttribute('href');
+        }
       });
       _applyTileBg(tiles[idx]);
     }
+
+    tiles.forEach(function(tile) {
+      tile.addEventListener('click', function() {
+        if (!tile.classList.contains('is-active')) {
+          tile.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      });
+    });
 
     btnLeft.addEventListener('click', function() {
       var idx = getCurrentIndex();

@@ -2,6 +2,7 @@
 title: Jobs Dashboard
 hide_footer: true
 layout: default
+classes: page--jobs
 toc: false
 toc_sticky: true
 toc_label: "Project Index"
@@ -62,52 +63,49 @@ galleryFinal:
     alt: " "
     title: " "
 ---
-<a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
-
-# Project: Jobs Dashboard
-*Product Designer @ Smartling, 2017-21*
-{: .notice}
+<div class="project-intro-grid">
+<div class="project-intro-grid__content" markdown="1">
 
 <span class="project-subheader">Jobs Dashboard, Extreme Makeover</span>
 # Rebooting Jobs
-{: id="h1st"}
-
-
-![Smartling](/assets/img/Smartling-Logo.png)
-{: .third-right}
 
 Smartling use revolves around daily requests for original content to be translated, edited, reviewed and published.
 
 It is fast paced and involves sophisticated workflow processes, with large teams and varying user permission levels, project structures, toolsets. Tracking these job requests is a critical piece of the day to day.
 
-<div class="case-meta">
-  <div class="case-meta__item">
-    <div class="case-meta__label">Role</div>
-    <div class="case-meta__value">UX Design &middot; Research</div>
-  </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Scope</div>
-    <div class="case-meta__value">
-      <span class="scope-tag">Discovery</span>
-      <span class="scope-tag">Research</span>
-      <span class="scope-tag">Design</span>
-      <span class="scope-tag">Launch</span>
+</div>
+<aside class="project-intro-grid__sidebar">
+  <img src="/assets/img/Smartling-Logo.png" alt="Smartling" class="sidebar-logo">
+  <div class="sidebar-meta">
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">My Role</div>
+      <div class="sidebar-meta__value">Product Designer, Smartling</div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Duration</div>
+      <div class="sidebar-meta__value">Jan 2020&ndash;Aug 2020</div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Contributions</div>
+      <div class="sidebar-meta__value">
+        <span class="contrib-tag">Discovery</span>
+        <span class="contrib-tag">Research</span>
+        <span class="contrib-tag">Design</span>
+        <span class="contrib-tag">Launch</span>
+      </div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Teams</div>
+      <div class="sidebar-meta__value">
+        <span class="team-tag team-tooltip" data-tooltip="Justin Pocta">Design</span>
+        <span class="meta-sep">&middot;</span>
+        <span class="team-tag team-tooltip" data-tooltip="Sophia Lazare (PM)">Product</span>
+        <span class="meta-sep">&middot;</span>
+        <span class="team-tag team-tooltip" data-tooltip="Jeremy Shankle · Dmitry Masley · Oleksandr Tymchenko · Pavlo Myrotiuk · Valerii Linetskyi · Sergey Chichulin · Yurii Beiko · Xiaoyun Yang · Rich Tam · Dominic DeMarco">Engineering</span>
+      </div>
     </div>
   </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Duration</div>
-    <div class="case-meta__value">Jan 2020&ndash;Aug 2020</div>
-  </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Team</div>
-    <div class="case-meta__value">
-      <span class="team-tooltip" data-tooltip="Justin Pocta">Design</span>
-      <span class="meta-sep">&middot;</span>
-      <span class="team-tooltip" data-tooltip="Sophia Lazare (PM)">Product</span>
-      <span class="meta-sep">&middot;</span>
-      <span class="team-tooltip" data-tooltip="Jeremy Shankle · Dmitry Masley · Oleksandr Tymchenko · Pavlo Myrotiuk · Valerii Linetskyi · Sergey Chichulin · Yurii Beiko · Xiaoyun Yang · Rich Tam · Dominic DeMarco">Engineering</span>
-    </div>
-  </div>
+</aside>
 </div>
 
 ## Discovering Deep Roots
@@ -132,9 +130,12 @@ All in all, it was barebones and lacking in consideration for the needs of a Loc
 
 ---
 
+<div class="project-section" markdown="1">
+
 ## **Initial Design for Customers & Translators**
 
 {% include gallery layout="half" id="galleryInitial" caption="" %}
+</div>
 
 ## Listening In
 
@@ -144,9 +145,12 @@ We collected input that helped to shape incorrect assumptions and validate aspec
 
 In this early iteration, we found that assignees were not valuable to users—general workflow status was critical. 
 
+<div class="project-section" markdown="1">
+
 ## **Design Iterations**
 
 {% include gallery layout="third" id="galleryIterations" caption="" %}
+</div>
 
 ## Data Grid vs Table
 
@@ -162,10 +166,7 @@ Future phases are planned to catch up the code to the UX vision where we intend 
 
 {% include gallery layout="" id="galleryFinal" caption="" %}
 
-<div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0 3em;">
-  <a href="/opengov" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Previous</a>
-  <a href="/smartling-workflows" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">Next →</a>
+<div class="project-footer-nav">
+  <a href="/opengov">← Previous</a>
+  <a href="/smartling-workflows">Next →</a>
 </div>
-
-<a href="/opengov" class="project-nav-arrow project-nav-arrow--left" aria-label="Previous project"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
-<a href="/smartling-workflows" class="project-nav-arrow project-nav-arrow--right" aria-label="Next project"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
