@@ -945,6 +945,96 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
 .team-tooltip:hover::after {
     opacity: 1;
 }
+
+/* Project intro two-column layout (sidebar variant) */
+.project-intro-grid {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    margin: 1.5em 0 2.5em;
+}
+.project-intro-grid__content {
+    flex: 1 1 0;
+    min-width: 0;
+}
+.project-intro-grid__sidebar {
+    flex: 0 0 210px;
+    width: 210px;
+}
+.sidebar-logo {
+    height: 30px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: left center;
+    display: block;
+    margin-bottom: 1.6em;
+}
+.sidebar-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1em;
+}
+.sidebar-meta__item {}
+.sidebar-meta__label {
+    font-size: 0.62em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #aaa;
+    margin-bottom: 0.45em;
+}
+.sidebar-meta__value {
+    font-size: 0.85em;
+    color: #333;
+    line-height: 1.5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+.contrib-tag {
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 500;
+    border: 1px solid rgba(0,0,0,0.18);
+    border-radius: 20px;
+    padding: 2px 10px;
+    color: rgba(0,0,0,0.6);
+    background: transparent;
+}
+.team-tag {
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 500;
+    border: 1px solid rgba(0,0,0,0.18);
+    border-radius: 20px;
+    padding: 2px 10px;
+    color: rgba(0,0,0,0.6);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.team-tag:hover {
+    background: rgba(184,150,58,0.1);
+    border-color: rgba(184,150,58,0.5);
+    color: #6b5020;
+}
+.team-tag.team-tooltip {
+    border-bottom: none;
+    padding-bottom: 2px;
+}
+@media (max-width: 640px) {
+    .project-intro-grid {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .project-intro-grid__sidebar {
+        flex: none;
+        width: 100%;
+    }
+    .sidebar-logo { height: 24px; }
+}
+
 .tile-coming-soon {
     display: inline-block;
     font-size: 0.55em;
