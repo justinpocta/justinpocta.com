@@ -91,7 +91,7 @@ galleryIA:
 
 <a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
 
-<span class="project-subheader">A collection of UX work at OpenGov</span>
+<span class="project-subheader">OpenGov Project</span>
 # Balancing the Budget App 
 {: .no_toc id="h1st"}
 
