@@ -13,6 +13,7 @@
 
     var href = a.getAttribute('href');
     if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+    if (/\.(jpg|jpeg|png|gif|webp|svg)$/i.test(href)) return;
 
     var url;
     try { url = new URL(href, window.location.href); } catch (err) { return; }
@@ -28,6 +29,80 @@
   window.addEventListener('pageshow', function(e) {
     document.body.classList.remove('page-leaving');
     document.body.classList.add('page-loaded');
+  });
+
+  // Shared cursor lock — injects/updates a <style> to override ALL cursor rules,
+  // bypassing pointer-events boundaries and animated child elements.
+  window._cursorLockEl = null;
+  window._setCursorLock = function(cursor) {
+    if (!window._cursorLockEl) {
+      window._cursorLockEl = document.createElement('style');
+      document.head.appendChild(window._cursorLockEl);
+    }
+    window._cursorLockEl.textContent = cursor
+      ? 'html, html * { cursor: ' + cursor + ' !important; }'
+      : '';
+  };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var sel = '.project-section figure.half, .project-section figure.third, .project-section figure.quarter';
+    document.querySelectorAll(sel).forEach(function(carousel) {
+      var isDown = false, hasDragged = false, startX = 0, scrollLeft = 0;
+
+      function updateEdgeFade() {
+        var items = carousel.querySelectorAll('a');
+        if (items.length === 0) return;
+        var cr = carousel.getBoundingClientRect();
+        var firstLeft = items[0].getBoundingClientRect().left;
+        var lastRight = items[items.length - 1].getBoundingClientRect().right;
+        carousel.classList.toggle('scroll-at-start', firstLeft >= cr.left - 4);
+        carousel.classList.toggle('scroll-at-end',   lastRight <= cr.right + 4);
+      }
+      carousel.addEventListener('scroll', updateEdgeFade);
+      // Double rAF so snap has settled before the initial check
+      requestAnimationFrame(function() { requestAnimationFrame(updateEdgeFade); });
+
+      carousel.addEventListener('mouseenter', function() {
+        window._setCursorLock('grab');
+      });
+      carousel.addEventListener('mouseleave', function() {
+        if (!isDown) window._setCursorLock(null);
+      });
+
+      carousel.addEventListener('mousedown', function(e) {
+        isDown = true;
+        hasDragged = false;
+        startX = e.pageX;
+        scrollLeft = carousel.scrollLeft;
+        e.preventDefault();
+      });
+
+      document.addEventListener('mouseup', function() {
+        if (!isDown) return;
+        isDown = false;
+        carousel.classList.remove('is-dragging');
+        window._setCursorLock(null);
+      });
+
+      document.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        var delta = e.pageX - startX;
+        if (Math.abs(delta) > 4) {
+          hasDragged = true;
+          carousel.classList.add('is-dragging');
+          window._setCursorLock('grabbing');
+        }
+        carousel.scrollLeft = scrollLeft - delta;
+      });
+
+      carousel.addEventListener('click', function(e) {
+        if (hasDragged) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          hasDragged = false;
+        }
+      }, true);
+    });
   });
 })();
 </script>

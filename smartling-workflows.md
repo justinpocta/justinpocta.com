@@ -2,6 +2,7 @@
 title: Workflows 2.0
 hide_footer: true
 layout: default
+classes: page--workflows
 toc: false
 toc_sticky: true
 toc_label: "Project Index"
@@ -60,49 +61,47 @@ galleryDecisionStepRules:
     title: ""
 ---
 
-<a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
-
-# Project: Workflows 2.0
-*Product Designer @ Smartling, 2017-21*
-{: .notice}
+<div class="project-intro-grid">
+<div class="project-intro-grid__content" markdown="1">
 
 <span class="project-subheader">Workflows 2.0</span>
 # From basic linear processes into a transformed, automated dynamic translation workflow to fit real world needs of our sophisticated customers
-{: .no_toc id="h1st"}
-
-![Smartling Logo](../assets/img/Smartling-Logo.png)
-{: .third-right}
 
 From the beginning of my time at Smartling in late 2017, the team had a goal of refining the existing product, as well as going deeper by applying modern technologies such as powerful automations to allow our customers increase efficiency and reduce clicks. Our Workflows configuration was a prime feature to invest in this type of effect.
 
-<div class="case-meta">
-  <div class="case-meta__item">
-    <div class="case-meta__label">Role</div>
-    <div class="case-meta__value">UX Design &middot; Research</div>
-  </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Scope</div>
-    <div class="case-meta__value">
-      <span class="scope-tag">Discovery</span>
-      <span class="scope-tag">Research</span>
-      <span class="scope-tag">Design</span>
-      <span class="scope-tag">Launch</span>
+</div>
+<aside class="project-intro-grid__sidebar">
+  <img src="/assets/img/Smartling-Logo.png" alt="Smartling" class="sidebar-logo">
+  <div class="sidebar-meta">
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">My Role</div>
+      <div class="sidebar-meta__value">Product Designer, Smartling</div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Duration</div>
+      <div class="sidebar-meta__value">Jan 2019&ndash;Apr 2019</div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Contributions</div>
+      <div class="sidebar-meta__value">
+        <span class="contrib-tag">Discovery</span>
+        <span class="contrib-tag">Research</span>
+        <span class="contrib-tag">Design</span>
+        <span class="contrib-tag">Launch</span>
+      </div>
+    </div>
+    <div class="sidebar-meta__item">
+      <div class="sidebar-meta__label">Teams</div>
+      <div class="sidebar-meta__value">
+        <span class="team-tag team-tooltip" data-tooltip="Justin Pocta">Design</span>
+        <span class="meta-sep">&middot;</span>
+        <span class="team-tag team-tooltip" data-tooltip="Franco Parico (PM)">Product</span>
+        <span class="meta-sep">&middot;</span>
+        <span class="team-tag team-tooltip" data-tooltip="Xiaoyun Yang (FE MVP) · Oleksandr Tymchenko (FE 1.0+) · Ben Loy (BE) · Dmitry Bochorishvili (BE)">Engineering</span>
+      </div>
     </div>
   </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Duration</div>
-    <div class="case-meta__value">Jan 2019&ndash;Apr 2019</div>
-  </div>
-  <div class="case-meta__item">
-    <div class="case-meta__label">Team</div>
-    <div class="case-meta__value">
-      <span class="team-tooltip" data-tooltip="Justin Pocta">Design</span>
-      <span class="meta-sep">&middot;</span>
-      <span class="team-tooltip" data-tooltip="Franco Parico (PM)">Product</span>
-      <span class="meta-sep">&middot;</span>
-      <span class="team-tooltip" data-tooltip="Xiaoyun Yang (FE MVP) · Oleksandr Tymchenko (FE 1.0+) · Ben Loy (BE) · Dmitry Bochorishvili (BE)">Engineering</span>
-    </div>
-  </div>
+</aside>
 </div>
 
 ## The Initial, Linear Flow
@@ -123,19 +122,20 @@ Working alongside Franco Parico, our PM for Workflows and MT tools, we kicked of
 
 ---
 
+<div class="project-section" markdown="1">
+
 ## Explorations of UI and Design Frameworks
 
 Discussions with the tech and product stakeholders helped us to assess potential tools and UI we could use. 3D Gamified visuals were noted, but discarded upon review as the goal of clear and quick UI was critical to the flow due to the list of workflows that a user would need to skim through and difficult to discover text at 45º angles was not optimal.
 
 A set of rough mockup to consider vertical alignment (problematic for finding the default flow from the alternate pathways), persistent step creation buttons (too cluttered), and other UI explorations to find the right look and feel for such a new approach to our platform.
 
-
 ![AWS 3D reference](../assets/img/Smartling-Workflows-aws-CTJsNcGUwAEa2BX.jpeg)
 {: .img-border}
 *AWS 3D reference*
 
-
 {% include gallery layout="half" id="galleryExplorations" caption="" %}
+</div>
 
 
 ---
@@ -176,10 +176,7 @@ Where we landed was thanks to the help of Product, Engineering and UX collaborat
 ### Managing Rules for Decision Steps
 <iframe src="https://www.youtube.com/embed/sB9zdrpP3j8?controls=0" title="YouTube video player"  class="youtube-handler" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0 3em;">
-  <a href="/smartling-jobs" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Previous</a>
-  <a href="/smartling-transcreation" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">Next →</a>
+<div class="project-footer-nav">
+  <a href="/smartling-jobs">← Previous</a>
+  <a href="/smartling-transcreation">Next →</a>
 </div>
-
-<a href="/smartling-jobs" class="project-nav-arrow project-nav-arrow--left" aria-label="Previous project"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></a>
-<a href="/smartling-transcreation" class="project-nav-arrow project-nav-arrow--right" aria-label="Next project"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>

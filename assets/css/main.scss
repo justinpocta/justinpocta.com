@@ -19,21 +19,6 @@ body.layout--front {
     text-wrap: pretty;
 }
 
-body::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 20px;
-    background: #B8963A;
-    pointer-events: none;
-}
-body.layout--front::after {
-    background: #3F4346;
-    transition: background-color 0.4s ease;
-}
-body.layout--front.bg-dark::after {
-    background: #F5F1E8;
-}
 
 .initial-content {
     opacity: 0;
@@ -478,7 +463,7 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
     transform: translateY(6px);
     transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
 }
-.video-container:hover .project-title-name {
+.hero-tile:hover .project-title-name {
     opacity: 1;
     transform: translateY(0);
 }
@@ -493,7 +478,7 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
     line-height: 1.2;
     margin-bottom: 2px;
 }
-.video-container:hover .tile-company {
+.hero-tile:hover .tile-company {
     opacity: 0.75;
     transform: translateY(0);
 }
@@ -547,7 +532,7 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
     border-radius: 8px;
     overflow: hidden;
 }
-.video-container {
+.hero-tile {
     width: 50%;
     min-height: 300px;
     max-height: 400px;
@@ -627,7 +612,11 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
 .container.scroll-test.dragging {
     cursor: grabbing;
 }
-.container.scroll-test .video-container {
+body.cursor-grabbing,
+body.cursor-grabbing * {
+    cursor: grabbing !important;
+}
+.container.scroll-test .hero-tile {
     flex: 0 0 auto;
     width: 85vw;
     max-width: 900px;
@@ -651,11 +640,12 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
     z-index: 1;
     pointer-events: none;
 }
-.container.scroll-test .video-container.is-active {
+.container.scroll-test .hero-tile.is-active {
     height: calc(56vh + 40px);
-}
-.container.scroll-test .video-container:not(.is-active) {
     cursor: pointer;
+}
+.container.scroll-test .hero-tile:not(.is-active) {
+    cursor: grab;
 }
 .masthead,
 .masthead__inner-wrap,
@@ -663,37 +653,37 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
     background-color: transparent !important;
     border-bottom: none !important;
 }
-a.video-container:link  { color: rgba(255,255,255,1.0); text-decoration: none !important; }
-a.video-container:visited,
-a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !important; }
+a.hero-tile:link  { color: rgba(255,255,255,1.0); text-decoration: none !important; }
+a.hero-tile:visited,
+a.hero-tile:hover { color: rgba(255,255,255,.75); text-decoration: none !important; }
 
 /* desktop: greyscale until hover or active */
 @media (hover: hover) {
-    .video-container {
+    .hero-tile {
         filter: grayscale(100%);
         transition: filter 0.3s ease, height 0.3s ease;
     }
-    .video-container:hover,
-    .video-container.is-active {
+    .hero-tile:hover,
+    .hero-tile.is-active {
         filter: grayscale(0%);
     }
 }
 
 /* mobile: scroll into view reveals color, animations always running */
 @media (hover: none) {
-    .video-container {
+    .hero-tile {
         filter: grayscale(100%);
         transition: filter 0.6s ease;
     }
-    .video-container.in-view {
+    .hero-tile.in-view {
         filter: grayscale(0%);
     }
-    .video-container.in-view .tile-company,
-    .video-container.in-view .project-title-name {
+    .hero-tile.in-view .tile-company,
+    .hero-tile.in-view .project-title-name {
         opacity: 0.75;
         transform: translateY(0);
     }
-    .video-container.in-view .project-title-name {
+    .hero-tile.in-view .project-title-name {
         opacity: 1;
     }
 }
@@ -730,8 +720,8 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
         justify-content: center;
     }
     .hero-intro h1 { margin: 0; }
-    .video-container { width: 100%; min-height: 80vw; max-height: none; }
-    .video-container p { padding-bottom: 1.3em; }
+    .hero-tile { width: 100%; min-height: 80vw; max-height: none; }
+    .hero-tile p { padding-bottom: 1.3em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -946,6 +936,28 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
     opacity: 1;
 }
 
+/* Project pagination footer */
+.project-footer-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0 8em;
+    border-top: 1px solid rgba(0, 0, 0, 0.18);
+    margin-top: 4em;
+}
+.project-footer-nav a {
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.project-footer-nav a:hover {
+    color: #333;
+}
+
 /* Project intro two-column layout (sidebar variant) */
 .project-intro-grid {
     display: flex;
@@ -962,9 +974,8 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
     width: 210px;
 }
 .sidebar-logo {
-    height: 30px;
-    width: auto;
-    max-width: 100%;
+    width: 100%;
+    height: 80px;
     object-fit: contain;
     object-position: left center;
     display: block;
@@ -1003,25 +1014,7 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
     background: transparent;
 }
 .team-tag {
-    display: inline-block;
-    font-size: 0.8em;
-    font-weight: 500;
-    border: 1px solid rgba(0,0,0,0.18);
-    border-radius: 20px;
-    padding: 2px 10px;
-    color: rgba(0,0,0,0.6);
-    background: transparent;
-    cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-.team-tag:hover {
-    background: rgba(184,150,58,0.1);
-    border-color: rgba(184,150,58,0.5);
-    color: #6b5020;
-}
-.team-tag.team-tooltip {
-    border-bottom: none;
-    padding-bottom: 2px;
+    font-size: 0.85em;
 }
 @media (max-width: 640px) {
     .project-intro-grid {
@@ -1032,7 +1025,160 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
         flex: none;
         width: 100%;
     }
-    .sidebar-logo { height: 24px; }
+    .sidebar-logo { height: 40px; }
+}
+
+/* Horizontal scroll carousel for multi-image galleries inside project sections */
+.project-section figure.half,
+.project-section figure.third,
+.project-section figure.quarter {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: 0 !important;
+    margin-top: 1.25em !important;
+    margin-bottom: 1.5em !important;
+    padding: 0 32px 18px !important;
+    box-sizing: border-box !important;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.15) transparent;
+    cursor: grab;
+    user-select: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0px, black 80px, black calc(100% - 80px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0px, black 80px, black calc(100% - 80px), transparent 100%);
+}
+/* Fade only where there is more to scroll */
+.project-section figure.half.scroll-at-start,
+.project-section figure.third.scroll-at-start,
+.project-section figure.quarter.scroll-at-start {
+    -webkit-mask-image: linear-gradient(to right, black 0px, black calc(100% - 80px), transparent 100%);
+    mask-image: linear-gradient(to right, black 0px, black calc(100% - 80px), transparent 100%);
+}
+.project-section figure.half.scroll-at-end,
+.project-section figure.third.scroll-at-end,
+.project-section figure.quarter.scroll-at-end {
+    -webkit-mask-image: linear-gradient(to right, transparent 0px, black 80px, black 100%);
+    mask-image: linear-gradient(to right, transparent 0px, black 80px, black 100%);
+}
+.project-section figure.half.scroll-at-start.scroll-at-end,
+.project-section figure.third.scroll-at-start.scroll-at-end,
+.project-section figure.quarter.scroll-at-start.scroll-at-end {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+.project-section figure.half.is-dragging,
+.project-section figure.third.is-dragging,
+.project-section figure.quarter.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+}
+.project-section figure.half.is-dragging *,
+.project-section figure.third.is-dragging *,
+.project-section figure.quarter.is-dragging * {
+    cursor: grabbing !important;
+}
+.project-section figure.half::before,
+.project-section figure.half::after,
+.project-section figure.third::before,
+.project-section figure.third::after {
+    display: none !important;
+}
+.project-section figure.half a,
+.project-section figure.third a,
+.project-section figure.quarter a {
+    flex: 0 0 auto !important;
+    float: none !important;
+    width: auto !important;
+    margin: 0 !important;
+    scroll-snap-align: start;
+    display: block;
+    cursor: grab;
+}
+.project-section figure.half.is-dragging a,
+.project-section figure.third.is-dragging a,
+.project-section figure.quarter.is-dragging a {
+    cursor: grabbing !important;
+}
+.project-section figure.half img,
+.project-section figure.third img,
+.project-section figure.quarter img {
+    height: 560px !important;
+    width: auto !important;
+    max-width: none !important;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+}
+.project-section figure.half figcaption,
+.project-section figure.third figcaption {
+    display: none;
+}
+
+/* Project section with full-bleed gradient background */
+.project-section {
+    position: relative;
+    margin-top: 3em;
+    padding-top: 2.5em;
+}
+.project-eyebrow {
+    font-size: 0.65em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #aaa;
+    margin: 0 0 0.3em;
+}
+.project-icon {
+    font-size: 0.85em;
+    margin-right: 0.2em;
+    vertical-align: middle;
+}
+:root {
+    --section-color: 215, 220, 228;
+}
+/* Per-page section gradient colors — lightened 20% toward white from home tile colors */
+body.page--jobs          { --section-color: 214, 208, 223; } /* #321261 purple */
+body.page--workflows     { --section-color: 236, 212, 241; } /* #9F29B7 purple */
+body.page--transcreation { --section-color: 249, 227, 224; } /* #E17463 coral */
+body.page--highlight     { --section-color: 204, 216, 213; } /* #003D2F green */
+.project-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 320px;
+    background: linear-gradient(to bottom, rgb(var(--section-color)) 0%, rgba(255,255,255,0) 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+/* Gradient lead-in for single-project pages (first h2 directly after intro grid) */
+.project-intro-grid ~ h2:first-of-type {
+    position: relative;
+    margin-top: 2.5em;
+    padding-top: 2em;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        height: 520px;
+        background: linear-gradient(to bottom, rgb(var(--section-color)) 0%, rgba(255,255,255,0) 100%);
+        z-index: -1;
+        pointer-events: none;
+    }
 }
 
 .tile-coming-soon {
@@ -1051,8 +1197,8 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
     transform: translateY(6px);
     transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
 }
-.video-container:hover .tile-coming-soon,
-.video-container.in-view .tile-coming-soon {
+.hero-tile:hover .tile-coming-soon,
+.hero-tile.in-view .tile-coming-soon {
     opacity: 1;
     transform: translateY(0);
 }
@@ -1066,14 +1212,14 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
     transform: translateY(6px);
     transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
 }
-.video-container:hover .tile-title-row,
-.video-container.in-view .tile-title-row {
+.hero-tile:hover .tile-title-row,
+.hero-tile.in-view .tile-title-row {
     opacity: 1;
     transform: translateY(0);
 }
 /* Children inside the row are static — the row itself animates */
-.video-container:hover .tile-title-row > .project-title-name,
-.video-container:hover .tile-title-row > .tile-coming-soon {
+.hero-tile:hover .tile-title-row > .project-title-name,
+.hero-tile:hover .tile-title-row > .tile-coming-soon {
     opacity: 1;
     transform: none;
     transition: none;
@@ -1086,35 +1232,6 @@ a.video-container:hover { color: rgba(255,255,255,.75); text-decoration: none !i
     margin-top: 0;
 }
 
-/* Fixed prev/next arrows on project pages */
-.project-nav-arrow {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 200;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.82);
-    border: 1px solid rgba(0,0,0,0.12);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.14);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #333;
-    text-decoration: none !important;
-    transition: background 0.2s ease, box-shadow 0.2s ease;
-}
-.project-nav-arrow:hover {
-    background: rgba(255,255,255,0.98);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.22);
-    color: #111;
-}
-.project-nav-arrow--left  { left: 16px; }
-.project-nav-arrow--right { right: 16px; }
-@media (max-width: 768px) {
-    .project-nav-arrow { display: none; }
-}
 
 /* Transcreation */
 .anim-tc { display: flex; align-items: center; gap: 20px; }
