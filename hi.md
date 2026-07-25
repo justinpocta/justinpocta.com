@@ -12,22 +12,24 @@ hide_footer: true
 /* ---- card stack ---- */
 .hi-stack-outer {
   position: relative;
-  max-width: 480px;
+  max-width: 100%;
   margin: 2rem 0 3rem;
+  padding: 0 28px; /* arrow zone flanking the stack */
+  box-sizing: border-box;
 }
 
 .hi-stack {
   position: relative;
   width: 100%;
   height: clamp(400px, 65vh, 560px);
-  overflow: hidden;
+  /* no overflow:hidden -- behind-card rotations must not be clipped */
 }
 
 .hi-card {
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(100% - 20px);
+  width: calc(100% - 20px); /* narrower so behind-cards show at the offset */
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
@@ -43,12 +45,6 @@ hide_footer: true
 
 @media (prefers-color-scheme: dark) { .hi-card { background: #111; } }
 :root[data-theme="dark"] .hi-card { background: #111; }
-
-.hi-card--vcenter {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 .hi-card--active {
   z-index: 3;
@@ -81,17 +77,17 @@ hide_footer: true
   box-shadow: none;
 }
 
-/* ---- nav arrows: overlaid on card left/right sides ---- */
+/* ---- nav arrows: outside the card stack, in the outer padding zone ---- */
 .hi-nav-btn {
   position: absolute;
-  top: 50%;
+  top: calc(clamp(200px, 32.5vh, 280px)); /* midpoint of stack height */
   transform: translateY(-50%);
   z-index: 10;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.92);
   box-shadow: 0 2px 10px rgba(0,0,0,0.18);
   cursor: pointer;
   display: flex;
@@ -108,12 +104,11 @@ hide_footer: true
   transform: translateY(-50%) scale(1.1);
 }
 
-/* left edge of active card is at x=0; sit the prev button just inside */
-.hi-nav-prev { left: 6px; }
-/* active card right edge is at (stack-width - 20px); right:26px puts button just inside that edge */
-.hi-nav-next { right: 26px; }
+/* buttons live in .hi-stack-outer, in the padding zones flanking the stack */
+.hi-nav-prev { left: 4px; }
+.hi-nav-next { right: 4px; }
 
-/* ---- dots (below the stack) ---- */
+/* ---- dots ---- */
 .hi-dots-row {
   display: flex;
   justify-content: center;
@@ -138,60 +133,85 @@ hide_footer: true
   margin: 0;
   width: 100%;
 }
-.hi-card--vcenter .social-widget { width: 100%; }
 
-/* ---- book card ---- */
+/* ---- book card: fills full hi-card height like a real book ---- */
 .book-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-.book-cover-wrap { position: relative; line-height: 0; }
-
-/* Actual cover image -- hidden until it loads */
-.book-cover-img {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* border-radius inherited from hi-card */
+}
+
+.book-cover-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* Actual image -- hidden until loaded, then replaces art */
+.book-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: none;
 }
 .book-cover-img.loaded { display: block; }
 
-/* CSS art fallback -- yellow/black matching the real cover */
+/* CSS art fallback: yellow/black matching the real cover */
 .book-cover-art {
   width: 100%;
-  aspect-ratio: 5/3;
+  height: 100%;
   background: #F5C200;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 20px 28px;
+  justify-content: space-between;
+  padding: 28px 14px 20px;
   box-sizing: border-box;
 }
 .book-cover-art.hidden { display: none; }
+
 .book-cover-art-title {
   color: #0a0a0a;
-  font-size: 2.8em;
+  /* em is card-relative (inherits 22px body), vw is capped so it never blows past the card */
+  font-size: min(2.2em, 13.5cqw);
   font-weight: 900;
   font-family: Georgia, "Times New Roman", serif;
   font-style: normal;
   line-height: 1;
   text-align: center;
 }
+.book-cover-wrap {
+  container-type: inline-size; /* enables cqw scaling */
+}
+.book-cover-art-blurb {
+  color: rgba(0,0,0,0.5);
+  font-size: 0.72em;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 80%;
+}
 .book-cover-art-author {
-  color: #1a1a1a;
-  font-size: 0.85em;
-  font-weight: 700;
+  color: #0a0a0a;
+  font-size: 1.0em;
+  font-weight: 800;
   font-family: Georgia, "Times New Roman", serif;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-align: center;
 }
 
-.book-meta { padding: 14px 16px 16px; }
+.book-meta {
+  flex: 0 0 auto;
+  padding: 12px 16px 14px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
 .book-label {
   display: block;
   font-size: 0.72em;
@@ -205,28 +225,37 @@ hide_footer: true
 
 /* dark mode */
 @media (prefers-color-scheme: dark) {
-  .book-card { background: #111; border-color: #2e2e2e; }
+  .book-meta { border-top-color: rgba(255,255,255,0.1); }
   .book-author-line { color: #999; }
   .hi-nav-btn {
-    background: rgba(28,28,28,0.9);
+    background: rgba(28,28,28,0.92);
     color: #ddd;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
   }
-  .hi-nav-btn:hover { background: rgba(40,40,40,0.95); }
+  .hi-nav-btn:hover { background: rgba(45,45,45,0.95); }
 }
-:root[data-theme="dark"] .book-card { background: #111; border-color: #2e2e2e; }
+:root[data-theme="dark"] .book-meta { border-top-color: rgba(255,255,255,0.1); }
 :root[data-theme="dark"] .book-author-line { color: #999; }
 :root[data-theme="dark"] .hi-nav-btn {
-  background: rgba(28,28,28,0.9);
+  background: rgba(28,28,28,0.92);
   color: #ddd;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
-:root[data-theme="dark"] .hi-nav-btn:hover { background: rgba(40,40,40,0.95); }
+:root[data-theme="dark"] .hi-nav-btn:hover { background: rgba(45,45,45,0.95); }
 </style>
 
 # Hello from Brooklyn, NY
 
 <div class="hi-stack-outer">
+
+  <!-- arrows in the outer padding zone, flanking the stack -->
+  <button class="hi-nav-btn hi-nav-prev" id="hi-prev" aria-label="Previous">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="hi-nav-btn hi-nav-next" id="hi-next" aria-label="Next">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+
   <div class="hi-stack" id="hi-stack">
 
     <div class="hi-card hi-card--vcenter" id="hi-card-0">
@@ -237,7 +266,8 @@ hide_footer: true
       {% include flickr.html %}
     </div>
 
-    <div class="hi-card hi-card--vcenter" id="hi-card-2">
+    <!-- book card: no hi-card--vcenter, fills full height -->
+    <div class="hi-card" id="hi-card-2">
       <div class="book-card">
         <div class="book-cover-wrap">
           <img class="book-cover-img" id="book-cover-img"
@@ -245,6 +275,7 @@ hide_footer: true
                alt="Martyr! by Kaveh Akbar">
           <div class="book-cover-art" id="book-cover-art">
             <span class="book-cover-art-title">Martyr!</span>
+            <span class="book-cover-art-blurb">"A miracle of a novel"</span>
             <span class="book-cover-art-author">Kaveh Akbar</span>
           </div>
         </div>
@@ -256,24 +287,17 @@ hide_footer: true
       </div>
     </div>
 
-    <!-- nav arrows overlaid on card sides -->
-    <button class="hi-nav-btn hi-nav-prev" id="hi-prev" aria-label="Previous">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <button class="hi-nav-btn hi-nav-next" id="hi-next" aria-label="Next">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-
   </div>
 
   <div class="hi-dots-row">
     <div id="hi-dots" class="hi-dots"></div>
   </div>
+
 </div>
 
 <script>
 (function () {
-  /* book cover: show img when loaded, keep CSS art as fallback */
+  /* book cover: show real image when it loads */
   var bookImg = document.getElementById('book-cover-img');
   var bookArt = document.getElementById('book-cover-art');
   if (bookImg && bookArt) {
