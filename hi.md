@@ -9,7 +9,7 @@ hide_footer: true
 ---
 
 <style>
-/* ---- card stack container ---- */
+/* ---- card stack ---- */
 .hi-stack-outer {
   position: relative;
   max-width: 480px;
@@ -18,21 +18,32 @@ hide_footer: true
 
 .hi-stack {
   position: relative;
-  height: 360px; /* JS overrides once cards render */
-  padding-right: 20px;
-  padding-bottom: 20px;
-  box-sizing: content-box;
+  width: 100%;
+  height: clamp(400px, 65vh, 560px);
   overflow: hidden;
 }
 
+/* Cards: slightly narrower than stack so behind-cards fit when offset */
 .hi-card {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: calc(100% - 20px);
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.12) transparent;
   transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               opacity 0.42s ease;
   will-change: transform, opacity;
+}
+
+/* Vertical centering variant (mastodon + book) */
+.hi-card--vcenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hi-card--active {
@@ -62,12 +73,13 @@ hide_footer: true
   pointer-events: none;
 }
 
-/* ---- nav ---- */
+/* ---- nav: compact, centered below card ---- */
 .hi-nav {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: 18px;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .hi-nav-btn {
@@ -75,7 +87,7 @@ hide_footer: true
   border: none;
   cursor: pointer;
   color: inherit;
-  padding: 2px;
+  padding: 4px;
   line-height: 1;
   opacity: 0.4;
   transition: opacity 0.2s;
@@ -103,10 +115,16 @@ hide_footer: true
 
 /* ---- includes override inside cards ---- */
 .hi-card .social-widget,
-.hi-card .flickr-card,
-.hi-card .mastodon-card {
+.hi-card .mastodon-card,
+.hi-card .flickr-card {
   max-width: 100%;
   margin: 0;
+  width: 100%;
+}
+
+/* Mastodon card fills the flex column when vertically centering */
+.hi-card--vcenter .social-widget {
+  width: 100%;
 }
 
 /* ---- book card ---- */
@@ -130,12 +148,6 @@ hide_footer: true
   gap: 10px;
   padding: 32px;
   box-sizing: border-box;
-}
-.book-cover-img {
-  width: 100%;
-  aspect-ratio: 5/3;
-  object-fit: cover;
-  display: block;
 }
 .book-cover-art-title {
   color: #e8d9b0;
@@ -189,7 +201,7 @@ hide_footer: true
 <div class="hi-stack-outer">
   <div class="hi-stack" id="hi-stack">
 
-    <div class="hi-card" id="hi-card-0">
+    <div class="hi-card hi-card--vcenter" id="hi-card-0">
       {% include mastodon.html %}
     </div>
 
@@ -197,7 +209,7 @@ hide_footer: true
       {% include flickr.html %}
     </div>
 
-    <div class="hi-card" id="hi-card-2">
+    <div class="hi-card hi-card--vcenter" id="hi-card-2">
       <div class="book-card">
         <div class="book-cover-art">
           <span class="book-cover-art-title">Martyr!</span>
@@ -231,6 +243,7 @@ hide_footer: true
   var dotsEl = document.getElementById('hi-dots');
   var total = cards.length;
   var current = 0;
+  var STACK_CLASSES = ['hi-card--active', 'hi-card--behind-1', 'hi-card--behind-2', 'hi-card--hidden'];
 
   cards.forEach(function () {
     var d = document.createElement('span');
@@ -240,26 +253,22 @@ hide_footer: true
 
   function mod(n, m) { return ((n % m) + m) % m; }
 
-  function syncHeight() {
-    var h = cards[current].offsetHeight;
-    stack.style.height = h + 'px';
-  }
-
   function updateStack() {
     var dots = dotsEl.querySelectorAll('.hi-dot');
     cards.forEach(function (card, i) {
+      STACK_CLASSES.forEach(function (cls) { card.classList.remove(cls); });
       var dist = mod(i - current, total);
-      card.className = 'hi-card ' + (
+      card.classList.add(
         dist === 0 ? 'hi-card--active' :
         dist === 1 ? 'hi-card--behind-1' :
         dist === 2 ? 'hi-card--behind-2' :
                      'hi-card--hidden'
       );
+      if (dist === 0) card.scrollTop = 0;
     });
     dots.forEach(function (d, i) {
       d.className = 'hi-dot' + (i === current ? ' hi-dot--on' : '');
     });
-    syncHeight();
   }
 
   function go(dir) {
@@ -276,10 +285,6 @@ hide_footer: true
     var dx = e.changedTouches[0].clientX - tx;
     if (Math.abs(dx) > 44) go(dx < 0 ? 1 : -1);
   }, { passive: true });
-
-  var mo = new MutationObserver(function () { if (current === 0 || current === 1) syncHeight(); });
-  cards.forEach(function (c) { mo.observe(c, { childList: true, subtree: true }); });
-  window.addEventListener('resize', syncHeight);
 
   updateStack();
 })();
