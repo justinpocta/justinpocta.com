@@ -5,57 +5,46 @@
   required (that's only for signed/write calls, which this isn't).
 -->
 
-<div id="flickr-widget" class="flickr-widget">
-  <p class="flickr-loading">Loading photos&hellip;</p>
-</div>
-
-<div class="flickr-footer">
-  <svg class="flickr-icon-svg" width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="10" cy="10" r="10" fill="#0063DC"/>
-    <circle cx="20" cy="10" r="10" fill="#FF0084"/>
-  </svg>
-  <a href="http://photos.justinpocta.com" class="flickr-handle" target="_blank" rel="noopener">@justinpocta</a>
+<div class="flickr-card social-post">
+  <div id="flickr-grid" class="flickr-grid">
+    <p class="flickr-loading">Loading photos&hellip;</p>
+  </div>
+  <div class="flickr-footer">
+    <svg class="flickr-icon-svg" width="34" height="16" viewBox="0 0 34 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="8" cy="8" r="8" fill="#FF0084"/>
+      <circle cx="26" cy="8" r="8" fill="#0063DC"/>
+    </svg>
+    <a href="http://photos.justinpocta.com" class="flickr-handle" target="_blank" rel="noopener">@justinpocta</a>
+  </div>
 </div>
 
 <style>
-  .flickr-widget {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    box-sizing: border-box;
-    gap: 8px;
-    /* break out of the page's centered max-width container to span the full viewport */
-    width: 100vw;
-    margin: 1.5rem calc(50% - 50vw);
-    padding: 0 24px;
-    cursor: grab;
-    scrollbar-width: none;
+  .flickr-card {
+    max-width: 500px;
+    margin: 1.5rem 0;
+    font-family: inherit;
+    display: block;
   }
-  .flickr-widget::-webkit-scrollbar {
-    display: none;
+  .flickr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 10px 10px 6px;
   }
-  .flickr-widget.dragging {
-    cursor: grabbing;
-  }
-  .flickr-widget a {
+  .flickr-grid a {
     display: block;
     overflow: hidden;
     border-radius: 6px;
     aspect-ratio: 1 / 1;
-    flex: 0 0 auto;
-    width: 240px;
-    scroll-snap-align: center;
   }
-  .flickr-widget img {
+  .flickr-grid img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.25s ease;
   }
-  .flickr-widget a:hover img {
+  .flickr-grid a:hover img {
     transform: scale(1.05);
   }
   .flickr-loading {
@@ -66,8 +55,9 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-top: 14px;
-    padding-left: 4px;
+    margin-top: 6px;
+    padding: 12px 14px 4px;
+    border-top: 1px solid #eee;
   }
   .flickr-icon-svg {
     flex: 0 0 auto;
@@ -88,10 +78,10 @@
 (function () {
   var FLICKR_API_KEY = "10603b12c8391b253b19e8f4e01a42b8";
   var FLICKR_USER_ID  = "59585990@N00";
-  var PHOTO_COUNT     = 12;
+  var PHOTO_COUNT     = 9;
 
   window.jsonFlickrApi = function (data) {
-    var container = document.getElementById("flickr-widget");
+    var container = document.getElementById("flickr-grid");
     container.innerHTML = "";
 
     if (data.stat !== "ok") {
@@ -100,7 +90,7 @@
     }
 
     data.photos.photo.forEach(function (p) {
-      var thumbUrl = "https://live.staticflickr.com/" + p.server + "/" + p.id + "_" + p.secret + "_c.jpg";
+      var thumbUrl = "https://live.staticflickr.com/" + p.server + "/" + p.id + "_" + p.secret + "_q.jpg";
       var pageUrl  = "https://www.flickr.com/photos/" + FLICKR_USER_ID + "/" + p.id;
 
       var link = document.createElement("a");
@@ -126,34 +116,5 @@
     + "&format=json"
     + "&jsoncallback=jsonFlickrApi";
   document.body.appendChild(script);
-
-  var row = document.getElementById("flickr-widget");
-  var isDown = false, startX, scrollLeft, moved;
-
-  row.addEventListener("mousedown", function (e) {
-    isDown = true;
-    moved = false;
-    row.classList.add("dragging");
-    startX = e.pageX - row.offsetLeft;
-    scrollLeft = row.scrollLeft;
-  });
-  window.addEventListener("mouseup", function () {
-    isDown = false;
-    row.classList.remove("dragging");
-  });
-  row.addEventListener("mousemove", function (e) {
-    if (!isDown) return;
-    e.preventDefault();
-    var x = e.pageX - row.offsetLeft;
-    var walk = x - startX;
-    if (Math.abs(walk) > 5) moved = true;
-    row.scrollLeft = scrollLeft - walk;
-  });
-  row.addEventListener("click", function (e) {
-    if (moved) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  }, true);
 })();
 </script>
