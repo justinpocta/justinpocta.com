@@ -9,6 +9,9 @@ hide_footer: true
 ---
 
 <style>
+/* prevent double-tap zoom on mobile without disabling pinch-zoom */
+html { touch-action: manipulation; }
+
 /* ensure parent containers don't clip the card stack */
 .page__content,
 .initial-content {
