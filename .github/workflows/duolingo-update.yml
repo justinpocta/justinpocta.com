@@ -18,40 +18,64 @@ jobs:
       - name: Fetch Duolingo data and write _data/duolingo.json
         run: |
           python3 << 'PYEOF'
-          import json, urllib.request, datetime
+          import json, urllib.request, re, datetime
 
-          url = 'https://www.duolingo.com/2017-06-30/users?username=texnology84&fields=username,streak,picture,hasPlus,creationDate,learningLanguage,courses'
-          req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-          with urllib.request.urlopen(req) as r:
-            data = json.load(r)
-
-          users = data.get('users', [])
-          if not users:
-            print('No user data returned, keeping existing file')
-            exit(0)
-
-          user = users[0]
-          creation_ts = user.get('creationDate', 0)
-          member_since = datetime.datetime.utcfromtimestamp(creation_ts).strftime('%b %Y') if creation_ts else ''
-
-          courses = user.get('courses', [])
-          fr_course = next((c for c in courses if c.get('learningLanguage') == 'fr'), None)
-          french_level = fr_course.get('level', 0) if fr_course else 0
-
-          out = {
-            'username': user.get('username', 'texnology84'),
-            'streak': user.get('streak', 0),
-            'picture': user.get('picture', ''),
-            'hasPlus': user.get('hasPlus', False),
-            'member_since': member_since,
-            'learningLanguage': user.get('learningLanguage', 'fr'),
-            'french_level': french_level,
-            'updated_at': datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
+          HEADERS = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml',
+            'Accept-Language': 'en-US,en;q=0.9',
           }
+
+          # Read existing JSON to keep any fields we can't update
+          with open('_data/duolingo.json') as f:
+            existing = json.load(f)
+
+          # --- Avatar from public profile page (OG image) ---
+          profile_req = urllib.request.Request(
+            'https://www.duolingo.com/profile/texnology84', headers=HEADERS)
+          with urllib.request.urlopen(profile_req) as r:
+            html = r.read().decode('utf-8', errors='replace')
+
+          m = re.search(r'<meta[^>]*og:image[^>]*content="([^"]+)"', html)
+          picture = m.group(1) if m else existing.get('picture', '')
+
+          # --- Streak + level from API (public, no auth needed most of the time) ---
+          api_url = 'https://www.duolingo.com/2017-06-30/users?username=texnology84&fields=username,streak,hasPlus,creationDate,learningLanguage,courses'
+          api_req = urllib.request.Request(api_url, headers=HEADERS)
+          try:
+            with urllib.request.urlopen(api_req) as r:
+              data = json.load(r)
+            users = data.get('users', [])
+          except Exception as e:
+            print(f'API fetch failed: {e}')
+            users = []
+
+          if users:
+            user = users[0]
+            creation_ts = user.get('creationDate', 0)
+            member_since = datetime.datetime.utcfromtimestamp(creation_ts).strftime('%b %Y') if creation_ts else existing.get('member_since', '')
+            courses = user.get('courses', [])
+            fr_course = next((c for c in courses if c.get('learningLanguage') == 'fr'), None)
+            out = {
+              'username': user.get('username', existing.get('username', 'texnology84')),
+              'streak': user.get('streak', existing.get('streak', 0)),
+              'picture': picture,
+              'hasPlus': user.get('hasPlus', existing.get('hasPlus', False)),
+              'member_since': member_since,
+              'learningLanguage': user.get('learningLanguage', existing.get('learningLanguage', 'fr')),
+              'french_level': fr_course.get('level', existing.get('french_level', 0)) if fr_course else existing.get('french_level', 0),
+              'updated_at': datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
+            }
+          else:
+            # API blocked — keep existing data, only update picture from profile page
+            print('API unavailable; keeping existing streak/level, updating avatar only')
+            out = dict(existing)
+            out['picture'] = picture
+            out['updated_at'] = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
 
           with open('_data/duolingo.json', 'w') as f:
             json.dump(out, f, indent=2)
-          print(f"Streak: {out['streak']} | Super: {out['hasPlus']} | Since: {out['member_since']}")
+          print(f"Streak: {out['streak']} | Super: {out['hasPlus']} | Picture: {'yes' if out['picture'] else 'no'}")
           PYEOF
 
       - name: Commit if changed
