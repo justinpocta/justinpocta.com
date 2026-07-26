@@ -49,7 +49,7 @@ I love working with teams that value asking questions. _Why are we creating a gi
 </div>
 
 <div class="fade-in-block" style="animation-delay:1.15s; margin: 1.8em 0 1.8em; opacity: 0.75;" markdown="1">
-  <p style="margin: 0; font-size: 0.9em; font-style: italic; font-family: Georgia, serif; line-height: 1.6; color: inherit;">Pardon my portfolio's rough edges. I'm updating on a near-daily basis, adding and revising case studies, and exploring Claude Code for animation and other frontend enhancements. Enjoy the show. Running on Github Pages, Jekyll, and iterating off of <a href="https://mmistakes.github.io/minimal-mistakes/" style="color:inherit;">Minimal Mistakes</a> theme.</p>
+  <p style="margin: 0; font-size: 0.9em; font-style: italic; font-family: Georgia, serif; line-height: 1.6; color: inherit;">Pardon my portfolio's rough edges. I'm updating on a near-daily basis, adding and revising case studies, and exploring Claude Code for animation and other frontend enhancements. Enjoy the show. Running on Github Pages, Jekyll, and iterating off of <a href="https://mmistakes.github.io/minimal-mistakes/" style="color:inherit;">Minimal Mistakes</a> theme. See what I'm up to lately at <a href="https://hi.justinpocta.com" style="color:inherit;">hi.justinpocta.com</a>.</p>
 </div>
 
 <div style="clear: both; padding-bottom: 40px;"></div>
