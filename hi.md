@@ -256,15 +256,23 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 }
 .music-cover-fill {
   flex: 1; min-height: 0;
-  overflow: hidden;
-  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 24px;
+  box-sizing: border-box;
+  background: #f0ede8;
 }
 .music-cover-img {
-  width: 100%; height: 100%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  object-position: center center;
-  display: block;
+  border-radius: 4px;
   opacity: 0; transition: opacity 0.3s;
+  box-shadow:
+    0 12px 32px rgba(0,0,0,0.32),
+    0 4px 12px rgba(0,0,0,0.18),
+    0 1px 3px rgba(0,0,0,0.10);
 }
 .music-cover-img.loaded { opacity: 1; }
 .music-card-footer {
@@ -294,12 +302,14 @@ html[data-theme="dark"] p { color: #e8e8e8; }
   .music-card-label { color: #bbb; }
   .music-artist-name { color: #aaa; }
   .music-fav-track { color: #777; }
+  .music-cover-fill { background: #1e1c1a; }
 }
 :root[data-theme="dark"] .music-card-header { border-bottom-color: rgba(255,255,255,0.1); }
 :root[data-theme="dark"] .music-card-footer { border-top-color: rgba(255,255,255,0.1); }
 :root[data-theme="dark"] .music-card-label { color: #bbb; }
 :root[data-theme="dark"] .music-artist-name { color: #aaa; }
 :root[data-theme="dark"] .music-fav-track { color: #777; }
+:root[data-theme="dark"] .music-cover-fill { background: #1e1c1a; }
 </style>
 
 # Hello from Brooklyn, NY
