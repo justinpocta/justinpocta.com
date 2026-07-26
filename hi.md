@@ -314,6 +314,8 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 
 # Hello from Brooklyn, NY
 
+<p style="font-family: Georgia, serif; font-style: italic; opacity: 0.5; margin-top: -0.6em; margin-bottom: 1.5em; font-size: 1.05em;">A snapshot of my life outside of work</p>
+
 <div class="hi-stack-outer">
 
   <div class="hi-stack" id="hi-stack">
