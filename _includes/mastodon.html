@@ -29,32 +29,15 @@
   .social-post-meta { font-size: 0.85rem; color: #888; }
   .social-loading { color: #888; font-size: 0.9rem; }
   .mastodon-card {
-    margin-bottom: 28px;
-  }
-  .mastodon-card:last-child {
-    margin-bottom: 0;
-  }
-  .mastodon-tail {
-    position: absolute;
-    bottom: -7px;
-    left: 28px;
-    width: 14px;
-    height: 14px;
-    background: #fff;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    border-bottom-right-radius: 3px;
-    transform: rotate(45deg);
-  }
-  .mastodon-bubble:hover .mastodon-tail {
-    border-color: #999;
+    display: block;
   }
   .mastodon-footer {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-top: 18px;
-    padding-left: 4px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
   }
   .mastodon-icon-svg {
     flex: 0 0 auto;
@@ -138,19 +121,16 @@
     var date = new Date(post.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
     var handle = "@" + (post.account && post.account.username ? post.account.username : "justinpocta");
 
-    return '<div class="mastodon-card">' +
-      '<a class="social-post mastodon-bubble" href="' + post.url + '" target="_blank" rel="noopener">' +
-        renderMedia(post.media_attachments) +
-        '<div class="social-post-text">' + post.content + "</div>" +
-        '<span class="mastodon-tail"></span>' +
-      "</a>" +
+    return '<a class="social-post mastodon-card" href="' + post.url + '" target="_blank" rel="noopener">' +
       '<div class="mastodon-footer">' +
         mastodonIcon("mastodon-grad-" + index) +
         '<span class="mastodon-handle">' + escapeHtml(handle) + "</span>" +
         '<span class="mastodon-dot">&middot;</span>' +
         '<span class="mastodon-date">' + date + "</span>" +
       "</div>" +
-    "</div>";
+      renderMedia(post.media_attachments) +
+      '<div class="social-post-text">' + post.content + "</div>" +
+    "</a>";
   }
 
   fetch(url)
