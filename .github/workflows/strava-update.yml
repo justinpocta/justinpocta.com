@@ -12,6 +12,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.STRAVA_PUSH_TOKEN }}
 
       - name: Fetch latest ride and write _data/strava.json
         env:
