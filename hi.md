@@ -335,6 +335,22 @@ html[data-theme="dark"] p { color: #e8e8e8; }
   function snapBack(card) {
     card.style.transition = '';
     card.style.transform = '';
+    updateStack();
+  }
+
+  function applyPreview(dx) {
+    if (Math.abs(dx) < 20) return;
+    var goingTo = dx > 0 ? mod(current - 1, total) : mod(current + 1, total);
+    cards.forEach(function (card, i) {
+      if (card.classList.contains('hi-card--active')) return;
+      STACK_CLASSES.forEach(function (cls) { card.classList.remove(cls); });
+      var dist = mod(i - goingTo, total);
+      card.classList.add(
+        dist === 0 ? 'hi-card--behind-1' :
+        dist === 1 ? 'hi-card--behind-2' :
+                     'hi-card--hidden'
+      );
+    });
   }
 
   var animating = false;
@@ -372,7 +388,7 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     var dx = e.clientX - msx;
     if (Math.abs(dx) > 4) didDrag = true;
     var card = getActiveCard();
-    if (card) applyDrag(card, dx);
+    if (card) { applyDrag(card, dx); applyPreview(dx); }
   }, false);
   document.addEventListener('mouseup', function (e) {
     if (!dragging) return;
@@ -402,7 +418,7 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     touchLocked = true;
     if (Math.abs(dx) > 4) didDrag = true;
     var card = getActiveCard();
-    if (card) applyDrag(card, dx);
+    if (card) { applyDrag(card, dx); applyPreview(dx); }
   }, { passive: true });
   stack.addEventListener('touchend', function (e) {
     var dx = e.changedTouches[0].clientX - tsx;
