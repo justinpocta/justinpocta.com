@@ -9,8 +9,9 @@ hide_footer: true
 ---
 
 <style>
-/* prevent double-tap zoom on mobile without disabling pinch-zoom */
+/* prevent double-tap zoom; block horizontal scroll so swipe stays on the card */
 html { touch-action: manipulation; }
+body { overflow-x: hidden; }
 
 /* ensure parent containers don't clip the card stack */
 .page__content,
@@ -20,7 +21,7 @@ html { touch-action: manipulation; }
 
 .hi-stack-outer {
   position: relative;
-  width: clamp(400px, 48vw, 620px);
+  width: min(620px, calc(100vw - 2rem));
   margin-top: 2rem;
   margin-bottom: 3rem;
   margin-left: 50%;
