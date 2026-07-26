@@ -1,0 +1,183 @@
+{% assign ride = site.data.strava %}
+<div class="strava-card">
+  <div class="strava-card-header">
+    <svg class="strava-icon" width="16" height="16" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M27.6 46.8L18 28.8H27.6L37.2 46.8Z" fill="#FC4C02"/>
+      <path d="M46.8 46.8L37.2 28.8H46.8L56.4 46.8Z" fill="#FC4C02" opacity="0.6"/>
+    </svg>
+    <span class="strava-card-label">Latest Ride</span>
+  </div>
+  <div class="strava-map-wrap">
+    <canvas class="strava-map-canvas" id="strava-map"></canvas>
+    {% if ride.name == "" %}
+    <div class="strava-map-empty">No ride data yet</div>
+    {% endif %}
+  </div>
+  <div class="strava-card-footer">
+    <span class="strava-ride-name">{% if ride.name != "" %}{{ ride.name }}{% else %}—{% endif %}</span>
+    <span class="strava-ride-meta" id="strava-meta"></span>
+  </div>
+</div>
+
+<script type="application/json" id="strava-data">{{ ride | jsonify }}</script>
+
+<style>
+  .strava-card {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    overflow: hidden; border-radius: 10px;
+  }
+  .strava-card-header {
+    flex: 0 0 auto;
+    padding: 10px 14px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex; align-items: center; gap: 7px;
+  }
+  .strava-card-label {
+    font-size: 0.72em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #555;
+  }
+  .strava-icon { flex: 0 0 auto; }
+  .strava-map-wrap {
+    flex: 1; min-height: 0;
+    position: relative;
+    background: #1a2030;
+  }
+  .strava-map-canvas {
+    width: 100%; height: 100%;
+    display: block;
+  }
+  .strava-map-empty {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #556; font-size: 0.85em;
+  }
+  .strava-card-footer {
+    flex: 0 0 auto;
+    padding: 10px 14px 13px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .strava-ride-name {
+    font-weight: 700; font-size: 0.95em; line-height: 1.2;
+  }
+  .strava-ride-meta {
+    font-size: 0.82em; color: #888;
+  }
+  @media (prefers-color-scheme: dark) {
+    .strava-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+    .strava-card-footer { border-top-color: rgba(255,255,255,0.1); }
+    .strava-card-label { color: #bbb; }
+    .strava-ride-meta { color: #777; }
+  }
+  :root[data-theme="dark"] .strava-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+  :root[data-theme="dark"] .strava-card-footer { border-top-color: rgba(255,255,255,0.1); }
+  :root[data-theme="dark"] .strava-card-label { color: #bbb; }
+  :root[data-theme="dark"] .strava-ride-meta { color: #777; }
+</style>
+
+<script>
+(function () {
+  var raw = document.getElementById('strava-data');
+  if (!raw) return;
+  var ride;
+  try { ride = JSON.parse(raw.textContent); } catch (e) { return; }
+  if (!ride || !ride.name) return;
+
+  // Format meta line
+  var meta = document.getElementById('strava-meta');
+  if (meta) {
+    var mi = (ride.distance / 1609.34).toFixed(1) + ' mi';
+    var s = ride.moving_time;
+    var h = Math.floor(s / 3600);
+    var m = Math.floor((s % 3600) / 60);
+    var time = h > 0 ? h + 'h ' + m + 'm' : m + ' min';
+    var date = ride.start_date ? new Date(ride.start_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
+    meta.textContent = [date, mi, time].filter(Boolean).join(' · ');
+  }
+
+  // Draw route on canvas
+  if (!ride.map_polyline) return;
+  var canvas = document.getElementById('strava-map');
+  if (!canvas) return;
+
+  function drawMap() {
+    var pts = decodePolyline(ride.map_polyline);
+    if (pts.length < 2) return;
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.offsetWidth, h = canvas.offsetHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    var ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    // Find bounds
+    var minLat = Infinity, maxLat = -Infinity, minLng = Infinity, maxLng = -Infinity;
+    pts.forEach(function (p) {
+      if (p[0] < minLat) minLat = p[0]; if (p[0] > maxLat) maxLat = p[0];
+      if (p[1] < minLng) minLng = p[1]; if (p[1] > maxLng) maxLng = p[1];
+    });
+
+    var pad = Math.min(w, h) * 0.1;
+    var latRange = maxLat - minLat || 0.001;
+    var lngRange = maxLng - minLng || 0.001;
+    var sx = (w - pad * 2) / lngRange;
+    var sy = (h - pad * 2) / latRange;
+    var sc = Math.min(sx, sy);
+    var ox = (w - lngRange * sc) / 2;
+    var oy = (h - latRange * sc) / 2;
+
+    function px(p) { return ox + (p[1] - minLng) * sc; }
+    function py(p) { return h - (oy + (p[0] - minLat) * sc); }
+
+    // Subtle grid-less background already handled by CSS
+    // Draw shadow glow
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(px(pts[0]), py(pts[0]));
+    for (var i = 1; i < pts.length; i++) ctx.lineTo(px(pts[i]), py(pts[i]));
+    ctx.strokeStyle = 'rgba(252, 76, 2, 0.25)';
+    ctx.lineWidth = 8;
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.stroke();
+    ctx.restore();
+
+    // Draw route
+    ctx.beginPath();
+    ctx.moveTo(px(pts[0]), py(pts[0]));
+    for (var j = 1; j < pts.length; j++) ctx.lineTo(px(pts[j]), py(pts[j]));
+    ctx.strokeStyle = '#FC4C02';
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.stroke();
+
+    // Start dot
+    ctx.beginPath();
+    ctx.arc(px(pts[0]), py(pts[0]), 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#FC4C02';
+    ctx.fill();
+  }
+
+  function decodePolyline(enc) {
+    var pts = [], i = 0, lat = 0, lng = 0;
+    while (i < enc.length) {
+      var b, shift = 0, result = 0;
+      do { b = enc.charCodeAt(i++) - 63; result |= (b & 0x1f) << shift; shift += 5; } while (b >= 0x20);
+      lat += (result & 1) ? ~(result >> 1) : (result >> 1);
+      shift = result = 0;
+      do { b = enc.charCodeAt(i++) - 63; result |= (b & 0x1f) << shift; shift += 5; } while (b >= 0x20);
+      lng += (result & 1) ? ~(result >> 1) : (result >> 1);
+      pts.push([lat / 1e5, lng / 1e5]);
+    }
+    return pts;
+  }
+
+  if (canvas.offsetWidth > 0) {
+    drawMap();
+  } else {
+    var ro = new ResizeObserver(function () { drawMap(); ro.disconnect(); });
+    ro.observe(canvas);
+  }
+})();
+</script>
