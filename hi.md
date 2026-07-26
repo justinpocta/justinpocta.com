@@ -16,14 +16,16 @@ body { overflow-x: hidden; }
 
 /* dark mode page background + reverse out text on dark bg */
 @media (prefers-color-scheme: dark) {
-  html, body { background-color: #1a1a1a !important; }
+  html { background: linear-gradient(to bottom, #383838, #1a1a1a) fixed !important; }
+  body { background: transparent !important; }
   html body .masthead .site-title,
   html body .masthead .site-title:visited,
   html body .masthead .greedy-nav a { color: #f0f0f0 !important; }
   .site-title::before { filter: invert(1); }
   h1, h2, h3, p { color: #e8e8e8; }
 }
-html[data-theme="dark"] body { background-color: #1a1a1a !important; }
+html[data-theme="dark"] { background: linear-gradient(to bottom, #383838, #1a1a1a) fixed !important; }
+html[data-theme="dark"] body { background: transparent !important; }
 html[data-theme="dark"] .masthead .site-title,
 html[data-theme="dark"] .masthead .site-title:visited,
 html[data-theme="dark"] .masthead .greedy-nav a { color: #f0f0f0 !important; }
