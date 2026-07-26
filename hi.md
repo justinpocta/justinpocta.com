@@ -16,20 +16,19 @@ body { overflow-x: hidden; }
 /* dark mode page background + reverse out text on dark bg */
 @media (prefers-color-scheme: dark) {
   html, body { background-color: #1a1a1a !important; }
-  .site-title, .site-title:visited { color: #f0f0f0 !important; }
-  .masthead a, .greedy-nav a { color: #f0f0f0 !important; }
+  html body .masthead .site-title,
+  html body .masthead .site-title:visited,
+  html body .masthead .greedy-nav a { color: #f0f0f0 !important; }
   h1, h2, h3, p { color: #e8e8e8; }
 }
-:root[data-theme="dark"] html,
-:root[data-theme="dark"] body { background-color: #1a1a1a !important; }
-:root[data-theme="dark"] .site-title,
-:root[data-theme="dark"] .site-title:visited { color: #f0f0f0 !important; }
-:root[data-theme="dark"] .masthead a,
-:root[data-theme="dark"] .greedy-nav a { color: #f0f0f0 !important; }
-:root[data-theme="dark"] h1,
-:root[data-theme="dark"] h2,
-:root[data-theme="dark"] h3,
-:root[data-theme="dark"] p { color: #e8e8e8; }
+html[data-theme="dark"] body { background-color: #1a1a1a !important; }
+html[data-theme="dark"] .masthead .site-title,
+html[data-theme="dark"] .masthead .site-title:visited,
+html[data-theme="dark"] .masthead .greedy-nav a { color: #f0f0f0 !important; }
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] p { color: #e8e8e8; }
 
 /* ensure parent containers don't clip the card stack */
 .page__content,
@@ -352,18 +351,26 @@ body { overflow-x: hidden; }
     }, 290);
   }
 
+  /* block link clicks that are actually the tail of a drag */
+  var didDrag = false;
+  stack.addEventListener('click', function (e) {
+    if (didDrag) { e.preventDefault(); e.stopPropagation(); didDrag = false; }
+  }, true);
+
   /* mouse drag */
   var dragging = false, msx = 0, msy = 0;
   stack.addEventListener('mousedown', function (e) {
     if (e.button !== 0 || animating) return;
-    dragging = true;
+    dragging = true; didDrag = false;
     msx = e.clientX; msy = e.clientY;
     e.preventDefault();
   }, false);
   document.addEventListener('mousemove', function (e) {
     if (!dragging) return;
+    var dx = e.clientX - msx;
+    if (Math.abs(dx) > 4) didDrag = true;
     var card = getActiveCard();
-    if (card) applyDrag(card, e.clientX - msx);
+    if (card) applyDrag(card, dx);
   }, false);
   document.addEventListener('mouseup', function (e) {
     if (!dragging) return;
@@ -375,6 +382,7 @@ body { overflow-x: hidden; }
       flyOff(card, dx, function () { go(dir); });
     } else {
       snapBack(card);
+      setTimeout(function () { didDrag = false; }, 0);
     }
   }, false);
 
@@ -383,13 +391,14 @@ body { overflow-x: hidden; }
   stack.addEventListener('touchstart', function (e) {
     if (animating) return;
     tsx = e.touches[0].clientX; tsy = e.touches[0].clientY;
-    touchLocked = false;
+    touchLocked = false; didDrag = false;
   }, { passive: true });
   stack.addEventListener('touchmove', function (e) {
     var dx = e.touches[0].clientX - tsx;
     var dy = e.touches[0].clientY - tsy;
     if (!touchLocked && Math.abs(dy) > Math.abs(dx)) return;
     touchLocked = true;
+    if (Math.abs(dx) > 4) didDrag = true;
     var card = getActiveCard();
     if (card) applyDrag(card, dx);
   }, { passive: true });
@@ -402,6 +411,7 @@ body { overflow-x: hidden; }
       flyOff(card, dx, function () { go(dir); });
     } else {
       snapBack(card);
+      setTimeout(function () { didDrag = false; }, 50);
     }
   }, { passive: true });
 
