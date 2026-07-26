@@ -416,7 +416,7 @@ html[data-theme="dark"] p { color: #e8e8e8; }
   var cards = Array.from(document.querySelectorAll('.hi-card'));
   var stack = document.getElementById('hi-stack');
   var total = cards.length;
-  var current = 0;
+  var current = Math.floor(Math.random() * total);
   var STACK_CLASSES = ['hi-card--active', 'hi-card--behind-1', 'hi-card--behind-2', 'hi-card--hidden'];
 
   function mod(n, m) { return ((n % m) + m) % m; }
