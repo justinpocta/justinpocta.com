@@ -1,0 +1,78 @@
+name: Update Strava Ride Data
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest ride and write _data/strava.json
+        env:
+          CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+        run: |
+          python3 << 'PYEOF'
+          import json, os, urllib.request, urllib.parse, datetime
+
+          # Refresh access token
+          params = urllib.parse.urlencode({
+            'client_id': os.environ['CLIENT_ID'],
+            'client_secret': os.environ['CLIENT_SECRET'],
+            'grant_type': 'refresh_token',
+            'refresh_token': os.environ['REFRESH_TOKEN'],
+          }).encode()
+          req = urllib.request.Request('https://www.strava.com/oauth/token', data=params, method='POST')
+          with urllib.request.urlopen(req) as r:
+            token = json.load(r)
+          access_token = token['access_token']
+          print(f"Got access token (expires {token.get('expires_at')})")
+
+          # Fetch activities
+          req = urllib.request.Request(
+            'https://www.strava.com/api/v3/athlete/activities?per_page=20',
+            headers={'Authorization': f'Bearer {access_token}'}
+          )
+          with urllib.request.urlopen(req) as r:
+            activities = json.load(r)
+
+          # Latest ride
+          rides = [a for a in activities if a.get('type') == 'Ride' or a.get('sport_type') == 'Ride']
+          if not rides:
+            print('No rides found, keeping existing data')
+            exit(0)
+
+          ride = rides[0]
+          data = {
+            'name': ride.get('name', ''),
+            'distance': ride.get('distance', 0),
+            'moving_time': ride.get('moving_time', 0),
+            'start_date': ride.get('start_date', ''),
+            'map_polyline': (ride.get('map') or {}).get('summary_polyline', ''),
+            'updated_at': datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
+          }
+
+          os.makedirs('_data', exist_ok=True)
+          with open('_data/strava.json', 'w') as f:
+            json.dump(data, f, indent=2)
+          print(f"Wrote: {data['name']} | {data['distance']}m | {data['moving_time']}s")
+          PYEOF
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/strava.json
+          if git diff --staged --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Auto-update Strava ride data [skip ci]"
+            git push
+          fi
