@@ -11,8 +11,13 @@ hide_footer: true
 <style>
 .hi-stack-outer {
   position: relative;
-  max-width: 100%;
-  margin: 2rem 0 3rem;
+  /* Break out of minimal-mistakes' narrow content column (~369px) */
+  width: min(460px, calc(100vw - 2rem));
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  /* Center on the page -- margin-left: 50% pivots to parent center, transform pulls back */
+  margin-left: 50%;
+  transform: translateX(-50%);
   padding: 0 28px;
   box-sizing: border-box;
 }
