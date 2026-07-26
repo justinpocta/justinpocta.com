@@ -13,6 +13,13 @@ hide_footer: true
 html { touch-action: manipulation; }
 body { overflow-x: hidden; }
 
+/* dark mode page background to match the cards */
+@media (prefers-color-scheme: dark) {
+  html, body { background-color: #1a1a1a !important; }
+}
+:root[data-theme="dark"] html,
+:root[data-theme="dark"] body { background-color: #1a1a1a !important; }
+
 /* ensure parent containers don't clip the card stack */
 .page__content,
 .initial-content {
@@ -99,19 +106,19 @@ body { overflow-x: hidden; }
   z-index: 3;
   transform: rotate(0deg) translate(0, 0);
   opacity: 1; pointer-events: auto;
-  box-shadow: 0 10px 44px rgba(0,0,0,0.17), 0 2px 10px rgba(0,0,0,0.09);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.38), 0 6px 20px rgba(0,0,0,0.22);
 }
 .hi-card--behind-1 {
   z-index: 2;
   transform: rotate(3deg) translate(10px, 10px) scale(0.985);
   opacity: 1; pointer-events: none;
-  box-shadow: 0 5px 22px rgba(0,0,0,0.11);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.26);
 }
 .hi-card--behind-2 {
   z-index: 1;
   transform: rotate(-2deg) translate(20px, 20px) scale(0.97);
-  opacity: 0.78; pointer-events: none;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  opacity: 0.85; pointer-events: none;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
 }
 .hi-card--hidden {
   z-index: 0; opacity: 0; pointer-events: none; box-shadow: none;
@@ -161,9 +168,12 @@ body { overflow-x: hidden; }
   font-size: 0.72em;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #999;
+  color: #555;
   display: block;
+  text-align: center;
 }
+@media (prefers-color-scheme: dark) { .book-card-label { color: #bbb; } }
+:root[data-theme="dark"] .book-card-label { color: #bbb; }
 .book-cover-fill {
   flex: 1; min-height: 0;
   position: relative;
