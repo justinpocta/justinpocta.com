@@ -69,6 +69,10 @@
   .strava-map-div .leaflet-control-zoom,
   .strava-map-div .leaflet-control-attribution { display: none !important; }
   @media (prefers-color-scheme: dark) {
+    .strava-map-div .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg); }
+  }
+  :root[data-theme="dark"] .strava-map-div .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg); }
+  @media (prefers-color-scheme: dark) {
     .strava-card-header { border-bottom-color: rgba(255,255,255,0.1); }
     .strava-card-footer { border-top-color: rgba(255,255,255,0.1); }
     .strava-card-label { color: #bbb; }
