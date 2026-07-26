@@ -367,6 +367,10 @@ html[data-theme="dark"] p { color: #e8e8e8; }
       </div>
     </div>
 
+    <div class="hi-card" id="hi-card-4">
+      {% include strava.html %}
+    </div>
+
   </div>
 
 </div>
