@@ -13,16 +13,19 @@ hide_footer: true
 html { touch-action: manipulation; }
 body { overflow-x: hidden; }
 
+
 /* dark mode page background + reverse out text on dark bg */
 @media (prefers-color-scheme: dark) {
-  html, body { background-color: #1a1a1a !important; }
+  html { background: linear-gradient(to bottom, #1a1a1a, #383838) fixed !important; }
+  body { background: transparent !important; }
   html body .masthead .site-title,
   html body .masthead .site-title:visited,
   html body .masthead .greedy-nav a { color: #f0f0f0 !important; }
   .site-title::before { filter: invert(1); }
   h1, h2, h3, p { color: #e8e8e8; }
 }
-html[data-theme="dark"] body { background-color: #1a1a1a !important; }
+html[data-theme="dark"] { background: linear-gradient(to bottom, #1a1a1a, #383838) fixed !important; }
+html[data-theme="dark"] body { background: transparent !important; }
 html[data-theme="dark"] .masthead .site-title,
 html[data-theme="dark"] .masthead .site-title:visited,
 html[data-theme="dark"] .masthead .greedy-nav a { color: #f0f0f0 !important; }
@@ -312,9 +315,9 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 :root[data-theme="dark"] .music-cover-fill { background: #1e1c1a; }
 </style>
 
-# Hello from Brooklyn, NY
+<h1 style="text-align: center;">Hello from Brooklyn, NY!</h1>
 
-<p style="font-family: Georgia, serif; font-style: italic; opacity: 0.5; margin-top: -0.6em; margin-bottom: 1.5em; font-size: 1.05em;">A snapshot of my life outside of work</p>
+<p style="font-family: Georgia, serif; font-style: italic; opacity: 0.5; margin-top: -0.6em; margin-bottom: 1.5em; font-size: 1.05em; text-align: center;">A snapshot of my life outside of work</p>
 
 <div class="hi-stack-outer">
 
