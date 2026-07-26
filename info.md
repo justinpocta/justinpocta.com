@@ -26,9 +26,16 @@ I love working with teams that value asking questions. _Why are we creating a gi
 
 </div>
 
+<style>
+@media (max-width: 600px) {
+  .gi-links { flex-wrap: wrap !important; gap: 24px 5% !important; }
+  .gi-links a { flex: 0 0 28%; }
+}
+</style>
+
 <div class="fade-in-block" style="animation-delay:1.05s; border: 2px solid #D4B870; border-radius: 6px; padding: 26px 32px 32px; margin: 1.5em 0 40px; text-align: center; box-sizing: border-box; overflow: hidden;">
   <p style="margin: 0 0 28px; font-weight: 400; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.1em; color: #999;">Get in Touch</p>
-  <div style="display: flex; gap: 48px; justify-content: center;">
+  <div class="gi-links" style="display: flex; gap: 48px; justify-content: center;">
     <a href="mailto:howdy@justinpocta.com?subject=Hello" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
       <i class="fas fa-envelope" style="font-size:1.5em;"></i>
       <span style="font-size:0.78em;">Email</span>
