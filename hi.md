@@ -9,35 +9,34 @@ hide_footer: true
 ---
 
 <style>
-/* ---- card stack ---- */
 .hi-stack-outer {
   position: relative;
   max-width: 100%;
   margin: 2rem 0 3rem;
-  padding: 0 28px; /* arrow zone flanking the stack */
+  padding: 0 28px;
   box-sizing: border-box;
 }
 
 .hi-stack {
   position: relative;
   width: 100%;
-  height: clamp(400px, 65vh, 560px);
-  /* no overflow:hidden -- behind-card rotations must not be clipped */
+  aspect-ratio: 3 / 4;
+  cursor: grab;
+  user-select: none;
 }
+.hi-stack:active { cursor: grabbing; }
 
 .hi-card {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: calc(100% - 20px); /* narrower so behind-cards show at the offset */
+  top: 0; left: 0;
+  width: calc(100% - 20px);
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: rgba(0,0,0,0.12) transparent;
   transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              opacity 0.42s ease,
-              box-shadow 0.42s ease;
+              opacity 0.42s ease, box-shadow 0.42s ease;
   will-change: transform, opacity;
   background: #fff;
   border-radius: 10px;
@@ -49,198 +48,126 @@ hide_footer: true
 .hi-card--active {
   z-index: 3;
   transform: rotate(0deg) translate(0, 0);
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 1; pointer-events: auto;
   box-shadow: 0 10px 44px rgba(0,0,0,0.17), 0 2px 10px rgba(0,0,0,0.09);
 }
-
 .hi-card--behind-1 {
   z-index: 2;
   transform: rotate(3deg) translate(10px, 10px) scale(0.985);
-  opacity: 1;
-  pointer-events: none;
+  opacity: 1; pointer-events: none;
   box-shadow: 0 5px 22px rgba(0,0,0,0.11);
 }
-
 .hi-card--behind-2 {
   z-index: 1;
   transform: rotate(-2deg) translate(20px, 20px) scale(0.97);
-  opacity: 0.78;
-  pointer-events: none;
+  opacity: 0.78; pointer-events: none;
   box-shadow: 0 3px 12px rgba(0,0,0,0.08);
 }
-
 .hi-card--hidden {
-  z-index: 0;
-  opacity: 0;
-  pointer-events: none;
-  box-shadow: none;
+  z-index: 0; opacity: 0; pointer-events: none; box-shadow: none;
 }
 
-/* ---- nav arrows: outside the card stack, in the outer padding zone ---- */
+/* arrows inside .hi-stack -- top:50% centers on the aspect-ratio-derived height */
 .hi-nav-btn {
   position: absolute;
-  top: calc(clamp(200px, 32.5vh, 280px)); /* midpoint of stack height */
+  top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 36px; height: 36px; border-radius: 50%;
   border: none;
   background: rgba(255,255,255,0.92);
   box-shadow: 0 2px 10px rgba(0,0,0,0.18);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #222;
-  padding: 0;
-  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  color: #222; padding: 0; line-height: 1;
   transition: background 0.18s, transform 0.18s;
 }
 .hi-nav-btn svg { display: block; }
-.hi-nav-btn:hover {
-  background: #fff;
-  transform: translateY(-50%) scale(1.1);
-}
+.hi-nav-btn:hover { background: #fff; transform: translateY(-50%) scale(1.1); }
+/* -24px mirrors the 28px outer padding minus the original 4px inset */
+.hi-nav-prev { left: -24px; }
+.hi-nav-next { right: -24px; }
 
-/* buttons live in .hi-stack-outer, in the padding zones flanking the stack */
-.hi-nav-prev { left: 4px; }
-.hi-nav-next { right: 4px; }
-
-/* ---- dots ---- */
-.hi-dots-row {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
+.hi-dots-row { display: flex; justify-content: center; margin-top: 10px; }
 .hi-dots { display: flex; gap: 7px; align-items: center; }
 .hi-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: currentColor;
-  opacity: 0.2;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; opacity: 0.2;
   transition: opacity 0.25s, transform 0.25s;
 }
 .hi-dot--on { opacity: 0.7; transform: scale(1.25); }
 
-/* ---- include overrides inside cards ---- */
 .hi-card .social-widget,
 .hi-card .mastodon-card,
 .hi-card .flickr-card {
-  max-width: 100%;
-  margin: 0;
-  width: 100%;
+  max-width: 100%; margin: 0; width: 100%;
 }
 
-/* ---- book card: fills full hi-card height like a real book ---- */
+/* book card */
 .book-card {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
   overflow: hidden;
-  /* border-radius inherited from hi-card */
+  border-radius: 10px;
 }
-
-.book-cover-wrap {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-  line-height: 0;
-}
-
-/* Actual image -- hidden until loaded, then replaces art */
-.book-cover-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: none;
-}
-.book-cover-img.loaded { display: block; }
-
-/* CSS art fallback: yellow/black matching the real cover */
-.book-cover-art {
-  width: 100%;
-  height: 100%;
-  background: #F5C200;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 28px 14px 20px;
-  box-sizing: border-box;
-}
-.book-cover-art.hidden { display: none; }
-
-.book-cover-art-title {
-  color: #0a0a0a;
-  /* em is card-relative (inherits 22px body), vw is capped so it never blows past the card */
-  font-size: min(2.2em, 13.5cqw);
-  font-weight: 900;
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: normal;
-  line-height: 1;
-  text-align: center;
-}
-.book-cover-wrap {
-  container-type: inline-size; /* enables cqw scaling */
-}
-.book-cover-art-blurb {
-  color: rgba(0,0,0,0.5);
-  font-size: 0.72em;
-  font-style: italic;
-  text-align: center;
-  line-height: 1.4;
-  max-width: 80%;
-}
-.book-cover-art-author {
-  color: #0a0a0a;
-  font-size: 1.0em;
-  font-weight: 800;
-  font-family: Georgia, "Times New Roman", serif;
-  letter-spacing: 0.04em;
-  text-align: center;
-}
-
-.book-meta {
+.book-card-header {
   flex: 0 0 auto;
-  padding: 12px 16px 14px;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  padding: 12px 14px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
-.book-label {
-  display: block;
+.book-card-label {
   font-size: 0.72em;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #999;
-  margin-bottom: 2px;
+  display: block;
 }
-.book-title-line { font-weight: 600; font-size: 0.95em; margin: 0; }
-.book-author-line { font-size: 0.85em; color: #888; margin: 1px 0 0; }
+.book-cover-fill {
+  flex: 1; min-height: 0;
+  position: relative;
+  overflow: hidden;
+  background: #F5C200;
+  container-type: inline-size;
+}
+/* CSS art: shows when real image is absent */
+.book-cover-art {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: space-between;
+  padding: 28px 14px 20px; box-sizing: border-box;
+}
+.book-cover-art-title {
+  color: #0a0a0a;
+  font-size: min(2.2em, 13.5cqw);
+  font-weight: 900;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1; text-align: center;
+}
+.book-cover-art-blurb {
+  color: rgba(0,0,0,0.5); font-size: 0.72em; font-style: italic;
+  text-align: center; line-height: 1.4; max-width: 80%;
+}
+.book-cover-art-author {
+  color: #0a0a0a; font-size: 1.0em; font-weight: 800;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.04em; text-align: center;
+}
+/* real image overlays CSS art when loaded */
+.book-cover-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  opacity: 0; transition: opacity 0.3s;
+}
+.book-cover-img.loaded { opacity: 1; }
 
-/* dark mode */
 @media (prefers-color-scheme: dark) {
-  .book-meta { border-top-color: rgba(255,255,255,0.1); }
-  .book-author-line { color: #999; }
-  .hi-nav-btn {
-    background: rgba(28,28,28,0.92);
-    color: #ddd;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  }
+  .book-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+  .hi-nav-btn { background: rgba(28,28,28,0.92); color: #ddd; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
   .hi-nav-btn:hover { background: rgba(45,45,45,0.95); }
 }
-:root[data-theme="dark"] .book-meta { border-top-color: rgba(255,255,255,0.1); }
-:root[data-theme="dark"] .book-author-line { color: #999; }
-:root[data-theme="dark"] .hi-nav-btn {
-  background: rgba(28,28,28,0.92);
-  color: #ddd;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
+:root[data-theme="dark"] .book-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+:root[data-theme="dark"] .hi-nav-btn { background: rgba(28,28,28,0.92); color: #ddd; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 :root[data-theme="dark"] .hi-nav-btn:hover { background: rgba(45,45,45,0.95); }
 </style>
 
@@ -248,17 +175,16 @@ hide_footer: true
 
 <div class="hi-stack-outer">
 
-  <!-- arrows in the outer padding zone, flanking the stack -->
-  <button class="hi-nav-btn hi-nav-prev" id="hi-prev" aria-label="Previous">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-  </button>
-  <button class="hi-nav-btn hi-nav-next" id="hi-next" aria-label="Next">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-  </button>
-
   <div class="hi-stack" id="hi-stack">
 
-    <div class="hi-card hi-card--vcenter" id="hi-card-0">
+    <button class="hi-nav-btn hi-nav-prev" id="hi-prev" aria-label="Previous">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="hi-nav-btn hi-nav-next" id="hi-next" aria-label="Next">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <div class="hi-card" id="hi-card-0">
       {% include mastodon.html %}
     </div>
 
@@ -266,23 +192,20 @@ hide_footer: true
       {% include flickr.html %}
     </div>
 
-    <!-- book card: no hi-card--vcenter, fills full height -->
     <div class="hi-card" id="hi-card-2">
       <div class="book-card">
-        <div class="book-cover-wrap">
-          <img class="book-cover-img" id="book-cover-img"
-               src="/assets/img/book-martyr.jpg"
-               alt="Martyr! by Kaveh Akbar">
-          <div class="book-cover-art" id="book-cover-art">
+        <div class="book-card-header">
+          <span class="book-card-label">Currently Reading</span>
+        </div>
+        <div class="book-cover-fill">
+          <div class="book-cover-art">
             <span class="book-cover-art-title">Martyr!</span>
             <span class="book-cover-art-blurb">"A miracle of a novel"</span>
             <span class="book-cover-art-author">Kaveh Akbar</span>
           </div>
-        </div>
-        <div class="book-meta">
-          <span class="book-label">Currently Reading</span>
-          <p class="book-title-line">Martyr!</p>
-          <p class="book-author-line">Kaveh Akbar</p>
+          <img class="book-cover-img" id="book-cover-img"
+               src="/assets/img/book-martyr.jpg"
+               alt="Martyr! by Kaveh Akbar">
         </div>
       </div>
     </div>
@@ -297,17 +220,12 @@ hide_footer: true
 
 <script>
 (function () {
-  /* book cover: show real image when it loads */
+  /* book cover: real image fades in over CSS art when it loads */
   var bookImg = document.getElementById('book-cover-img');
-  var bookArt = document.getElementById('book-cover-art');
-  if (bookImg && bookArt) {
-    bookImg.addEventListener('load', function () {
-      bookImg.classList.add('loaded');
-      bookArt.classList.add('hidden');
-    });
+  if (bookImg) {
+    bookImg.addEventListener('load', function () { bookImg.classList.add('loaded'); });
   }
 
-  /* card stack */
   var cards = Array.from(document.querySelectorAll('.hi-card'));
   var stack = document.getElementById('hi-stack');
   var dotsEl = document.getElementById('hi-dots');
@@ -349,12 +267,33 @@ hide_footer: true
   document.getElementById('hi-prev').addEventListener('click', function () { go(-1); });
   document.getElementById('hi-next').addEventListener('click', function () { go(1); });
 
-  var tx = 0;
-  stack.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  /* touch swipe -- ignore if primarily vertical (user scrolling card) */
+  var tx = 0, ty = 0;
+  stack.addEventListener('touchstart', function (e) {
+    tx = e.touches[0].clientX;
+    ty = e.touches[0].clientY;
+  }, { passive: true });
   stack.addEventListener('touchend', function (e) {
     var dx = e.changedTouches[0].clientX - tx;
-    if (Math.abs(dx) > 44) go(dx < 0 ? 1 : -1);
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1);
   }, { passive: true });
+
+  /* mouse drag -- same logic, same diagonal guard */
+  var dragging = false, dragX = 0, dragY = 0;
+  stack.addEventListener('mousedown', function (e) {
+    if (e.button !== 0) return;
+    dragging = true;
+    dragX = e.clientX;
+    dragY = e.clientY;
+  }, false);
+  document.addEventListener('mouseup', function (e) {
+    if (!dragging) return;
+    dragging = false;
+    var dx = e.clientX - dragX;
+    var dy = e.clientY - dragY;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1);
+  }, false);
 
   updateStack();
 })();
