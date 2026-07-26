@@ -376,6 +376,10 @@ html[data-theme="dark"] p { color: #e8e8e8; }
       {% include strava.html %}
     </div>
 
+    <div class="hi-card" id="hi-card-5">
+      {% include duolingo.html %}
+    </div>
+
   </div>
 
 </div>
