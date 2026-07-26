@@ -251,13 +251,13 @@
     if (active) _applyTileBg(active);
   }
 
-  // ── IntersectionObserver for mobile greyscale reveal ─────────────
+  // ── IntersectionObserver: greyscale reveal + Safari animation restart ──
   (function() {
-    if (!window.matchMedia('(hover: none)').matches) return;
+    var isTouchOnly = !window.matchMedia('(hover: hover)').matches;
     var tiles = document.querySelectorAll('.hero-tile');
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
-        entry.target.classList.toggle('in-view', entry.isIntersecting);
+        if (isTouchOnly) entry.target.classList.toggle('in-view', entry.isIntersecting);
         if (entry.isIntersecting) {
           // Safari suspends @keyframes on off-screen scroll-container elements;
           // restart CSS animations from the beginning when the tile scrolls into view.
