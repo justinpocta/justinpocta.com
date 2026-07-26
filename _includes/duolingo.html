@@ -1,0 +1,165 @@
+{% assign duo = site.data.duolingo %}
+<div class="duo-card">
+  <div class="duo-card-header">
+    <span class="duo-owl">&#x1F989;</span>
+    <span class="duo-card-label">Duolingo</span>
+  </div>
+  <div class="duo-card-body">
+    <div class="duo-profile">
+      {% if duo.picture and duo.picture != "" %}
+      <img class="duo-avatar" src="{{ duo.picture }}" alt="{{ duo.username }}">
+      {% else %}
+      <div class="duo-avatar-placeholder"></div>
+      {% endif %}
+      <div class="duo-username">{{ duo.username }}</div>
+      <div class="duo-since">Member since {{ duo.member_since }}</div>
+      {% if duo.hasPlus %}<span class="duo-super-pill">Super</span>{% endif %}
+    </div>
+    <div class="duo-rule"></div>
+    <div class="duo-stats">
+      <div class="duo-stat">
+        <span class="duo-stat-label">Level</span>
+        <span class="duo-stat-num">{{ duo.french_level }}</span>
+        <span class="duo-stat-sub">&nbsp;</span>
+      </div>
+      <div class="duo-stat-vr"></div>
+      <div class="duo-stat">
+        <span class="duo-stat-label">Language</span>
+        <span class="duo-stat-flag">&#x1F1EB;&#x1F1F7;</span>
+        <span class="duo-stat-sub">Fran&ccedil;ais</span>
+      </div>
+      <div class="duo-stat-vr"></div>
+      <div class="duo-stat">
+        <span class="duo-stat-label">Day Streak</span>
+        <span class="duo-stat-num">{{ duo.streak }}</span>
+        <span class="duo-stat-sub">&nbsp;</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .duo-card {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    overflow: hidden; border-radius: 10px;
+  }
+  .duo-card-header {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex; align-items: center; gap: 7px;
+  }
+  .duo-owl { font-size: 1.05em; line-height: 1; }
+  .duo-card-label {
+    font-size: 0.72em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #555;
+    flex: 1;
+  }
+  .duo-super-pill {
+    font-size: 0.62em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    background: #58CC02;
+    color: #fff;
+    padding: 3px 9px;
+    border-radius: 99px;
+  }
+  .duo-card-body {
+    flex: 1; min-height: 0;
+    display: flex; flex-direction: column;
+    align-items: stretch;
+    justify-content: space-evenly;
+    padding: 24px 0 20px;
+    text-align: center;
+  }
+  .duo-profile {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 6px;
+    padding: 0 16px;
+  }
+  .duo-avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+  .duo-avatar-placeholder {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: #e8e8e8;
+  }
+  .duo-username {
+    font-weight: 700;
+    font-size: 1.0em;
+    line-height: 1.2;
+  }
+  .duo-since {
+    font-size: 0.78em;
+    color: #888;
+  }
+  .duo-rule {
+    height: 1px;
+    background: rgba(0,0,0,0.08);
+    margin: 0 16px;
+  }
+  .duo-stats {
+    display: flex;
+    align-items: stretch;
+  }
+  .duo-stat {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 6px;
+    padding: 16px 8px;
+  }
+  .duo-stat-vr {
+    width: 1px;
+    background: rgba(0,0,0,0.08);
+    align-self: stretch;
+    margin: 12px 0;
+  }
+  .duo-stat-label {
+    font-size: 0.62em;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #aaa;
+  }
+  .duo-stat-flag {
+    font-size: 2.4em;
+    line-height: 1;
+  }
+  .duo-stat-num {
+    font-size: 2.6em;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+.duo-stat-sub {
+    font-size: 0.72em;
+    color: #888;
+    line-height: 1;
+  }
+  @media (prefers-color-scheme: dark) {
+    .duo-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+    .duo-card-label { color: #bbb; }
+    .duo-avatar-placeholder { background: #333; }
+    .duo-since { color: #666; }
+    .duo-rule { background: rgba(255,255,255,0.08); }
+    .duo-stat-vr { background: rgba(255,255,255,0.08); }
+    .duo-stat-label { color: #555; }
+    .duo-stat-sub { color: #666; }
+  }
+  :root[data-theme="dark"] .duo-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+  :root[data-theme="dark"] .duo-card-label { color: #bbb; }
+  :root[data-theme="dark"] .duo-avatar-placeholder { background: #333; }
+  :root[data-theme="dark"] .duo-since { color: #666; }
+  :root[data-theme="dark"] .duo-rule { background: rgba(255,255,255,0.08); }
+  :root[data-theme="dark"] .duo-stat-vr { background: rgba(255,255,255,0.08); }
+  :root[data-theme="dark"] .duo-stat-label { color: #555; }
+  :root[data-theme="dark"] .duo-stat-sub { color: #666; }
+</style>
