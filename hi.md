@@ -16,7 +16,7 @@ body { overflow-x: hidden; }
 
 /* dark mode page background + reverse out text on dark bg */
 @media (prefers-color-scheme: dark) {
-  html { background: linear-gradient(to bottom, #383838, #1a1a1a) fixed !important; }
+  html { background: linear-gradient(to bottom, #1a1a1a, #383838) fixed !important; }
   body { background: transparent !important; }
   html body .masthead .site-title,
   html body .masthead .site-title:visited,
@@ -24,7 +24,7 @@ body { overflow-x: hidden; }
   .site-title::before { filter: invert(1); }
   h1, h2, h3, p { color: #e8e8e8; }
 }
-html[data-theme="dark"] { background: linear-gradient(to bottom, #383838, #1a1a1a) fixed !important; }
+html[data-theme="dark"] { background: linear-gradient(to bottom, #1a1a1a, #383838) fixed !important; }
 html[data-theme="dark"] body { background: transparent !important; }
 html[data-theme="dark"] .masthead .site-title,
 html[data-theme="dark"] .masthead .site-title:visited,
