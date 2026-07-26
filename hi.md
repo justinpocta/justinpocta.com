@@ -315,34 +315,88 @@ html { touch-action: manipulation; }
   document.getElementById('hi-prev').addEventListener('click', function () { go(-1); });
   document.getElementById('hi-next').addEventListener('click', function () { go(1); });
 
-  /* touch swipe -- ignore if primarily vertical (user scrolling card) */
-  var tx = 0, ty = 0;
-  stack.addEventListener('touchstart', function (e) {
-    tx = e.touches[0].clientX;
-    ty = e.touches[0].clientY;
-  }, { passive: true });
-  stack.addEventListener('touchend', function (e) {
-    var dx = e.changedTouches[0].clientX - tx;
-    var dy = e.changedTouches[0].clientY - ty;
-    if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1);
-  }, { passive: true });
+  function getActiveCard() {
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].classList.contains('hi-card--active')) return cards[i];
+    }
+    return null;
+  }
 
-  /* mouse drag -- same logic, same diagonal guard */
-  var dragging = false, dragX = 0, dragY = 0;
+  function applyDrag(card, dx) {
+    card.style.transition = 'none';
+    card.style.transform = 'rotate(' + (dx / 20) + 'deg) translate(' + dx + 'px, 0)';
+  }
+
+  function snapBack(card) {
+    card.style.transition = '';
+    card.style.transform = '';
+  }
+
+  function flyOff(card, dx, cb) {
+    card.style.transition = 'transform 0.28s ease, opacity 0.22s ease';
+    card.style.transform = 'rotate(' + (dx < 0 ? -30 : 30) + 'deg) translate(' + (dx < 0 ? -120 : 120) + '%, 10px)';
+    card.style.opacity = '0';
+    setTimeout(function () {
+      card.style.transition = 'none';
+      card.style.transform = '';
+      card.style.opacity = '';
+      cb();
+      /* re-enable transitions next frame so the new active card animates in */
+      requestAnimationFrame(function () { card.style.transition = ''; });
+    }, 290);
+  }
+
+  /* mouse drag */
+  var dragging = false, msx = 0, msy = 0;
   stack.addEventListener('mousedown', function (e) {
     if (e.button !== 0) return;
     dragging = true;
-    dragX = e.clientX;
-    dragY = e.clientY;
-    e.preventDefault(); /* prevents image drag and text selection */
+    msx = e.clientX; msy = e.clientY;
+    e.preventDefault();
+  }, false);
+  document.addEventListener('mousemove', function (e) {
+    if (!dragging) return;
+    var card = getActiveCard();
+    if (card) applyDrag(card, e.clientX - msx);
   }, false);
   document.addEventListener('mouseup', function (e) {
     if (!dragging) return;
     dragging = false;
-    var dx = e.clientX - dragX;
-    var dy = e.clientY - dragY;
-    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1);
+    var dx = e.clientX - msx, dy = e.clientY - msy;
+    var card = getActiveCard();
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      var dir = dx < 0 ? 1 : -1;
+      flyOff(card, dx, function () { go(dir); });
+    } else {
+      snapBack(card);
+    }
   }, false);
+
+  /* touch drag */
+  var tsx = 0, tsy = 0, touchLocked = false;
+  stack.addEventListener('touchstart', function (e) {
+    tsx = e.touches[0].clientX; tsy = e.touches[0].clientY;
+    touchLocked = false;
+  }, { passive: true });
+  stack.addEventListener('touchmove', function (e) {
+    var dx = e.touches[0].clientX - tsx;
+    var dy = e.touches[0].clientY - tsy;
+    if (!touchLocked && Math.abs(dy) > Math.abs(dx)) return;
+    touchLocked = true;
+    var card = getActiveCard();
+    if (card) applyDrag(card, dx);
+  }, { passive: true });
+  stack.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - tsx;
+    var dy = e.changedTouches[0].clientY - tsy;
+    var card = getActiveCard();
+    if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) {
+      var dir = dx < 0 ? 1 : -1;
+      flyOff(card, dx, function () { go(dir); });
+    } else {
+      snapBack(card);
+    }
+  }, { passive: true });
 
   updateStack();
 })();
