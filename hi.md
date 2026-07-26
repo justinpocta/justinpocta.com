@@ -268,10 +268,14 @@ html { touch-action: manipulation; }
 
 <script>
 (function () {
-  /* book cover: real image fades in over CSS art when it loads */
+  /* book cover: handle both cached (already complete) and fresh loads */
   var bookImg = document.getElementById('book-cover-img');
   if (bookImg) {
-    bookImg.addEventListener('load', function () { bookImg.classList.add('loaded'); });
+    if (bookImg.complete && bookImg.naturalWidth) {
+      bookImg.classList.add('loaded');
+    } else {
+      bookImg.addEventListener('load', function () { bookImg.classList.add('loaded'); });
+    }
   }
 
   var cards = Array.from(document.querySelectorAll('.hi-card'));
@@ -332,7 +336,10 @@ html { touch-action: manipulation; }
     card.style.transform = '';
   }
 
+  var animating = false;
+
   function flyOff(card, dx, cb) {
+    animating = true;
     card.style.transition = 'transform 0.28s ease, opacity 0.22s ease';
     card.style.transform = 'rotate(' + (dx < 0 ? -30 : 30) + 'deg) translate(' + (dx < 0 ? -120 : 120) + '%, 10px)';
     card.style.opacity = '0';
@@ -341,15 +348,14 @@ html { touch-action: manipulation; }
       card.style.transform = '';
       card.style.opacity = '';
       cb();
-      /* re-enable transitions next frame so the new active card animates in */
-      requestAnimationFrame(function () { card.style.transition = ''; });
+      requestAnimationFrame(function () { card.style.transition = ''; animating = false; });
     }, 290);
   }
 
   /* mouse drag */
   var dragging = false, msx = 0, msy = 0;
   stack.addEventListener('mousedown', function (e) {
-    if (e.button !== 0) return;
+    if (e.button !== 0 || animating) return;
     dragging = true;
     msx = e.clientX; msy = e.clientY;
     e.preventDefault();
@@ -375,6 +381,7 @@ html { touch-action: manipulation; }
   /* touch drag */
   var tsx = 0, tsy = 0, touchLocked = false;
   stack.addEventListener('touchstart', function (e) {
+    if (animating) return;
     tsx = e.touches[0].clientX; tsy = e.touches[0].clientY;
     touchLocked = false;
   }, { passive: true });
