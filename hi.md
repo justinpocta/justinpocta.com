@@ -35,6 +35,7 @@ html { touch-action: manipulation; }
   aspect-ratio: 3 / 4;
   cursor: grab;
   user-select: none;
+  touch-action: pan-y;
 }
 .hi-stack:active { cursor: grabbing; }
 
@@ -136,14 +137,6 @@ html { touch-action: manipulation; }
 .hi-nav-prev { left: -24px; }
 .hi-nav-next { right: -24px; }
 
-.hi-dots-row { display: flex; justify-content: center; margin-top: 10px; }
-.hi-dots { display: flex; gap: 7px; align-items: center; }
-.hi-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: currentColor; opacity: 0.2;
-  transition: opacity 0.25s, transform 0.25s;
-}
-.hi-dot--on { opacity: 0.7; transform: scale(1.25); }
 
 .hi-card .social-widget,
 .hi-card .mastodon-card,
@@ -260,10 +253,6 @@ html { touch-action: manipulation; }
 
   </div>
 
-  <div class="hi-dots-row">
-    <div id="hi-dots" class="hi-dots"></div>
-  </div>
-
 </div>
 
 <script>
@@ -280,21 +269,13 @@ html { touch-action: manipulation; }
 
   var cards = Array.from(document.querySelectorAll('.hi-card'));
   var stack = document.getElementById('hi-stack');
-  var dotsEl = document.getElementById('hi-dots');
   var total = cards.length;
   var current = 0;
   var STACK_CLASSES = ['hi-card--active', 'hi-card--behind-1', 'hi-card--behind-2', 'hi-card--hidden'];
 
-  cards.forEach(function () {
-    var d = document.createElement('span');
-    d.className = 'hi-dot';
-    dotsEl.appendChild(d);
-  });
-
   function mod(n, m) { return ((n % m) + m) % m; }
 
   function updateStack() {
-    var dots = dotsEl.querySelectorAll('.hi-dot');
     cards.forEach(function (card, i) {
       STACK_CLASSES.forEach(function (cls) { card.classList.remove(cls); });
       var dist = mod(i - current, total);
@@ -305,9 +286,6 @@ html { touch-action: manipulation; }
                      'hi-card--hidden'
       );
       if (dist === 0) card.scrollTop = 0;
-    });
-    dots.forEach(function (d, i) {
-      d.className = 'hi-dot' + (i === current ? ' hi-dot--on' : '');
     });
   }
 
