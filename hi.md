@@ -233,6 +233,83 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 :root[data-theme="dark"] .book-card-header { border-bottom-color: rgba(255,255,255,0.1); }
 :root[data-theme="dark"] .hi-nav-btn { background: rgba(28,28,28,0.92); color: #ddd; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 :root[data-theme="dark"] .hi-nav-btn:hover { background: rgba(45,45,45,0.95); }
+
+/* music card */
+.music-card {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.music-card-header {
+  flex: 0 0 auto;
+  padding: 12px 14px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.music-card-label {
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #555;
+  display: block;
+  text-align: center;
+}
+.music-cover-fill {
+  flex: 1; min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 24px;
+  box-sizing: border-box;
+  background: #f0ede8;
+}
+.music-cover-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
+  opacity: 0; transition: opacity 0.3s;
+  box-shadow:
+    0 12px 32px rgba(0,0,0,0.32),
+    0 4px 12px rgba(0,0,0,0.18),
+    0 1px 3px rgba(0,0,0,0.10);
+}
+.music-cover-img.loaded { opacity: 1; }
+.music-card-footer {
+  flex: 0 0 auto;
+  padding: 10px 14px 14px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  display: flex; flex-direction: column;
+  gap: 2px;
+}
+.music-album-name {
+  font-weight: 700;
+  font-size: 0.95em;
+  line-height: 1.2;
+}
+.music-artist-name {
+  font-size: 0.85em;
+  color: #666;
+}
+.music-fav-track {
+  font-size: 0.82em;
+  color: #888;
+  margin-top: 3px;
+}
+@media (prefers-color-scheme: dark) {
+  .music-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+  .music-card-footer { border-top-color: rgba(255,255,255,0.1); }
+  .music-card-label { color: #bbb; }
+  .music-artist-name { color: #aaa; }
+  .music-fav-track { color: #777; }
+  .music-cover-fill { background: #1e1c1a; }
+}
+:root[data-theme="dark"] .music-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+:root[data-theme="dark"] .music-card-footer { border-top-color: rgba(255,255,255,0.1); }
+:root[data-theme="dark"] .music-card-label { color: #bbb; }
+:root[data-theme="dark"] .music-artist-name { color: #aaa; }
+:root[data-theme="dark"] .music-fav-track { color: #777; }
+:root[data-theme="dark"] .music-cover-fill { background: #1e1c1a; }
 </style>
 
 # Hello from Brooklyn, NY
@@ -274,6 +351,22 @@ html[data-theme="dark"] p { color: #e8e8e8; }
       </div>
     </div>
 
+    <div class="hi-card" id="hi-card-3">
+      <div class="music-card">
+        <div class="music-card-header">
+          <span class="music-card-label">Currently Listening</span>
+        </div>
+        <div class="music-cover-fill">
+          <img class="music-cover-img" id="music-cover-img" alt="Any Light by Loving">
+        </div>
+        <div class="music-card-footer">
+          <span class="music-album-name">Any Light</span>
+          <span class="music-artist-name">Loving</span>
+          <span class="music-fav-track">&#9834; Medicine</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
@@ -289,6 +382,32 @@ html[data-theme="dark"] p { color: #e8e8e8; }
       bookImg.addEventListener('load', function () { bookImg.classList.add('loaded'); });
     }
   }
+
+  /* music card: fetch album art from iTunes Search API */
+  (function () {
+    var MUSIC_ARTIST = 'Loving';
+    var MUSIC_ALBUM  = 'Any Light';
+    fetch('https://itunes.apple.com/search?term=' + encodeURIComponent(MUSIC_ARTIST + ' ' + MUSIC_ALBUM) + '&entity=album&limit=5')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        var img = document.getElementById('music-cover-img');
+        if (!img) return;
+        var results = data.results || [];
+        var match = null;
+        for (var i = 0; i < results.length; i++) {
+          if (results[i].artworkUrl100) { match = results[i]; break; }
+        }
+        if (!match) return;
+        img.src = match.artworkUrl100.replace('100x100bb', '600x600bb');
+        if (img.complete && img.naturalWidth) {
+          img.classList.add('loaded');
+        } else {
+          img.addEventListener('load', function () { img.classList.add('loaded'); });
+        }
+      })
+      .catch(function () {});
+  })();
+
 
   var cards = Array.from(document.querySelectorAll('.hi-card'));
   var stack = document.getElementById('hi-stack');
