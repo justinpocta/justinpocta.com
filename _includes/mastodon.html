@@ -122,14 +122,14 @@
     var handle = "@" + (post.account && post.account.username ? post.account.username : "justinpocta");
 
     return '<a class="social-post mastodon-card" href="' + post.url + '" target="_blank" rel="noopener">' +
-      renderMedia(post.media_attachments) +
-      '<div class="social-post-text">' + post.content + "</div>" +
       '<div class="mastodon-footer">' +
         mastodonIcon("mastodon-grad-" + index) +
         '<span class="mastodon-handle">' + escapeHtml(handle) + "</span>" +
         '<span class="mastodon-dot">&middot;</span>' +
         '<span class="mastodon-date">' + date + "</span>" +
       "</div>" +
+      renderMedia(post.media_attachments) +
+      '<div class="social-post-text">' + post.content + "</div>" +
     "</a>";
   }
 

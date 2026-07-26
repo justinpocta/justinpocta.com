@@ -9,13 +9,17 @@ hide_footer: true
 ---
 
 <style>
+/* ensure parent containers don't clip the card stack */
+.page__content,
+.initial-content {
+  overflow: visible !important;
+}
+
 .hi-stack-outer {
   position: relative;
-  /* Break out of minimal-mistakes' narrow content column (~369px) */
-  width: min(460px, calc(100vw - 2rem));
+  width: clamp(400px, 48vw, 620px);
   margin-top: 2rem;
   margin-bottom: 3rem;
-  /* Center on the page -- margin-left: 50% pivots to parent center, transform pulls back */
   margin-left: 50%;
   transform: translateX(-50%);
   padding: 0 28px;
@@ -49,6 +53,42 @@ hide_footer: true
 
 @media (prefers-color-scheme: dark) { .hi-card { background: #111; } }
 :root[data-theme="dark"] .hi-card { background: #111; }
+
+/* mastodon card: center content, no inner card-within-a-card */
+#hi-card-0 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#hi-card-0 .social-widget {
+  flex: 0 0 auto;
+  margin: 0;
+}
+#hi-card-0 .mastodon-card {
+  display: block;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 20px 22px;
+  box-sizing: border-box;
+}
+
+/* footer is now at top -- flip border to bottom, flip margin/padding */
+#hi-card-0 .mastodon-footer {
+  border-top: none;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  #hi-card-0 .mastodon-footer { border-bottom-color: #444; }
+  .hi-card .mastodon-date { color: #aaa; }
+}
+:root[data-theme="dark"] #hi-card-0 .mastodon-footer { border-bottom-color: #444; }
+:root[data-theme="dark"] .hi-card .mastodon-date { color: #aaa; }
 
 .hi-card--active {
   z-index: 3;
@@ -131,7 +171,7 @@ hide_footer: true
   flex: 1; min-height: 0;
   position: relative;
   overflow: hidden;
-  background: #F5C200;
+  background: #f8cd54;
   container-type: inline-size;
 }
 /* CSS art: shows when real image is absent */
@@ -161,7 +201,7 @@ hide_footer: true
 .book-cover-img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
+  object-fit: contain; object-position: center center;
   opacity: 0; transition: opacity 0.3s;
 }
 .book-cover-img.loaded { opacity: 1; }
@@ -291,6 +331,7 @@ hide_footer: true
     dragging = true;
     dragX = e.clientX;
     dragY = e.clientY;
+    e.preventDefault(); /* prevents image drag and text selection */
   }, false);
   document.addEventListener('mouseup', function (e) {
     if (!dragging) return;
