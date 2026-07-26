@@ -68,10 +68,13 @@
   }
   .strava-map-div .leaflet-control-zoom,
   .strava-map-div .leaflet-control-attribution { display: none !important; }
+  .strava-map-div .leaflet-tile { border-radius: 0; }
+  .strava-map-div .leaflet-tile-pane { filter: brightness(0.8) contrast(1.4); }
   @media (prefers-color-scheme: dark) {
-    .strava-map-div .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg); }
+    .strava-map-div .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(1.2); }
   }
-  :root[data-theme="dark"] .strava-map-div .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg); }
+  :root[data-theme="light"] .strava-map-div .leaflet-tile-pane { filter: brightness(0.8) contrast(1.4); }
+  :root[data-theme="dark"] .strava-map-div .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(1.2); }
   @media (prefers-color-scheme: dark) {
     .strava-card-header { border-bottom-color: rgba(255,255,255,0.1); }
     .strava-card-footer { border-top-color: rgba(255,255,255,0.1); }
@@ -135,13 +138,13 @@
       attributionControl: false,
     });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      subdomains: 'abc',
-      maxZoom: 19,
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+      subdomains: 'abcd',
+      maxZoom: 20,
     }).addTo(map);
 
     var route = L.polyline(pts, { color: '#FC4C02', weight: 3, opacity: 1 }).addTo(map);
-    map.fitBounds(route.getBounds(), { padding: [24, 24] });
+    map.fitBounds(route.getBounds(), { padding: [10, 10] });
 
     L.circleMarker(pts[0], {
       radius: 5, fillColor: '#FC4C02',
