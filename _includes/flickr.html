@@ -77,6 +77,14 @@
   .flickr-handle:hover {
     text-decoration: underline;
   }
+  @media (prefers-color-scheme: dark) {
+    .flickr-footer { border-bottom-color: rgba(255,255,255,0.1); }
+    .flickr-handle { color: #666; }
+    .flickr-loading { color: #666; }
+  }
+  :root[data-theme="dark"] .flickr-footer { border-bottom-color: rgba(255,255,255,0.1); }
+  :root[data-theme="dark"] .flickr-handle { color: #666; }
+  :root[data-theme="dark"] .flickr-loading { color: #666; }
 </style>
 
 <script>

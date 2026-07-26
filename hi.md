@@ -13,6 +13,8 @@ hide_footer: true
 html { touch-action: manipulation; }
 body { overflow-x: hidden; }
 
+.page__content > h1:first-of-type { text-align: center; }
+
 /* dark mode page background + reverse out text on dark bg */
 @media (prefers-color-scheme: dark) {
   html, body { background-color: #1a1a1a !important; }
@@ -314,7 +316,7 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 
 # Hello from Brooklyn, NY
 
-<p style="font-family: Georgia, serif; font-style: italic; opacity: 0.5; margin-top: -0.6em; margin-bottom: 1.5em; font-size: 1.05em;">A snapshot of my life outside of work</p>
+<p style="font-family: Georgia, serif; font-style: italic; opacity: 0.5; margin-top: -0.6em; margin-bottom: 1.5em; font-size: 1.05em; text-align: center;">A snapshot of my life outside of work</p>
 
 <div class="hi-stack-outer">
 
