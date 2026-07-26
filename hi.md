@@ -13,12 +13,23 @@ hide_footer: true
 html { touch-action: manipulation; }
 body { overflow-x: hidden; }
 
-/* dark mode page background to match the cards */
+/* dark mode page background + reverse out text on dark bg */
 @media (prefers-color-scheme: dark) {
   html, body { background-color: #1a1a1a !important; }
+  .site-title, .site-title:visited { color: #f0f0f0 !important; }
+  .masthead a, .greedy-nav a { color: #f0f0f0 !important; }
+  h1, h2, h3, p { color: #e8e8e8; }
 }
 :root[data-theme="dark"] html,
 :root[data-theme="dark"] body { background-color: #1a1a1a !important; }
+:root[data-theme="dark"] .site-title,
+:root[data-theme="dark"] .site-title:visited { color: #f0f0f0 !important; }
+:root[data-theme="dark"] .masthead a,
+:root[data-theme="dark"] .greedy-nav a { color: #f0f0f0 !important; }
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] p { color: #e8e8e8; }
 
 /* ensure parent containers don't clip the card stack */
 .page__content,
