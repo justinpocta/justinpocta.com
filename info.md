@@ -45,7 +45,7 @@ I love working with teams that value asking questions. _Why are we creating a gi
       <i class="fas fa-file-pdf" style="font-size:1.5em;"></i>
       <span style="font-size:0.78em;">Résumé</span>
     </a>
-    <a href="/hi/" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
+    <a href="/now/" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
       <i class="fas fa-bolt" style="font-size:1.5em;"></i>
       <span style="font-size:0.78em;">Now</span>
     </a>
