@@ -76,7 +76,7 @@
   .flickr-handle:visited {
     font-weight: 400;
     font-size: 0.95rem;
-    color: #fff !important;
+    color: inherit;
     text-decoration: none;
   }
   .flickr-handle:hover {
@@ -85,9 +85,14 @@
   @media (prefers-color-scheme: dark) {
     .flickr-footer { border-bottom-color: rgba(255,255,255,0.1); }
     .flickr-loading { color: #666; }
+    .flickr-handle, .flickr-handle:visited { color: #fff; }
   }
   :root[data-theme="dark"] .flickr-footer { border-bottom-color: rgba(255,255,255,0.1); }
   :root[data-theme="dark"] .flickr-loading { color: #666; }
+  :root[data-theme="dark"] .flickr-handle,
+  :root[data-theme="dark"] .flickr-handle:visited { color: #fff; }
+  :root[data-theme="light"] .flickr-handle,
+  :root[data-theme="light"] .flickr-handle:visited { color: inherit; }
 </style>
 
 <script>
