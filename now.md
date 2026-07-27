@@ -85,7 +85,8 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 #hi-card-0 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: auto;
 }
 #hi-card-0 .social-widget {
   flex: 0 0 auto;
@@ -96,8 +97,12 @@ html[data-theme="dark"] p { color: #e8e8e8; }
   border: none;
   border-radius: 0;
   background: transparent;
-  padding: 20px 22px;
+  padding: 20px 22px 0;
   box-sizing: border-box;
+}
+/* Browser pushes post text outside the <a> tag; match card padding */
+#hi-card-0 .social-post-text {
+  padding: 8px 22px 20px;
 }
 
 /* footer is now at top -- flip border to bottom, flip margin/padding */
