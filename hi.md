@@ -497,20 +497,17 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     var flyRot = dx < 0 ? -28 : 28;
     var flyTx = dx < 0 ? -200 : 200;
 
-    // Commit the stack advance NOW so new active card starts CSS transition immediately
-    cb(); // → go(dir) → updateStack()
-
-    // On next frame, clear the new active card's inline preview so CSS transition
-    // takes it from its preview position to the active position
     if (dx < 0) {
-      requestAnimationFrame(function () {
+      // Left drag: advance stack immediately — behind-1 transitions from preview to active
+      cb(); // → go(1) → updateStack()
+      // Re-enable transition on new active card so it animates from preview position
+      setTimeout(function () {
         cards[current].style.transition = '';
         cards[current].style.transform = '';
-      });
+      }, 0);
     }
 
-    // Fly departing card off-screen — no opacity fade, just slide out
-    // Override class styles (updateStack may have assigned hi-card--hidden)
+    // Fly departing card off-screen — no opacity fade, pure directional slide
     card.style.zIndex = '99';
     card.style.opacity = '1';
     card.style.pointerEvents = 'none';
@@ -518,13 +515,32 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     card.style.transform = 'rotate(' + flyRot + 'deg) translate(' + flyTx + '%, -2%)';
 
     setTimeout(function () {
-      // Disable transition before resetting so card doesn't snap back visibly
-      card.style.transition = 'none';
-      card.style.transform = '';
-      card.style.opacity = '';
-      card.style.zIndex = '';
-      card.style.pointerEvents = '';
-      requestAnimationFrame(function () { card.style.transition = ''; animating = false; });
+      if (dx > 0) {
+        // Right drag: bring previous card in instantly (no fade-in), then update stack.
+        // Delay go(-1) until here so the hidden card doesn't fade in during the fly.
+        var prevCard = cards[mod(current - 1, total)];
+        prevCard.style.transition = 'none';
+        prevCard.style.opacity = '1';       // appear instantly
+        card.style.transition = 'none';
+        card.style.transform = '';
+        card.style.opacity = '';            // CSS hi-card--active → opacity:1 instantly
+        card.style.zIndex = '';
+        card.style.pointerEvents = '';
+        cb(); // → go(-1): card → behind-1, prevCard → active
+        setTimeout(function () {
+          card.style.transition = '';       // re-enable transitions for future animations
+          prevCard.style.cssText = '';
+          animating = false;
+        }, 0);
+      } else {
+        // Left drag: card is now hi-card--hidden (opacity:0), clean up inline styles
+        card.style.transition = 'none';
+        card.style.transform = '';
+        card.style.opacity = '';
+        card.style.zIndex = '';
+        card.style.pointerEvents = '';
+        setTimeout(function () { card.style.transition = ''; animating = false; }, 0);
+      }
     }, 340);
   }
 
