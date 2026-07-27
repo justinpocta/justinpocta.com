@@ -81,38 +81,42 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 @media (prefers-color-scheme: dark) { .hi-card { background: #111; } }
 :root[data-theme="dark"] .hi-card { background: #111; }
 
-/* mastodon card: center content, no inner card-within-a-card */
+/* mastodon card: header pinned at top, post content centered in remaining space */
 #hi-card-0 {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  overflow-y: auto;
+  overflow: hidden;
 }
 #hi-card-0 .social-widget {
-  flex: 0 0 auto;
+  flex: 1;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 #hi-card-0 .mastodon-card {
-  display: block;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   border: none;
   border-radius: 0;
   background: transparent;
-  padding: 20px 22px 0;
+  padding: 0;
   box-sizing: border-box;
 }
-/* Browser pushes post text outside the <a> tag; match card padding */
-#hi-card-0 .social-post-text {
-  padding: 8px 22px 20px;
-}
-
-/* footer is now at top -- flip border to bottom, flip margin/padding */
 #hi-card-0 .mastodon-footer {
+  flex: 0 0 auto;
   border-top: none;
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  margin-top: 0;
-  padding-top: 0;
-  margin-bottom: 14px;
-  padding-bottom: 12px;
+  margin: 0;
+  padding: 16px 22px 12px;
+}
+#hi-card-0 .mastodon-post-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 22px 20px;
 }
 
 @media (prefers-color-scheme: dark) {

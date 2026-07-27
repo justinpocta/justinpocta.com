@@ -30,7 +30,9 @@
   .social-loading { color: #888; font-size: 0.9rem; }
   .mastodon-card {
     display: block;
+    cursor: pointer;
   }
+  .mastodon-post-content { display: block; }
   .mastodon-footer {
     display: flex;
     align-items: center;
@@ -135,17 +137,20 @@
     var len = textLen(post.content);
     var sizeClass = len < 80 ? 'post-size-xl' : len < 200 ? 'post-size-lg' : '';
 
-    return '<a class="social-post mastodon-card" href="' + post.url + '" target="_blank" rel="noopener">' +
+    var safeUrl = post.url.replace(/'/g, '%27');
+    return '<div class="social-post mastodon-card" onclick="window.open(\'' + safeUrl + '\',\'_blank\',\'noopener\')" role="link" tabindex="0">' +
       '<div class="mastodon-footer">' +
         mastodonIcon("mastodon-grad-" + index) +
         '<span class="mastodon-appname">Mastodon</span>' +
-        '<span class="mastodon-handle">' + escapeHtml(handle) + "</span>" +
+        '<span class="mastodon-handle">' + escapeHtml(handle) + '</span>' +
         '<span class="mastodon-dot">&middot;</span>' +
-        '<span class="mastodon-date">' + date + "</span>" +
-      "</div>" +
-      renderMedia(post.media_attachments) +
-      '<div class="social-post-text ' + sizeClass + '">' + post.content + "</div>" +
-    "</a>";
+        '<span class="mastodon-date">' + date + '</span>' +
+      '</div>' +
+      '<div class="mastodon-post-content">' +
+        renderMedia(post.media_attachments) +
+        '<div class="social-post-text ' + sizeClass + '">' + post.content + '</div>' +
+      '</div>' +
+    '</div>';
   }
 
   fetch(url)
