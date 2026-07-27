@@ -482,9 +482,14 @@ html[data-theme="dark"] p { color: #e8e8e8; }
       }
     } else if (dx > 0) {
       var progress = Math.min(1, dx / 160);
+      /* behind-1 also sits at z-index 2, and a tie resolves by DOM order --
+         so revealing prevCard at z2 only worked when it happened to come
+         later in the DOM (Duolingo, Mastodon). Lift prev above behind-1
+         and the dragged card above prev; both stay under the nav (z10). */
+      card.style.zIndex = '5';
       prevCard.style.transition = 'none';
       prevCard.style.opacity = '1';
-      prevCard.style.zIndex = '2';
+      prevCard.style.zIndex = '4';
       prevCard.style.transform = 'scale(' + (0.92 + 0.08 * progress) + ')';
       if (nextCard.style.transform) {
         nextCard.style.transition = '';
@@ -496,6 +501,7 @@ html[data-theme="dark"] p { color: #e8e8e8; }
   function snapBack(card) {
     card.style.transition = '';
     card.style.transform = '';
+    card.style.zIndex = '';
     var nextCard = cards[mod(current + 1, total)];
     nextCard.style.transition = '';
     nextCard.style.transform = '';
