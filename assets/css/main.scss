@@ -714,7 +714,7 @@ a.hero-tile:hover { color: rgba(255,255,255,.75); text-decoration: none !importa
 
 @media (max-width: 768px) {
     .hero-intro {
-        min-height: 32vh;
+        min-height: 22vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -722,6 +722,13 @@ a.hero-tile:hover { color: rgba(255,255,255,.75); text-decoration: none !importa
     .hero-intro h1 { margin: 0; }
     .hero-tile { width: 100%; min-height: 80vw; max-height: none; }
     .hero-tile p { padding-bottom: 1.3em; }
+    /* Tiles: use 48vh instead of 56vh so the section fits the visible
+       viewport on iOS where vh = large viewport (URL bar hidden). */
+    .container.scroll-test .hero-tile { height: 48vh; }
+    .container.scroll-test .hero-tile.is-active { height: calc(48vh + 40px); }
+    .container.scroll-test { min-height: calc(48vh + 40px); }
+    /* No extra bottom gap below the tile row on mobile. */
+    .tile-scroll-wrapper { padding-bottom: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

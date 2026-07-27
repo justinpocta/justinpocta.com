@@ -42,7 +42,7 @@ galleryProjects:
 </h1>
 </div>
 
-<div style="padding-bottom: 20px;"></div>
+<div style="padding-bottom: 8px;"></div>
 
 {% include anim-01.html %}
 
