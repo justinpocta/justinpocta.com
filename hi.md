@@ -461,37 +461,71 @@ html[data-theme="dark"] p { color: #e8e8e8; }
   document.getElementById('hi-prev').addEventListener('click', function () { go(-1); });
   document.getElementById('hi-next').addEventListener('click', function () { go(1); });
 
-  function getActiveCard() {
-    for (var i = 0; i < cards.length; i++) {
-      if (cards[i].classList.contains('hi-card--active')) return cards[i];
-    }
-    return null;
-  }
-
   function applyDrag(card, dx) {
     card.style.transition = 'none';
     card.style.transform = 'rotate(' + (dx / 20) + 'deg) translate(' + dx + 'px, 0)';
+
+    // Progressively reveal next card as drag increases (forward = left)
+    var nextCard = cards[mod(current + 1, total)];
+    if (dx < 0) {
+      var progress = Math.min(1, Math.abs(dx) / 160);
+      nextCard.style.transition = 'none';
+      // behind-1: rotate(3deg) translate(10px,10px) scale(0.985) → active: rotate(0) translate(0,0) scale(1)
+      nextCard.style.transform =
+        'rotate(' + (3 * (1 - progress)) + 'deg)' +
+        ' translate(' + (10 * (1 - progress)) + 'px,' + (10 * (1 - progress)) + 'px)' +
+        ' scale(' + (0.985 + 0.015 * progress) + ')';
+    } else if (nextCard.style.transform) {
+      // Was previewing but dragged back — let CSS spring it to class position
+      nextCard.style.transition = '';
+      nextCard.style.transform = '';
+    }
   }
 
   function snapBack(card) {
     card.style.transition = '';
     card.style.transform = '';
+    var nextCard = cards[mod(current + 1, total)];
+    nextCard.style.transition = '';
+    nextCard.style.transform = '';
   }
 
   var animating = false;
 
   function flyOff(card, dx, cb) {
     animating = true;
-    card.style.transition = 'transform 0.28s ease, opacity 0.22s ease';
-    card.style.transform = 'rotate(' + (dx < 0 ? -30 : 30) + 'deg) translate(' + (dx < 0 ? -120 : 120) + '%, 10px)';
-    card.style.opacity = '0';
+    var flyRot = dx < 0 ? -28 : 28;
+    var flyTx = dx < 0 ? -200 : 200;
+
+    // Commit the stack advance NOW so new active card starts CSS transition immediately
+    cb(); // → go(dir) → updateStack()
+
+    // On next frame, clear the new active card's inline preview so CSS transition
+    // takes it from its preview position to the active position
+    if (dx < 0) {
+      requestAnimationFrame(function () {
+        cards[current].style.transition = '';
+        cards[current].style.transform = '';
+      });
+    }
+
+    // Fly departing card off-screen — no opacity fade, just slide out
+    // Override class styles (updateStack may have assigned hi-card--hidden)
+    card.style.zIndex = '99';
+    card.style.opacity = '1';
+    card.style.pointerEvents = 'none';
+    card.style.transition = 'transform 0.32s cubic-bezier(0.3, 0, 0.5, 1)';
+    card.style.transform = 'rotate(' + flyRot + 'deg) translate(' + flyTx + '%, -2%)';
+
     setTimeout(function () {
+      // Disable transition before resetting so card doesn't snap back visibly
       card.style.transition = 'none';
       card.style.transform = '';
       card.style.opacity = '';
-      cb();
+      card.style.zIndex = '';
+      card.style.pointerEvents = '';
       requestAnimationFrame(function () { card.style.transition = ''; animating = false; });
-    }, 290);
+    }, 340);
   }
 
   /* block link clicks that are actually the tail of a drag */
@@ -512,14 +546,13 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     if (!dragging) return;
     var dx = e.clientX - msx;
     if (Math.abs(dx) > 4) didDrag = true;
-    var card = getActiveCard();
-    if (card) applyDrag(card, dx);
+    applyDrag(cards[current], dx);
   }, false);
   document.addEventListener('mouseup', function (e) {
     if (!dragging) return;
     dragging = false;
     var dx = e.clientX - msx, dy = e.clientY - msy;
-    var card = getActiveCard();
+    var card = cards[current];
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
       var dir = dx < 0 ? 1 : -1;
       flyOff(card, dx, function () { go(dir); });
@@ -542,13 +575,12 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     if (!touchLocked && Math.abs(dy) > Math.abs(dx)) return;
     touchLocked = true;
     if (Math.abs(dx) > 4) didDrag = true;
-    var card = getActiveCard();
-    if (card) applyDrag(card, dx);
+    applyDrag(cards[current], dx);
   }, { passive: true });
   stack.addEventListener('touchend', function (e) {
     var dx = e.changedTouches[0].clientX - tsx;
     var dy = e.changedTouches[0].clientY - tsy;
-    var card = getActiveCard();
+    var card = cards[current];
     if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) {
       var dir = dx < 0 ? 1 : -1;
       flyOff(card, dx, function () { go(dir); });
