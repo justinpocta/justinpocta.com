@@ -429,14 +429,15 @@
       });
       _applyTileBg(tiles[idx]);
       // Safari suspends @keyframes on off-screen elements in scroll containers.
-      // When the active tile changes, force-restart its CSS animations via a
-      // class toggle that sets animation:none, a layout flush, then removes it.
+      // Force-restart by setting animationName inline on each child, flushing
+      // the reflow per-element, then clearing the inline override.
       if (idx !== lastAnimIdx) {
         lastAnimIdx = idx;
-        var t = tiles[idx];
-        t.classList.add('anim-restart');
-        void t.offsetWidth;
-        requestAnimationFrame(function() { t.classList.remove('anim-restart'); });
+        tiles[idx].querySelectorAll('.css-anim *').forEach(function(el) {
+          el.style.animationName = 'none';
+          void el.offsetWidth;
+          el.style.animationName = '';
+        });
       }
     }
 
