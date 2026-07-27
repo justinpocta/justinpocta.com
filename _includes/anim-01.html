@@ -251,22 +251,14 @@
     if (active) _applyTileBg(active);
   }
 
-  // ── IntersectionObserver: greyscale reveal on touch + Safari animation restart ──
+  // ── IntersectionObserver: greyscale reveal on touch devices ──
   (function() {
     var isTouchOnly = !window.matchMedia('(hover: hover)').matches;
+    if (!isTouchOnly) return;
     var tiles = document.querySelectorAll('.hero-tile');
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
-        if (isTouchOnly) entry.target.classList.toggle('in-view', entry.isIntersecting);
-        if (entry.isIntersecting) {
-          // Safari suspends @keyframes on off-screen scroll-container elements;
-          // force-restart by toggling animationName off/on with a reflow in between.
-          entry.target.querySelectorAll('.css-anim *').forEach(function(el) {
-            el.style.animationName = 'none';
-            void el.offsetWidth;
-            el.style.animationName = '';
-          });
-        }
+        entry.target.classList.toggle('in-view', entry.isIntersecting);
       });
     }, { threshold: 0.5 });
     tiles.forEach(function(tile) { observer.observe(tile); });
@@ -422,6 +414,7 @@
       return closest;
     }
 
+    var lastAnimIdx = -1;
     function update() {
       var idx = getCurrentIndex();
       btnLeft.classList.toggle('is-disabled', idx === 0);
@@ -435,6 +428,16 @@
         }
       });
       _applyTileBg(tiles[idx]);
+      // Safari suspends @keyframes on off-screen elements in scroll containers.
+      // When the active tile changes, force-restart its CSS animations via a
+      // class toggle that sets animation:none, a layout flush, then removes it.
+      if (idx !== lastAnimIdx) {
+        lastAnimIdx = idx;
+        var t = tiles[idx];
+        t.classList.add('anim-restart');
+        void t.offsetWidth;
+        requestAnimationFrame(function() { t.classList.remove('anim-restart'); });
+      }
     }
 
     tiles.forEach(function(tile) {

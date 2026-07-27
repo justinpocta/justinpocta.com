@@ -727,6 +727,8 @@ a.hero-tile:hover { color: rgba(255,255,255,.75); text-decoration: none !importa
 @media (prefers-reduced-motion: reduce) {
     .css-anim * { animation: none !important; }
 }
+/* Safari animation restart: briefly applied by JS when active tile changes */
+.hero-tile.anim-restart .css-anim * { animation: none !important; }
 
 /* OG -- Wayfinding */
 .anim-og { width: 100%; height: 72px; display: flex; align-items: center; justify-content: center; }
