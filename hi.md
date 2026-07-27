@@ -580,7 +580,7 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     if (animating) return;
     tsx = e.touches[0].clientX; tsy = e.touches[0].clientY;
     touchLocked = false; didDrag = false;
-  }, { passive: true });
+  }, { passive: true, capture: true });
   stack.addEventListener('touchmove', function (e) {
     var dx = e.touches[0].clientX - tsx;
     var dy = e.touches[0].clientY - tsy;
@@ -588,7 +588,7 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     touchLocked = true;
     if (Math.abs(dx) > 4) didDrag = true;
     applyDrag(cards[current], dx);
-  }, { passive: true });
+  }, { passive: true, capture: true });
   stack.addEventListener('touchend', function (e) {
     var dx = e.changedTouches[0].clientX - tsx;
     var dy = e.changedTouches[0].clientY - tsy;
@@ -600,7 +600,7 @@ html[data-theme="dark"] p { color: #e8e8e8; }
       snapBack(card);
       setTimeout(function () { didDrag = false; }, 50);
     }
-  }, { passive: true });
+  }, { passive: true, capture: true });
 
   updateStack();
 })();

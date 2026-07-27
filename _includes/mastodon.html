@@ -52,8 +52,13 @@
   .mastodon-handle {
     font-weight: 400;
     font-size: 0.95rem;
-    color: #fff;
+    color: inherit;
   }
+  @media (prefers-color-scheme: dark) {
+    .mastodon-handle { color: #fff; }
+  }
+  :root[data-theme="dark"] .mastodon-handle { color: #fff; }
+  :root[data-theme="light"] .mastodon-handle { color: inherit; }
   .social-post-text { font-size: 1.05rem; line-height: 1.5; margin: 0; }
   .social-post-text.post-size-lg { font-size: 1.3rem; line-height: 1.4; }
   .social-post-text.post-size-xl { font-size: 1.65rem; line-height: 1.3; }
