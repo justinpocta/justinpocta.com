@@ -461,37 +461,83 @@ html[data-theme="dark"] p { color: #e8e8e8; }
   document.getElementById('hi-prev').addEventListener('click', function () { go(-1); });
   document.getElementById('hi-next').addEventListener('click', function () { go(1); });
 
-  function getActiveCard() {
-    for (var i = 0; i < cards.length; i++) {
-      if (cards[i].classList.contains('hi-card--active')) return cards[i];
-    }
-    return null;
-  }
-
   function applyDrag(card, dx) {
     card.style.transition = 'none';
     card.style.transform = 'rotate(' + (dx / 20) + 'deg) translate(' + dx + 'px, 0)';
+
+    var nextCard = cards[mod(current + 1, total)];
+    var prevCard = cards[mod(current - 1, total)];
+    if (dx < 0) {
+      var progress = Math.min(1, Math.abs(dx) / 160);
+      nextCard.style.transition = 'none';
+      nextCard.style.transform =
+        'rotate(' + (3 * (1 - progress)) + 'deg)' +
+        ' translate(' + (10 * (1 - progress)) + 'px,' + (10 * (1 - progress)) + 'px)' +
+        ' scale(' + (0.985 + 0.015 * progress) + ')';
+      if (prevCard.style.opacity === '1') {
+        prevCard.style.transition = 'none';
+        prevCard.style.opacity = '';
+        prevCard.style.zIndex = '';
+        prevCard.style.transform = '';
+      }
+    } else if (dx > 0) {
+      var progress = Math.min(1, dx / 160);
+      prevCard.style.transition = 'none';
+      prevCard.style.opacity = '1';
+      prevCard.style.zIndex = '2';
+      prevCard.style.transform = 'scale(' + (0.92 + 0.08 * progress) + ')';
+      if (nextCard.style.transform) {
+        nextCard.style.transition = '';
+        nextCard.style.transform = '';
+      }
+    }
   }
 
   function snapBack(card) {
     card.style.transition = '';
     card.style.transform = '';
+    var nextCard = cards[mod(current + 1, total)];
+    nextCard.style.transition = '';
+    nextCard.style.transform = '';
+    var prevCard = cards[mod(current - 1, total)];
+    prevCard.style.transition = '';
+    prevCard.style.transform = '';
+    prevCard.style.opacity = '';
+    prevCard.style.zIndex = '';
   }
 
   var animating = false;
 
   function flyOff(card, dx, cb) {
     animating = true;
-    card.style.transition = 'transform 0.28s ease, opacity 0.22s ease';
-    card.style.transform = 'rotate(' + (dx < 0 ? -30 : 30) + 'deg) translate(' + (dx < 0 ? -120 : 120) + '%, 10px)';
-    card.style.opacity = '0';
+    var flyRot = dx < 0 ? -28 : 28;
+    var flyTx = dx < 0 ? -200 : 200;
+
+    // Advance stack immediately — preview card transitions from its drag position to active
+    cb(); // → go(dir) → updateStack()
+    setTimeout(function () {
+      var newActive = cards[current];
+      newActive.style.transition = '';
+      newActive.style.transform = '';
+      newActive.style.opacity = '';
+      newActive.style.zIndex = '';
+    }, 0);
+
+    // Fly departing card off-screen — no opacity fade, pure directional slide
+    card.style.zIndex = '99';
+    card.style.opacity = '1';
+    card.style.pointerEvents = 'none';
+    card.style.transition = 'transform 0.32s cubic-bezier(0.3, 0, 0.5, 1)';
+    card.style.transform = 'rotate(' + flyRot + 'deg) translate(' + flyTx + '%, -2%)';
+
     setTimeout(function () {
       card.style.transition = 'none';
       card.style.transform = '';
       card.style.opacity = '';
-      cb();
-      requestAnimationFrame(function () { card.style.transition = ''; animating = false; });
-    }, 290);
+      card.style.zIndex = '';
+      card.style.pointerEvents = '';
+      setTimeout(function () { card.style.transition = ''; animating = false; }, 0);
+    }, 340);
   }
 
   /* block link clicks that are actually the tail of a drag */
@@ -512,14 +558,13 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     if (!dragging) return;
     var dx = e.clientX - msx;
     if (Math.abs(dx) > 4) didDrag = true;
-    var card = getActiveCard();
-    if (card) applyDrag(card, dx);
+    applyDrag(cards[current], dx);
   }, false);
   document.addEventListener('mouseup', function (e) {
     if (!dragging) return;
     dragging = false;
     var dx = e.clientX - msx, dy = e.clientY - msy;
-    var card = getActiveCard();
+    var card = cards[current];
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
       var dir = dx < 0 ? 1 : -1;
       flyOff(card, dx, function () { go(dir); });
@@ -542,13 +587,12 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     if (!touchLocked && Math.abs(dy) > Math.abs(dx)) return;
     touchLocked = true;
     if (Math.abs(dx) > 4) didDrag = true;
-    var card = getActiveCard();
-    if (card) applyDrag(card, dx);
+    applyDrag(cards[current], dx);
   }, { passive: true });
   stack.addEventListener('touchend', function (e) {
     var dx = e.changedTouches[0].clientX - tsx;
     var dy = e.changedTouches[0].clientY - tsy;
-    var card = getActiveCard();
+    var card = cards[current];
     if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) {
       var dir = dx < 0 ? 1 : -1;
       flyOff(card, dx, function () { go(dir); });
