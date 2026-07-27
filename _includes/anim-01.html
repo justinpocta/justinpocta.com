@@ -251,29 +251,57 @@
     if (active) _applyTileBg(active);
   }
 
-  // ── IntersectionObserver: greyscale reveal + CSS animation restart ──
+  // ── IntersectionObserver: greyscale reveal on touch devices ──
   // root: the scroll row, so intersection is measured within the horizontal
   // container (tiles off to the side = 0%, centered tile = ~100%).
-  // Animation restart fires here -- not in update() -- because IO fires after
-  // the tile is actually visible/settled, whereas scroll events fire mid-swipe
-  // when WebKit may still be animating the snap and ignores the restart.
   (function() {
     var row = document.getElementById('tile-scroll-row');
     if (!row) return;
-    var isTouchOnly = !window.matchMedia('(hover: hover)').matches;
-    var tiles = document.querySelectorAll('.hero-tile');
+    if (window.matchMedia('(hover: hover)').matches) return;
+    var tiles = row.querySelectorAll('.hero-tile');
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
-        if (isTouchOnly) entry.target.classList.toggle('in-view', entry.isIntersecting);
-        if (!entry.isIntersecting) return;
-        entry.target.querySelectorAll('.css-anim *').forEach(function(el) {
-          el.style.animationName = 'none';
-          void el.offsetWidth;
-          el.style.animationName = '';
-        });
+        entry.target.classList.toggle('in-view', entry.isIntersecting);
       });
-    }, { root: row, threshold: 0.9 });
+    }, { root: row, threshold: 0.5 });
     tiles.forEach(function(tile) { observer.observe(tile); });
+  })();
+
+  // ── CSS animation restart: clone .css-anim after the scroll settles ──
+  // iOS WebKit suspends @keyframes on tiles that were offscreen inside the
+  // scroll row, and the inline animationName-reset trick fails when it runs
+  // mid-snap (IO at threshold 0.9 fires while momentum is still going).
+  // Debouncing past the last scroll event waits until the tile has settled
+  // onscreen; swapping in a deep clone hands WebKit brand-new nodes, which
+  // always start their animations from t=0 -- there is no suspended state
+  // for it to fail to resume.
+  (function() {
+    var row = document.getElementById('tile-scroll-row');
+    if (!row) return;
+    var tiles = Array.from(row.querySelectorAll('.hero-tile'));
+    var lastIdx = -1, timer = null;
+
+    function restartCentered() {
+      var center = row.scrollLeft + row.clientWidth / 2;
+      var idx = 0, minDist = Infinity;
+      tiles.forEach(function(tile, i) {
+        var dist = Math.abs((tile.offsetLeft + tile.offsetWidth / 2) - center);
+        if (dist < minDist) { minDist = dist; idx = i; }
+      });
+      if (idx === lastIdx) return;
+      lastIdx = idx;
+      var anim = tiles[idx].querySelector('.css-anim');
+      // Recruiting tile is JS-driven -- its timers hold references into the
+      // SVG, so cloning would freeze it.
+      if (!anim || anim.querySelector('#rec-grid')) return;
+      anim.parentNode.replaceChild(anim.cloneNode(true), anim);
+    }
+
+    row.addEventListener('scroll', function() {
+      clearTimeout(timer);
+      timer = setTimeout(restartCentered, 160);
+    });
+    timer = setTimeout(restartCentered, 300); // page may load scrolled mid-row
   })();
 
   // ── Drag-to-scroll ───────────────────────────────────────────────
