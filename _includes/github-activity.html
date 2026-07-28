@@ -25,17 +25,15 @@
   }
   .github-card-header {
     flex: 0 0 auto;
-    padding: 10px 14px;
+    padding: 16px 22px 12px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     display: flex; align-items: center; gap: 7px;
     color: #24292f;
   }
   .github-icon { flex: 0 0 auto; }
   .github-card-label {
-    font-size: 0.72em;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #555;
+    font-weight: 700;
+    font-size: 0.95rem;
   }
   .github-card-body {
     flex: 1; min-height: 0;
@@ -69,13 +67,11 @@
   }
   @media (prefers-color-scheme: dark) {
     .github-card-header { border-bottom-color: rgba(255,255,255,0.1); color: #e8e8e8; }
-    .github-card-label { color: #bbb; }
     .github-repo-badge { color: #bbb; background: rgba(255,255,255,0.08); }
     .github-commit-date { color: #777; }
     .github-loading { color: #666; }
   }
   :root[data-theme="dark"] .github-card-header { border-bottom-color: rgba(255,255,255,0.1); color: #e8e8e8; }
-  :root[data-theme="dark"] .github-card-label { color: #bbb; }
   :root[data-theme="dark"] .github-repo-badge { color: #bbb; background: rgba(255,255,255,0.08); }
   :root[data-theme="dark"] .github-commit-date { color: #777; }
   :root[data-theme="dark"] .github-loading { color: #666; }

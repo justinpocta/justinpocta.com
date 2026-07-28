@@ -45,16 +45,14 @@
   }
   .duo-card-header {
     flex: 0 0 auto;
-    padding: 10px 14px;
+    padding: 16px 22px 12px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     display: flex; align-items: center; gap: 7px;
   }
   .duo-owl { font-size: 1.05em; line-height: 1; }
   .duo-card-label {
-    font-size: 0.72em;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #555;
+    font-weight: 700;
+    font-size: 0.95rem;
     flex: 1;
   }
   .duo-card-body {
@@ -143,7 +141,6 @@
   }
   @media (prefers-color-scheme: dark) {
     .duo-card-header { border-bottom-color: rgba(255,255,255,0.1); }
-    .duo-card-label { color: #bbb; }
     .duo-avatar-placeholder { background: #333; }
     .duo-since { color: #666; border-color: rgba(255,255,255,0.15); }
     .duo-rule { background: rgba(255,255,255,0.08); }
@@ -152,7 +149,6 @@
     .duo-stat-sub { color: #666; }
   }
   :root[data-theme="dark"] .duo-card-header { border-bottom-color: rgba(255,255,255,0.1); }
-  :root[data-theme="dark"] .duo-card-label { color: #bbb; }
   :root[data-theme="dark"] .duo-avatar-placeholder { background: #333; }
   :root[data-theme="dark"] .duo-since { color: #666; border-color: rgba(255,255,255,0.15); }
   :root[data-theme="dark"] .duo-rule { background: rgba(255,255,255,0.08); }

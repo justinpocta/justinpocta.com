@@ -116,6 +116,32 @@
     border-radius: 99px;
   }
   .weather-attribution:hover span { background: rgba(255,255,255,0.75); text-decoration: underline; }
+
+  /* Dark mode: the card drops the colorful gradient entirely (JS skips
+     setting it, so .hi-card's shared #111 dark background shows through
+     underneath, same as every other card) -- text flips to light, and
+     the temperature gets the gradient instead, via inline style set in
+     JS (see gradientTextFor()). */
+  @media (prefers-color-scheme: dark) {
+    .weather-card-header { color: rgba(255,255,255,0.75); }
+    .weather-card-label { color: rgba(255,255,255,0.5); }
+    .weather-condition { color: rgba(255,255,255,0.75); }
+    .weather-rule { background: rgba(255,255,255,0.15); }
+    .weather-stat-vr { background: rgba(255,255,255,0.15); }
+    .weather-stat-label { color: rgba(255,255,255,0.45); }
+    .weather-stat-num { color: rgba(255,255,255,0.85); }
+    .weather-attribution span { background: transparent; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.55); }
+    .weather-attribution:hover span { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+  }
+  :root[data-theme="dark"] .weather-card-header { color: rgba(255,255,255,0.75); }
+  :root[data-theme="dark"] .weather-card-label { color: rgba(255,255,255,0.5); }
+  :root[data-theme="dark"] .weather-condition { color: rgba(255,255,255,0.75); }
+  :root[data-theme="dark"] .weather-rule { background: rgba(255,255,255,0.15); }
+  :root[data-theme="dark"] .weather-stat-vr { background: rgba(255,255,255,0.15); }
+  :root[data-theme="dark"] .weather-stat-label { color: rgba(255,255,255,0.45); }
+  :root[data-theme="dark"] .weather-stat-num { color: rgba(255,255,255,0.85); }
+  :root[data-theme="dark"] .weather-attribution span { background: transparent; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.55); }
+  :root[data-theme="dark"] .weather-attribution:hover span { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
 </style>
 
 <script>
@@ -176,6 +202,23 @@
     return 'radial-gradient(circle at 50% 40%, ' + center + ' 0%, ' + edge + ' 100%)';
   }
 
+  // Same per-condition hues as gradientFor(), as a linear sweep sized for
+  // a short line of text rather than a whole card. Dark mode uses this to
+  // color the temperature digits since the card itself goes flat dark.
+  function gradientTextFor(code) {
+    var g = GRADIENTS[code] || DEFAULT_GRADIENT;
+    var bright = 'hsl(' + g[0] + ',' + Math.min(g[1] + 15, 100) + '%,' + Math.min(g[2] + 8, 92) + '%)';
+    var deep = 'hsl(' + g[0] + ',' + g[1] + '%,' + Math.max(g[3] - 5, 30) + '%)';
+    return 'linear-gradient(135deg, ' + bright + ' 0%, ' + deep + ' 100%)';
+  }
+
+  function isDarkMode() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t === 'dark') return true;
+    if (t === 'light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
   var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + LAT + '&longitude=' + LON +
     '&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min' +
     '&temperature_unit=fahrenheit&timezone=America%2FNew_York';
@@ -194,13 +237,21 @@
       var temp = Math.round(current.temperature_2m);
       var high = daily && daily.temperature_2m_max ? Math.round(daily.temperature_2m_max[0]) : null;
       var low = daily && daily.temperature_2m_min ? Math.round(daily.temperature_2m_min[0]) : null;
+      var dark = isDarkMode();
 
-      if (card) card.style.background = gradientFor(current.weather_code);
+      // Dark mode: skip the inline background entirely -- .hi-card's
+      // shared #111 dark background shows through underneath instead,
+      // matching every other card. Light mode keeps the colorful card.
+      if (card) card.style.background = dark ? '' : gradientFor(current.weather_code);
+
+      var tempStyle = dark
+        ? ' style="background:' + gradientTextFor(current.weather_code) + ';-webkit-background-clip:text;background-clip:text;color:transparent;"'
+        : '';
 
       body.innerHTML =
         '<div class="weather-main">' +
           '<span class="weather-emoji">' + info[0] + '</span>' +
-          '<span class="weather-temp">' + temp + '&deg;</span>' +
+          '<span class="weather-temp"' + tempStyle + '>' + temp + '&deg;</span>' +
         '</div>' +
         '<div class="weather-condition">' + info[1] + '</div>' +
         '<div class="weather-rule"></div>' +
