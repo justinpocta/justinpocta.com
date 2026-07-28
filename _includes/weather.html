@@ -47,11 +47,7 @@
     text-align: center;
   }
   .weather-loading { color: #888; font-size: 0.9rem; }
-  .weather-main {
-    display: flex; align-items: center; justify-content: center;
-    gap: 8px;
-  }
-  .weather-emoji { font-size: 2.3em; line-height: 1; }
+  .weather-emoji { font-size: 4.6em; line-height: 1; }
   .weather-temp {
     font-size: 2.6em;
     font-weight: 900;
@@ -249,10 +245,8 @@
         : '';
 
       body.innerHTML =
-        '<div class="weather-main">' +
-          '<span class="weather-emoji">' + info[0] + '</span>' +
-          '<span class="weather-temp"' + tempStyle + '>' + temp + '&deg;</span>' +
-        '</div>' +
+        '<div class="weather-emoji">' + info[0] + '</div>' +
+        '<div class="weather-temp"' + tempStyle + '>' + temp + '&deg;</div>' +
         '<div class="weather-condition">' + info[1] + '</div>' +
         '<div class="weather-rule"></div>' +
         '<div class="weather-stats">' +
