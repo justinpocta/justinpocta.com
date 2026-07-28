@@ -1,0 +1,263 @@
+<!--
+  Weather Widget
+  --------------
+  Uses Open-Meteo's public forecast API (CORS-enabled, no API key, free --
+  no billing tier to worry about). Fetches once per page load, no polling.
+  Location hardcoded to Brooklyn, NY.
+-->
+
+<div class="weather-card" id="weather-card">
+  <div class="weather-card-header">
+    <span class="weather-header-icon">&#9729;&#65039;</span>
+    <span class="weather-card-label">Weather</span>
+  </div>
+  <div class="weather-card-body" id="weather-body">
+    <p class="weather-loading">Loading&hellip;</p>
+  </div>
+  <a class="weather-attribution" href="https://open-meteo.com/" target="_blank" rel="noopener"><span>Weather data by Open-Meteo.com</span></a>
+</div>
+
+<style>
+  .weather-card {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    overflow: hidden; border-radius: 10px;
+    transition: background 0.5s ease;
+  }
+  .weather-card-header {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    display: flex; align-items: center; gap: 7px;
+    color: rgba(20,20,25,0.7);
+  }
+  .weather-header-icon { font-size: 1.05em; line-height: 1; }
+  .weather-card-label {
+    font-size: 0.72em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(20,20,25,0.5);
+  }
+  .weather-card-body {
+    flex: 1; min-height: 0;
+    display: flex; flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 0;
+    text-align: center;
+  }
+  .weather-loading { color: #888; font-size: 0.9rem; }
+  .weather-emoji { font-size: 4.6em; line-height: 1; }
+  .weather-temp {
+    font-size: 2.6em;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: rgba(20,20,25,0.85);
+  }
+  .weather-condition {
+    font-size: 0.95em;
+    font-weight: 700;
+    color: rgba(20,20,25,0.72);
+  }
+  .weather-rule {
+    width: 60px;
+    height: 1px;
+    background: rgba(20,20,25,0.15);
+    margin: 2px 0;
+  }
+  .weather-stats {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .weather-stat {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 3px;
+    padding: 0 14px;
+  }
+  .weather-stat-vr {
+    width: 1px;
+    background: rgba(20,20,25,0.15);
+    align-self: stretch;
+  }
+  .weather-stat-label {
+    font-size: 0.6em;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: rgba(20,20,25,0.42);
+  }
+  .weather-stat-num {
+    font-size: 1.3em;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: rgba(20,20,25,0.8);
+  }
+  .weather-attribution {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 0 14px 12px;
+    text-decoration: none;
+  }
+  .weather-attribution span {
+    display: inline-block;
+    background: rgba(255,255,255,0.55);
+    color: rgba(20,20,25,0.8);
+    font-size: 0.6em;
+    letter-spacing: 0.02em;
+    padding: 4px 10px;
+    border-radius: 99px;
+  }
+  .weather-attribution:hover span { background: rgba(255,255,255,0.75); text-decoration: underline; }
+
+  /* Dark mode: the card drops the colorful gradient entirely (JS skips
+     setting it, so .hi-card's shared #111 dark background shows through
+     underneath, same as every other card) -- text flips to light, and
+     the temperature gets the gradient instead, via inline style set in
+     JS (see gradientTextFor()). */
+  @media (prefers-color-scheme: dark) {
+    .weather-card-header { color: rgba(255,255,255,0.75); }
+    .weather-card-label { color: rgba(255,255,255,0.5); }
+    .weather-condition { color: rgba(255,255,255,0.75); }
+    .weather-rule { background: rgba(255,255,255,0.15); }
+    .weather-stat-vr { background: rgba(255,255,255,0.15); }
+    .weather-stat-label { color: rgba(255,255,255,0.45); }
+    .weather-stat-num { color: rgba(255,255,255,0.85); }
+    .weather-attribution span { background: transparent; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.55); }
+    .weather-attribution:hover span { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+  }
+  :root[data-theme="dark"] .weather-card-header { color: rgba(255,255,255,0.75); }
+  :root[data-theme="dark"] .weather-card-label { color: rgba(255,255,255,0.5); }
+  :root[data-theme="dark"] .weather-condition { color: rgba(255,255,255,0.75); }
+  :root[data-theme="dark"] .weather-rule { background: rgba(255,255,255,0.15); }
+  :root[data-theme="dark"] .weather-stat-vr { background: rgba(255,255,255,0.15); }
+  :root[data-theme="dark"] .weather-stat-label { color: rgba(255,255,255,0.45); }
+  :root[data-theme="dark"] .weather-stat-num { color: rgba(255,255,255,0.85); }
+  :root[data-theme="dark"] .weather-attribution span { background: transparent; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.55); }
+  :root[data-theme="dark"] .weather-attribution:hover span { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+</style>
+
+<script>
+(function () {
+  var LAT = 40.6782, LON = -73.9442;
+
+  // WMO weather code -> [emoji, label]
+  var CODES = {
+    0: ['&#9728;&#65039;', 'Clear'],
+    1: ['&#127772;', 'Mostly Clear'],
+    2: ['&#9925;&#65039;', 'Partly Cloudy'],
+    3: ['&#9729;&#65039;', 'Overcast'],
+    45: ['&#127787;&#65039;', 'Fog'],
+    48: ['&#127787;&#65039;', 'Fog'],
+    51: ['&#127783;&#65039;', 'Light Drizzle'],
+    53: ['&#127783;&#65039;', 'Drizzle'],
+    55: ['&#127783;&#65039;', 'Heavy Drizzle'],
+    61: ['&#127783;&#65039;', 'Light Rain'],
+    63: ['&#127783;&#65039;', 'Rain'],
+    65: ['&#127783;&#65039;', 'Heavy Rain'],
+    66: ['&#127783;&#65039;', 'Freezing Rain'],
+    67: ['&#127783;&#65039;', 'Freezing Rain'],
+    71: ['&#10052;&#65039;', 'Light Snow'],
+    73: ['&#10052;&#65039;', 'Snow'],
+    75: ['&#10052;&#65039;', 'Heavy Snow'],
+    77: ['&#10052;&#65039;', 'Snow Grains'],
+    80: ['&#127783;&#65039;', 'Rain Showers'],
+    81: ['&#127783;&#65039;', 'Rain Showers'],
+    82: ['&#127783;&#65039;', 'Violent Showers'],
+    85: ['&#10052;&#65039;', 'Snow Showers'],
+    86: ['&#10052;&#65039;', 'Snow Showers'],
+    95: ['&#9928;&#65039;', 'Thunderstorm'],
+    96: ['&#9928;&#65039;', 'Thunderstorm'],
+    99: ['&#9928;&#65039;', 'Thunderstorm']
+  };
+
+  // WMO weather code -> [hue, saturation%, centerLightness%, edgeLightness%]
+  // Radial gradient: lighter hue in the middle, darker toward the edges.
+  // Edge lightness floors around 40% so the fixed dark text stays legible.
+  var GRADIENTS = {
+    0:  [42, 85, 92, 62], 1:  [42, 75, 90, 60],
+    2:  [205, 45, 88, 58], 3:  [215, 15, 82, 55],
+    45: [210, 8, 85, 60], 48: [210, 8, 85, 60],
+    51: [208, 45, 82, 52], 53: [208, 50, 78, 50], 55: [208, 55, 74, 48],
+    61: [208, 50, 78, 48], 63: [208, 55, 72, 45], 65: [208, 60, 66, 42],
+    66: [208, 45, 78, 50], 67: [208, 45, 72, 45],
+    71: [195, 30, 92, 65], 73: [195, 35, 90, 62], 75: [195, 40, 86, 58], 77: [195, 25, 92, 68],
+    80: [208, 50, 78, 48], 81: [208, 55, 74, 46], 82: [208, 60, 66, 42],
+    85: [195, 30, 90, 62], 86: [195, 35, 86, 58],
+    95: [258, 35, 68, 42], 96: [258, 40, 62, 40], 99: [258, 45, 58, 40]
+  };
+  var DEFAULT_GRADIENT = [210, 10, 85, 58];
+
+  function gradientFor(code) {
+    var g = GRADIENTS[code] || DEFAULT_GRADIENT;
+    var center = 'hsl(' + g[0] + ',' + g[1] + '%,' + g[2] + '%)';
+    var edge = 'hsl(' + g[0] + ',' + g[1] + '%,' + g[3] + '%)';
+    return 'radial-gradient(circle at 50% 40%, ' + center + ' 0%, ' + edge + ' 100%)';
+  }
+
+  // Same per-condition hues as gradientFor(), as a linear sweep sized for
+  // a short line of text rather than a whole card. Dark mode uses this to
+  // color the temperature digits since the card itself goes flat dark.
+  function gradientTextFor(code) {
+    var g = GRADIENTS[code] || DEFAULT_GRADIENT;
+    var bright = 'hsl(' + g[0] + ',' + Math.min(g[1] + 15, 100) + '%,' + Math.min(g[2] + 8, 92) + '%)';
+    var deep = 'hsl(' + g[0] + ',' + g[1] + '%,' + Math.max(g[3] - 5, 30) + '%)';
+    return 'linear-gradient(135deg, ' + bright + ' 0%, ' + deep + ' 100%)';
+  }
+
+  function isDarkMode() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t === 'dark') return true;
+    if (t === 'light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + LAT + '&longitude=' + LON +
+    '&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min' +
+    '&temperature_unit=fahrenheit&timezone=America%2FNew_York';
+
+  fetch(url)
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      var body = document.getElementById('weather-body');
+      var card = document.getElementById('weather-card');
+      if (!body) return;
+      var current = data.current;
+      var daily = data.daily;
+      if (!current) { body.innerHTML = '<p>Couldn’t load weather.</p>'; return; }
+
+      var info = CODES[current.weather_code] || ['&#127777;&#65039;', 'Unknown'];
+      var temp = Math.round(current.temperature_2m);
+      var high = daily && daily.temperature_2m_max ? Math.round(daily.temperature_2m_max[0]) : null;
+      var low = daily && daily.temperature_2m_min ? Math.round(daily.temperature_2m_min[0]) : null;
+      var dark = isDarkMode();
+
+      // Dark mode: skip the inline background entirely -- .hi-card's
+      // shared #111 dark background shows through underneath instead,
+      // matching every other card. Light mode keeps the colorful card.
+      if (card) card.style.background = dark ? '' : gradientFor(current.weather_code);
+
+      var tempStyle = dark
+        ? ' style="background:' + gradientTextFor(current.weather_code) + ';-webkit-background-clip:text;background-clip:text;color:transparent;"'
+        : '';
+
+      body.innerHTML =
+        '<div class="weather-emoji">' + info[0] + '</div>' +
+        '<div class="weather-temp"' + tempStyle + '>' + temp + '&deg;</div>' +
+        '<div class="weather-condition">' + info[1] + '</div>' +
+        '<div class="weather-rule"></div>' +
+        '<div class="weather-stats">' +
+          '<div class="weather-stat"><span class="weather-stat-label">High</span><span class="weather-stat-num">' + (high !== null ? high + '&deg;' : '&mdash;') + '</span></div>' +
+          '<div class="weather-stat-vr"></div>' +
+          '<div class="weather-stat"><span class="weather-stat-label">Low</span><span class="weather-stat-num">' + (low !== null ? low + '&deg;' : '&mdash;') + '</span></div>' +
+        '</div>';
+    })
+    .catch(function () {
+      var body = document.getElementById('weather-body');
+      if (body) body.innerHTML = '<p>Couldn’t load weather.</p>';
+    });
+})();
+</script>

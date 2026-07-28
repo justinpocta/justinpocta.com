@@ -72,11 +72,14 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 @media (prefers-color-scheme: dark) { .hi-card { background: #111; } }
 :root[data-theme="dark"] .hi-card { background: #111; }
 
-/* mastodon card: header pinned at top, post content centered in remaining space */
+/* mastodon card: header pinned at top, post content centered in remaining
+   space. overflow-y: auto (not hidden) -- grid mode's shorter cards can be
+   too short for a long post, and it needs to scroll rather than clip. */
 #hi-card-0 {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 #hi-card-0 .social-widget {
   flex: 1;
@@ -105,8 +108,12 @@ html[data-theme="dark"] p { color: #e8e8e8; }
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
+  /* safe center: centers short posts like before, but falls back to
+     top-aligned (not clipped-from-the-top) once content is taller than
+     the card -- plain "center" would let #hi-card-0's scroll cut off the
+     start of the post instead of the end. */
+  justify-content: safe center;
+  overflow: visible;
   padding: 0 22px 20px;
 }
 
@@ -159,6 +166,20 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 /* -24px mirrors the 28px outer padding minus the original 4px inset */
 .hi-nav-prev { left: -24px; }
 .hi-nav-next { right: -24px; }
+
+/* Grid mode (wide viewports): several cards visible at once in a loose,
+   scattered row instead of one active card with peekers behind it. Slot
+   count/positions/sizing are computed in JS from measured width -- these
+   rules only handle the visible/hidden state and shadow. */
+.hi-stack.grid-mode .hi-card--grid-visible {
+  opacity: 1;
+  pointer-events: auto;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.16), 0 3px 8px rgba(0,0,0,0.08);
+}
+.hi-stack.grid-mode .hi-card--grid-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
 
 .hi-card .social-widget,
@@ -380,6 +401,14 @@ html[data-theme="dark"] p { color: #e8e8e8; }
       {% include duolingo.html %}
     </div>
 
+    <div class="hi-card" id="hi-card-6">
+      {% include github-activity.html %}
+    </div>
+
+    <div class="hi-card" id="hi-card-7">
+      {% include weather.html %}
+    </div>
+
   </div>
 
 </div>
@@ -424,13 +453,98 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 
   var cards = Array.from(document.querySelectorAll('.hi-card'));
   var stack = document.getElementById('hi-stack');
+  var stackOuter = document.querySelector('.hi-stack-outer');
   var total = cards.length;
   var current = Math.floor(Math.random() * total);
   var STACK_CLASSES = ['hi-card--active', 'hi-card--behind-1', 'hi-card--behind-2', 'hi-card--hidden'];
 
   function mod(n, m) { return ((n % m) + m) % m; }
 
-  function updateStack() {
+  // ── Grid mode (wide viewports): several cards in a loose, scattered row
+  // instead of one active card with peekers behind it. Slot count comes
+  // from measured width, not fixed breakpoints -- resizing recalculates
+  // it live, so there's no per-viewport number to hand-tune or get wrong.
+  // Card size is NOT shrunk to cram more in -- it's pinned to the exact
+  // same width the single-card mode uses (min(620px, 100vw-2rem) minus
+  // the outer padding and card inset), so a card looks identical whether
+  // it's alone or sharing the row; "how many fit" is the only variable.
+  var SINGLE_CARD_MAX_OUTER = 620;
+  // At full (single-card-matching) width, a card + gap costs ~570px, so
+  // reaching 3 up needs ~1740px of page width -- 1900 gives that room on
+  // wide monitors while still capping sprawl on ultrawide displays.
+  var CARD_GAP = 26, OUTER_PAD = 28, PAGE_MAX_W = 1900;
+  var CARD_W = 0, CARD_H = 0; // set by computeSlotCount() before each use
+  var JOSTLE = [
+    { rot: -2.2, ty: -8 }, { rot: 1.8, ty: 10 }, { rot: -1.4, ty: 4 },
+    { rot: 2.4, ty: -10 }, { rot: -1.8, ty: 6 }, { rot: 1.2, ty: -4 }
+  ];
+  var gridMode = false, slotCount = -1; // -1 sentinel forces the first applyMode() to run
+
+  function computeSlotCount() {
+    var singleOuter = Math.min(SINGLE_CARD_MAX_OUTER, window.innerWidth - 32);
+    CARD_W = singleOuter - OUTER_PAD * 2 - 20; // 20px matches .hi-card's calc(100% - 20px) inset
+    CARD_H = Math.round(CARD_W * 4 / 3);
+    var viewportAvail = Math.min(window.innerWidth - 32, PAGE_MAX_W);
+    var innerAvail = viewportAvail - OUTER_PAD * 2;
+    return Math.max(1, Math.min(total, Math.floor((innerAvail + CARD_GAP) / (CARD_W + CARD_GAP))));
+  }
+
+  function slotX(dist) { return dist * (CARD_W + CARD_GAP); }
+
+  function updateGrid(dir, skipAnim) {
+    var rowWidth = slotCount * (CARD_W + CARD_GAP) - CARD_GAP;
+    stackOuter.style.width = (rowWidth + OUTER_PAD * 2) + 'px';
+    stack.style.height = CARD_H + 'px';
+
+    cards.forEach(function (card, i) {
+      STACK_CLASSES.forEach(function (cls) { card.classList.remove(cls); });
+      card.style.width = CARD_W + 'px';
+      card.style.height = CARD_H + 'px';
+
+      var dist = mod(i - current, total);
+      var wasVisible = card.classList.contains('hi-card--grid-visible');
+      var willBeVisible = dist < slotCount;
+
+      if (willBeVisible) {
+        var j = dist % JOSTLE.length;
+        var finalTf = 'translate(' + slotX(dist) + 'px,' + JOSTLE[j].ty + 'px) rotate(' + JOSTLE[j].rot + 'deg)';
+        card.classList.remove('hi-card--grid-hidden');
+        card.classList.add('hi-card--grid-visible');
+        card.style.zIndex = String(slotCount - dist);
+
+        // Entering card: pre-position off-screen in the direction of travel
+        // (no transition), then let the reset below animate it sliding in.
+        if (!wasVisible && dir && !skipAnim) {
+          var enterX = dir > 0 ? slotX(slotCount) : -(CARD_W + CARD_GAP);
+          card.style.transition = 'none';
+          card.style.transform = 'translate(' + enterX + 'px,' + JOSTLE[j].ty + 'px) rotate(' + JOSTLE[j].rot + 'deg)';
+          void card.offsetWidth;
+        }
+        // Always reset transition here -- clears any leftover 'none' from a
+        // drag, or from the entering-card pre-position step just above.
+        card.style.transition = skipAnim ? 'none' : '';
+        card.style.transform = finalTf;
+        if (skipAnim) { void card.offsetWidth; card.style.transition = ''; }
+        if (dist === 0) card.scrollTop = 0;
+      } else {
+        if (wasVisible && dir && !skipAnim) {
+          // Exiting card: continue sliding off in the direction of travel,
+          // fading out via the hi-card--grid-hidden opacity transition.
+          card.style.transition = '';
+          var exitX = dir > 0 ? -(CARD_W + CARD_GAP) : slotX(slotCount);
+          card.style.transform = 'translate(' + exitX + 'px, 0) rotate(0deg)';
+        } else if (skipAnim) {
+          card.style.transition = 'none';
+          card.style.transform = '';
+        }
+        card.classList.remove('hi-card--grid-visible');
+        card.classList.add('hi-card--grid-hidden');
+        card.style.zIndex = '';
+      }
+    });
+  }
+
+  function updateSingle() {
     cards.forEach(function (card, i) {
       STACK_CLASSES.forEach(function (cls) { card.classList.remove(cls); });
       var dist = mod(i - current, total);
@@ -444,9 +558,34 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     });
   }
 
+  function updateStack(dir, skipAnim) {
+    if (gridMode) { updateGrid(dir, skipAnim); } else { updateSingle(); }
+  }
+
+  function applyMode() {
+    var newSlotCount = computeSlotCount();
+    var newGridMode = newSlotCount > 1;
+    if (newGridMode === gridMode && newSlotCount === slotCount) return;
+    gridMode = newGridMode;
+    slotCount = newSlotCount;
+    stackOuter.classList.toggle('grid-mode', gridMode);
+    stack.classList.toggle('grid-mode', gridMode);
+    if (!gridMode) {
+      stackOuter.style.width = '';
+      stack.style.height = '';
+      cards.forEach(function (card) {
+        card.style.width = ''; card.style.height = ''; card.style.transform = ''; card.style.zIndex = '';
+        card.classList.remove('hi-card--grid-visible', 'hi-card--grid-hidden');
+      });
+    }
+    updateStack(0, true);
+  }
+
+  window.addEventListener('resize', applyMode);
+
   function go(dir) {
     current = mod(current + dir, total);
-    updateStack();
+    updateStack(dir, false);
   }
 
   document.getElementById('hi-prev').addEventListener('click', function () { go(-1); });
@@ -489,6 +628,16 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     }
   }
 
+  function applyGridDrag(dx) {
+    cards.forEach(function (card, i) {
+      var dist = mod(i - current, total);
+      if (dist >= slotCount) return;
+      var j = dist % JOSTLE.length;
+      card.style.transition = 'none';
+      card.style.transform = 'translate(' + (slotX(dist) + dx) + 'px,' + JOSTLE[j].ty + 'px) rotate(' + JOSTLE[j].rot + 'deg)';
+    });
+  }
+
   function snapBack(card) {
     card.style.transition = '';
     card.style.transform = '';
@@ -501,6 +650,16 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     prevCard.style.transform = '';
     prevCard.style.opacity = '';
     prevCard.style.zIndex = '';
+  }
+
+  function snapBackGrid() {
+    cards.forEach(function (card, i) {
+      var dist = mod(i - current, total);
+      if (dist >= slotCount) return;
+      var j = dist % JOSTLE.length;
+      card.style.transition = '';
+      card.style.transform = 'translate(' + slotX(dist) + 'px,' + JOSTLE[j].ty + 'px) rotate(' + JOSTLE[j].rot + 'deg)';
+    });
   }
 
   var animating = false;
@@ -537,6 +696,12 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     }, 340);
   }
 
+  function flyGrid(dir) {
+    animating = true;
+    go(dir);
+    setTimeout(function () { animating = false; }, 430);
+  }
+
   /* block link clicks that are actually the tail of a drag */
   var didDrag = false;
   stack.addEventListener('click', function (e) {
@@ -555,18 +720,17 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     if (!dragging) return;
     var dx = e.clientX - msx;
     if (Math.abs(dx) > 4) didDrag = true;
-    applyDrag(cards[current], dx);
+    if (gridMode) { applyGridDrag(dx); } else { applyDrag(cards[current], dx); }
   }, false);
   document.addEventListener('mouseup', function (e) {
     if (!dragging) return;
     dragging = false;
     var dx = e.clientX - msx, dy = e.clientY - msy;
-    var card = cards[current];
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
       var dir = dx < 0 ? 1 : -1;
-      flyOff(card, dx, function () { go(dir); });
+      if (gridMode) { flyGrid(dir); } else { flyOff(cards[current], dx, function () { go(dir); }); }
     } else {
-      snapBack(card);
+      if (gridMode) { snapBackGrid(); } else { snapBack(cards[current]); }
       setTimeout(function () { didDrag = false; }, 0);
     }
   }, false);
@@ -584,21 +748,20 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     if (!touchLocked && Math.abs(dy) > Math.abs(dx)) return;
     touchLocked = true;
     if (Math.abs(dx) > 4) didDrag = true;
-    applyDrag(cards[current], dx);
+    if (gridMode) { applyGridDrag(dx); } else { applyDrag(cards[current], dx); }
   }, { passive: true, capture: true });
   stack.addEventListener('touchend', function (e) {
     var dx = e.changedTouches[0].clientX - tsx;
     var dy = e.changedTouches[0].clientY - tsy;
-    var card = cards[current];
     if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy)) {
       var dir = dx < 0 ? 1 : -1;
-      flyOff(card, dx, function () { go(dir); });
+      if (gridMode) { flyGrid(dir); } else { flyOff(cards[current], dx, function () { go(dir); }); }
     } else {
-      snapBack(card);
+      if (gridMode) { snapBackGrid(); } else { snapBack(cards[current]); }
       setTimeout(function () { didDrag = false; }, 50);
     }
   }, { passive: true, capture: true });
 
-  updateStack();
+  applyMode();
 })();
 </script>
