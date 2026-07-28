@@ -1,0 +1,193 @@
+<!--
+  Weather Widget
+  --------------
+  Uses Open-Meteo's public forecast API (CORS-enabled, no API key needed).
+  Location hardcoded to Brooklyn, NY.
+-->
+
+<div class="weather-card">
+  <div class="weather-card-header">
+    <span class="weather-header-icon">&#9729;&#65039;</span>
+    <span class="weather-card-label">Weather</span>
+  </div>
+  <div class="weather-card-body" id="weather-body">
+    <p class="weather-loading">Loading&hellip;</p>
+  </div>
+</div>
+
+<style>
+  .weather-card {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    overflow: hidden; border-radius: 10px;
+  }
+  .weather-card-header {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex; align-items: center; gap: 7px;
+  }
+  .weather-header-icon { font-size: 1.05em; line-height: 1; }
+  .weather-card-label {
+    font-size: 0.72em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #555;
+  }
+  .weather-card-body {
+    flex: 1; min-height: 0;
+    display: flex; flex-direction: column;
+    align-items: stretch;
+    justify-content: space-evenly;
+    padding: 24px 0 20px;
+    text-align: center;
+  }
+  .weather-loading { color: #888; font-size: 0.9rem; }
+  .weather-main {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px;
+  }
+  .weather-emoji { font-size: 2.6em; line-height: 1; }
+  .weather-temp {
+    font-size: 3em;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .weather-condition {
+    font-size: 1em;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .weather-location {
+    font-size: 0.62em;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #aaa;
+    margin-top: 4px;
+  }
+  .weather-rule {
+    height: 1px;
+    background: rgba(0,0,0,0.08);
+    margin: 0 16px;
+  }
+  .weather-stats {
+    display: flex;
+    align-items: stretch;
+    padding: 0 8px;
+  }
+  .weather-stat {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 6px;
+    padding: 16px 8px;
+  }
+  .weather-stat-vr {
+    width: 1px;
+    background: rgba(0,0,0,0.08);
+    align-self: stretch;
+    margin: 12px 0;
+  }
+  .weather-stat-label {
+    font-size: 0.62em;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #aaa;
+  }
+  .weather-stat-num {
+    font-size: 1.5em;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  @media (prefers-color-scheme: dark) {
+    .weather-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+    .weather-card-label { color: #bbb; }
+    .weather-rule { background: rgba(255,255,255,0.08); }
+    .weather-stat-vr { background: rgba(255,255,255,0.08); }
+    .weather-stat-label { color: #555; }
+    .weather-location { color: #666; }
+    .weather-loading { color: #666; }
+  }
+  :root[data-theme="dark"] .weather-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+  :root[data-theme="dark"] .weather-card-label { color: #bbb; }
+  :root[data-theme="dark"] .weather-rule { background: rgba(255,255,255,0.08); }
+  :root[data-theme="dark"] .weather-stat-vr { background: rgba(255,255,255,0.08); }
+  :root[data-theme="dark"] .weather-stat-label { color: #555; }
+  :root[data-theme="dark"] .weather-location { color: #666; }
+  :root[data-theme="dark"] .weather-loading { color: #666; }
+</style>
+
+<script>
+(function () {
+  var LAT = 40.6782, LON = -73.9442;
+
+  // WMO weather codes -> {emoji, label}
+  var CODES = {
+    0: ['&#9728;&#65039;', 'Clear'],
+    1: ['&#127772;', 'Mostly Clear'],
+    2: ['&#9925;&#65039;', 'Partly Cloudy'],
+    3: ['&#9729;&#65039;', 'Overcast'],
+    45: ['&#127787;&#65039;', 'Fog'],
+    48: ['&#127787;&#65039;', 'Fog'],
+    51: ['&#127783;&#65039;', 'Light Drizzle'],
+    53: ['&#127783;&#65039;', 'Drizzle'],
+    55: ['&#127783;&#65039;', 'Heavy Drizzle'],
+    61: ['&#127783;&#65039;', 'Light Rain'],
+    63: ['&#127783;&#65039;', 'Rain'],
+    65: ['&#127783;&#65039;', 'Heavy Rain'],
+    66: ['&#127783;&#65039;', 'Freezing Rain'],
+    67: ['&#127783;&#65039;', 'Freezing Rain'],
+    71: ['&#10052;&#65039;', 'Light Snow'],
+    73: ['&#10052;&#65039;', 'Snow'],
+    75: ['&#10052;&#65039;', 'Heavy Snow'],
+    77: ['&#10052;&#65039;', 'Snow Grains'],
+    80: ['&#127783;&#65039;', 'Rain Showers'],
+    81: ['&#127783;&#65039;', 'Rain Showers'],
+    82: ['&#127783;&#65039;', 'Violent Showers'],
+    85: ['&#10052;&#65039;', 'Snow Showers'],
+    86: ['&#10052;&#65039;', 'Snow Showers'],
+    95: ['&#9928;&#65039;', 'Thunderstorm'],
+    96: ['&#9928;&#65039;', 'Thunderstorm'],
+    99: ['&#9928;&#65039;', 'Thunderstorm']
+  };
+
+  var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + LAT + '&longitude=' + LON +
+    '&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min' +
+    '&temperature_unit=fahrenheit&timezone=America%2FNew_York';
+
+  fetch(url)
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      var body = document.getElementById('weather-body');
+      if (!body) return;
+      var current = data.current;
+      var daily = data.daily;
+      if (!current) { body.innerHTML = '<p>Couldn’t load weather.</p>'; return; }
+
+      var info = CODES[current.weather_code] || ['&#127777;&#65039;', 'Unknown'];
+      var temp = Math.round(current.temperature_2m);
+      var high = daily && daily.temperature_2m_max ? Math.round(daily.temperature_2m_max[0]) : null;
+      var low = daily && daily.temperature_2m_min ? Math.round(daily.temperature_2m_min[0]) : null;
+
+      body.innerHTML =
+        '<div class="weather-main">' +
+          '<span class="weather-emoji">' + info[0] + '</span>' +
+          '<span class="weather-temp">' + temp + '&deg;</span>' +
+        '</div>' +
+        '<div class="weather-condition">' + info[1] + '</div>' +
+        '<div class="weather-location">Brooklyn, NY</div>' +
+        '<div class="weather-rule"></div>' +
+        '<div class="weather-stats">' +
+          '<div class="weather-stat"><span class="weather-stat-label">High</span><span class="weather-stat-num">' + (high !== null ? high + '&deg;' : '&mdash;') + '</span></div>' +
+          '<div class="weather-stat-vr"></div>' +
+          '<div class="weather-stat"><span class="weather-stat-label">Low</span><span class="weather-stat-num">' + (low !== null ? low + '&deg;' : '&mdash;') + '</span></div>' +
+        '</div>';
+    })
+    .catch(function () {
+      var body = document.getElementById('weather-body');
+      if (body) body.innerHTML = '<p>Couldn’t load weather.</p>';
+    });
+})();
+</script>
