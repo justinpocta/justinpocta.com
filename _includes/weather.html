@@ -14,7 +14,7 @@
   <div class="weather-card-body" id="weather-body">
     <p class="weather-loading">Loading&hellip;</p>
   </div>
-  <a class="weather-attribution" href="https://open-meteo.com/" target="_blank" rel="noopener">Weather data by Open-Meteo.com</a>
+  <a class="weather-attribution" href="https://open-meteo.com/" target="_blank" rel="noopener"><span>Weather data by Open-Meteo.com</span></a>
 </div>
 
 <style>
@@ -101,15 +101,21 @@
   }
   .weather-attribution {
     flex: 0 0 auto;
-    display: block;
-    text-align: center;
-    padding: 8px 14px 10px;
-    font-size: 0.62em;
-    letter-spacing: 0.02em;
-    color: rgba(20,20,25,0.4);
+    display: flex;
+    justify-content: center;
+    padding: 0 14px 12px;
     text-decoration: none;
   }
-  .weather-attribution:hover { text-decoration: underline; }
+  .weather-attribution span {
+    display: inline-block;
+    background: rgba(255,255,255,0.55);
+    color: rgba(20,20,25,0.8);
+    font-size: 0.6em;
+    letter-spacing: 0.02em;
+    padding: 4px 10px;
+    border-radius: 99px;
+  }
+  .weather-attribution:hover span { background: rgba(255,255,255,0.75); text-decoration: underline; }
 </style>
 
 <script>
