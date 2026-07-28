@@ -42,7 +42,7 @@ galleryProjects:
 </h1>
 </div>
 
-<div style="padding-bottom: 8px;"></div>
+<div class="hero-tile-spacer"></div>
 
 {% include anim-01.html %}
 
