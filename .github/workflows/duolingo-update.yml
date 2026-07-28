@@ -40,7 +40,9 @@ jobs:
           picture = m.group(1) if m else existing.get('picture', '')
 
           # --- Streak + level from API (public, no auth needed most of the time) ---
-          api_url = 'https://www.duolingo.com/2017-06-30/users?username=texnology84&fields=username,streak,hasPlus,creationDate,learningLanguage,courses'
+          # No `fields=` filter -- Duolingo's API now returns {} (no "users" key)
+          # when that param is present, regardless of which fields are listed.
+          api_url = 'https://www.duolingo.com/2017-06-30/users?username=texnology84'
           api_req = urllib.request.Request(api_url, headers=HEADERS)
           try:
             with urllib.request.urlopen(api_req) as r:
@@ -56,6 +58,10 @@ jobs:
             member_since = datetime.datetime.utcfromtimestamp(creation_ts).strftime('%b %Y') if creation_ts else existing.get('member_since', '')
             courses = user.get('courses', [])
             fr_course = next((c for c in courses if c.get('learningLanguage') == 'fr'), None)
+            # Duolingo's API no longer exposes a per-course "level" field (it
+            # was replaced by "crowns", which returns a 9999 sentinel here --
+            # not a real count). This always falls through to the existing
+            # stored value now.
             out = {
               'username': user.get('username', existing.get('username', 'texnology84')),
               'streak': user.get('streak', existing.get('streak', 0)),
