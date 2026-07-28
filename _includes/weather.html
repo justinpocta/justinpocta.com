@@ -1,11 +1,12 @@
 <!--
   Weather Widget
   --------------
-  Uses Open-Meteo's public forecast API (CORS-enabled, no API key needed).
+  Uses Open-Meteo's public forecast API (CORS-enabled, no API key, free --
+  no billing tier to worry about). Fetches once per page load, no polling.
   Location hardcoded to Brooklyn, NY.
 -->
 
-<div class="weather-card">
+<div class="weather-card" id="weather-card">
   <div class="weather-card-header">
     <span class="weather-header-icon">&#9729;&#65039;</span>
     <span class="weather-card-label">Weather</span>
@@ -20,110 +21,90 @@
     width: 100%; height: 100%;
     display: flex; flex-direction: column;
     overflow: hidden; border-radius: 10px;
+    transition: background 0.5s ease;
   }
   .weather-card-header {
     flex: 0 0 auto;
     padding: 10px 14px;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
     display: flex; align-items: center; gap: 7px;
+    color: rgba(20,20,25,0.7);
   }
   .weather-header-icon { font-size: 1.05em; line-height: 1; }
   .weather-card-label {
     font-size: 0.72em;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #555;
+    color: rgba(20,20,25,0.5);
   }
   .weather-card-body {
     flex: 1; min-height: 0;
     display: flex; flex-direction: column;
-    align-items: stretch;
-    justify-content: space-evenly;
-    padding: 24px 0 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 0;
     text-align: center;
   }
   .weather-loading { color: #888; font-size: 0.9rem; }
   .weather-main {
     display: flex; align-items: center; justify-content: center;
-    gap: 10px;
+    gap: 8px;
   }
-  .weather-emoji { font-size: 2.6em; line-height: 1; }
+  .weather-emoji { font-size: 2.3em; line-height: 1; }
   .weather-temp {
-    font-size: 3em;
+    font-size: 2.6em;
     font-weight: 900;
     line-height: 1;
     letter-spacing: -0.02em;
+    color: rgba(20,20,25,0.85);
   }
   .weather-condition {
-    font-size: 1em;
+    font-size: 0.95em;
     font-weight: 700;
-    margin-top: 8px;
-  }
-  .weather-location {
-    font-size: 0.62em;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    color: #aaa;
-    margin-top: 4px;
+    color: rgba(20,20,25,0.72);
   }
   .weather-rule {
+    width: 60px;
     height: 1px;
-    background: rgba(0,0,0,0.08);
-    margin: 0 16px;
+    background: rgba(20,20,25,0.15);
+    margin: 2px 0;
   }
   .weather-stats {
     display: flex;
     align-items: stretch;
-    padding: 0 8px;
+    gap: 4px;
   }
   .weather-stat {
-    flex: 1;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    gap: 6px;
-    padding: 16px 8px;
+    gap: 3px;
+    padding: 0 14px;
   }
   .weather-stat-vr {
     width: 1px;
-    background: rgba(0,0,0,0.08);
+    background: rgba(20,20,25,0.15);
     align-self: stretch;
-    margin: 12px 0;
   }
   .weather-stat-label {
-    font-size: 0.62em;
+    font-size: 0.6em;
     text-transform: uppercase;
     letter-spacing: 0.09em;
-    color: #aaa;
+    color: rgba(20,20,25,0.42);
   }
   .weather-stat-num {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 900;
     line-height: 1;
     letter-spacing: -0.02em;
+    color: rgba(20,20,25,0.8);
   }
-  @media (prefers-color-scheme: dark) {
-    .weather-card-header { border-bottom-color: rgba(255,255,255,0.1); }
-    .weather-card-label { color: #bbb; }
-    .weather-rule { background: rgba(255,255,255,0.08); }
-    .weather-stat-vr { background: rgba(255,255,255,0.08); }
-    .weather-stat-label { color: #555; }
-    .weather-location { color: #666; }
-    .weather-loading { color: #666; }
-  }
-  :root[data-theme="dark"] .weather-card-header { border-bottom-color: rgba(255,255,255,0.1); }
-  :root[data-theme="dark"] .weather-card-label { color: #bbb; }
-  :root[data-theme="dark"] .weather-rule { background: rgba(255,255,255,0.08); }
-  :root[data-theme="dark"] .weather-stat-vr { background: rgba(255,255,255,0.08); }
-  :root[data-theme="dark"] .weather-stat-label { color: #555; }
-  :root[data-theme="dark"] .weather-location { color: #666; }
-  :root[data-theme="dark"] .weather-loading { color: #666; }
 </style>
 
 <script>
 (function () {
   var LAT = 40.6782, LON = -73.9442;
 
-  // WMO weather codes -> {emoji, label}
+  // WMO weather code -> [emoji, label]
   var CODES = {
     0: ['&#9728;&#65039;', 'Clear'],
     1: ['&#127772;', 'Mostly Clear'],
@@ -153,6 +134,30 @@
     99: ['&#9928;&#65039;', 'Thunderstorm']
   };
 
+  // WMO weather code -> [hue, saturation%, centerLightness%, edgeLightness%]
+  // Radial gradient: lighter hue in the middle, darker toward the edges.
+  // Edge lightness floors around 40% so the fixed dark text stays legible.
+  var GRADIENTS = {
+    0:  [42, 85, 92, 62], 1:  [42, 75, 90, 60],
+    2:  [205, 45, 88, 58], 3:  [215, 15, 82, 55],
+    45: [210, 8, 85, 60], 48: [210, 8, 85, 60],
+    51: [208, 45, 82, 52], 53: [208, 50, 78, 50], 55: [208, 55, 74, 48],
+    61: [208, 50, 78, 48], 63: [208, 55, 72, 45], 65: [208, 60, 66, 42],
+    66: [208, 45, 78, 50], 67: [208, 45, 72, 45],
+    71: [195, 30, 92, 65], 73: [195, 35, 90, 62], 75: [195, 40, 86, 58], 77: [195, 25, 92, 68],
+    80: [208, 50, 78, 48], 81: [208, 55, 74, 46], 82: [208, 60, 66, 42],
+    85: [195, 30, 90, 62], 86: [195, 35, 86, 58],
+    95: [258, 35, 68, 42], 96: [258, 40, 62, 40], 99: [258, 45, 58, 40]
+  };
+  var DEFAULT_GRADIENT = [210, 10, 85, 58];
+
+  function gradientFor(code) {
+    var g = GRADIENTS[code] || DEFAULT_GRADIENT;
+    var center = 'hsl(' + g[0] + ',' + g[1] + '%,' + g[2] + '%)';
+    var edge = 'hsl(' + g[0] + ',' + g[1] + '%,' + g[3] + '%)';
+    return 'radial-gradient(circle at 50% 40%, ' + center + ' 0%, ' + edge + ' 100%)';
+  }
+
   var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + LAT + '&longitude=' + LON +
     '&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min' +
     '&temperature_unit=fahrenheit&timezone=America%2FNew_York';
@@ -161,6 +166,7 @@
     .then(function (res) { return res.json(); })
     .then(function (data) {
       var body = document.getElementById('weather-body');
+      var card = document.getElementById('weather-card');
       if (!body) return;
       var current = data.current;
       var daily = data.daily;
@@ -171,13 +177,14 @@
       var high = daily && daily.temperature_2m_max ? Math.round(daily.temperature_2m_max[0]) : null;
       var low = daily && daily.temperature_2m_min ? Math.round(daily.temperature_2m_min[0]) : null;
 
+      if (card) card.style.background = gradientFor(current.weather_code);
+
       body.innerHTML =
         '<div class="weather-main">' +
           '<span class="weather-emoji">' + info[0] + '</span>' +
           '<span class="weather-temp">' + temp + '&deg;</span>' +
         '</div>' +
         '<div class="weather-condition">' + info[1] + '</div>' +
-        '<div class="weather-location">Brooklyn, NY</div>' +
         '<div class="weather-rule"></div>' +
         '<div class="weather-stats">' +
           '<div class="weather-stat"><span class="weather-stat-label">High</span><span class="weather-stat-num">' + (high !== null ? high + '&deg;' : '&mdash;') + '</span></div>' +
