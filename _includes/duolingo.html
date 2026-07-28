@@ -3,37 +3,32 @@
   <div class="duo-card-header">
     <span class="duo-owl">&#x1F989;</span>
     <span class="duo-card-label">Duolingo</span>
+    <span class="duo-card-handle">@{{ duo.username }}</span>
   </div>
   <div class="duo-card-body">
-    <div class="duo-profile">
-      {% if duo.picture and duo.picture != "" %}
-      <img class="duo-avatar" src="{{ duo.picture }}" alt="{{ duo.username }}">
-      {% else %}
-      <div class="duo-avatar-placeholder"></div>
-      {% endif %}
-      <div class="duo-username">{{ duo.username }}</div>
-      <div class="duo-since">Member since {{ duo.member_since }}</div>
-    </div>
-    <div class="duo-rule"></div>
-    <div class="duo-stats">
-      <div class="duo-stat">
-        <span class="duo-stat-label">Level</span>
-        <span class="duo-stat-num">{{ duo.french_level }}</span>
-        <span class="duo-stat-sub">&nbsp;</span>
+    <div class="duo-grid">
+      <div class="duo-cell duo-cell-avatar">
+        {% if duo.picture and duo.picture != "" %}
+        <img class="duo-avatar" src="{{ duo.picture }}" alt="{{ duo.username }}">
+        {% else %}
+        <div class="duo-avatar-placeholder"></div>
+        {% endif %}
       </div>
-      <div class="duo-stat-vr"></div>
-      <div class="duo-stat">
+      <div class="duo-cell">
         <span class="duo-stat-label">Language</span>
         <span class="duo-stat-flag">&#x1F1EB;&#x1F1F7;</span>
         <span class="duo-stat-sub">Fran&ccedil;ais</span>
       </div>
-      <div class="duo-stat-vr"></div>
-      <div class="duo-stat">
+      <div class="duo-cell">
+        <span class="duo-stat-label">Level</span>
+        <span class="duo-stat-num">{{ duo.french_level }}</span>
+      </div>
+      <div class="duo-cell">
         <span class="duo-stat-label">Day Streak</span>
         <span class="duo-stat-num">{{ duo.streak }}</span>
-        <span class="duo-stat-sub">&nbsp;</span>
       </div>
     </div>
+    <div class="duo-since">Member since {{ duo.member_since }}</div>
   </div>
 </div>
 
@@ -53,36 +48,52 @@
   .duo-card-label {
     font-weight: 700;
     font-size: 0.95rem;
-    flex: 1;
+  }
+  .duo-card-handle {
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #888;
   }
   .duo-card-body {
     flex: 1; min-height: 0;
     display: flex; flex-direction: column;
-    align-items: stretch;
-    justify-content: space-evenly;
-    padding: 24px 0 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 16px;
     text-align: center;
   }
-  .duo-profile {
-    display: flex; flex-direction: column;
-    align-items: center; gap: 6px;
-    padding: 0 16px;
+  /* 2x2 grid: avatar + language on top, level + streak below. Thin
+     divider lines come from the grid gap showing through -- cells match
+     the card's own background so the seam only reads where the gap is. */
+  .duo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px;
+    background: rgba(0,0,0,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
   }
+  .duo-cell {
+    background: #fff;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 6px;
+    padding: 20px 8px;
+  }
+  .duo-cell-avatar { padding: 16px 8px; }
   .duo-avatar {
-    width: 72px; height: 72px;
+    width: 84px; height: 84px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
   }
   .duo-avatar-placeholder {
-    width: 72px; height: 72px;
+    width: 84px; height: 84px;
     border-radius: 50%;
     background: #e8e8e8;
-  }
-  .duo-username {
-    font-weight: 700;
-    font-size: 1.0em;
-    line-height: 1.2;
   }
   .duo-since {
     display: inline-block;
@@ -94,29 +105,6 @@
     border: 1px solid rgba(0,0,0,0.15);
     padding: 3px 10px;
     border-radius: 99px;
-  }
-  .duo-rule {
-    height: 1px;
-    background: rgba(0,0,0,0.08);
-    margin: 0 16px;
-  }
-  .duo-stats {
-    display: flex;
-    align-items: stretch;
-    padding: 0 8px;
-  }
-  .duo-stat {
-    flex: 1;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 6px;
-    padding: 16px 8px;
-  }
-  .duo-stat-vr {
-    width: 1px;
-    background: rgba(0,0,0,0.08);
-    align-self: stretch;
-    margin: 12px 0;
   }
   .duo-stat-label {
     font-size: 0.62em;
@@ -141,18 +129,18 @@
   }
   @media (prefers-color-scheme: dark) {
     .duo-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+    .duo-grid { background: rgba(255,255,255,0.08); }
+    .duo-cell { background: #111; }
     .duo-avatar-placeholder { background: #333; }
     .duo-since { color: #666; border-color: rgba(255,255,255,0.15); }
-    .duo-rule { background: rgba(255,255,255,0.08); }
-    .duo-stat-vr { background: rgba(255,255,255,0.08); }
     .duo-stat-label { color: #555; }
     .duo-stat-sub { color: #666; }
   }
   :root[data-theme="dark"] .duo-card-header { border-bottom-color: rgba(255,255,255,0.1); }
+  :root[data-theme="dark"] .duo-grid { background: rgba(255,255,255,0.08); }
+  :root[data-theme="dark"] .duo-cell { background: #111; }
   :root[data-theme="dark"] .duo-avatar-placeholder { background: #333; }
   :root[data-theme="dark"] .duo-since { color: #666; border-color: rgba(255,255,255,0.15); }
-  :root[data-theme="dark"] .duo-rule { background: rgba(255,255,255,0.08); }
-  :root[data-theme="dark"] .duo-stat-vr { background: rgba(255,255,255,0.08); }
   :root[data-theme="dark"] .duo-stat-label { color: #555; }
   :root[data-theme="dark"] .duo-stat-sub { color: #666; }
 </style>
