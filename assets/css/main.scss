@@ -715,7 +715,7 @@ a.hero-tile:hover { color: rgba(255,255,255,.75); text-decoration: none !importa
 /* Gap between the "Empathy, collaboration..." heading and the tile row.
    Desktop has room to breathe; mobile needed this trimmed so the tiles
    fit above the fold on initial load -- see the mobile override below. */
-.hero-tile-spacer { padding-bottom: 20px; }
+.hero-tile-spacer { padding-bottom: 60px; }
 
 @media (max-width: 768px) {
     .hero-intro {
