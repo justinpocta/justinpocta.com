@@ -44,10 +44,6 @@ I love working with teams that value asking questions. _Why are we creating a gi
       <i class="fab fa-linkedin" style="font-size:1.5em;"></i>
       <span style="font-size:0.78em;">LinkedIn</span>
     </a>
-    <a href="https://github.com/justinpocta" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
-      <i class="fab fa-github" style="font-size:1.5em;"></i>
-      <span style="font-size:0.78em;">GitHub</span>
-    </a>
   </div>
 </div>
 

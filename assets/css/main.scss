@@ -150,6 +150,16 @@ body.layout--default .initial-content {
     max-width: 1080px !important;
 }
 
+/* body.layout--default is a flex row and .initial-content has no
+   flex-grow, so on pages whose content doesn't otherwise force width
+   (e.g. resume.md) it shrinks to fit instead of using the space up to
+   its max-width -- any percentage-width child (like the resume's PDF
+   object) then resolves against that collapsed width. */
+body.page--resume .initial-content {
+    flex: 1 1 auto;
+    width: 100%;
+}
+
 .initial-content {
     margin-top: 20px !important;
     margin: auto;

@@ -104,5 +104,41 @@
       }, true);
     });
   });
+
+  // greedy-nav (theme default) only moves items into the burger menu one at
+  // a time as they stop fitting, so on mobile it's common to see one short
+  // item (e.g. "Work") stay outside the toggle while the rest collapse.
+  // Below this breakpoint, force ALL nav items into the burger -- none
+  // sit outside it. A MutationObserver reacts to greedy-nav's own re-checks
+  // (which run on resize and can move an item back into view) rather than
+  // racing its jQuery ready/resize handlers on load order.
+  (function () {
+    var MOBILE_BREAKPOINT = 768; // matches the site's existing mobile CSS breakpoint
+
+    function forceAllIntoBurger() {
+      if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+      var nav = document.querySelector('nav.greedy-nav');
+      if (!nav) return;
+      var vlinks = nav.querySelector('.visible-links');
+      var hlinks = nav.querySelector('.hidden-links');
+      var btn = nav.querySelector('.greedy-nav__toggle');
+      if (!vlinks || !hlinks || !vlinks.children.length) return;
+      while (vlinks.children.length) {
+        hlinks.appendChild(vlinks.children[0]);
+      }
+      if (btn) btn.classList.remove('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      forceAllIntoBurger();
+      var nav = document.querySelector('nav.greedy-nav');
+      var vlinks = nav && nav.querySelector('.visible-links');
+      if (vlinks) {
+        new MutationObserver(forceAllIntoBurger).observe(vlinks, { childList: true });
+      }
+    });
+    window.addEventListener('load', forceAllIntoBurger);
+    window.addEventListener('resize', forceAllIntoBurger);
+  })();
 })();
 </script>
