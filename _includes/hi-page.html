@@ -10,6 +10,11 @@ body { overflow-x: hidden; }
    viewport -- see .project-section::before in main.scss). */
 html { background: linear-gradient(to bottom, rgb(198,171,97) 0%, rgba(255,255,255,0) 60%) fixed; }
 body { background: transparent; }
+/* Site-wide nav link color (#666) only has ~2.6:1 contrast against the
+   mustard gradient's top color -- well under WCAG AA's 4.5:1 floor for
+   small text. Darkened just on this page (higher specificity than
+   main.scss's .masthead__menu-item a rule, so it reliably wins). */
+.masthead .greedy-nav a { color: #333 !important; }
 
 /* dark mode page background + reverse out text on dark bg */
 @media (prefers-color-scheme: dark) {
