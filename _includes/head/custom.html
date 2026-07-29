@@ -104,5 +104,53 @@
       }, true);
     });
   });
+
+  // greedy-nav (theme default) only moves items into the burger menu one at
+  // a time as they stop fitting, so on mobile it's common to see one short
+  // item (e.g. "Work") stay outside the toggle while the rest collapse.
+  // Below this breakpoint, force ALL nav items into the burger -- none
+  // sit outside it. A MutationObserver reacts to greedy-nav's own re-checks
+  // (which run on resize and can move an item back into view) rather than
+  // racing its jQuery ready/resize handlers on load order.
+  (function () {
+    var MOBILE_BREAKPOINT = 768; // matches the site's existing mobile CSS breakpoint
+    // Matches _data/navigation.yml -- items get sorted into this order
+    // whenever they're forced into the burger, since which list a link
+    // happens to already be sitting in (visible vs. hidden) at the moment
+    // of forcing isn't reliably the original nav order.
+    var NAV_ORDER = ['/', '/resume', 'https://hi.justinpocta.com', '/info'];
+
+    function forceAllIntoBurger() {
+      if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+      var nav = document.querySelector('nav.greedy-nav');
+      if (!nav) return;
+      var vlinks = nav.querySelector('.visible-links');
+      var hlinks = nav.querySelector('.hidden-links');
+      var btn = nav.querySelector('.greedy-nav__toggle');
+      if (!vlinks || !hlinks) return;
+      if (vlinks.children.length) {
+        while (vlinks.children.length) {
+          hlinks.appendChild(vlinks.children[0]);
+        }
+      }
+      Array.from(hlinks.children).sort(function (a, b) {
+        var ai = NAV_ORDER.indexOf(a.querySelector('a').getAttribute('href'));
+        var bi = NAV_ORDER.indexOf(b.querySelector('a').getAttribute('href'));
+        return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+      }).forEach(function (li) { hlinks.appendChild(li); });
+      if (btn) btn.classList.remove('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      forceAllIntoBurger();
+      var nav = document.querySelector('nav.greedy-nav');
+      var vlinks = nav && nav.querySelector('.visible-links');
+      if (vlinks) {
+        new MutationObserver(forceAllIntoBurger).observe(vlinks, { childList: true });
+      }
+    });
+    window.addEventListener('load', forceAllIntoBurger);
+    window.addEventListener('resize', forceAllIntoBurger);
+  })();
 })();
 </script>

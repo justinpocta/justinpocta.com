@@ -1,14 +1,21 @@
-<a href="https://justinpocta.com/2023-Pocta-Resume.pdf" class="btn--success">Download PDF</a>
+---
+layout: default
+title: Résumé
+permalink: /resume
+hide_footer: true
+classes: page--resume
+---
 
-<figure class="video_container">
-  <iframe src="https://justinpocta.com/2023-Pocta-Resume.pdf" frameborder="0" allowfullscreen="true" width="900" height="900"> </iframe>
-</figure>
-<br>
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1em; padding: 0 25px;">
+  <h1 style="margin:0;">Résumé</h1>
+  <a href="/2026-Pocta-Resume.pdf" download aria-label="Download PDF" style="color:#B8963A;">
+    <i class="fas fa-cloud-download-alt" style="font-size:1.6em;"></i>
+  </a>
+</div>
 
-<br>
-<object data="https://justinpocta.com/2023-Pocta-Resume.pdf" type="application/pdf" width="100%" height="800px"> 
-  <p>It appears you don't have a PDF plugin for this browser.
-   No biggie... you can <a href="resume.pdf">click here to
-  download the PDF file.</a></p>  
+<object data="/2026-Pocta-Resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" type="application/pdf" style="display:block; width:100%; aspect-ratio:612/792;">
+  <p style="text-align:center;">It appears your browser doesn't support embedded PDFs.
+   No biggie &mdash; <a href="/2026-Pocta-Resume.pdf">click here to download it instead</a>.</p>
 </object>
-<br>
+
+<div style="clear: both; padding-bottom: 40px;"></div>

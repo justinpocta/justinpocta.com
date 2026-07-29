@@ -64,6 +64,26 @@ body.layout--front.page-leaving::before {
 .masthead {
     position: relative;
     z-index: 1;
+    background: transparent !important;
+}
+/* Root cause of the white flash when the burger menu opens: the theme's
+   .greedy-nav__toggle:before is a position:fixed, full-viewport pseudo
+   -element (a dim-the-page-behind-the-menu backdrop) that jumps from
+   opacity:0 to 0.9 when .close is added -- using the theme's plain
+   white $background-color instead of a real scrim, so it just paints
+   the whole page white. Killing it outright per request. */
+.greedy-nav__toggle.close:before {
+    opacity: 0 !important;
+}
+.greedy-nav__toggle {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent !important;
+}
+nav.greedy-nav,
+.masthead__inner-wrap,
+.masthead__menu {
+    background: transparent !important;
 }
 .masthead {
     transform: translateY(-100%);
@@ -108,6 +128,33 @@ body.page--info .masthead {
     z-index: 1;
     background-color: #fff;
 }
+/* Same gradient treatment as Info, desaturated to neutral grey (83,83,83
+   matches the perceptual luminance of Info's slate rgba(71,85,105,...)). */
+body.page--resume::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(83, 83, 83, 0.24), rgba(83, 83, 83, 0) 60%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+body.page--resume.page-loaded::before {
+    opacity: 1;
+}
+body.page--resume.page-leaving::before {
+    opacity: 0;
+    transition: opacity 0.18s ease-in;
+}
+body.page--resume .masthead {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+}
 body.layout--front .initial-content {
     width: 100% !important;
     max-width: none !important;
@@ -148,6 +195,16 @@ body.layout--front figure {
 
 body.layout--default .initial-content {
     max-width: 1080px !important;
+}
+
+/* body.layout--default is a flex row and .initial-content has no
+   flex-grow, so on pages whose content doesn't otherwise force width
+   (e.g. resume.md) it shrinks to fit instead of using the space up to
+   its max-width -- any percentage-width child (like the resume's PDF
+   object) then resolves against that collapsed width. */
+body.page--resume .initial-content {
+    flex: 1 1 auto;
+    width: 100%;
 }
 
 .initial-content {
@@ -372,7 +429,7 @@ body.bg-dark .masthead__menu-item a:hover {
 .masthead__menu-item a {
     font-size: 0.8em !important;
     font-weight: 400 !important;
-    color: #999 !important;
+    color: #666 !important;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     transition: color 0.2s ease;
