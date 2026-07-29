@@ -66,10 +66,15 @@ body.layout--front.page-leaving::before {
     z-index: 1;
     background: transparent !important;
 }
-/* Defensive: on some mobile browsers a <button> can pick up native chrome
-   (a light/white default background) that the theme's own
-   background-color:transparent rule doesn't fully suppress once the
-   burger menu is toggled open. */
+/* Root cause of the white flash when the burger menu opens: the theme's
+   .greedy-nav__toggle:before is a position:fixed, full-viewport pseudo
+   -element (a dim-the-page-behind-the-menu backdrop) that jumps from
+   opacity:0 to 0.9 when .close is added -- using the theme's plain
+   white $background-color instead of a real scrim, so it just paints
+   the whole page white. Killing it outright per request. */
+.greedy-nav__toggle.close:before {
+    opacity: 0 !important;
+}
 .greedy-nav__toggle {
     -webkit-appearance: none;
     appearance: none;
