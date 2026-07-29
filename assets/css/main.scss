@@ -123,6 +123,33 @@ body.page--info .masthead {
     z-index: 1;
     background-color: #fff;
 }
+/* Same gradient treatment as Info, desaturated to neutral grey (83,83,83
+   matches the perceptual luminance of Info's slate rgba(71,85,105,...)). */
+body.page--resume::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(83, 83, 83, 0.24), rgba(83, 83, 83, 0) 60%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+body.page--resume.page-loaded::before {
+    opacity: 1;
+}
+body.page--resume.page-leaving::before {
+    opacity: 0;
+    transition: opacity 0.18s ease-in;
+}
+body.page--resume .masthead {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+}
 body.layout--front .initial-content {
     width: 100% !important;
     max-width: none !important;
