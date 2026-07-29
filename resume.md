@@ -6,7 +6,7 @@ hide_footer: true
 classes: page--resume
 ---
 
-<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1em;">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1em; padding: 0 25px;">
   <h1 style="margin:0;">Résumé</h1>
   <a href="/2026-Pocta-Resume.pdf" download aria-label="Download PDF" style="color:#B8963A;">
     <i class="fas fa-cloud-download-alt" style="font-size:1.6em;"></i>
