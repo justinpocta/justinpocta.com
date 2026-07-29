@@ -4,6 +4,12 @@
 html { touch-action: manipulation; }
 body { overflow-x: hidden; }
 
+/* light mode page background: mustard/ochre gradient, same technique as
+   the project pages' --section-color treatment (brand gold #B8963A
+   lightened ~20% toward white, fading to transparent by 60% of the
+   viewport -- see .project-section::before in main.scss). */
+html { background: linear-gradient(to bottom, rgb(198,171,97) 0%, rgba(255,255,255,0) 60%) fixed; }
+body { background: transparent; }
 
 /* dark mode page background + reverse out text on dark bg */
 @media (prefers-color-scheme: dark) {
