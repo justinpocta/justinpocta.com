@@ -48,14 +48,6 @@ I love working with teams that value asking questions. _Why are we creating a gi
       <i class="fab fa-github" style="font-size:1.5em;"></i>
       <span style="font-size:0.78em;">GitHub</span>
     </a>
-    <a href="2026-Pocta-Resume.pdf" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
-      <i class="fas fa-file-pdf" style="font-size:1.5em;"></i>
-      <span style="font-size:0.78em;">Résumé</span>
-    </a>
-    <a href="/now/" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
-      <i class="fas fa-bolt" style="font-size:1.5em;"></i>
-      <span style="font-size:0.78em;">Now</span>
-    </a>
   </div>
 </div>
 
