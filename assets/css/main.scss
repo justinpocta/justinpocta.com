@@ -174,19 +174,6 @@ body.page--resume .initial-content {
     flex: 1 1 auto;
     width: 100%;
 }
-/* Card frame around the PDF embed -- native PDF viewers (Safari
-   especially) render their own internal margin around the page that
-   isn't controllable from CSS, so a visible border/rounded-corner frame
-   makes that inset read as intentional instead of misaligned. */
-.resume-embed-frame {
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-@media (prefers-color-scheme: dark) {
-    .resume-embed-frame { border-color: rgba(255,255,255,0.15); }
-}
-:root[data-theme="dark"] .resume-embed-frame { border-color: rgba(255,255,255,0.15); }
 
 .initial-content {
     margin-top: 20px !important;

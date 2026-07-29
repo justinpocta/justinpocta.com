@@ -13,11 +13,9 @@ classes: page--resume
   </a>
 </div>
 
-<div class="resume-embed-frame">
-  <object data="/2026-Pocta-Resume.pdf" type="application/pdf" style="display:block; width:100%; aspect-ratio:612/792;">
-    <p style="text-align:center;">It appears your browser doesn't support embedded PDFs.
-     No biggie &mdash; <a href="/2026-Pocta-Resume.pdf">click here to download it instead</a>.</p>
-  </object>
-</div>
+<object data="/2026-Pocta-Resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" type="application/pdf" style="display:block; width:100%; aspect-ratio:612/792;">
+  <p style="text-align:center;">It appears your browser doesn't support embedded PDFs.
+   No biggie &mdash; <a href="/2026-Pocta-Resume.pdf">click here to download it instead</a>.</p>
+</object>
 
 <div style="clear: both; padding-bottom: 40px;"></div>
