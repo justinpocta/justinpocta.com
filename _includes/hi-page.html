@@ -23,6 +23,11 @@ body { background: transparent; }
   html body .masthead .site-title,
   html body .masthead .site-title:visited,
   html body .masthead .greedy-nav a { color: #f0f0f0 !important; }
+  /* .hidden-links (the burger dropdown) keeps the theme's plain white
+     background always -- it's a compiled Sass variable, not reactive to
+     prefers-color-scheme -- so forcing nav text to near-white above
+     also whited-out the dropdown's own links. Put them back to dark. */
+  html body .masthead .greedy-nav .hidden-links a { color: #333 !important; }
   .site-title::before { filter: invert(1); }
   h1, h2, h3, p { color: #e8e8e8; }
 }
@@ -31,6 +36,7 @@ html[data-theme="dark"] body { background: transparent !important; }
 html[data-theme="dark"] .masthead .site-title,
 html[data-theme="dark"] .masthead .site-title:visited,
 html[data-theme="dark"] .masthead .greedy-nav a { color: #f0f0f0 !important; }
+html[data-theme="dark"] .masthead .greedy-nav .hidden-links a { color: #333 !important; }
 html[data-theme="dark"] .site-title::before { filter: invert(1); }
 html[data-theme="dark"] h1,
 html[data-theme="dark"] h2,
