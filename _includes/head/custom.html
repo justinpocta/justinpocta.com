@@ -114,6 +114,11 @@
   // racing its jQuery ready/resize handlers on load order.
   (function () {
     var MOBILE_BREAKPOINT = 768; // matches the site's existing mobile CSS breakpoint
+    // Matches _data/navigation.yml -- items get sorted into this order
+    // whenever they're forced into the burger, since which list a link
+    // happens to already be sitting in (visible vs. hidden) at the moment
+    // of forcing isn't reliably the original nav order.
+    var NAV_ORDER = ['/', '/resume', 'https://hi.justinpocta.com', '/info'];
 
     function forceAllIntoBurger() {
       if (window.innerWidth >= MOBILE_BREAKPOINT) return;
@@ -122,10 +127,17 @@
       var vlinks = nav.querySelector('.visible-links');
       var hlinks = nav.querySelector('.hidden-links');
       var btn = nav.querySelector('.greedy-nav__toggle');
-      if (!vlinks || !hlinks || !vlinks.children.length) return;
-      while (vlinks.children.length) {
-        hlinks.appendChild(vlinks.children[0]);
+      if (!vlinks || !hlinks) return;
+      if (vlinks.children.length) {
+        while (vlinks.children.length) {
+          hlinks.appendChild(vlinks.children[0]);
+        }
       }
+      Array.from(hlinks.children).sort(function (a, b) {
+        var ai = NAV_ORDER.indexOf(a.querySelector('a').getAttribute('href'));
+        var bi = NAV_ORDER.indexOf(b.querySelector('a').getAttribute('href'));
+        return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+      }).forEach(function (li) { hlinks.appendChild(li); });
       if (btn) btn.classList.remove('hidden');
     }
 
