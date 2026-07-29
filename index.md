@@ -34,11 +34,7 @@ galleryProjects:
 <!-- <img src="../assets/img/profile-pic.jpg" style="overflow:hidden; border-radius:500px; height:200px; width:200px; float: left; margin-right:20px;"><br> -->
 <div class="hero-intro">
 <h1 style="text-align:center; text-wrap:balance; margin: 0;">
-  <span class="word-pop" style="animation-delay:0.0s">Empathy,</span>
-  <span class="word-pop" style="animation-delay:0.4s">collaboration,</span>
-  <span class="word-pop" style="animation-delay:0.8s">iteration,</span>
-  <span class="word-pop" style="animation-delay:1.2s">delight.</span>
-  <span class="word-pop" style="animation-delay:1.8s"><a href="info.html" class="rinse-repeat-link">Rinse &amp; Repeat</a>.</span>
+  <span class="word-pop" style="animation-delay:0.0s"><a href="info.html" class="rinse-repeat-link">Justin Pocta</a> is a Product Designer living in Brooklyn, NY.</span>
 </h1>
 </div>
 
