@@ -205,6 +205,8 @@ body.layout--default .initial-content {
 body.page--resume .initial-content {
     flex: 1 1 auto;
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .initial-content {

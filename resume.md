@@ -13,9 +13,6 @@ classes: page--resume
   </a>
 </div>
 
-<object data="/2026-Pocta-Resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" type="application/pdf" style="display:block; width:100%; aspect-ratio:612/792;">
-  <p style="text-align:center;">It appears your browser doesn't support embedded PDFs.
-   No biggie &mdash; <a href="/2026-Pocta-Resume.pdf">click here to download it instead</a>.</p>
-</object>
+<img src="/assets/img/resume-preview.png" alt="Justin Pocta's résumé" style="display:block; width:100%; border-radius:6px; box-shadow:0 4px 20px rgba(0,0,0,0.12);">
 
 <div style="clear: both; padding-bottom: 40px;"></div>
