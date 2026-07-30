@@ -38,6 +38,8 @@ galleryProjects:
 </h1>
 </div>
 
+<span class="project-subheader" style="display:block;padding-bottom:20px;text-align:center;width:100%;">Product Design — Select Projects</span>
+
 <div class="hero-tile-spacer"></div>
 
 {% include anim-01.html %}
