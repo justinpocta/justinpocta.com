@@ -15,4 +15,9 @@ classes: page--resume
 
 <img src="/assets/img/resume-preview.png" alt="Justin Pocta's résumé" style="display:block; width:100%; border-radius:6px; box-shadow:0 4px 20px rgba(0,0,0,0.12);">
 
+<div class="project-footer-nav">
+  <a href="/info">← Info</a>
+  <a href="/hi/">Fun →</a>
+</div>
+
 <div style="clear: both; padding-bottom: 40px;"></div>

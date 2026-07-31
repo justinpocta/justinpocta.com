@@ -2,8 +2,6 @@
 hide_footer: true
 classes: page--info
 ---
-<a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
-
 <div class="info-grid">
 <div class="info-grid__content">
 
@@ -56,6 +54,11 @@ I love working with teams that value asking questions. _Why are we creating a gi
 <div class="info-grid__photo">
   <img src="../assets/img/profile-pic.jpg" class="word-pop" style="animation-delay:0.5s;" alt="Justin Pocta">
 </div>
+</div>
+
+<div class="project-footer-nav">
+  <a href="/">← Home</a>
+  <a href="/resume">Resume →</a>
 </div>
 
 <div style="padding-bottom: 40px;"></div>
