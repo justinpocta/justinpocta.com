@@ -4,7 +4,8 @@ classes: page--info
 ---
 <a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
 
-<img src="../assets/img/profile-pic.jpg" class="fifty-right word-pop" style="animation-delay:0.5s;" alt="Justin Pocta">
+<div class="info-grid">
+<div class="info-grid__content">
 
 <div class="fade-in-block" style="animation-delay:0.45s;" markdown="1">
 
@@ -33,22 +34,28 @@ I love working with teams that value asking questions. _Why are we creating a gi
 }
 </style>
 
-<div class="fade-in-block" style="animation-delay:1.05s; border: 2px solid #D4B870; border-radius: 6px; padding: 26px 32px 32px; margin: 1.5em 0 40px; text-align: center; box-sizing: border-box; overflow: hidden;">
-  <p style="margin: 0 0 28px; font-weight: 400; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.1em; color: #999;">Get in Touch</p>
+<div class="fade-in-block" style="animation-delay:1.05s; border: 2px solid #D4B870; border-radius: 6px; padding: 18px 24px 22px; margin: 1.5em 0; text-align: center; box-sizing: border-box; overflow: hidden;">
+  <p style="margin: 0 0 18px; font-weight: 400; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.1em; color: #999;">Get in Touch</p>
   <div class="gi-links" style="display: flex; gap: 48px; justify-content: center;">
-    <a href="mailto:howdy@justinpocta.com?subject=Hello" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
-      <i class="fas fa-envelope" style="font-size:1.5em;"></i>
+    <a href="mailto:howdy@justinpocta.com?subject=Hello" style="display:flex; flex-direction:column; align-items:center; gap:8px; text-decoration:none; color:#B8963A;">
+      <i class="fas fa-envelope" style="font-size:1.3em;"></i>
       <span style="font-size:0.78em;">Email</span>
     </a>
-    <a href="https://linkedin.com/in/justinpocta" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
-      <i class="fab fa-linkedin" style="font-size:1.5em;"></i>
+    <a href="https://linkedin.com/in/justinpocta" style="display:flex; flex-direction:column; align-items:center; gap:8px; text-decoration:none; color:#B8963A;">
+      <i class="fab fa-linkedin" style="font-size:1.3em;"></i>
       <span style="font-size:0.78em;">LinkedIn</span>
     </a>
   </div>
 </div>
 
-<div class="fade-in-block" style="animation-delay:1.15s; margin: 1.8em 0 1.8em; opacity: 0.75;" markdown="1">
+<div class="fade-in-block" style="animation-delay:1.15s; margin: 1.8em 0 0; opacity: 0.75;" markdown="1">
   <p style="margin: 0; font-size: 0.9em; font-style: italic; font-family: Georgia, serif; line-height: 1.6; color: inherit;">Pardon my portfolio's rough edges. I'm updating on a near-daily basis, adding and revising case studies, and exploring Claude Code for animation and other frontend enhancements. Enjoy the show. Running on Github Pages, Jekyll, and iterating off of <a href="https://mmistakes.github.io/minimal-mistakes/" style="color:inherit;">Minimal Mistakes</a> theme.</p>
 </div>
 
-<div style="clear: both; padding-bottom: 40px;"></div>
+</div>
+<div class="info-grid__photo">
+  <img src="../assets/img/profile-pic.jpg" class="word-pop" style="animation-delay:0.5s;" alt="Justin Pocta">
+</div>
+</div>
+
+<div style="padding-bottom: 40px;"></div>

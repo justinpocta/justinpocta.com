@@ -247,9 +247,6 @@ body.page--resume .initial-content {
     padding-right: 20px; // wanting to add buffer between TOC and images
     float:right
 }
-body.page--info img.fifty-right {
-    border-radius: 50%;
-}
 
 .third-left, img.third-left {
     max-width: 35% !important;
@@ -1098,6 +1095,39 @@ a.hero-tile:hover { color: rgba(255,255,255,.75); text-decoration: none !importa
         width: 100%;
     }
     .sidebar-logo { height: 40px; }
+}
+
+/* Info page two-column layout: body copy left, profile photo right */
+.info-grid {
+    display: flex;
+    gap: 56px;
+    align-items: flex-start;
+    margin-top: 1.5em;
+}
+.info-grid__content {
+    flex: 1 1 0;
+    min-width: 0;
+}
+.info-grid__photo {
+    flex: 0 0 260px;
+    width: 260px;
+}
+.info-grid__photo img {
+    width: 100%;
+    border-radius: 50%;
+    display: block;
+}
+@media (max-width: 640px) {
+    .info-grid {
+        flex-direction: column-reverse;
+        gap: 24px;
+    }
+    .info-grid__photo {
+        flex: none;
+        width: 100%;
+        max-width: 220px;
+        margin: 0 auto;
+    }
 }
 
 /* Horizontal scroll carousel for multi-image galleries inside project sections */
