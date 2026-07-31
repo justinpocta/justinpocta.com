@@ -28,7 +28,7 @@ I love working with teams that value asking questions. _Why are we creating a gi
 
 </div>
 
-<div class="fade-in-block" style="animation-delay:1.15s; margin: 1.8em 0 0;" markdown="1">
+<div class="fade-in-block" style="animation-delay:1.15s; margin: 1.8em 0 0; padding-left: 28px; border-left: 8px solid #B8963A;" markdown="1">
   <p style="margin: 0; font-size: 0.9em; font-style: italic; font-family: Georgia, serif; line-height: 1.6; color: rgba(0,0,0,.35);">Pardon my portfolio's rough edges. I'm updating on a near-daily basis, adding and revising case studies, and exploring Claude Code for animation and other frontend enhancements. Enjoy the show. Running on Github Pages, Jekyll, and iterating off of <a href="https://mmistakes.github.io/minimal-mistakes/" style="color:inherit;">Minimal Mistakes</a> theme.</p>
 </div>
 
