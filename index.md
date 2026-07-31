@@ -38,7 +38,7 @@ galleryProjects:
 </h1>
 </div>
 
-<div class="hero-tile-spacer"></div>
+<span class="project-subheader hero-select-projects">Select Projects</span>
 
 {% include anim-01.html %}
 

@@ -1,9 +1,9 @@
 main:
   - title: "Work"
     url: /
+  - title: "Info"
+    url: /info
   - title: "Résumé"
     url: /resume
   - title: "Fun"
     url: https://hi.justinpocta.com
-  - title: "Info"
-    url: /info

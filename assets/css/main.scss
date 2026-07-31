@@ -247,9 +247,6 @@ body.page--resume .initial-content {
     padding-right: 20px; // wanting to add buffer between TOC and images
     float:right
 }
-body.page--info img.fifty-right {
-    border-radius: 50%;
-}
 
 .third-left, img.third-left {
     max-width: 35% !important;
@@ -352,7 +349,14 @@ span.project-subheader {
     letter-spacing: 2px;
     font-size: 16px;
     font-weight: 300;
-    
+
+}
+span.hero-select-projects {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: rgba(0,0,0,.35);
+    padding: 20px 0;
 }
 
 .youtube-handler {
@@ -599,6 +603,18 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
     flex-direction: column;
     position: relative;
 }
+/* Film-grain overlay, matching the noise texture on the Highlight app's own gradient screens */
+.hero-tile--grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/img/texture.png");
+    background-size: 260px 234px;
+    opacity: 0.55;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 2;
+}
 .tile-label {
     position: absolute;
     bottom: 0;
@@ -770,11 +786,6 @@ a.hero-tile:hover { color: rgba(255,255,255,.75); text-decoration: none !importa
     50%       { opacity: 1;   }
 }
 
-/* Gap between the "Empathy, collaboration..." heading and the tile row.
-   Desktop has room to breathe; mobile needed this trimmed so the tiles
-   fit above the fold on initial load -- see the mobile override below. */
-.hero-tile-spacer { padding-bottom: 60px; }
-
 @media (max-width: 768px) {
     .hero-intro {
         min-height: 22vh;
@@ -783,7 +794,6 @@ a.hero-tile:hover { color: rgba(255,255,255,.75); text-decoration: none !importa
         justify-content: center;
     }
     .hero-intro h1 { margin: 0; }
-    .hero-tile-spacer { padding-bottom: 8px; }
     .hero-tile { width: 100%; min-height: 80vw; max-height: none; }
     .hero-tile p { padding-bottom: 1.3em; }
     /* Tiles: use 48vh instead of 56vh so the section fits the visible
@@ -1099,6 +1109,49 @@ a.hero-tile:hover { color: rgba(255,255,255,.75); text-decoration: none !importa
     .sidebar-logo { height: 40px; }
 }
 
+/* Info page two-column layout: body copy left, profile photo right */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    grid-template-areas:
+        "content photo"
+        "content contact";
+    column-gap: 56px;
+    row-gap: 24px;
+    align-items: start;
+    margin-top: 1.5em;
+}
+.info-grid__content {
+    grid-area: content;
+    min-width: 0;
+}
+.info-grid__photo {
+    grid-area: photo;
+}
+.info-grid__photo img {
+    width: 100%;
+    border-radius: 50%;
+    display: block;
+}
+.info-grid__contact {
+    grid-area: contact;
+}
+@media (max-width: 640px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "photo"
+            "content"
+            "contact";
+        row-gap: 24px;
+    }
+    .info-grid__photo {
+        width: 100%;
+        max-width: 220px;
+        margin: 0 auto;
+    }
+}
+
 /* Horizontal scroll carousel for multi-image galleries inside project sections */
 .project-section figure.half,
 .project-section figure.third,
@@ -1221,6 +1274,7 @@ body.page--jobs          { --section-color: 214, 208, 223; } /* #321261 purple *
 body.page--workflows     { --section-color: 236, 212, 241; } /* #9F29B7 purple */
 body.page--transcreation { --section-color: 249, 227, 224; } /* #E17463 coral */
 body.page--highlight     { --section-color: 204, 216, 213; } /* #003D2F green */
+body.page--highlight.page--highlight-community { --section-color: 214, 216, 240; } /* #4447AB indigo, from the Community tile gradient */
 .project-section::before {
     content: '';
     position: absolute;

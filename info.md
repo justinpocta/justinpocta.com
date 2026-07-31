@@ -2,9 +2,11 @@
 hide_footer: true
 classes: page--info
 ---
-<a href="/" style="font-size:0.8em; font-weight:400; color:#999; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; transition:color 0.2s ease;" onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">← Back</a>
-
-<img src="../assets/img/profile-pic.jpg" class="fifty-right word-pop" style="animation-delay:0.5s;" alt="Justin Pocta">
+<div class="info-grid">
+<div class="info-grid__photo">
+  <img src="../assets/img/profile-pic.jpg" class="word-pop" style="animation-delay:0.5s;" alt="Justin Pocta">
+</div>
+<div class="info-grid__content">
 
 <div class="fade-in-block" style="animation-delay:0.45s;" markdown="1">
 
@@ -26,29 +28,33 @@ I love working with teams that value asking questions. _Why are we creating a gi
 
 </div>
 
-<style>
-@media (max-width: 600px) {
-  .gi-links { flex-wrap: wrap !important; gap: 24px 5% !important; }
-  .gi-links a { flex: 0 0 28%; }
-}
-</style>
+<div class="fade-in-block" style="animation-delay:1.15s; margin: 1.8em 0 0; padding-left: 28px; border-left: 8px solid #B8963A;" markdown="1">
+  <p style="margin: 0; font-size: 0.9em; font-style: italic; font-family: Georgia, serif; line-height: 1.6; color: rgba(0,0,0,.35);">Pardon my portfolio's rough edges. I'm updating on a near-daily basis, adding and revising case studies, and exploring Claude Code for animation and other frontend enhancements. Enjoy the show. Running on Github Pages, Jekyll, and iterating off of <a href="https://mmistakes.github.io/minimal-mistakes/" style="color:inherit;">Minimal Mistakes</a> theme.</p>
+</div>
 
-<div class="fade-in-block" style="animation-delay:1.05s; border: 2px solid #D4B870; border-radius: 6px; padding: 26px 32px 32px; margin: 1.5em 0 40px; text-align: center; box-sizing: border-box; overflow: hidden;">
-  <p style="margin: 0 0 28px; font-weight: 400; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.1em; color: #999;">Get in Touch</p>
-  <div class="gi-links" style="display: flex; gap: 48px; justify-content: center;">
-    <a href="mailto:howdy@justinpocta.com?subject=Hello" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
-      <i class="fas fa-envelope" style="font-size:1.5em;"></i>
-      <span style="font-size:0.78em;">Email</span>
+</div>
+<div class="info-grid__contact fade-in-block" style="animation-delay:1.05s;">
+  <p style="margin: 0 0 12px; font-weight: 400; font-size: 0.78em; text-transform: uppercase; letter-spacing: 0.1em; color: #999;">Get in Touch</p>
+  <div class="gi-links" style="display: flex; flex-direction: column; gap: 12px;">
+    <a href="mailto:howdy@justinpocta.com?subject=Hello" style="display:flex; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
+      <i class="fas fa-envelope" style="font-size:1.1em; width:1.2em; text-align:center;"></i>
+      <span style="font-size:0.85em;">Email</span>
     </a>
-    <a href="https://linkedin.com/in/justinpocta" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
-      <i class="fab fa-linkedin" style="font-size:1.5em;"></i>
-      <span style="font-size:0.78em;">LinkedIn</span>
+    <a href="https://linkedin.com/in/justinpocta" style="display:flex; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
+      <i class="fab fa-linkedin" style="font-size:1.1em; width:1.2em; text-align:center;"></i>
+      <span style="font-size:0.85em;">LinkedIn</span>
+    </a>
+    <a href="/resume" style="display:flex; align-items:center; gap:10px; text-decoration:none; color:#B8963A;">
+      <i class="fas fa-file-alt" style="font-size:1.1em; width:1.2em; text-align:center;"></i>
+      <span style="font-size:0.85em;">Resume</span>
     </a>
   </div>
 </div>
-
-<div class="fade-in-block" style="animation-delay:1.15s; margin: 1.8em 0 1.8em; opacity: 0.75;" markdown="1">
-  <p style="margin: 0; font-size: 0.9em; font-style: italic; font-family: Georgia, serif; line-height: 1.6; color: inherit;">Pardon my portfolio's rough edges. I'm updating on a near-daily basis, adding and revising case studies, and exploring Claude Code for animation and other frontend enhancements. Enjoy the show. Running on Github Pages, Jekyll, and iterating off of <a href="https://mmistakes.github.io/minimal-mistakes/" style="color:inherit;">Minimal Mistakes</a> theme.</p>
 </div>
 
-<div style="clear: both; padding-bottom: 40px;"></div>
+<div class="project-footer-nav">
+  <a href="/">← Work</a>
+  <a href="/resume">Resume →</a>
+</div>
+
+<div style="padding-bottom: 40px;"></div>

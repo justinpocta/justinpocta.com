@@ -143,5 +143,5 @@ Transcreation Demo to present the new tool to our customers as well as those int
 
 <div class="project-footer-nav">
   <a href="/smartling-workflows">← Previous</a>
-  <a href="/info">Next →</a>
+  <a href="/highlight-community">Next →</a>
 </div>
