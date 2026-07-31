@@ -1099,31 +1099,41 @@ a.hero-tile:hover { color: rgba(255,255,255,.75); text-decoration: none !importa
 
 /* Info page two-column layout: body copy left, profile photo right */
 .info-grid {
-    display: flex;
-    gap: 56px;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    grid-template-areas:
+        "content photo"
+        "content contact";
+    column-gap: 56px;
+    row-gap: 24px;
+    align-items: start;
     margin-top: 1.5em;
 }
 .info-grid__content {
-    flex: 1 1 0;
+    grid-area: content;
     min-width: 0;
 }
 .info-grid__photo {
-    flex: 0 0 260px;
-    width: 260px;
+    grid-area: photo;
 }
 .info-grid__photo img {
     width: 100%;
     border-radius: 50%;
     display: block;
 }
+.info-grid__contact {
+    grid-area: contact;
+}
 @media (max-width: 640px) {
     .info-grid {
-        flex-direction: column-reverse;
-        gap: 24px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "photo"
+            "content"
+            "contact";
+        row-gap: 24px;
     }
     .info-grid__photo {
-        flex: none;
         width: 100%;
         max-width: 220px;
         margin: 0 auto;
