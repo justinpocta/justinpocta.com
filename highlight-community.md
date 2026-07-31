@@ -45,7 +45,7 @@ My work centered on evolving the app to make it more clear for the product testi
 
 ## Case Study Coming Soon
 
-I'm still writing up the full breakdown of this project. In the meantime, check out [Highlight Recruiting](/highlight-recruiting), another case study from my time at Highlight already live.
+I’m currently writing up a breakdown for this project. [Highlight Recruiting](/highlight-recruiting) covers the internal component that helped enable us to rewire the community app.
 
 </div>
 
