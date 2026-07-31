@@ -13,7 +13,9 @@ classes: page--project page--highlight-community page--highlight
 <span class="project-subheader">Highlight Community App</span>
 # Modernizing the Highlighter Experience
 
-I joined **Highlight** in January 2024 as a Senior Product Designer, focused on internal tools and our product testing platform. At the center of Highlight's unique positioning is a thoughtful and mission-driven community of Highlighters, real people who test products at home and send honest feedback straight to the brands that make them. My work centered on evolving a manual recruiting process into a powerful, targeted, automated system, and on modernizing the Highlighter experience.
+Late 2024 I got the opportunity to work with the team to make updates to the community app. Highlight’s unique positioning is a thoughtful and mission-driven community of testers who are known as Highlighters: real people who test products at home and send honest feedback straight to the brands that make them.
+
+My work centered on evolving the app to make it more clear for the product testing and to connect new tools to this experience while we were at it. This project involved leadership/stakeholder workshops since we were in the midst of a rebrand on the customer side but wanted to give ourselves a great starting place on the community side.
 
 </div>
 <aside class="project-intro-grid__sidebar">
@@ -25,7 +27,7 @@ I joined **Highlight** in January 2024 as a Senior Product Designer, focused on 
     </div>
     <div class="sidebar-meta__item">
       <div class="sidebar-meta__label">Duration</div>
-      <div class="sidebar-meta__value">Jan 2024&ndash;Present</div>
+      <div class="sidebar-meta__value">Nov 2024&ndash;Feb 2025</div>
     </div>
     <div class="sidebar-meta__item">
       <div class="sidebar-meta__label">Contributions</div>
@@ -43,7 +45,7 @@ I joined **Highlight** in January 2024 as a Senior Product Designer, focused on 
 
 ## Case Study Coming Soon
 
-I'm still writing up the full breakdown of this project. In the meantime, [Highlight Recruiting](/highlight-recruiting) covers one piece of this work already live &mdash; the automated recruiting system referenced above.
+I'm still writing up the full breakdown of this project. In the meantime, check out [Highlight Recruiting](/highlight-recruiting), another case study from my time at Highlight already live.
 
 </div>
 
