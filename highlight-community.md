@@ -51,5 +51,5 @@ I’m currently writing up a breakdown for this project. [Highlight Recruiting](
 
 <div class="project-footer-nav">
   <a href="/smartling-transcreation">← Previous</a>
-  <a href="/info">Next →</a>
+  <a href="/info">Info →</a>
 </div>
