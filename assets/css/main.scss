@@ -1274,6 +1274,7 @@ body.page--jobs          { --section-color: 214, 208, 223; } /* #321261 purple *
 body.page--workflows     { --section-color: 236, 212, 241; } /* #9F29B7 purple */
 body.page--transcreation { --section-color: 249, 227, 224; } /* #E17463 coral */
 body.page--highlight     { --section-color: 204, 216, 213; } /* #003D2F green */
+body.page--highlight.page--highlight-community { --section-color: 214, 216, 240; } /* #4447AB indigo, from the Community tile gradient */
 .project-section::before {
     content: '';
     position: absolute;
