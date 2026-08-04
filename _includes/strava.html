@@ -2,7 +2,11 @@
 {% assign activity = site.data.strava[activity_key] %}
 {% assign empty_label = include.empty_label | default: "No ride data yet" %}
 {% assign activity_icon = "fa-biking" %}
-{% if activity_key == "run" %}{% assign activity_icon = "fa-running" %}{% endif %}
+{% assign activity_label = "Strava - Cycling" %}
+{% if activity_key == "run" %}
+  {% assign activity_icon = "fa-running" %}
+  {% assign activity_label = "Strava - Running" %}
+{% endif %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <div class="strava-card">
   <div class="strava-card-header">
@@ -10,7 +14,7 @@
       <path d="M29.2706 43.5683L24.1528 33.4854L16.5283 33.4982L29.2706 58.4349L41.9999 33.4854H34.3754L29.2706 43.5683Z" fill="#FC5200"/>
       <path d="M17.1812 19.9467L24.1529 33.4852H34.3755L17.1812 0L0 33.4852H10.2356L17.1812 19.9467Z" fill="#FC5200"/>
     </svg>
-    <span class="strava-card-label">Strava</span>
+    <span class="strava-card-label">{{ activity_label }}</span>
   </div>
   <div class="strava-map-wrap">
     <div class="strava-map-div" id="strava-map-{{ activity_key }}"></div>
