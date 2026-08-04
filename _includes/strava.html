@@ -72,7 +72,7 @@
   .strava-activity-icon {
     flex: 0 0 auto;
     font-size: 1.9em; line-height: 1;
-    color: #B8963A;
+    color: #3D4144;
   }
   .strava-ride-text {
     display: flex; flex-direction: column; gap: 3px;
@@ -80,6 +80,7 @@
   }
   .strava-ride-name {
     font-weight: 700; font-size: 0.95em; line-height: 1.2;
+    color: #3D4144;
   }
   .strava-ride-meta {
     font-size: 0.82em; color: #888;
@@ -97,10 +98,14 @@
     .strava-card-header { border-bottom-color: rgba(255,255,255,0.1); }
     .strava-card-footer { border-top-color: rgba(255,255,255,0.1); }
     .strava-ride-meta { color: #777; }
+    .strava-activity-icon { color: #fff; }
+    .strava-ride-name { color: #fff; }
   }
   :root[data-theme="dark"] .strava-card-header { border-bottom-color: rgba(255,255,255,0.1); }
   :root[data-theme="dark"] .strava-card-footer { border-top-color: rgba(255,255,255,0.1); }
   :root[data-theme="dark"] .strava-ride-meta { color: #777; }
+  :root[data-theme="dark"] .strava-activity-icon { color: #fff; }
+  :root[data-theme="dark"] .strava-ride-name { color: #fff; }
 </style>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
