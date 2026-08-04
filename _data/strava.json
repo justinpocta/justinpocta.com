@@ -1,10 +1,11 @@
 {
   "ride": {
-    "name": "Evening Ride",
-    "distance": 662.4,
-    "moving_time": 198,
-    "start_date": "2026-07-30T00:29:21Z",
-    "map_polyline": "_dfwFhuqbMgBvEi@nAIN?EABwA~D_CjG@AWz@iDdJGLGB?IJY\\[d@kA"
+    "name": "Lunch + Prospect Park Loop",
+    "distance": 10693.2,
+    "moving_time": 2341,
+    "start_date": "2026-08-02T17:49:47Z",
+    "map_polyline": "gafwFrzqbMiBfFmEhLQl@?\\LZhB`BIAAD@BBADKBACCWBQPeDtI[r@IFG@QIwAmAqAaAQOIOBS\\{@?D?AD@DDN??AGEAI@?C?BBBIWTBACJCGNk@hCoHLi@@UEOYa@g@e@GQ?IbXur@|J}WxBaGRo@Jg@AWW[uB}AyMgKmAkAIS?K\\mAHm@FkAH[HITKVGj@CfBOn@Cv@BXBb@NTJl@f@fBtBTPxAt@\\RpAhAr@t@dAzAf@|@^~@x@~Bh@vA`@v@d@r@d@`@fAt@n@Rp@D^Eh@Sd@_@^i@Pa@Rw@Ny@P_CJg@Ne@^u@zAqB|@{BZo@`@k@h@a@j@[LE`@Er@@tCPn@@n@Cj@Ij@Sh@Yd@e@bAsAh@c@z@g@l@Ol@Ch@FvBb@l@Bn@E^G\\Mx@e@d@i@\\o@Rw@D{@CkAQkA[cAYo@m@eAwAuBYk@]{@[mASqA{@qHSaAY_AUk@a@u@u@cAm@q@[YsB{A}@e@aASw@IeAEm@Do@Jo@PuCnAo@RYDY?}@Ke@@i@P_FjCcIhDe@NYHWDcC@m@FqCjAoEdB_Ab@_@VeAhA}@|Ao@vAg@|AWf@_@^OJYJk@HaA@W@e@Nu@^[L[D[@UAe@OuA{@m@Yg@M]Ag@Fg@NYTa@j@Qj@I`@Ad@?b@Db@Lp@Th@PXf@`@lBdA^V|AdBv@p@~@`@vA\\t@VZNHJHLDb@CzAQj@c@z@BF~AhAlG~E|FtE`BvAo@rAu@jB_CpGiCtG}@bCUt@@NRVjBbB^b@Vd@H`@@XGj@[|Am@nAw@nB"
   },
-  "updated_at": "2026-07-31T14:16:29Z"
+  "run": null,
+  "updated_at": "2026-08-04T14:13:29Z"
 }
