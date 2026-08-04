@@ -411,7 +411,7 @@ html[data-theme="dark"] p { color: #e8e8e8; }
     </div>
 
     <div class="hi-card" id="hi-card-4">
-      {% include strava.html %}
+      {% include strava.html activity_key="ride" empty_label="No ride data yet" %}
     </div>
 
     <div class="hi-card" id="hi-card-5">
@@ -424,6 +424,10 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 
     <div class="hi-card" id="hi-card-7">
       {% include weather.html %}
+    </div>
+
+    <div class="hi-card" id="hi-card-8">
+      {% include strava.html activity_key="run" empty_label="No run data yet" %}
     </div>
 
   </div>
