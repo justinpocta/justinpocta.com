@@ -1,6 +1,8 @@
 {% assign activity_key = include.activity_key | default: "ride" %}
 {% assign activity = site.data.strava[activity_key] %}
 {% assign empty_label = include.empty_label | default: "No ride data yet" %}
+{% assign activity_icon = "fa-biking" %}
+{% if activity_key == "run" %}{% assign activity_icon = "fa-running" %}{% endif %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <div class="strava-card">
   <div class="strava-card-header">
@@ -17,8 +19,11 @@
     {% endif %}
   </div>
   <div class="strava-card-footer">
-    <span class="strava-ride-name">{% if activity.name != nil and activity.name != "" %}{{ activity.name }}{% else %}—{% endif %}</span>
-    <span class="strava-ride-meta" id="strava-meta-{{ activity_key }}"></span>
+    <i class="fas {{ activity_icon }} strava-activity-icon" aria-hidden="true"></i>
+    <div class="strava-ride-text">
+      <span class="strava-ride-name">{% if activity.name != nil and activity.name != "" %}{{ activity.name }}{% else %}—{% endif %}</span>
+      <span class="strava-ride-meta" id="strava-meta-{{ activity_key }}"></span>
+    </div>
   </div>
 </div>
 
@@ -58,7 +63,16 @@
     flex: 0 0 auto;
     padding: 10px 14px 13px;
     border-top: 1px solid rgba(0,0,0,0.1);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .strava-activity-icon {
+    flex: 0 0 auto;
+    font-size: 1.9em; line-height: 1;
+    color: #B8963A;
+  }
+  .strava-ride-text {
     display: flex; flex-direction: column; gap: 3px;
+    min-width: 0;
   }
   .strava-ride-name {
     font-weight: 700; font-size: 0.95em; line-height: 1.2;
