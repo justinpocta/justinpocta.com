@@ -1,4 +1,6 @@
-{% assign ride = site.data.strava %}
+{% assign activity_key = include.activity_key | default: "ride" %}
+{% assign activity = site.data.strava[activity_key] %}
+{% assign empty_label = include.empty_label | default: "No ride data yet" %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <div class="strava-card">
   <div class="strava-card-header">
@@ -9,18 +11,18 @@
     <span class="strava-card-label">Strava</span>
   </div>
   <div class="strava-map-wrap">
-    <div class="strava-map-div" id="strava-map"></div>
-    {% if ride.name == "" %}
-    <div class="strava-map-empty">No ride data yet</div>
+    <div class="strava-map-div" id="strava-map-{{ activity_key }}"></div>
+    {% if activity.name == nil or activity.name == "" %}
+    <div class="strava-map-empty">{{ empty_label }}</div>
     {% endif %}
   </div>
   <div class="strava-card-footer">
-    <span class="strava-ride-name">{% if ride.name != "" %}{{ ride.name }}{% else %}—{% endif %}</span>
-    <span class="strava-ride-meta" id="strava-meta"></span>
+    <span class="strava-ride-name">{% if activity.name != nil and activity.name != "" %}{{ activity.name }}{% else %}—{% endif %}</span>
+    <span class="strava-ride-meta" id="strava-meta-{{ activity_key }}"></span>
   </div>
 </div>
 
-<script type="application/json" id="strava-data">{{ ride | jsonify }}</script>
+<script type="application/json" id="strava-data-{{ activity_key }}">{{ activity | jsonify }}</script>
 
 <style>
   .strava-card {
@@ -86,24 +88,24 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 (function () {
-  var raw = document.getElementById('strava-data');
+  var raw = document.getElementById('strava-data-{{ activity_key }}');
   if (!raw) return;
-  var ride;
-  try { ride = JSON.parse(raw.textContent); } catch (e) { return; }
-  if (!ride || !ride.name) return;
+  var activity;
+  try { activity = JSON.parse(raw.textContent); } catch (e) { return; }
+  if (!activity || !activity.name) return;
 
-  var meta = document.getElementById('strava-meta');
+  var meta = document.getElementById('strava-meta-{{ activity_key }}');
   if (meta) {
-    var mi = (ride.distance / 1609.34).toFixed(1) + ' mi';
-    var s = ride.moving_time;
+    var mi = (activity.distance / 1609.34).toFixed(1) + ' mi';
+    var s = activity.moving_time;
     var h = Math.floor(s / 3600);
     var m = Math.floor((s % 3600) / 60);
     var time = h > 0 ? h + 'h ' + m + 'm' : m + ' min';
-    var date = ride.start_date ? new Date(ride.start_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
+    var date = activity.start_date ? new Date(activity.start_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
     meta.textContent = [date, mi, time].filter(Boolean).join(' · ');
   }
 
-  if (!ride.map_polyline) return;
+  if (!activity.map_polyline) return;
 
   function decodePolyline(enc) {
     var pts = [], i = 0, lat = 0, lng = 0;
@@ -120,10 +122,10 @@
   }
 
   function initMap() {
-    var pts = decodePolyline(ride.map_polyline);
+    var pts = decodePolyline(activity.map_polyline);
     if (pts.length < 2) return;
 
-    var map = L.map('strava-map', {
+    var map = L.map('strava-map-{{ activity_key }}', {
       zoomControl: false,
       dragging: false,
       touchZoom: false,
@@ -148,7 +150,7 @@
     }).addTo(map);
   }
 
-  var mapDiv = document.getElementById('strava-map');
+  var mapDiv = document.getElementById('strava-map-{{ activity_key }}');
   if (mapDiv.offsetHeight > 0) {
     initMap();
   } else {
