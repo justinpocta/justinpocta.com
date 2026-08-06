@@ -50,6 +50,7 @@ jobs:
 
           def to_entry(a):
             return {
+              'id': a.get('id'),
               'name': a.get('name', ''),
               'distance': a.get('distance', 0),
               'moving_time': a.get('moving_time', 0),
@@ -84,7 +85,13 @@ jobs:
             if match:
               candidate = to_entry(match)
               current = data.get(key)
-              if not current or candidate['start_date'] > current.get('start_date', ''):
+              is_same_activity = current and candidate.get('id') is not None and candidate.get('id') == current.get('id')
+              is_newer = not current or candidate['start_date'] > current.get('start_date', '')
+              # Refresh if it's a newer activity, OR the same activity as
+              # before -- a same-activity match still needs to overwrite so
+              # edits made on Strava after the fact (renames, etc.) show up,
+              # not just genuinely new activities
+              if is_newer or is_same_activity:
                 data[key] = candidate
 
           data['updated_at'] = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
