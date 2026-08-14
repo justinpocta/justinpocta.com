@@ -383,13 +383,13 @@ html[data-theme="dark"] p { color: #e8e8e8; }
         </div>
         <div class="book-cover-fill">
           <div class="book-cover-art">
-            <span class="book-cover-art-title">Martyr!</span>
-            <span class="book-cover-art-blurb">"A miracle of a novel"</span>
-            <span class="book-cover-art-author">Kaveh Akbar</span>
+            <span class="book-cover-art-title">Tomorrow, and Tomorrow, and Tomorrow</span>
+            <span class="book-cover-art-blurb">"A tour de force"</span>
+            <span class="book-cover-art-author">Gabrielle Zevin</span>
           </div>
           <img class="book-cover-img" id="book-cover-img"
-               src="/assets/img/book-martyr.jpg"
-               alt="Martyr! by Kaveh Akbar">
+               src="/assets/img/book-tomorrow.jpg"
+               alt="Tomorrow, and Tomorrow, and Tomorrow by Gabrielle Zevin">
         </div>
       </div>
     </div>
@@ -400,12 +400,12 @@ html[data-theme="dark"] p { color: #e8e8e8; }
           <span class="music-card-label">Currently Listening</span>
         </div>
         <div class="music-cover-fill">
-          <img class="music-cover-img" id="music-cover-img" alt="Any Light by Loving">
+          <img class="music-cover-img" id="music-cover-img" alt="Lost Weekend by Phoebe Bridgers">
         </div>
         <div class="music-card-footer">
-          <span class="music-album-name">Any Light</span>
-          <span class="music-artist-name">Loving</span>
-          <span class="music-fav-track">&#9834; Medicine</span>
+          <span class="music-album-name">Lost Weekend</span>
+          <span class="music-artist-name">Phoebe Bridgers</span>
+          <span class="music-fav-track">&#9834; Lost Boys</span>
         </div>
       </div>
     </div>
@@ -453,8 +453,8 @@ html[data-theme="dark"] p { color: #e8e8e8; }
 
   /* music card: fetch album art from iTunes Search API */
   (function () {
-    var MUSIC_ARTIST = 'Loving';
-    var MUSIC_ALBUM  = 'Any Light';
+    var MUSIC_ARTIST = 'Phoebe Bridgers';
+    var MUSIC_ALBUM  = 'Lost Weekend';
     fetch('https://itunes.apple.com/search?term=' + encodeURIComponent(MUSIC_ARTIST + ' ' + MUSIC_ALBUM) + '&entity=album&limit=5')
       .then(function (res) { return res.json(); })
       .then(function (data) {
