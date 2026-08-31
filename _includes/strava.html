@@ -92,12 +92,12 @@
     padding: 0 3px;
   }
   .strava-map-div .leaflet-tile { border-radius: 0; overflow: visible; }
-  .strava-map-div .leaflet-tile-pane { filter: brightness(0.8) contrast(1.4); }
+  .strava-map-div .leaflet-tile-pane { filter: grayscale(1) brightness(1.35) contrast(0.6); }
   @media (prefers-color-scheme: dark) {
-    .strava-map-div .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(1.2); }
+    .strava-map-div .leaflet-tile-pane { filter: grayscale(1) contrast(0.6) invert(1) brightness(1.15); }
   }
-  :root[data-theme="light"] .strava-map-div .leaflet-tile-pane { filter: brightness(0.8) contrast(1.4); }
-  :root[data-theme="dark"] .strava-map-div .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(1.2); }
+  :root[data-theme="light"] .strava-map-div .leaflet-tile-pane { filter: grayscale(1) brightness(1.35) contrast(0.6); }
+  :root[data-theme="dark"] .strava-map-div .leaflet-tile-pane { filter: grayscale(1) contrast(0.6) invert(1) brightness(1.15); }
   @media (prefers-color-scheme: dark) {
     .strava-card-header { border-bottom-color: rgba(255,255,255,0.1); }
     .strava-card-footer { border-top-color: rgba(255,255,255,0.1); }

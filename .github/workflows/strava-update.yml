@@ -97,8 +97,17 @@ jobs:
           data['updated_at'] = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
 
           os.makedirs('_data', exist_ok=True)
-          with open('_data/strava.json', 'w') as f:
-            json.dump(data, f, indent=2)
+          with open('_data/strava.json', 'w', encoding='utf-8') as f:
+            # ensure_ascii=False -- the default True writes non-ASCII
+            # (e.g. emoji in an activity name) as \uXXXX escapes, which
+            # for astral-plane characters means a UTF-16 surrogate
+            # pair. That's valid JSON, but Jekyll loads data files
+            # through Psych (YAML), which doesn't handle surrogate
+            # pairs and throws "invalid Unicode character escape
+            # code", crashing the entire site build. Writing the
+            # literal UTF-8 character instead sidesteps this.
+            json.dump(data, f, indent=2, ensure_ascii=False)
+            f.write('\n')
           ride_name = (data.get('ride') or {}).get('name', '(none)')
           run_name = (data.get('run') or {}).get('name', '(none)')
           print(f"Ride: {ride_name} | Run: {run_name}")
