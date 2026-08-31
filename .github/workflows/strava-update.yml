@@ -48,14 +48,37 @@ jobs:
           with urllib.request.urlopen(req) as r:
             activities = json.load(r)
 
+          def fetch_full_polyline(activity_id):
+            # The list endpoint above only returns map.summary_polyline, a
+            # simplified/lower-resolution version of the route -- for at
+            # least one activity this visibly truncated the tail end of
+            # the ride compared to what Strava's own site shows. The full-
+            # resolution map.polyline is only available from the single-
+            # activity detail endpoint, so fetch it just for the one
+            # activity we're actually about to store (not all 50 from the
+            # list), to stay well within rate limits.
+            req = urllib.request.Request(
+              f'https://www.strava.com/api/v3/activities/{activity_id}',
+              headers={'Authorization': f'Bearer {access_token}'}
+            )
+            try:
+              with urllib.request.urlopen(req) as r:
+                detail = json.load(r)
+              return (detail.get('map') or {}).get('polyline', '')
+            except Exception as e:
+              print(f'Could not fetch full polyline for activity {activity_id}: {e}')
+              return ''
+
           def to_entry(a):
+            full_polyline = fetch_full_polyline(a.get('id'))
+            polyline = full_polyline or (a.get('map') or {}).get('summary_polyline', '')
             return {
               'id': a.get('id'),
               'name': a.get('name', ''),
               'distance': a.get('distance', 0),
               'moving_time': a.get('moving_time', 0),
               'start_date': a.get('start_date', ''),
-              'map_polyline': (a.get('map') or {}).get('summary_polyline', ''),
+              'map_polyline': polyline,
             }
 
           def best_match(activity_type):
