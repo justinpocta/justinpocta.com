@@ -85,15 +85,19 @@
   .strava-ride-meta {
     font-size: 0.82em; color: #888;
   }
-  .strava-map-div .leaflet-control-zoom,
-  .strava-map-div .leaflet-control-attribution { display: none !important; }
-  .strava-map-div .leaflet-tile { border-radius: 0; overflow: visible; }
-  .strava-map-div .leaflet-tile-pane { filter: brightness(0.8) contrast(1.4); }
-  @media (prefers-color-scheme: dark) {
-    .strava-map-div .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(1.2); }
+  .strava-map-div .leaflet-control-zoom { display: none !important; }
+  .strava-map-div .leaflet-control-attribution {
+    font-size: 8px;
+    background: rgba(255,255,255,0.6);
+    padding: 0 3px;
   }
-  :root[data-theme="light"] .strava-map-div .leaflet-tile-pane { filter: brightness(0.8) contrast(1.4); }
-  :root[data-theme="dark"] .strava-map-div .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(1.2); }
+  .strava-map-div .leaflet-tile { border-radius: 0; overflow: visible; }
+  .strava-map-div .leaflet-tile-pane { filter: grayscale(1) brightness(1.35) contrast(0.6); }
+  @media (prefers-color-scheme: dark) {
+    .strava-map-div .leaflet-tile-pane { filter: grayscale(1) contrast(0.6) invert(1) brightness(1.15); }
+  }
+  :root[data-theme="light"] .strava-map-div .leaflet-tile-pane { filter: grayscale(1) brightness(1.35) contrast(0.6); }
+  :root[data-theme="dark"] .strava-map-div .leaflet-tile-pane { filter: grayscale(1) contrast(0.6) invert(1) brightness(1.15); }
   @media (prefers-color-scheme: dark) {
     .strava-card-header { border-bottom-color: rgba(255,255,255,0.1); }
     .strava-card-footer { border-top-color: rgba(255,255,255,0.1); }
@@ -154,12 +158,18 @@
       scrollWheelZoom: false,
       boxZoom: false,
       keyboard: false,
-      attributionControl: false,
+      attributionControl: true,
     });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-      subdomains: 'abcd',
-      maxZoom: 20,
+    // CARTO's free basemaps now require an API key (they started
+    // watermarking unauthenticated tile requests). Switched to
+    // OpenStreetMap's standard tiles, which are free with no key --
+    // their usage policy does require visible attribution though, so
+    // that's kept on here instead of being hidden like before.
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      subdomains: 'abc',
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
 
     var route = L.polyline(pts, { color: '#FC4C02', weight: 3, opacity: 1 }).addTo(map);
