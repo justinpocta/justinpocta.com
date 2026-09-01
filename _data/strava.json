@@ -1,11 +1,11 @@
 {
   "ride": {
-    "id": 19980705912,
-    "name": "Aww I didn’t hit my 500 mi goal yet cause e-biking. Boooo!",
-    "distance": 8933.5,
-    "moving_time": 2128,
-    "start_date": "2026-08-31T18:43:48Z",
-    "map_polyline": "iajwFbrrbMUt@@JA^KhAWdB]nBSv@KVKJO@YEs@UcHmCeJiDcI_D{GeC@G?s@LgIByB?sCDkD?DA]EMKIOEs@EcCAgGSB@CCSCqCQk@GUIIKEMGCa@LW?WDg@RECo@DcD?_BEuBIq@NUNENCb@?rCCJOTkAv@MPGTCVA`@@TFJVB^MVAT?FD?t@EzAMjNM|IB^Vh@?FCBCCS[QIk@Kg@FGEGMEEEB?JDFF@RQLEPLZCZPRXd@TLLN\\Fv@NRHZh@`@JTBXCz@FXHFb@RdBj@z@j@\\NhBf@vAt@XDx@IP@VRn@|@ZPPDX?r@SR?VLd@z@VPf@NdAH^FdBv@RN^b@x@j@r@t@z@`@PLRXJb@JLLHxCdAjAl@FJNv@PZPHzChAPDR@d@Ub@FNGHWRkAHUH?|@XRCT@NGHQRcAT{@TSNER@RFlCdArC~@LLBF?FCX@BF@@OEQA@?@jAcGR{@PkAb@sB|DeUn@cE@[LKPBj@RtS`IjOxFb@LX@LEJQJa@dAuFDc@EOCE_Am@wJuFcF{CcC{AOOIMC[Hg@r@qBhGmSFYQEYQwK_Hg@c@KOAIBSLk@|CeKxBwHA@?E|AeFlA{DN[NOJ?NHtA~@vA|@hDpBnNxItDtBbAr@`@Rl@`@r@\\nBlAF?b@T~@z@bDhCfIjGtYfUf@\\\\PJ@DAJKHSpEaMjAwCZaAOXCCCKA@"
+    "id": 19995971369,
+    "name": "Afternoon ride",
+    "distance": 1676.3,
+    "moving_time": 415,
+    "start_date": "2026-09-01T19:39:36Z",
+    "map_polyline": "}jewFhoobMCLGAkJmHqB{Ai@]OTuB~FuG~PUx@A^?PDPLR\\^hAv@r@l@RZBRCTIVoB~E}@~BKf@DVHLVTvB~AhM|Jr@l@BHPP"
   },
   "run": {
     "id": 19898127331,
@@ -15,5 +15,5 @@
     "start_date": "2026-08-25T18:25:55Z",
     "map_polyline": "cxewFfrqbMAnBI|@JKCJ@AP_@D_@AQBGzAmAbB_BV_@\\u@FW\\w@Lg@f@qAZs@t@kB\\iAf@w@DU\\_AV{@h@qAPq@x@gBj@yAFKJ_@j@sAJc@\\cAz@aEVeALUHGHCFHHK?ECGoCoB_Au@KOAEH[^q@HEH@n@r@VP^PN@HAb@]PUl@qBBSCIq@mAeAiDO[]w@e@m@c@a@UMIBU\\G@k@}@}@gAwAqAa@Yg@Y{@]YUm@i@yAgBSSYOUIc@Ic@Cm@Ak@BoBV}@D]?gBUo@Ou@W}@a@_CqCq@a@{Aw@SO_@g@[i@c@k@o@i@QI]CY?gBRK?UKODU@_@Rc@Fo@BMCa@[WGo@?m@JYLONIRCT@VLVPNRDP@r@E^KXMNUDM@MCGGAa@AIDUVKD[BOC^@PGn@Wz@Ot@It@BHHJDDFBRIZMV@RIb@]xCs@lC[~A\\bAd@`Ah@t@hArADTEZeCbHc@tAGZIFDd@?NYf@AJ@R]`AMf@c@jA[r@UxA?TLTb@h@dAz@RTj@t@|@rARRRD^KRJN@n@QN?HD~AxBrC`Dh@v@Xj@^d@PP`@JjAdA|@n@p@n@bAtALHPDJZHJZVJBn@@PDd@?XHXB`@\\^Nt@~@^LJNRN?N]~Aa@rCOp@Uh@g@BAM@GHALPJ["
   },
-  "updated_at": "2026-09-01T16:19:07Z"
+  "updated_at": "2026-09-01T20:47:14Z"
 }
