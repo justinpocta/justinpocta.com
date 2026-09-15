@@ -1,11 +1,11 @@
 {
   "ride": {
-    "id": 20110812823,
-    "name": "Evening Ride",
-    "distance": 1994.3,
-    "moving_time": 546,
-    "start_date": "2026-09-10T00:22:36Z",
-    "map_polyline": "ulfwFj}obMRJ|@vAZ^EQ?a@CM[KkA_AOUF^FPh@p@NTFR?PGZOj@eBfEa@nAId@Eb@@TJZV`@l@h@jCjBbGrEtLtJ"
+    "id": 20186882587,
+    "name": "Enjoying the Fall weather 🍁",
+    "distance": 2683.7,
+    "moving_time": 876,
+    "start_date": "2026-09-15T15:27:14Z",
+    "map_polyline": "svewFboqbM`@oAt@gBH_@?SGOSQaBkA}@u@KUEYBWHWjC_HRo@Hg@@]COQ]i@s@EO@OdCmG`EmKpAuDNe@D[EUQQcBmAu@q@CODu@CQEECA?BJ\\@RE?GRKDWOkFgE[[IS?GFQNUd@W\\a@Ve@x@uBP]^]PEH?RFhAv@|@~@j@`@ZDLCRONFxB|AnArAHBR_AJKh@_@NUBOD_Ar@}DXmABSCQCGMES?[Ba@?u@W[Ua@g@e@aAYMaAG{@Hg@Am@Si@WQJq@l@IHKV?CAAAF@EEBE?AKD@?E"
   },
   "run": {
     "id": 20118694516,
@@ -15,5 +15,5 @@
     "start_date": "2026-09-10T15:27:39Z",
     "map_polyline": "ybewFrqpbMt@iBFGF?CB@M^mAtCwHd@aAFCBPJNn@b@XNLAJSFAb@\\PHL@NIDQ@WKoB?_BDm@z@{A|@mA\\s@Ne@Jo@JyAJo@Li@Rm@\\m@z@eAXa@nA_DXg@X[v@m@XKb@Iv@AvANbBDbAG`@G^KRIj@]X[n@{@hAcAf@[r@SZEd@?nBb@t@Fz@?x@Kr@Wj@a@d@m@Xs@Lo@Bu@GcAK}@WaA_@y@_@o@uAoBcAcBG_@k@eC{@aIi@{B[aAUc@{@qAk@o@uAkAeAm@_Bo@c@KcAIk@?k@Bc@Hg@L{Ar@aC|@YBM?mAOY@YFOFs@b@y@Xk@Z_B~@_FnBeBx@MLMj@[n@GPG`ABn@^|BHvAK~ABrATvAj@~ARZj@d@ZZ`@T~A^`@@PF\\B\\JTN`@j@n@tA`@f@d@^f@VTFbAt@f@^j@r@Tf@\\lBLNJHJ?RCFB?BLb@PTt@xAHZAFMHeAZi@JYPONIVa@v@q@~A_@dAe@t@q@pBUf@Yx@g@lB"
   },
-  "updated_at": "2026-09-15T11:23:39Z"
+  "updated_at": "2026-09-15T16:35:41Z"
 }
