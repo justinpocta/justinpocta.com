@@ -1,11 +1,11 @@
 {
   "ride": {
-    "id": 20188888768,
-    "name": "So nice out!!!!",
-    "distance": 7120.5,
-    "moving_time": 1340,
-    "start_date": "2026-09-15T17:21:46Z",
-    "map_polyline": "epewF~qnbMDX?XOjA?N~@bAl@x@VXv@l@fAh@`@X`B|AbAnAf@v@Zn@bA`D\\`Ab@`An@fAh@l@fAx@d@Nb@F`@?l@E^M\\YZe@^{@Ru@b@yDLi@Ri@`@u@r@y@T_@Ra@h@_BTe@b@o@^[n@a@b@OPCb@@lBJ|ADfACr@M~@a@ZUpAcBv@q@f@[h@Mf@Eh@DnBd@l@D~@C~@Ql@WZUd@i@R_@Ne@Hg@Di@?i@G{@K{@a@uAk@kA}A_Cc@u@]{@[{@[iBa@uD_@kCc@eBm@sAc@q@}@oAi@i@k@a@sA{@qAk@y@Q_AI{@?eAPu@TwCnA{@Xe@@gAMK?WFmAd@oFlCoCdAeA\\s@`@]L]J]BuBBg@FqKdE[Lc@Zq@x@y@lAq@nASf@_@nAO\\SZSTe@Vk@LoABc@BUHqAn@k@Hc@Aa@Kg@UwA{@WIa@Kc@?]Dg@T]VQVO\\K`@Ed@Af@F|@Hb@L^Zj@RT|BnA`@X`@^`AlAp@h@dAf@lCp@VJFJHZD\\?\\GdA_@fBBRHNRP|@l@LFN?PJvTdQnBbBaT`k@A@@CAXDJfAbAHTAPIZo@tA}@~BED@CCEMCM?WKJM`@?UHB?CIBPCOBABB"
+    "id": 20270309238,
+    "name": "I’ve been waiting all year for this weatherrrr!",
+    "distance": 7121.3,
+    "moving_time": 1159,
+    "start_date": "2026-09-21T16:56:24Z",
+    "map_polyline": "qpewFpvnbMfB~BRRj@`@vAx@fAx@pAjA~@hA\\h@h@fAfAjDb@hA`@x@f@v@t@p@z@l@\\Ln@Dj@Eh@Qb@]RWP[Vm@Po@Lu@PsBJe@Vw@Zo@|@cAT[P_@d@sAXo@^m@XY|@g@b@MPCb@A|EJx@Et@Or@[\\Y\\]r@_Al@k@n@_@r@W`@C`@?b@FrA\\^Dp@@p@E^K^M\\Sf@a@V]Zs@Jc@Hw@Ai@Cg@OmAQu@Wo@m@eAaBeCa@{@]_ASs@QcAk@qFUyAa@_BUm@Wm@c@w@g@q@i@m@_Au@_Am@a@UcAa@a@Oy@QmACi@Bu@Lw@T_DrAs@Pe@@eAIg@FgAb@{BlAuAn@gEjBqBx@[HYDwB@s@HcAb@mFpBmAf@o@\\q@d@eArA{@|AYr@_@jAWj@Y`@g@Z_@J_@FkABSBg@NqAn@WFY@_@Ea@Oe@W}@k@s@Yg@Ko@@c@Na@Ze@p@g@hAUVKFMF[FmCXUHIHANFv@FTLN`Aj@nDbCnf@z_@XXPV@VWz@s@dB]t@}AfEuApC{C`IUv@kArC{CfIFAn@^rB|AzCdCTRJR@H?PIXe@~@cAhCA@AAKNKMCM@CBCHD"
   },
   "run": {
     "id": 20118694516,
@@ -15,5 +15,5 @@
     "start_date": "2026-09-10T15:27:39Z",
     "map_polyline": "ybewFrqpbMt@iBFGF?CB@M^mAtCwHd@aAFCBPJNn@b@XNLAJSFAb@\\PHL@NIDQ@WKoB?_BDm@z@{A|@mA\\s@Ne@Jo@JyAJo@Li@Rm@\\m@z@eAXa@nA_DXg@X[v@m@XKb@Iv@AvANbBDbAG`@G^KRIj@]X[n@{@hAcAf@[r@SZEd@?nBb@t@Fz@?x@Kr@Wj@a@d@m@Xs@Lo@Bu@GcAK}@WaA_@y@_@o@uAoBcAcBG_@k@eC{@aIi@{B[aAUc@{@qAk@o@uAkAeAm@_Bo@c@KcAIk@?k@Bc@Hg@L{Ar@aC|@YBM?mAOY@YFOFs@b@y@Xk@Z_B~@_FnBeBx@MLMj@[n@GPG`ABn@^|BHvAK~ABrATvAj@~ARZj@d@ZZ`@T~A^`@@PF\\B\\JTN`@j@n@tA`@f@d@^f@VTFbAt@f@^j@r@Tf@\\lBLNJHJ?RCFB?BLb@PTt@xAHZAFMHeAZi@JYPONIVa@v@q@~A_@dAe@t@q@pBUf@Yx@g@lB"
   },
-  "updated_at": "2026-09-21T12:22:52Z"
+  "updated_at": "2026-09-21T21:49:38Z"
 }
