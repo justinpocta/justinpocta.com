@@ -525,7 +525,8 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
     transform: translateY(6px);
     transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
 }
-.hero-tile:hover .project-title-name {
+.hero-tile:hover .project-title-name,
+.hero-tile.is-active .project-title-name {
     opacity: 1;
     transform: translateY(0);
 }
@@ -540,7 +541,8 @@ body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
     line-height: 1.2;
     margin-bottom: 2px;
 }
-.hero-tile:hover .tile-company {
+.hero-tile:hover .tile-company,
+.hero-tile.is-active .tile-company {
     opacity: 0.75;
     transform: translateY(0);
 }
@@ -1323,6 +1325,7 @@ body.page--highlight.page--highlight-community { --section-color: 214, 216, 240;
     transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
 }
 .hero-tile:hover .tile-coming-soon,
+.hero-tile.is-active .tile-coming-soon,
 .hero-tile.in-view .tile-coming-soon {
     opacity: 1;
     transform: translateY(0);
@@ -1338,6 +1341,7 @@ body.page--highlight.page--highlight-community { --section-color: 214, 216, 240;
     transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
 }
 .hero-tile:hover .tile-title-row,
+.hero-tile.is-active .tile-title-row,
 .hero-tile.in-view .tile-title-row {
     opacity: 1;
     transform: translateY(0);
