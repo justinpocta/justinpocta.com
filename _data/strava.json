@@ -1,11 +1,11 @@
 {
   "ride": {
-    "id": 20270309238,
-    "name": "I’ve been waiting all year for this weatherrrr!",
-    "distance": 7121.3,
-    "moving_time": 1159,
-    "start_date": "2026-09-21T16:56:24Z",
-    "map_polyline": "qpewFpvnbMfB~BRRj@`@vAx@fAx@pAjA~@hA\\h@h@fAfAjDb@hA`@x@f@v@t@p@z@l@\\Ln@Dj@Eh@Qb@]RWP[Vm@Po@Lu@PsBJe@Vw@Zo@|@cAT[P_@d@sAXo@^m@XY|@g@b@MPCb@A|EJx@Et@Or@[\\Y\\]r@_Al@k@n@_@r@W`@C`@?b@FrA\\^Dp@@p@E^K^M\\Sf@a@V]Zs@Jc@Hw@Ai@Cg@OmAQu@Wo@m@eAaBeCa@{@]_ASs@QcAk@qFUyAa@_BUm@Wm@c@w@g@q@i@m@_Au@_Am@a@UcAa@a@Oy@QmACi@Bu@Lw@T_DrAs@Pe@@eAIg@FgAb@{BlAuAn@gEjBqBx@[HYDwB@s@HcAb@mFpBmAf@o@\\q@d@eArA{@|AYr@_@jAWj@Y`@g@Z_@J_@FkABSBg@NqAn@WFY@_@Ea@Oe@W}@k@s@Yg@Ko@@c@Na@Ze@p@g@hAUVKFMF[FmCXUHIHANFv@FTLN`Aj@nDbCnf@z_@XXPV@VWz@s@dB]t@}AfEuApC{C`IUv@kArC{CfIFAn@^rB|AzCdCTRJR@H?PIXe@~@cAhCA@AAKNKMCM@CBCHD"
+    "id": 20274854909,
+    "name": "Evening Ride",
+    "distance": 1959.7,
+    "moving_time": 458,
+    "start_date": "2026-09-21T23:05:11Z",
+    "map_polyline": "{lfwFr{obMAZBTz@xADR?XG^Sl@}CfIEVDRNR^ZtFbE~GtFjIpGLL@HEV"
   },
   "run": {
     "id": 20118694516,
@@ -15,5 +15,5 @@
     "start_date": "2026-09-10T15:27:39Z",
     "map_polyline": "ybewFrqpbMt@iBFGF?CB@M^mAtCwHd@aAFCBPJNn@b@XNLAJSFAb@\\PHL@NIDQ@WKoB?_BDm@z@{A|@mA\\s@Ne@Jo@JyAJo@Li@Rm@\\m@z@eAXa@nA_DXg@X[v@m@XKb@Iv@AvANbBDbAG`@G^KRIj@]X[n@{@hAcAf@[r@SZEd@?nBb@t@Fz@?x@Kr@Wj@a@d@m@Xs@Lo@Bu@GcAK}@WaA_@y@_@o@uAoBcAcBG_@k@eC{@aIi@{B[aAUc@{@qAk@o@uAkAeAm@_Bo@c@KcAIk@?k@Bc@Hg@L{Ar@aC|@YBM?mAOY@YFOFs@b@y@Xk@Z_B~@_FnBeBx@MLMj@[n@GPG`ABn@^|BHvAK~ABrATvAj@~ARZj@d@ZZ`@T~A^`@@PF\\B\\JTN`@j@n@tA`@f@d@^f@VTFbAt@f@^j@r@Tf@\\lBLNJHJ?RCFB?BLb@PTt@xAHZAFMHeAZi@JYPONIVa@v@q@~A_@dAe@t@q@pBUf@Yx@g@lB"
   },
-  "updated_at": "2026-09-21T21:49:38Z"
+  "updated_at": "2026-09-22T04:03:55Z"
 }
