@@ -1,19 +1,19 @@
 {
   "ride": {
-    "id": 20274854909,
-    "name": "Evening Ride",
-    "distance": 1959.7,
-    "moving_time": 458,
-    "start_date": "2026-09-21T23:05:11Z",
-    "map_polyline": "{lfwFr{obMAZBTz@xADR?XG^Sl@}CfIEVDRNR^ZtFbE~GtFjIpGLL@HEV"
+    "id": 20301926706,
+    "name": "Afternoon Ride",
+    "distance": 2069.7,
+    "moving_time": 437,
+    "start_date": "2026-09-23T20:09:43Z",
+    "map_polyline": "_}fwFblnbMFANJH?LGN_@h@?EC@ARKL@\\RbHbFv]tXrH|FdCpBZ\\IG@JM`@mE~K@AcMp\\ERD\\PPhAz@"
   },
   "run": {
-    "id": 20118694516,
-    "name": "Burnt myself out in Mile 1",
-    "distance": 4990.3,
-    "moving_time": 2327,
-    "start_date": "2026-09-10T15:27:39Z",
-    "map_polyline": "ybewFrqpbMt@iBFGF?CB@M^mAtCwHd@aAFCBPJNn@b@XNLAJSFAb@\\PHL@NIDQ@WKoB?_BDm@z@{A|@mA\\s@Ne@Jo@JyAJo@Li@Rm@\\m@z@eAXa@nA_DXg@X[v@m@XKb@Iv@AvANbBDbAG`@G^KRIj@]X[n@{@hAcAf@[r@SZEd@?nBb@t@Fz@?x@Kr@Wj@a@d@m@Xs@Lo@Bu@GcAK}@WaA_@y@_@o@uAoBcAcBG_@k@eC{@aIi@{B[aAUc@{@qAk@o@uAkAeAm@_Bo@c@KcAIk@?k@Bc@Hg@L{Ar@aC|@YBM?mAOY@YFOFs@b@y@Xk@Z_B~@_FnBeBx@MLMj@[n@GPG`ABn@^|BHvAK~ABrATvAj@~ARZj@d@ZZ`@T~A^`@@PF\\B\\JTN`@j@n@tA`@f@d@^f@VTFbAt@f@^j@r@Tf@\\lBLNJHJ?RCFB?BLb@PTt@xAHZAFMHeAZi@JYPONIVa@v@q@~A_@dAe@t@q@pBUf@Yx@g@lB"
+    "id": 20301819997,
+    "name": "Forced myself to ease back in after a week+ run break, just chilled at Grand Army Plaza enjoying the breeze",
+    "distance": 5233.1,
+    "moving_time": 2296,
+    "start_date": "2026-09-23T19:17:46Z",
+    "map_polyline": "khewFh{pbMJLJBLMJUpAcE~EiMlAiDT{@?EE@?MFUCK}@w@oByA_@_@CG@GJUHC`@F`@EL?p@\\VDVG\\YLOL]FIF@`@XTJb@NZDXAf@GXKZSj@s@Xm@L_@PcAFkAHs@No@Pk@b@w@|@iAXe@|@}B\\m@V[d@c@j@]^Kd@CxFR^Ah@Ij@Or@a@ZYz@iAl@m@b@]`@Uf@Kh@Ev@FnA\\p@JZ@r@Cp@Q~@c@b@_@^k@XeAHaACiAOaAa@yA}@}AuAmBs@}A_@gAQ_Ac@_FYwB]wASq@Sk@Yk@mAcBi@m@][kAw@aCeAm@Oo@Iq@Ci@DkATi@PoBv@}@`@]Ha@D{@OW?SBm@PiG`D_EbB}B|@g@HcC?m@JmDvAqA`@}At@a@Lu@\\]Vk@l@{@vAQRs@dBWbAO\\S^STa@VYH]DgA?[B_@Jw@f@OFe@Hc@@UEq@WsA{@w@[e@Im@@QFYPWVSXKTc@vA_AViCTk@JEHCh@Kf@GJ"
   },
-  "updated_at": "2026-09-23T16:27:03Z"
+  "updated_at": "2026-09-23T21:17:20Z"
 }
