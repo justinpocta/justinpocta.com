@@ -1,19 +1,19 @@
 {
   "ride": {
-    "id": 20413917223,
-    "name": "Evening Ride",
-    "distance": 1818.2,
-    "moving_time": 195,
-    "start_date": "2026-10-01T23:18:39Z",
-    "map_polyline": "gwewFrpqbM?CEFC?q@oA"
+    "id": 20479081873,
+    "name": "Afternoon Ride",
+    "distance": 2082.6,
+    "moving_time": 473,
+    "start_date": "2026-10-06T18:47:24Z",
+    "map_polyline": "iyfwF`jnbMjEtCxBbBj`@vZ|BhB^`@Uj@Ml@O`@i@fAsBlFo@vAgApCaCnGkCtHaCtFyD|J?D@PJNtAjAVZ?JMP"
   },
   "run": {
-    "id": 20437322250,
-    "name": "OKC Run",
-    "distance": 3573.1,
-    "moving_time": 1644,
-    "start_date": "2026-10-03T17:21:19Z",
-    "map_polyline": "_dlxEpr{qQhEjAVBHGFSBw@PmA?]GGw@O_Cs@{@YgBe@q@Wm@MmBm@gCq@eBMSLS@HvI?`DEn@?bABV?rBFX@zF@^FVGZ@p@Cl@B`IC`@@fBDFB@VE`@@d@RFFBJK\\HHLBDNFF\\AJB?EDE\\F^?NDVXRr@JLTBv@MV?PFr@d@l@FTCXORYRo@FKLE\\AJEFKL_@NUXUTI^Cj@LNHd@b@h@H@PCGHIn@Cf@Qn@u@`@SNALDTNZ`@JB^GZODB?BBKTOTI\\CZURIDG@MGaJAOIESBoABYCw@Mc@UUGc@]Y_@MYWs@Km@OY?QHADDOe@Mu@DSJKy@\\e@Zy@p@I?QSUKIIm@aASu@GmACoC?g@Hq@AIECcAYWOgCq@[OMKASDIRIASBG"
+    "id": 20478805153,
+    "name": "Trying to work on Zones!",
+    "distance": 5339.7,
+    "moving_time": 2446,
+    "start_date": "2026-10-06T17:53:28Z",
+    "map_polyline": "shewFv|pbML]T[JQfAgD~@wBnBkF~AwDv@wBXi@DDDOCUKSm@a@oByAy@y@CG@IJWJCRPLBLCXKF?LDn@^RFLGj@o@J_@JKLB`@ZXN\\FR@b@Ab@G^O`@Y`@m@f@iATwALaBf@wB`@m@l@m@^i@jAuC^q@v@s@l@_@\\I^ApDPb@?x@At@Ip@Qd@UZYn@{@j@o@v@m@r@[d@Gt@A^DbARx@L\\@j@Cl@Mh@SZOd@c@\\i@XcAHg@@WKmAU}A[}@i@aAyAuBm@}@O]EGm@gCM{@Gk@?s@Ck@OoAQgAg@uBWu@Ue@e@u@o@{@aAcAe@]s@e@s@]{Ag@y@Ow@CkBRmAd@k@XwBx@SBYAaAM[AM@m@RgCvAmDdBaG`C[HUDkC@a@DwB|@uCdAeAn@y@Xm@V_@`@s@z@S`@W^SRW^]r@e@zA]j@]`@e@T_@HoA@k@JeAd@SPEL?CQCg@@a@Ai@SyA}@a@Ow@Uo@@e@Na@ZYd@_@bAYXYP]HsCTS@[ES@MDOJUFcBZ"
   },
-  "updated_at": "2026-10-06T13:01:57Z"
+  "updated_at": "2026-10-06T22:30:20Z"
 }
