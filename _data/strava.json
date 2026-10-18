@@ -1,11 +1,11 @@
 {
   "ride": {
-    "id": 20612165486,
-    "name": "IKEA containers via bike… This barely worked, haha",
-    "distance": 1962.6,
-    "moving_time": 563,
-    "start_date": "2026-10-16T18:19:20Z",
-    "map_polyline": "q{fwFp{ubMAIJk@C[GIq@[g@]EO@Sb@mBvBuLPgAf@_CFk@Lg@`@wB\\aCd@sB^iCLg@EMGCa@KaBo@}@Ym@Y]WwAi@EGAGRiAAICGE?mAp@[HB??@i@[gBs@QMEO@QVmAVgBNs@FK@OKQs@[YSIMAIFUvAoDt@aBzEqMf@gAFAFBxAlAPJFSDW?IDOB@LY"
+    "id": 20639652041,
+    "name": "Afternoon Ride",
+    "distance": 3822.7,
+    "moving_time": 1303,
+    "start_date": "2026-10-18T18:31:11Z",
+    "map_polyline": "wsewFzgqbMBMIM}GmFQUCI?K~Ruh@Vq@ABBU?MEGse@c_@mCoBeCcBm@Ys@UIQDE?i@Jm@?K]e@[qA?@y@o@[Oe@McAKKEoA_HEa@?c@LwAfCeS@IEDGW[E[@{Ed@cAFa@Ag@KyFkB[OMMAMBY^kChAaJNs@FMJCN?RHJWFAj@Nh@VD@BEr@uFl@{BVgBDq@Aa@AMIDODDCB@?C"
   },
   "run": {
     "id": 20478805153,
@@ -15,5 +15,5 @@
     "start_date": "2026-10-06T17:53:28Z",
     "map_polyline": "shewFv|pbML]T[JQfAgD~@wBnBkF~AwDv@wBXi@DDDOCUKSm@a@oByAy@y@CG@IJWJCRPLBLCXKF?LDn@^RFLGj@o@J_@JKLB`@ZXN\\FR@b@Ab@G^O`@Y`@m@f@iATwALaBf@wB`@m@l@m@^i@jAuC^q@v@s@l@_@\\I^ApDPb@?x@At@Ip@Qd@UZYn@{@j@o@v@m@r@[d@Gt@A^DbARx@L\\@j@Cl@Mh@SZOd@c@\\i@XcAHg@@WKmAU}A[}@i@aAyAuBm@}@O]EGm@gCM{@Gk@?s@Ck@OoAQgAg@uBWu@Ue@e@u@o@{@aAcAe@]s@e@s@]{Ag@y@Ow@CkBRmAd@k@XwBx@SBYAaAM[AM@m@RgCvAmDdBaG`C[HUDkC@a@DwB|@uCdAeAn@y@Xm@V_@`@s@z@S`@W^SRW^]r@e@zA]j@]`@e@T_@HoA@k@JeAd@SPEL?CQCg@@a@Ai@SyA}@a@Ow@Uo@@e@Na@ZYd@_@bAYXYP]HsCTS@[ES@MDOJUFcBZ"
   },
-  "updated_at": "2026-10-18T15:36:27Z"
+  "updated_at": "2026-10-18T20:19:41Z"
 }
