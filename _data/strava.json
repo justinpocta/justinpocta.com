@@ -1,19 +1,19 @@
 {
   "ride": {
-    "id": 20639652041,
+    "id": 20650103778,
     "name": "Afternoon Ride",
-    "distance": 3822.7,
-    "moving_time": 1303,
-    "start_date": "2026-10-18T18:31:11Z",
-    "map_polyline": "wsewFzgqbMBMIM}GmFQUCI?K~Ruh@Vq@ABBU?MEGse@c_@mCoBeCcBm@Ys@UIQDE?i@Jm@?K]e@[qA?@y@o@[Oe@McAKKEoA_HEa@?c@LwAfCeS@IEDGW[E[@{Ed@cAFa@Ag@KyFkB[OMMAMBY^kChAaJNs@FMJCN?RHJWFAj@Nh@VD@BEr@uFl@{BVgBDq@Aa@AMIDODDCB@?C"
+    "distance": 2052.5,
+    "moving_time": 543,
+    "start_date": "2026-10-19T17:13:03Z",
+    "map_polyline": "a}fwFtlnbMDCNAFCXm@PCVFAA?BZ]FADBfAx@tDjCbBrAzDzCb@`@bGrEvThQC?Sp@gEzK{@dC_C~FsAzC_BbEcBrExBtBtC~Bf@`@HJ"
   },
   "run": {
-    "id": 20478805153,
-    "name": "Trying to work on Zones!",
-    "distance": 5339.7,
-    "moving_time": 2446,
-    "start_date": "2026-10-06T17:53:28Z",
-    "map_polyline": "shewFv|pbML]T[JQfAgD~@wBnBkF~AwDv@wBXi@DDDOCUKSm@a@oByAy@y@CG@IJWJCRPLBLCXKF?LDn@^RFLGj@o@J_@JKLB`@ZXN\\FR@b@Ab@G^O`@Y`@m@f@iATwALaBf@wB`@m@l@m@^i@jAuC^q@v@s@l@_@\\I^ApDPb@?x@At@Ip@Qd@UZYn@{@j@o@v@m@r@[d@Gt@A^DbARx@L\\@j@Cl@Mh@SZOd@c@\\i@XcAHg@@WKmAU}A[}@i@aAyAuBm@}@O]EGm@gCM{@Gk@?s@Ck@OoAQgAg@uBWu@Ue@e@u@o@{@aAcAe@]s@e@s@]{Ag@y@Ow@CkBRmAd@k@XwBx@SBYAaAM[AM@m@RgCvAmDdBaG`C[HUDkC@a@DwB|@uCdAeAn@y@Xm@V_@`@s@z@S`@W^SRW^]r@e@zA]j@]`@e@T_@HoA@k@JeAd@SPEL?CQCg@@a@Ai@SyA}@a@Ow@Uo@@e@Na@ZYd@_@bAYXYP]HsCTS@[ES@MDOJUFcBZ"
+    "id": 20649693024,
+    "name": "Trying to get back to it after sick week and recovery",
+    "distance": 5379.5,
+    "moving_time": 2497,
+    "start_date": "2026-10-19T16:15:37Z",
+    "map_polyline": "sgewFr{pbMtAaEjCqGvAaEtAiD\\iAESDSESgBoA]]u@o@QSAONYFCVHJ@ZGN?`A`@L@NCf@a@JKJ[FEF@bAb@ZHb@Db@CVEXKXSb@g@P[Na@T_AXwCF_@Tu@Vm@j@w@x@_AlAyC\\m@h@i@v@g@`@Kn@CvADtAJp@?XAjAOx@a@RMhByBd@_@v@c@h@Kx@El@HbATh@Ht@Bb@Al@M`Aa@d@a@\\i@X_AN_AAUKiAQcAUw@o@oA}A{Bi@{@o@gBc@iBEOC?BK?QWoC[iCm@uC]u@wAoBa@c@_A{@a@Yg@YiBs@UGcBQw@@w@Nq@PeEfBm@DUCw@Oc@BkAh@iB~@cAl@w@^iBt@}@\\cCdAa@LWBeC@a@DsBz@yEhBwAl@YRo@l@_B|Ba@p@[z@Y~@[j@e@h@_@Tm@JiAAa@FYHc@X]NWH[DIDi@Gg@Qa@Uy@k@a@Ss@MU?e@Da@N[VU\\u@vAQPSJYFsCXU@]ECBQ?g@R_ATw@J[BAK"
   },
-  "updated_at": "2026-10-19T12:36:27Z"
+  "updated_at": "2026-10-19T22:08:15Z"
 }
