@@ -20,7 +20,7 @@ I joined **Highlight** in January 2024 during a pivotal shift. The company was e
 
 Highlight is a product intelligence platform. Brands bring a product they want feedback on, and Highlight finds everyday people, called Highlighters, to test it at home and report back honestly.
 
-The diagram shows who brings what. The brand brings the product, the questions it needs answered, and the kind of people it wants to hear from. Highlight brings the community of testers, the logistics of getting product to them, the survey experience, and the insights at the end.
+The diagram below shows who brings what. The brand brings the product, the questions it needs answered, and the kind of people it wants to hear from. Highlight brings the community of testers, the logistics of getting product to them, the survey experience, and the insights at the end.
 
 Recruiting is the first link in that chain. It decides who receives a product, so shipping, surveys, and results all depend on getting it right.
 
