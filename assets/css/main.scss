@@ -1391,13 +1391,13 @@ body.page--highlight-recruiting .initial-content h3 + hr {
 }
 
 /* Explainer: native collapsible (details/summary) styled as a full-width card. Closed unless the open attribute is set.
-   Header bar is green-tinted with a dark grey info icon on the left and a chevron on the right; opened content stays
+   Header bar is light gray with a dark grey info icon on the left and a chevron on the right; opened content stays
    inside the rounded box on a white body.
    Usage: <details class="explainer" markdown="block"><summary>Label</summary> ...content... </details> */
 .explainer {
     margin: 1.6em 0 1.8em;
     background: #fff;
-    border: 1px solid rgba(0, 61, 47, 0.45);
+    border: 1px solid #CFD3D5;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -1412,7 +1412,7 @@ body.page--highlight-recruiting .initial-content h3 + hr {
     font-weight: 600;
     line-height: 1.35;
     color: #3D4144;
-    background: rgba(0, 61, 47, 0.16);
+    background: #EEF0F1;
     transition: background-color 0.2s ease;
 }
 .explainer > summary::-webkit-details-marker {
@@ -1441,14 +1441,14 @@ body.page--highlight-recruiting .initial-content h3 + hr {
     transform: rotate(-135deg);
 }
 .explainer > summary:hover {
-    background: rgba(0, 61, 47, 0.24);
+    background: #E3E6E8;
 }
 .explainer > summary:focus-visible {
-    outline: 2px solid #003D2F;
+    outline: 2px solid #4A4F52;
     outline-offset: -2px;
 }
 .explainer[open] > summary {
-    border-bottom: 1px solid rgba(0, 61, 47, 0.25);
+    border-bottom: 1px solid #CFD3D5;
 }
 .explainer > :not(summary) {
     margin: 1.1rem 1.4rem 0;
