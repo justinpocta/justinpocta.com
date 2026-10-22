@@ -455,37 +455,11 @@ body.bg-dark .masthead__menu-item a:hover {
 .rinse-repeat-link:hover {
     background-size: 100% 2px;
 }
-.masthead__menu-item a[href="/info"] {
-    text-decoration: none !important;
-}
-.masthead__menu-item a[href="/info"]:before {
-    background: #B8963A !important;
-    height: 2px !important;
-    transform-origin: left !important;
-    transition: all 0.35s ease-in-out !important;
-}
-.masthead__menu-item a[href="/info"]:hover {
-    color: #B8963A !important;
-    text-decoration: none !important;
-}
 /* -- Front page: gold by default, muted on tile hover -- */
 body.layout--front .rinse-repeat-link {
     color: #000;
     background-image: linear-gradient(#000, #000);
     transition: background-size 0.35s ease;
-}
-body.layout--front .masthead__menu-item a[href="/info"]:before {
-    background: #3F4346 !important;
-}
-body.layout--front .masthead__menu-item a[href="/info"]:hover {
-    color: #3F4346 !important;
-}
-/* link color + underline tint driven by JS (_applyTileBg) */
-body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:before {
-    background: #F5F1E8 !important;
-}
-body.layout--front.bg-dark .masthead__menu-item a[href="/info"]:hover {
-    color: #F5F1E8 !important;
 }
 
 .notice--primary {
