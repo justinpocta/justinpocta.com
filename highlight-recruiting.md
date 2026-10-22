@@ -24,7 +24,7 @@ The diagram below shows who brings what. The brand brings the product, the quest
 
 Recruiting is the first link in that chain. It decides who receives a product, so shipping, surveys, and results all depend on getting it right.
 
-![Context: What Customer Brings → What Highlight Offers](/assets/img/hl-rec-01-context.jpg)
+![Context: What Customer Brings → What Highlight Offers](/assets/img/hl-rec-01-context.jpg?v=2)
 
 </details>
 
@@ -65,7 +65,7 @@ Recruiting is the first link in that chain. It decides who receives a product, s
 
 ## The Problem
 
-![Getting Recruiting on Rails: Highlight project overview](/assets/img/hl-rec-00-hero.jpg)
+![Getting Recruiting on Rails: Highlight project overview](/assets/img/hl-rec-00-hero.jpg?v=2)
 
 Highlight was wanting to scale fast, but their core recruiting operations were still running like a small agency: manual, disconnected, and unsustainable.
 
@@ -89,35 +89,35 @@ Highlight was wanting to scale fast, but their core recruiting operations were s
 
 ### Mapping Workflows
 
-![Process: Mapping Workflows (FigJam workflow diagrams)](/assets/img/hl-rec-04-mapping.jpg)
+![Process: Mapping Workflows (FigJam workflow diagrams)](/assets/img/hl-rec-04-mapping.jpg?v=2)
 
 ### Diagramming & Wireframing
 
-![Process: Diagramming and Wireframing (quick wireframes with PM/Eng, confirming recruit structures with CE)](/assets/img/hl-rec-05-wireframing.jpg)
+![Process: Diagramming and Wireframing (quick wireframes with PM/Eng, confirming recruit structures with CE)](/assets/img/hl-rec-05-wireframing.jpg?v=2)
 
 </div>
 
 ## Before: Recruiting via Downloads
 
-![Before: Recruiting via downloads (old CSM portal with Download Results and Export CSV)](/assets/img/hl-rec-06-before.jpg)
+![Before: Recruiting via downloads (old CSM portal with Download Results and Export CSV)](/assets/img/hl-rec-06-before.jpg?v=2)
 
 The previous process required internal staff to run a query, download a CSV, manually manage IDs across spreadsheets, export email addresses, and send recruit emails entirely outside the platform. There was no visibility into status, no audit trail, and no scalable path forward.
 
 ## Early Explorations
 
-![Early Explorations (Mad Libs audience builder and criteria sidebar)](/assets/img/hl-rec-08-early-explorations.jpg)
+![Early Explorations (Mad Libs audience builder and criteria sidebar)](/assets/img/hl-rec-08-early-explorations.jpg?v=2)
 
 Two early directions: a sentence-style audience builder that made the query logic legible, and a persistent sidebar for inserting criteria. The latter started to feel like the stronger foundation.
 
 ### Deeper Dive: Criteria & Answer Selection
 
-![Exploration: Deeper dive on Criteria/Answer Selection](/assets/img/hl-rec-07-criteria-exploration.jpg)
+![Exploration: Deeper dive on Criteria/Answer Selection](/assets/img/hl-rec-07-criteria-exploration.jpg?v=2)
 
 Criteria selection was one of the most painful parts of the old experience. These explorations tested different models: from a card-based Global/Test Group structure with tag-style answers on the left, to a “Configure Dimensions” panel on the right that let users browse and select criteria by category. The sidebar approach won out: it gave users persistent visibility into what they’d configured without burying it in a modal flow.
 
 ## Developing Further: Layering in Test Groups
 
-![Developing further: Layering in Test Groups](/assets/img/hl-rec-09-test-groups.jpg)
+![Developing further: Layering in Test Groups](/assets/img/hl-rec-09-test-groups.jpg?v=2)
 
 The sidebar evolved into the primary interaction surface, giving users at-a-glance visibility of all Test Groups and their criteria without disrupting the main flow. Language and labeling went through multiple rounds of internal and external usability testing before landing.
 
@@ -127,13 +127,13 @@ The sidebar evolved into the primary interaction surface, giving users at-a-glan
 
 ### Customer Version
 
-![Launched Experiences: Customer version (evolved from Admin App’s UX)](/assets/img/hl-rec-10-production-customer.jpg)
+![Launched Experiences: Customer version (evolved from Admin App’s UX)](/assets/img/hl-rec-10-production-customer.jpg?v=2)
 
 The customer-facing version evolved from the Admin App’s UX patterns, adapted for customers building their own projects. With a clean “Qualifying Criteria” sidebar and Test Group management, customers could now actively configure their own recruiting instead of relying on internal handoffs.
 
 ### Admin Version
 
-![Launched Experiences: Admin version (full recruiting workflow)](/assets/img/hl-rec-11-production-admin.jpg)
+![Launched Experiences: Admin version (full recruiting workflow)](/assets/img/hl-rec-11-production-admin.jpg?v=2)
 
 The admin app gives the internal team full control: Define and Finalize tabs, Test Group management with match counts, “Start Recruiting” / “Complete Recruit” actions, and the same criteria sidebar architecture refined through months of iteration.
 
