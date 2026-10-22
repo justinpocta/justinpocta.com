@@ -1282,6 +1282,205 @@ body.page--highlight.page--highlight-community { --section-color: 214, 216, 240;
     }
 }
 
+/* Recruiting case study heading system (scoped to this page only).
+   - Main headings (h2): full-width gold rule above the title.
+   - Sub-headings (h3): soft gold side bar, plus an automatic gray divider above, unless the h3 comes straight
+     after its h2. To hide the divider on a sub-heading where it competes with other content, add
+     {: .no-divider} after the heading text in the markdown.
+   - Manual --- dividers still work between content in the same section. One that touches a heading is hidden. */
+body.page--highlight-recruiting .initial-content h2,
+body.page--highlight-recruiting .initial-content h3 {
+    line-height: 1.2;
+}
+body.page--highlight-recruiting .initial-content h2 {
+    border-top: 3px solid #B8963A;
+    padding-top: 0.6em;
+}
+/* The first heading has its own lead-in wash anchored to its top edge: start the green above the rule */
+body.page--highlight-recruiting .project-intro-grid ~ h2:first-of-type::before {
+    top: -2.5rem;
+}
+/* Breathing room between the intro and sidebar (Teams) and the green wash that begins above that first rule */
+body.page--highlight-recruiting .project-intro-grid {
+    margin-bottom: 4.4em;
+}
+body.page--highlight-recruiting .initial-content h3 {
+    position: relative;
+    margin-top: calc(3.25em + 1px);
+    padding-left: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-left: 3px solid rgba(184, 150, 58, 0.5);
+}
+body.page--highlight-recruiting .initial-content h3::before {
+    content: '';
+    position: absolute;
+    top: calc(-2em - 1px);
+    left: -3px;
+    right: 0;
+    height: 1px;
+    background: #D8DBDC;
+}
+body.page--highlight-recruiting .initial-content h2 + h3,
+body.page--highlight-recruiting .initial-content h3.no-divider {
+    margin-top: 2em;
+}
+body.page--highlight-recruiting .initial-content h2 + h3::before,
+body.page--highlight-recruiting .initial-content h3.no-divider::before {
+    display: none;
+}
+body.page--highlight-recruiting .initial-content hr {
+    border-top-color: #D8DBDC;
+}
+body.page--highlight-recruiting .initial-content hr:has(+ h2),
+body.page--highlight-recruiting .initial-content hr:has(+ h3:not(.no-divider)),
+body.page--highlight-recruiting .initial-content h2 + hr,
+body.page--highlight-recruiting .initial-content h3 + hr {
+    display: none;
+}
+
+/* Numbered points: large gold serif numerals to the left of each item's text.
+   Usage: wrap a tight markdown ordered list in <div class="numbered-points" markdown="1"> */
+.numbered-points ol {
+    list-style: none;
+    counter-reset: numbered-points;
+    margin: 1.4em 0 1.8em;
+    padding: 0;
+}
+.numbered-points ol li {
+    --pt: 0rem;
+    counter-increment: numbered-points;
+    position: relative;
+    margin: 0;
+    padding: var(--pt) 0 0 3.2rem;
+}
+.numbered-points ol li + li {
+    --pt: 1.4rem;
+    margin-top: 1.4rem;
+}
+/* Divider spans only the text column (starts where the text starts), not under the numeral */
+.numbered-points ol li + li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 3.2rem;
+    right: 0;
+    height: 1px;
+    background: #D8DBDC;
+}
+.numbered-points ol li::before {
+    content: counter(numbered-points);
+    position: absolute;
+    left: 0;
+    /* Lines the top of the numeral up with the top of the first line's capital letters:
+       8.67px is where cap tops sit in the 22px/33px text line, 0.119em is where the
+       digit tops sit inside the numeral's own line box (measured from the real fonts). */
+    top: calc(var(--pt) + 8.67px - 0.119em);
+    font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 0.9;
+    color: #B8963A;
+}
+@media (max-width: 768px) {
+    .numbered-points ol li {
+        padding-left: 2.4rem;
+    }
+    .numbered-points ol li + li::after {
+        left: 2.4rem;
+    }
+    .numbered-points ol li::before {
+        font-size: 2.4rem;
+    }
+}
+
+/* Explainer: native collapsible (details/summary) styled as a full-width card. Closed unless the open attribute is set.
+   Header bar is light gray with a dark grey info icon on the left and a chevron on the right; opened content stays
+   inside the rounded box on a white body.
+   Usage: <details class="explainer" markdown="block"><summary>Label</summary> ...content... </details> */
+.explainer {
+    margin: 1.6em 0 1.8em;
+    background: #fff;
+    border: 1px solid #CFD3D5;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.explainer > summary {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.9em;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #3D4144;
+    background: #EEF0F1;
+    transition: background-color 0.2s ease;
+}
+.explainer > summary::-webkit-details-marker {
+    display: none;
+}
+.explainer > summary::before {
+    content: '';
+    flex: 0 0 auto;
+    width: 1.35rem;
+    height: 1.35rem;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A4F52' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.explainer > summary::after {
+    content: '';
+    flex: 0 0 auto;
+    margin: 0 0.2rem 0.2rem auto;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid #4A4F52;
+    border-bottom: 2px solid #4A4F52;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+}
+.explainer[open] > summary::after {
+    margin-bottom: -0.2rem;
+    transform: rotate(-135deg);
+}
+.explainer > summary:hover {
+    background: #E3E6E8;
+}
+.explainer > summary:focus-visible {
+    outline: 2px solid #4A4F52;
+    outline-offset: -2px;
+}
+.explainer[open] > summary {
+    border-bottom: 1px solid #CFD3D5;
+}
+.explainer > :not(summary) {
+    margin: 1.1rem 1.4rem 0;
+}
+.explainer > p:last-child {
+    margin-bottom: 1.4rem;
+}
+.explainer img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .explainer > summary {
+        padding: 0.8rem 0.9rem;
+    }
+    .explainer > :not(summary) {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .explainer > summary,
+    .explainer > summary::after {
+        transition: none;
+    }
+}
+
 .tile-coming-soon {
     display: inline-block;
     font-size: 0.55em;
