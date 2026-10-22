@@ -15,6 +15,19 @@ classes: page--project page--highlight-recruiting page--highlight
 
 I joined **Highlight** in January 2024 during a pivotal shift. The company was evolving from a research services model toward a dedicated software product. I was brought on to help build the internal systems that would support that growth, starting with recruiting.
 
+<details class="explainer" markdown="block">
+<summary>Highlight at a glance</summary>
+
+Highlight is a product intelligence platform. Brands bring a product they want feedback on, and Highlight finds everyday people, called Highlighters, to test it at home and report back honestly.
+
+The diagram shows who brings what. The brand brings the product, the questions it needs answered, and the kind of people it wants to hear from. Highlight brings the community of testers, the logistics of getting product to them, the survey experience, and the insights at the end.
+
+Recruiting is the first link in that chain. It decides who receives a product, so shipping, surveys, and results all depend on getting it right.
+
+![Context: What Customer Brings → What Highlight Offers](/assets/img/hl-rec-01-context.jpg)
+
+</details>
+
 </div>
 <aside class="project-intro-grid__sidebar">
   <img src="/assets/img/highlight-logo.svg" alt="Highlight" class="sidebar-logo">
@@ -63,19 +76,6 @@ Highlight was wanting to scale fast, but their core recruiting operations were s
 3. **Criteria selection was frustrating and lacked clarity.** Poor labeling, a tedious multi-step process, and unclear options made targeting inefficient.
 
 </div>
-
-<details class="explainer" markdown="block">
-<summary>Highlight at a glance</summary>
-
-Highlight is a product intelligence platform. Brands bring a product they want feedback on, and Highlight finds everyday people, called Highlighters, to test it at home and report back honestly.
-
-The diagram shows who brings what. The brand brings the product, the questions it needs answered, and the kind of people it wants to hear from. Highlight brings the community of testers, the logistics of getting product to them, the survey experience, and the insights at the end.
-
-Recruiting is the first link in that chain. It decides who receives a product, so shipping, surveys, and results all depend on getting it right.
-
-![Context: What Customer Brings → What Highlight Offers](/assets/img/hl-rec-01-context.jpg)
-
-</details>
 
 <div class="project-section" markdown="1">
 
