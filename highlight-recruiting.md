@@ -1,5 +1,5 @@
 ---
-title: Highlight — Recruiting
+title: Highlight Recruiting
 hide_footer: true
 layout: default
 toc: false
@@ -13,7 +13,7 @@ classes: page--project page--highlight-recruiting page--highlight
 <span class="project-subheader">Highlight Recruiting</span>
 # Getting Recruiting on Rails
 
-I joined **Highlight** in January 2024 during a pivotal shift — the company was evolving from a research services model toward a dedicated software product. I was brought on to help build the internal systems that would support that growth, starting with recruiting.
+I joined **Highlight** in January 2024 during a pivotal shift. The company was evolving from a research services model toward a dedicated software product. I was brought on to help build the internal systems that would support that growth, starting with recruiting.
 
 </div>
 <aside class="project-intro-grid__sidebar">
@@ -52,95 +52,104 @@ I joined **Highlight** in January 2024 during a pivotal shift — the company wa
 
 ## The Problem
 
-![Getting Recruiting on Rails — Highlight project overview](/assets/img/hl-rec-00-hero.jpg)
+![Getting Recruiting on Rails: Highlight project overview](/assets/img/hl-rec-00-hero.jpg)
+
+Highlight was wanting to scale fast, but their core recruiting operations were still running like a small agency: manual, disconnected, and unsustainable.
+
+<div class="numbered-points" markdown="1">
+
+1. **Customers were not empowered enough by the app yet.** Actual processes in the background involved so much PII that customers were only offered non-functional inputs, essentially a repeat of information gathered during the Sales kickoff process.
+2. **Manual download and spreadsheet management.** User data had to be gathered for projects from multiple CSVs, which then became a challenge of juggling IDs and knowing who gets what.
+3. **Criteria selection was frustrating and lacked clarity.** Poor labeling, a tedious multi-step process, and unclear options made targeting inefficient.
+
+</div>
+
+<details class="explainer" markdown="block">
+<summary>Highlight at a glance</summary>
+
+Highlight is a product intelligence platform. Brands bring a product they want feedback on, and Highlight finds everyday people, called Highlighters, to test it at home and report back honestly.
+
+The diagram shows who brings what. The brand brings the product, the questions it needs answered, and the kind of people it wants to hear from. Highlight brings the community of testers, the logistics of getting product to them, the survey experience, and the insights at the end.
+
+Recruiting is the first link in that chain. It decides who receives a product, so shipping, surveys, and results all depend on getting it right.
 
 ![Context: What Customer Brings → What Highlight Offers](/assets/img/hl-rec-01-context.jpg)
 
-Highlight was wanting to scale fast, but their core recruiting operations were still running like a small agency—manual, disconnected, and unsustainable.
-
-**Customers were not even using the app much yet** — Actual processes in the background involved so much PII that customers were only offered non-functional inputs, essentially a repeat of information gathered during the Sales kickoff process.
-
-**Manual download and spreadsheet management** — User data had to be gathered for projects from multiple CSVs, which then became a challenge of juggling IDs and knowing who gets what.
-
-**Criteria selection was frustrating and lacked clarity** — Poor labeling, a tedious multi-step process, and unclear options made targeting inefficient.
+</details>
 
 <div class="project-section" markdown="1">
 
 ## My Process
 
-- **Mapped internal workflows** — Gained understanding of how recruiting happens: CSV up/downloads, email address exports to send recruit emails, monitoring manual “dashboards”
-- **Gathered stakeholder input** — Discussions with C-Level, Product, Customer Success, and Engineering on pain points and constraints, and to gather buy-in and support
-- **Audited data collection** — Analyzed how recruit data was gathered and identified efficiency barriers
-- **Diagrams to express concepts and mental models** — As words tend to get very muddled, I leverage simple visuals to confirm structures and flows
-- **Iterative build-out** — Long collaborative process to layer in additional functionality and value
+- **Mapped internal workflows.** Gained understanding of how recruiting happens: CSV up/downloads, email address exports to send recruit emails, monitoring manual “dashboards”
+- **Gathered stakeholder input.** Discussions with C-Level, Product, Customer Success, and Engineering on pain points and constraints, and to gather buy-in and support
+- **Audited data collection.** Analyzed how recruit data was gathered and identified efficiency barriers
+- **Diagrams to express concepts and mental models.** As words tend to get very muddled, I leverage simple visuals to confirm structures and flows
+- **Iterative build-out.** Long collaborative process to layer in additional functionality and value
 
 ### Mapping Workflows
 
-![Process: Mapping Workflows — FigJam workflow diagrams](/assets/img/hl-rec-04-mapping.jpg)
+![Process: Mapping Workflows (FigJam workflow diagrams)](/assets/img/hl-rec-04-mapping.jpg)
 
 ### Diagramming & Wireframing
 
-![Process: Diagramming and Wireframing — quick wireframes with PM/Eng, confirming recruit structures with CE](/assets/img/hl-rec-05-wireframing.jpg)
+![Process: Diagramming and Wireframing (quick wireframes with PM/Eng, confirming recruit structures with CE)](/assets/img/hl-rec-05-wireframing.jpg)
 
 </div>
 
 ## Before: Recruiting via Downloads
 
-![Before: Recruiting via downloads — old CSM portal with Download Results and Export CSV](/assets/img/hl-rec-06-before.jpg)
+![Before: Recruiting via downloads (old CSM portal with Download Results and Export CSV)](/assets/img/hl-rec-06-before.jpg)
 
 The previous process required internal staff to run a query, download a CSV, manually manage IDs across spreadsheets, export email addresses, and send recruit emails entirely outside the platform. There was no visibility into status, no audit trail, and no scalable path forward.
 
----
-
 ## Early Explorations
 
-![Early Explorations — Mad Libs audience builder and criteria sidebar](/assets/img/hl-rec-08-early-explorations.jpg)
+![Early Explorations (Mad Libs audience builder and criteria sidebar)](/assets/img/hl-rec-08-early-explorations.jpg)
 
-Two early directions: a sentence-style audience builder that made the query logic legible, and a persistent sidebar for inserting criteria — the latter started to feel like the stronger foundation.
+Two early directions: a sentence-style audience builder that made the query logic legible, and a persistent sidebar for inserting criteria. The latter started to feel like the stronger foundation.
 
 ### Deeper Dive: Criteria & Answer Selection
 
 ![Exploration: Deeper dive on Criteria/Answer Selection](/assets/img/hl-rec-07-criteria-exploration.jpg)
 
-Criteria selection was one of the most painful parts of the old experience. These explorations tested different models — from a card-based Global/Test Group structure with tag-style answers on the left, to a “Configure Dimensions” panel on the right that let users browse and select criteria by category. The sidebar approach won out: it gave users persistent visibility into what they’d configured without burying it in a modal flow.
-
----
+Criteria selection was one of the most painful parts of the old experience. These explorations tested different models: from a card-based Global/Test Group structure with tag-style answers on the left, to a “Configure Dimensions” panel on the right that let users browse and select criteria by category. The sidebar approach won out: it gave users persistent visibility into what they’d configured without burying it in a modal flow.
 
 ## Developing Further: Layering in Test Groups
 
 ![Developing further: Layering in Test Groups](/assets/img/hl-rec-09-test-groups.jpg)
 
-The sidebar evolved into the primary interaction surface — giving users at-a-glance visibility of all Test Groups and their criteria without disrupting the main flow. Language and labeling went through multiple rounds of internal and external usability testing before landing.
+The sidebar evolved into the primary interaction surface, giving users at-a-glance visibility of all Test Groups and their criteria without disrupting the main flow. Language and labeling went through multiple rounds of internal and external usability testing before landing.
 
 <div class="project-section" markdown="1">
 
-## Production
+## Launched Experiences
 
 ### Customer Version
 
-![Production: Customer version — evolved from Admin App’s UX](/assets/img/hl-rec-10-production-customer.jpg)
+![Launched Experiences: Customer version (evolved from Admin App’s UX)](/assets/img/hl-rec-10-production-customer.jpg)
 
 The customer-facing version evolved from the Admin App’s UX patterns, adapted for customers building their own projects. With a clean “Qualifying Criteria” sidebar and Test Group management, customers could now actively configure their own recruiting instead of relying on internal handoffs.
 
 ### Admin Version
 
-![Production: Admin version — full recruiting workflow](/assets/img/hl-rec-11-production-admin.jpg)
+![Launched Experiences: Admin version (full recruiting workflow)](/assets/img/hl-rec-11-production-admin.jpg)
 
-The admin app gives the internal team full control — Define and Finalize tabs, Test Group management with match counts, “Start Recruiting” / “Complete Recruit” actions, and the same criteria sidebar architecture refined through months of iteration.
+The admin app gives the internal team full control: Define and Finalize tabs, Test Group management with match counts, “Start Recruiting” / “Complete Recruit” actions, and the same criteria sidebar architecture refined through months of iteration.
 
 </div>
 
 <div class="project-section" markdown="1">
 
-## Results, So Far
+## Where We Landed and Next Steps
 
-**Strong team adoption** — Quick uptake due to clear value, though edge cases in project requirements continue to drive iterations and process refinement.
+**Strong team adoption.** Quick uptake due to clear value, though edge cases in project requirements continue to drive iterations and process refinement.
 
-**Customer engagement increased** — With a functional app, alongside a huge update across all features, customers are able to actively build their own projects instead of relying on manual handoffs.*
+**Customer engagement increased.** With a functional app, alongside a huge update across all features, customers are able to actively build their own projects instead of relying on manual handoffs.*
 
-**Downstream improvements unlocked** — QC tools, progress tracking, reduced human error, and streamlined CSV workflows.
+**Downstream improvements unlocked.** QC tools, progress tracking, reduced human error, and streamlined CSV workflows.
 
-**Next phase** — Automated project and survey completion tracking.
+**Next phase.** Automated project and survey completion tracking.
 
 *\* this is a work in progress but we’re closing in as these tools rely less on internal setup*
 
