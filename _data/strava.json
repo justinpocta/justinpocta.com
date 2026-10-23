@@ -1,11 +1,11 @@
 {
   "ride": {
-    "id": 20678882806,
+    "id": 20694840029,
     "name": "Afternoon Ride",
-    "distance": 3371.7,
-    "moving_time": 740,
-    "start_date": "2026-10-21T18:32:53Z",
-    "map_polyline": "kbgwFvhsbM{@vBy@zBc@bAg@rAQ|@gBzJg@dCILk@X]`@WVELJ`ADXBFFAPKb@_@NAzEjBnC~@DAF[ViBf@gCTwAFSLOHAVFdCfAfDlAXPHN@HAV]~A{BtL}DtTa@pBSd@DDdAVXLNLDHBVCVs@jD[xB?TVb@?PGTQZsAzBKZBPPX?DA@V\\"
+    "distance": 2496.7,
+    "moving_time": 765,
+    "start_date": "2026-10-22T20:05:48Z",
+    "map_polyline": "gxfwFhtrbMu@bBy@vBaB`EoHrRQt@aArFqAtGINKDiAREBF?l@v@\\V^l@PNjAh@fBl@f@VbE`BNJDRKv@cAfFUx@cAtFS`A{@bFKr@Sx@y@pEk@nCGn@OZ}AbCaAbB_@p@Sh@e@n@gBzCWd@I`@CAGJ@?HFHXf@h@lBbCVRHBD??C?@DBF`@`@l@@H]WEIQu@IKSO"
   },
   "run": {
     "id": 20666560919,
@@ -15,5 +15,5 @@
     "start_date": "2026-10-20T20:27:52Z",
     "map_polyline": "wfewFlypbMlAeDv@qB`@{@PU`CqHn@{Aj@qAFS?UEGi@Ya@]{@o@eAaAGKAKDODIHC\\Hd@GL?p@\\PFLBLGd@g@Xk@F?r@j@\\HZ@t@AXEZM\\URU`@s@Vu@Jc@XuCLu@Ri@Xi@pAkBf@_A^gAf@}@f@k@f@_@XOTK\\Cj@BnAJlABhACl@In@Sp@[d@a@z@eA`A{@b@Yd@SVGh@?p@FdAVrAFb@?d@E^Oh@e@fAqATSLQJo@@u@Ey@Y}AM_@c@u@a@k@w@{@OWs@aB[}@q@wCUuCk@eEYsAMa@g@aAgA}As@s@w@o@eAk@kAg@[O]Ci@Kq@Ce@@}@Ly@TaCfAm@Rq@NU@oAQ]BQFw@\\_CpAiAh@c@Vg@PUNiA\\aDpAq@NqC@YDiGbCqAn@wAj@i@b@}ApBcAjBm@bBUd@]b@_@VYJWB{@@k@Dc@LmAr@MBg@D_@C[GI@SWuAy@WMs@QSA[@_@JEDD@?AA?YJURSX[v@MRQT[Pu@NwBPmACKDQROFs@LaAH_@L[VQHM?MCBDH@V?"
   },
-  "updated_at": "2026-10-22T21:20:04Z"
+  "updated_at": "2026-10-23T04:00:22Z"
 }
