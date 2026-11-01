@@ -1,19 +1,19 @@
 {
   "ride": {
-    "id": 20694840029,
+    "id": 20822497339,
     "name": "Afternoon Ride",
-    "distance": 2496.7,
-    "moving_time": 765,
-    "start_date": "2026-10-22T20:05:48Z",
-    "map_polyline": "gxfwFhtrbMu@bBy@vBaB`EoHrRQt@aArFqAtGINKDiAREBF?l@v@\\V^l@PNjAh@fBl@f@VbE`BNJDRKv@cAfFUx@cAtFS`A{@bFKr@Sx@y@pEk@nCGn@OZ}AbCaAbB_@p@Sh@e@n@gBzCWd@I`@CAGJ@?HFHXf@h@lBbCVRHBD??C?@DBF`@`@l@@H]WEIQu@IKSO"
+    "distance": 2073.3,
+    "moving_time": 456,
+    "start_date": "2026-11-01T20:36:46Z",
+    "map_polyline": "i}fwFhlnbM?@DCT@HAFKHWJEL?VBCDNa@LBNFrFxDpG`FlZ|UbAz@`@b@PV@NOd@gAhCkCvGiFfN@BRDb@Xv@h@n@j@VVRZHTDT@VEf@_@`Bm@fA{@zB_@hAALDXLR`At@FJLN"
   },
   "run": {
-    "id": 20739444268,
-    "name": "Lunch Run",
-    "distance": 5412.9,
-    "moving_time": 2315,
-    "start_date": "2026-10-26T16:02:06Z",
-    "map_polyline": "_newF|rpbMlAoDlBwEhByEn@yA`A_DTYHSHEZFZGL?PBp@ZP@PGXULMP[JGX@h@Zf@N\\Bd@ATEZMZUVYT]P]L_@RkARyBJg@Vw@\\o@|@gA^k@z@{BZo@X_@l@k@t@]^Gz@?vBJ`A@hAEv@MTIn@e@x@cA`AaAj@a@\\OVGbAIz@DfAT|@J`@?f@E\\Oh@c@jB{BFODU@w@KiAO{@W}@]o@}@}AY]u@gA_@w@_A_Ea@mEEeAEe@_@{A[_AQ[g@y@w@cAg@g@oAgAoB}@gA]mBOc@@e@DWDc@N}An@uBx@i@DuAMk@F_@Je@X{@^mC|AEDy@XiChAwB|@]HWDmC@[DkDvAiBn@}CtAcAbAkAbBs@pAo@fB[n@a@d@]Ro@LaA?i@Fi@NgAh@UF[@g@Ec@Q_CmAm@Mg@Ak@Lc@VSVKPOZSt@q@\\]FqCXa@?M@?@c@Ba@NoCf@_@XSHQ?KEEG?KLSLIHAp@Jt@Mf@@j@G\\?DFBP?`AAd@"
+    "id": 20822260496,
+    "name": "Afternoon Run",
+    "distance": 5172.2,
+    "moving_time": 2076,
+    "start_date": "2026-11-01T19:49:22Z",
+    "map_polyline": "ehewFlgpbMBWr@}BhCuGz@oBFA`@Hb@IP@PF^ZPBp@a@PYL[FCTFh@Z^Jt@HXA^K^OZWh@aAX{@PcAPqBJg@Vw@\\o@|@iAV_@f@gAb@mAP_@`@g@p@e@l@[\\Gd@?z@HdBFz@?dBOj@QRMXYfBuBr@g@l@W\\Ip@CdALnB\\R@b@Cv@QbAa@`@]d@q@Tq@Jw@BYSkBQeASi@i@iAaAuAu@_Ai@kA]{AYyAKaACkAGu@SuAWoASw@]aAa@q@OOE@?ACKk@_Ac@_@WYk@k@i@]kCeAYCgAUe@Ac@B_AP]J_E`B_@Je@@kAOQ?WDy@^q@b@u@^oBz@eBz@yEnB[J_@F{B?o@FcCbAwChA{@d@{Al@{@x@y@pAc@h@Yb@Yn@g@zAUb@a@d@a@Xm@JeA@a@F]J_Ah@m@N]@UCw@UaAm@_Ac@w@M_@@a@Lk@b@a@n@Y|@SFg@Vg@JwBRaAA_AZ{@Nc@Dg@B[Gc@?MDKFEN?HBJFDT@VG`@[JCn@Eh@Mz@IJ@CJ"
   },
-  "updated_at": "2026-11-01T12:54:09Z"
+  "updated_at": "2026-11-01T21:50:27Z"
 }
