@@ -1,19 +1,19 @@
 {
   "ride": {
-    "id": 20847741030,
-    "name": "Afternoon Ride",
-    "distance": 2001.4,
-    "moving_time": 482,
-    "start_date": "2026-11-03T18:33:18Z",
-    "map_polyline": "sygwF`wsbMHH~Ap@|IhDxBp@NBJEJg@r@kFIKk@U]SGMAGBS`@w@Da@^u@dAgCdGuOHMDAF?lAz@LFHEzA}D`AcCf@eALOLKLANFlBzA~@h@\\HLEDEN[fAcDfB}Ex@oBfFcN`@iAF["
+    "id": 20870607052,
+    "name": "Morning Ride",
+    "distance": 2247.9,
+    "moving_time": 538,
+    "start_date": "2026-11-05T14:27:46Z",
+    "map_polyline": "_}fwF~lnbM\\UXk@JA\\DTYTJbDxBbD`Cz_@jZpBbBLLHN@ZI\\wE`LuAdEeB|ESn@ALHVLNv@x@hGnEr@n@TZJX@TAb@If@YhAo@lAkBjEIBIC}ByA@HCN[|@"
   },
   "run": {
-    "id": 20848807233,
-    "name": "Afternoon Run",
-    "distance": 6458.4,
-    "moving_time": 2856,
-    "start_date": "2026-11-03T21:03:45Z",
-    "map_polyline": "geewFp`pbMtBeGHORGL[FAZF\\GLAJBf@XJBN?LEZSRUNWJENR^T^Nb@FzA_@\\Q\\Yf@u@Z}@PcAPwBRw@Z{@P[z@eA`@k@z@{BZq@\\e@|@s@`@Ql@Gj@?~@H~AD`AA|@Id@M`Ak@bBwBl@c@`@Ul@QdAGf@@pAXz@Jj@?b@GZKd@a@v@}@RYXSJOJ]BWC_B]kBYo@m@oAy@iAi@m@U_@HTk@{AOk@M[SESWGCyA@l@m@T]Ne@Jc@KaAE{@Kc@KgAIUEAK@CGKk@@m@Ma@k@kAe@g@[i@aAeASOOGG@A@Uv@SFCBDPPN?P@EV[Pk@@[EQII{@g@iBu@q@Ou@Ie@Ag@Bk@Hs@T{B`A}@d@OFq@@sAQg@DYJo@\\s@X_Ah@_@TUFiAn@gHtCm@JaC@]BoGfCo@\\uBt@]Vc@b@e@l@{AhCWl@_@hASb@c@h@g@Xi@JaA?a@D[HUJk@d@e@Hc@Bg@Ia@Ou@_@]W{@_@a@IOAm@Dg@Pc@b@Ud@_@pAIJSF[DyBTu@DA@BDD@lAQl@ERB^LZVf@h@^z@Z`@dDrBr@p@~@dAVTj@Zf@PtAXbBPrAEdCYdA?lAPj@\\XTpA~Aj@j@NLzAp@bAp@jBlBh@p@`@n@Vd@Vn@~A`Fv@|AX`@Lb@PRAVIVi@Z"
+    "id": 20870498412,
+    "name": "Morning Run",
+    "distance": 4851.5,
+    "moving_time": 2299,
+    "start_date": "2026-11-05T13:47:31Z",
+    "map_polyline": "qgewFjepbMXw@PW`@aA~BoGJc@PUFCPHNB`@EL?`@Nh@JZKTOJON[LCXDx@\\bF}BNa@Lm@NeBHo@ZkA^s@tAgBxAoDNW^a@~@q@^OTEXAdA@tBJ|ACXCv@Qn@_@f@g@X_@d@k@f@c@n@_@h@S^Ed@?d@DfAXl@Hb@Bl@Aj@Kv@Yj@a@\\a@FODUImA@_@Ja@Vc@OwA[eA[o@m@aAcAuA_A_BE_@WgAYaCa@aEe@_CSw@]}@w@uAo@u@c@g@SQGCYYYUm@]wB}@k@Mw@Ig@?i@Dw@Ni@PoD~Ag@Lg@C}@Oc@Bc@NkB|@oBpAgJpDWH]DgC@[DwGjCc@XUDo@Xc@LULk@j@u@`Ac@f@w@tAo@nB[p@_@b@]Ro@NcA@k@Fa@L{@d@UHQDe@@OA[I]S]Oy@QQIgAGc@KOKQAYP[XMRm@tA_@Xi@NiD\\IBINIh@UZKZ"
   },
-  "updated_at": "2026-11-05T14:20:43Z"
+  "updated_at": "2026-11-05T23:26:47Z"
 }
