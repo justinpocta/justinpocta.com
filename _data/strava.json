@@ -1,19 +1,19 @@
 {
   "ride": {
-    "id": 20949617166,
+    "id": 20961698052,
     "name": "Lunch Ride",
-    "distance": 1713.7,
-    "moving_time": 374,
-    "start_date": "2026-11-11T17:17:20Z",
-    "map_polyline": "uwfwFjknbM~CvBbE~Chc@j]`FbEA?kL`[Ub@KBKEw@s@]g@Ga@"
+    "distance": 2040.4,
+    "moving_time": 423,
+    "start_date": "2026-11-12T16:28:16Z",
+    "map_polyline": "w|fwFbmnbMJEHITm@JCb@@RWH?NH~CvBtCvBtk@fd@^^E@G^oC~GgHpRoD|Ie@pAId@BXPV|@x@"
   },
   "run": {
-    "id": 20949504349,
-    "name": "Lunch Run",
-    "distance": 4868.9,
-    "moving_time": 2082,
-    "start_date": "2026-11-11T16:38:37Z",
-    "map_polyline": "mhewFtgpbMn@{BjA_DjAwC|@oBFAPFJ@r@Gv@^TBJE\\Wd@k@BATLV?\\P^Ht@Dh@KTITM\\]b@u@X}@Lo@P}BLm@Tu@Xk@fAsAR[b@aA`@kARc@b@k@p@i@j@Wx@IbBDb@Dp@BnCKh@St@e@RShA{A~@q@`@Sh@Kd@Cd@@b@DpBb@`@@b@Cz@Qt@]\\W\\i@Xs@PeA?cAIeAWiAQe@_@q@i@{@Ya@o@u@m@wAIGy@mDYyCQyAS_CMk@]eA_@q@UWg@w@_AeAcAy@eAi@cBq@YIqBSa@@m@Lo@P_Bp@wBv@SBW@eAMWB[HsCtAMLYRk@Xc@Hq@Z_HnCm@JiC@[BoGhCg@`@c@V}Af@kAnAcA|AWXS\\Yn@a@nAS^a@d@a@Tk@J_A@e@Fc@NcAl@c@Ji@BQA_@OiAo@c@YYMa@MUC{@DYJg@b@SVm@jAMNUNu@P}BRa@?"
+    "id": 20961596192,
+    "name": "Morning Run",
+    "distance": 4982.2,
+    "moving_time": 2055,
+    "start_date": "2026-11-12T15:53:05Z",
+    "map_polyline": "wgewF|epbMvCaI\\q@Xa@?GN_@@[LWFATHH@`@GL?fA^L@ZMVUHKJWDCRBh@Zd@LVBh@A~@Sr@u@^s@Tq@NaAPqBLk@Tu@Xk@hAsAR]~@aC\\q@Zc@t@o@b@S~@M|@F~@?~AJn@Av@I`Ac@\\WnA{Az@{@ZSd@QXG|@Af@FdAVh@Fh@Dn@An@MbAc@d@_@Ze@XaAL}@A]MmASeA[aA[k@Yc@y@gAg@}@Yk@a@kA[iAY{AIs@EoAOu@MkA]kBSm@o@_BcAwAq@s@yAkAw@]gA_@SMkAOq@Am@DqATe@Lu@`@c@NgAf@[Hc@BmAUa@DeAb@{Ax@a@Xi@R_@TkIjD]J]FkC@WBQDiAf@wDxAi@\\]JsB`Ac@^u@jAi@j@{@tBWx@]l@e@j@c@VWFWD}@?c@Ba@LgAf@e@J]@k@Ei@QyA}@i@Ug@Kk@@OBe@^UVa@z@Ql@MDa@T_@J{AJq@HIBIXOZe@^UTAJAp@Gf@CJQN"
   },
-  "updated_at": "2026-11-12T14:51:53Z"
+  "updated_at": "2026-11-12T23:21:01Z"
 }
