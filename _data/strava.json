@@ -1,19 +1,19 @@
 {
   "ride": {
-    "id": 20938527568,
-    "name": "Afternoon Ride",
-    "distance": 3442.4,
-    "moving_time": 760,
-    "start_date": "2026-11-10T20:43:49Z",
-    "map_polyline": "sjjwF|ypbMT@ZDNBRNV@TKb@u@DAJ?PHlC`BhAl@`@JLAFEXc@Vs@dD}LlAaGBc@Ae@AFB@DEJUbA{@`@SjAe@`BmAh@[RCJBv@`@tElCn@Vl@h@|@j@tC~AhAt@`E`Cz@j@pBlAz@b@l@b@rHnElDnB|BvAlGzEnAhAvAbA^^fCjBvAlAf@Zb@b@dBrAp@b@fCtBZPfAv@t@p@p@`@nAfAvCzBCCLGFG^w@fHoRKV{@g@"
+    "id": 20949617166,
+    "name": "Lunch Ride",
+    "distance": 1713.7,
+    "moving_time": 374,
+    "start_date": "2026-11-11T17:17:20Z",
+    "map_polyline": "uwfwFjknbM~CvBbE~Chc@j]`FbEA?kL`[Ub@KBKEw@s@]g@Ga@"
   },
   "run": {
-    "id": 20870498412,
-    "name": "Morning Run",
-    "distance": 4851.5,
-    "moving_time": 2299,
-    "start_date": "2026-11-05T13:47:31Z",
-    "map_polyline": "qgewFjepbMXw@PW`@aA~BoGJc@PUFCPHNB`@EL?`@Nh@JZKTOJON[LCXDx@\\bF}BNa@Lm@NeBHo@ZkA^s@tAgBxAoDNW^a@~@q@^OTEXAdA@tBJ|ACXCv@Qn@_@f@g@X_@d@k@f@c@n@_@h@S^Ed@?d@DfAXl@Hb@Bl@Aj@Kv@Yj@a@\\a@FODUImA@_@Ja@Vc@OwA[eA[o@m@aAcAuA_A_BE_@WgAYaCa@aEe@_CSw@]}@w@uAo@u@c@g@SQGCYYYUm@]wB}@k@Mw@Ig@?i@Dw@Ni@PoD~Ag@Lg@C}@Oc@Bc@NkB|@oBpAgJpDWH]DgC@[DwGjCc@XUDo@Xc@LULk@j@u@`Ac@f@w@tAo@nB[p@_@b@]Ro@NcA@k@Fa@L{@d@UHQDe@@OA[I]S]Oy@QQIgAGc@KOKQAYP[XMRm@tA_@Xi@NiD\\IBINIh@UZKZ"
+    "id": 20949504349,
+    "name": "Lunch Run",
+    "distance": 4868.9,
+    "moving_time": 2082,
+    "start_date": "2026-11-11T16:38:37Z",
+    "map_polyline": "mhewFtgpbMn@{BjA_DjAwC|@oBFAPFJ@r@Gv@^TBJE\\Wd@k@BATLV?\\P^Ht@Dh@KTITM\\]b@u@X}@Lo@P}BLm@Tu@Xk@fAsAR[b@aA`@kARc@b@k@p@i@j@Wx@IbBDb@Dp@BnCKh@St@e@RShA{A~@q@`@Sh@Kd@Cd@@b@DpBb@`@@b@Cz@Qt@]\\W\\i@Xs@PeA?cAIeAWiAQe@_@q@i@{@Ya@o@u@m@wAIGy@mDYyCQyAS_CMk@]eA_@q@UWg@w@_AeAcAy@eAi@cBq@YIqBSa@@m@Lo@P_Bp@wBv@SBW@eAMWB[HsCtAMLYRk@Xc@Hq@Z_HnCm@JiC@[BoGhCg@`@c@V}Af@kAnAcA|AWXS\\Yn@a@nAS^a@d@a@Tk@J_A@e@Fc@NcAl@c@Ji@BQA_@OiAo@c@YYMa@MUC{@DYJg@b@SVm@jAMNUNu@P}BRa@?"
   },
-  "updated_at": "2026-11-11T13:49:12Z"
+  "updated_at": "2026-11-12T00:15:39Z"
 }
